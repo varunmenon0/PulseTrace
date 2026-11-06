@@ -1,0 +1,30 @@
+{
+  "dataset": "https://raw.githubusercontent.com/vladostan/Dataset-for-video-based-pulse-detection/master/data/",
+  "sha256": {
+    "Video/p1_normal.MP4": "9e4e2873c45859b5eb04b9268e8a77c974776c5874b23bd2f5267f30daa259d4",
+    "ECG/p1_normal.txt": "b7c0c2d0e5fe0e4a2b540eed210cf4e356c5dbcecd210a973a74fbca1f7f2789"
+  },
+  "preprocessing": "1920x1080 source resized to 640x360, MJPG at 25 FPS",
+  "reference": {
+    "method": "unvalidated lead-II QRS-energy peak finder; whole-record median RR",
+    "sampling_rate_hz": 100.0,
+    "duration_s": 20.98,
+    "detected_peaks": 23,
+    "median_rr_bpm": 63.829787234042556
+  },
+  "pos_candidates": {
+    "forehead": 64.18903501879883,
+    "left_cheek": 63.18670949005951,
+    "right_cheek": null
+  },
+  "valid_frame_fraction": {
+    "forehead": 1.0,
+    "left_cheek": 1.0,
+    "right_cheek": 1.0
+  },
+  "limitations": [
+    "Video/ECG time alignment not verified; no synchronized error score",
+    "ECG peak finder is an exploratory whole-record summary",
+    "One resized clip does not validate robustness or deepfake detection"
+  ]
+}

@@ -1,0 +1,6 @@
+include LICENSE README.md VALIDATION.md DIAGNOSTICS.md requirements-tested.txt
+recursive-include scripts *.py
+recursive-include tests *.py
+recursive-include .github *.yml
+include STABILIZATION.md
+include SEGMENTS.md

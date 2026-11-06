@@ -1,0 +1,67 @@
+{
+  "phase": "signal_extraction_only",
+  "method": "pos",
+  "metadata": {
+    "source_fps": 30.0,
+    "timestamp_fallbacks": 0,
+    "decoded_frames": 600,
+    "synthetic": true,
+    "expected_bpm": 72,
+    "tracking": "known fixture geometry; not MediaPipe",
+    "configuration": {
+      "min_seconds": 10,
+      "max_gap_s": 0.25,
+      "band_bpm": [
+        40,
+        200
+      ],
+      "pos_window_s": 1.6,
+      "filter_order": 4,
+      "spectral_peak_fraction_cutoff": 0.35
+    },
+    "versions": {
+      "pulsetrace": "0.1.0",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "opencv-contrib-python": "4.14.0.94",
+      "mediapipe": "0.10.35",
+      "matplotlib": "3.11.2"
+    }
+  },
+  "failures": {},
+  "regions": {
+    "forehead": {
+      "bpm_candidate": 72.00268548047386,
+      "peak_fraction": 0.977448350610302,
+      "sample_rate_hz": 30.000000000000107,
+      "segment_duration_s": 19.966666666666598,
+      "interpolated_fraction": 0.0,
+      "valid_frame_fraction": 1.0,
+      "warnings": [
+        "Spectral HR candidate only; motion or lighting may mimic a pulse"
+      ]
+    },
+    "left_cheek": {
+      "bpm_candidate": 72.01238828544693,
+      "peak_fraction": 0.97706965839925,
+      "sample_rate_hz": 30.000000000000107,
+      "segment_duration_s": 19.966666666666598,
+      "interpolated_fraction": 0.0,
+      "valid_frame_fraction": 1.0,
+      "warnings": [
+        "Spectral HR candidate only; motion or lighting may mimic a pulse"
+      ]
+    },
+    "right_cheek": {
+      "bpm_candidate": 72.0033682990023,
+      "peak_fraction": 0.9782803164369424,
+      "sample_rate_hz": 30.000000000000107,
+      "segment_duration_s": 19.966666666666598,
+      "interpolated_fraction": 0.0,
+      "valid_frame_fraction": 1.0,
+      "warnings": [
+        "Spectral HR candidate only; motion or lighting may mimic a pulse"
+      ]
+    }
+  }
+}
