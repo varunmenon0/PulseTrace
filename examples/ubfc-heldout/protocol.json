@@ -1,0 +1,23 @@
+{
+  "purpose": "First frozen-rule, previously unprocessed-subject check of regional quality gate",
+  "algorithm_commit": "b974f2a56f22bd64101a6cff37c58c4275b68d1b",
+  "subjects": ["subject12", "subject13", "subject14"],
+  "selection": "Next three available subject IDs in lexical sequence after prior development subjects 1,10,11; fixed before download or analysis",
+  "primary_method": "pos",
+  "layouts": ["three_regions", "twelve_patches"],
+  "gates": ["global_gate", "regional_gate"],
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "motion_threshold_face_units": 0.05,
+  "area_step_fraction": 0.1,
+  "buffer_seconds": 0.5,
+  "shared_displacement_or_unavailability_regions": 2,
+  "reference_bpm_range": [40, 200],
+  "max_reference_gap_seconds": 2.5,
+  "consensus_span_bpm": 5,
+  "runtime_mediapipe": "0.10.21",
+  "metrics": ["accepted/reference-valid windows", "MAE on accepted windows", "newly-admitted MAE", "maximum error", "absolute errors over 10 BPM"],
+  "limitations": ["Overlapping windows are not independent", "Mirror origin not independently matched to official video checksums", "Shared elapsed-time origin assumed, hardware sync not independently verified"],
+  "failure_policy": "Record unavailable downloads or inference failures without silently substituting subjects. Do not modify thresholds or algorithm in response to outcomes.",
+  "policy": "Retain defaults unless evidence supports a later separately evaluated change"
+}
