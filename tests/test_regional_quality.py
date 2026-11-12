@@ -103,3 +103,13 @@ def test_cli_writes_regional_report(tmp_path,monkeypatch):
     import json
     report=json.loads((output/'regional_comparison.json').read_text())
     assert abs(report['windows'][0]['methods']['pos']['twelve_patches']['regional_gate']['bpm_candidate']-72)<2
+
+
+def test_corroborated_area_needs_photometric_or_shape_evidence():
+    e=fixture();e.pixels['left_cheek'][300:]=150
+    masks,_=regional_masks(e,area_policy='corroborated')
+    assert not masks['left_cheek'].any()
+    e.rgb['left_cheek'][300:]*=.95
+    masks,_=regional_masks(e,area_policy='corroborated')
+    assert masks['left_cheek'][300]
+    with pytest.raises(ValueError):regional_masks(e,area_policy='unknown')

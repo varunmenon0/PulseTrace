@@ -1,0 +1,6410 @@
+{
+  "frames_with_landmarks": 450,
+  "frames": [
+    {
+      "frame": 0,
+      "time_s": 0.0,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 211,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 402.42566125583835,
+        "left_cheek": 260.0315576166613,
+        "right_cheek": 335.2768429098651
+      }
+    },
+    {
+      "frame": 1,
+      "time_s": 0.03404603371027173,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 222,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.941421515774,
+        "left_cheek": 257.5452291010879,
+        "right_cheek": 338.4570524485316
+      }
+    },
+    {
+      "frame": 2,
+      "time_s": 0.06809206742054345,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 198,
+        "right_cheek": 302
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.9111496505793,
+        "left_cheek": 256.410922394949,
+        "right_cheek": 341.22774242120795
+      }
+    },
+    {
+      "frame": 3,
+      "time_s": 0.10213810113081517,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 211,
+        "right_cheek": 275
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.53033687896095,
+        "left_cheek": 255.53912059613504,
+        "right_cheek": 342.99627603404224
+      }
+    },
+    {
+      "frame": 4,
+      "time_s": 0.1361841348410869,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 206,
+        "right_cheek": 286
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.01525221019983,
+        "left_cheek": 251.47033309261315,
+        "right_cheek": 343.3268394104671
+      }
+    },
+    {
+      "frame": 5,
+      "time_s": 0.17023016855135864,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 222,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.80370251089334,
+        "left_cheek": 252.71959499956574,
+        "right_cheek": 346.9777419886086
+      }
+    },
+    {
+      "frame": 6,
+      "time_s": 0.20427620226163035,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 198,
+        "right_cheek": 309
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.56201618234627,
+        "left_cheek": 252.66934009082615,
+        "right_cheek": 346.79546593967825
+      }
+    },
+    {
+      "frame": 7,
+      "time_s": 0.23832223597190208,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 199,
+        "right_cheek": 300
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.31862053181976,
+        "left_cheek": 256.8303071259288,
+        "right_cheek": 346.90104064601474
+      }
+    },
+    {
+      "frame": 8,
+      "time_s": 0.2723682696821738,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 206,
+        "right_cheek": 300
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.04030969459563,
+        "left_cheek": 258.20028825942427,
+        "right_cheek": 344.9860597469378
+      }
+    },
+    {
+      "frame": 9,
+      "time_s": 0.3064143033924455,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 206,
+        "right_cheek": 286
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.9716475990135,
+        "left_cheek": 256.74654066644143,
+        "right_cheek": 345.7161616559606
+      }
+    },
+    {
+      "frame": 10,
+      "time_s": 0.3404603371027173,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 192,
+        "right_cheek": 282
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.34268089709803,
+        "left_cheek": 260.0789636822883,
+        "right_cheek": 343.43316208175384
+      }
+    },
+    {
+      "frame": 11,
+      "time_s": 0.374506370812989,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 195,
+        "right_cheek": 282
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.7446924322285,
+        "left_cheek": 259.02872876729816,
+        "right_cheek": 343.6015142297838
+      }
+    },
+    {
+      "frame": 12,
+      "time_s": 0.4085524045232607,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 219,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.23188599944115,
+        "left_cheek": 257.80543138692155,
+        "right_cheek": 345.18747556069866
+      }
+    },
+    {
+      "frame": 13,
+      "time_s": 0.44259843823353245,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 213,
+        "right_cheek": 299
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.80786009691656,
+        "left_cheek": 257.07928280718625,
+        "right_cheek": 343.350899416022
+      }
+    },
+    {
+      "frame": 14,
+      "time_s": 0.47664447194380416,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 219,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.1861654724926,
+        "left_cheek": 259.03899769322015,
+        "right_cheek": 342.00917077763006
+      }
+    },
+    {
+      "frame": 15,
+      "time_s": 0.5106905056540759,
+      "pixels": {
+        "forehead": 360,
+        "left_cheek": 210,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.7564304014668,
+        "left_cheek": 259.4068490100326,
+        "right_cheek": 339.2158087627031
+      }
+    },
+    {
+      "frame": 16,
+      "time_s": 0.5447365393643476,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 212,
+        "right_cheek": 292
+      },
+      "continuous_polygon_area": {
+        "forehead": 401.5947508297395,
+        "left_cheek": 259.70141647488344,
+        "right_cheek": 338.41497267456725
+      }
+    },
+    {
+      "frame": 17,
+      "time_s": 0.5787825730746193,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 222,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.6739997174591,
+        "left_cheek": 259.58076784480363,
+        "right_cheek": 338.7793113326188
+      }
+    },
+    {
+      "frame": 18,
+      "time_s": 0.612828606784891,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 217,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.94487403379753,
+        "left_cheek": 261.500388736953,
+        "right_cheek": 336.2201556893997
+      }
+    },
+    {
+      "frame": 19,
+      "time_s": 0.6468746404951627,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 211,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 401.6214527252596,
+        "left_cheek": 260.202676550718,
+        "right_cheek": 339.684068193892
+      }
+    },
+    {
+      "frame": 20,
+      "time_s": 0.6809206742054346,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 209,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.52224362897687,
+        "left_cheek": 258.02177458652295,
+        "right_cheek": 339.61667824629694
+      }
+    },
+    {
+      "frame": 21,
+      "time_s": 0.7149667079157063,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 219,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.4059300504159,
+        "left_cheek": 256.6707092875149,
+        "right_cheek": 341.4349661099259
+      }
+    },
+    {
+      "frame": 22,
+      "time_s": 0.749012741625978,
+      "pixels": {
+        "forehead": 378,
+        "left_cheek": 207,
+        "right_cheek": 288
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.81184076098725,
+        "left_cheek": 253.0051755120512,
+        "right_cheek": 343.6739298044704
+      }
+    },
+    {
+      "frame": 23,
+      "time_s": 0.7830587753362497,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 209,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.9433802040294,
+        "left_cheek": 252.1080172228394,
+        "right_cheek": 344.43041894375347
+      }
+    },
+    {
+      "frame": 24,
+      "time_s": 0.8171048090465214,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 209,
+        "right_cheek": 288
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.47681394568644,
+        "left_cheek": 252.3689242071705,
+        "right_cheek": 343.39246966922656
+      }
+    },
+    {
+      "frame": 25,
+      "time_s": 0.8511508427567931,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 207,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.30549973296,
+        "left_cheek": 253.83633741002996,
+        "right_cheek": 343.2960677247029
+      }
+    },
+    {
+      "frame": 26,
+      "time_s": 0.8851968764670649,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 212,
+        "right_cheek": 288
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.5457593095489,
+        "left_cheek": 258.14704435982276,
+        "right_cheek": 341.8477791014593
+      }
+    },
+    {
+      "frame": 27,
+      "time_s": 0.9192429101773366,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 207,
+        "right_cheek": 288
+      },
+      "continuous_polygon_area": {
+        "forehead": 401.9318347712979,
+        "left_cheek": 255.97210432589054,
+        "right_cheek": 340.8757644298021
+      }
+    },
+    {
+      "frame": 28,
+      "time_s": 0.9532889438876083,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 212,
+        "right_cheek": 309
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.0147507484071,
+        "left_cheek": 258.88875946216285,
+        "right_cheek": 344.2549301586114
+      }
+    },
+    {
+      "frame": 29,
+      "time_s": 0.98733497759788,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 207,
+        "right_cheek": 309
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.81118115549907,
+        "left_cheek": 258.5596474984195,
+        "right_cheek": 342.5517277761828
+      }
+    },
+    {
+      "frame": 30,
+      "time_s": 1.0213810113081518,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 214,
+        "right_cheek": 293
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.06117053166963,
+        "left_cheek": 261.28443112422246,
+        "right_cheek": 342.4017146648839
+      }
+    },
+    {
+      "frame": 31,
+      "time_s": 1.0554270450184235,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 210,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.4579793117009,
+        "left_cheek": 259.19392115739174,
+        "right_cheek": 336.9329655326437
+      }
+    },
+    {
+      "frame": 32,
+      "time_s": 1.0894730787286953,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 209,
+        "right_cheek": 293
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.22706754063256,
+        "left_cheek": 260.31353689404204,
+        "right_cheek": 338.46912754001096
+      }
+    },
+    {
+      "frame": 33,
+      "time_s": 1.123519112438967,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 219,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.893066134071,
+        "left_cheek": 260.59393372561317,
+        "right_cheek": 345.6440600724891
+      }
+    },
+    {
+      "frame": 34,
+      "time_s": 1.1575651461492387,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 203,
+        "right_cheek": 288
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.50699641695246,
+        "left_cheek": 258.94971713004634,
+        "right_cheek": 345.4221668767277
+      }
+    },
+    {
+      "frame": 35,
+      "time_s": 1.1916111798595104,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 194,
+        "right_cheek": 303
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.3772728308104,
+        "left_cheek": 257.5559856306063,
+        "right_cheek": 350.07141452562064
+      }
+    },
+    {
+      "frame": 36,
+      "time_s": 1.225657213569782,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 200,
+        "right_cheek": 303
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.11838222900406,
+        "left_cheek": 257.0671431159135,
+        "right_cheek": 350.74488481576554
+      }
+    },
+    {
+      "frame": 37,
+      "time_s": 1.2597032472800538,
+      "pixels": {
+        "forehead": 375,
+        "left_cheek": 219,
+        "right_cheek": 293
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.654038077686,
+        "left_cheek": 256.94524373533204,
+        "right_cheek": 347.1564638817217
+      }
+    },
+    {
+      "frame": 38,
+      "time_s": 1.2937492809903255,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 216,
+        "right_cheek": 289
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.9133438873105,
+        "left_cheek": 257.279267314123,
+        "right_cheek": 347.889926121803
+      }
+    },
+    {
+      "frame": 39,
+      "time_s": 1.3277953147005972,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 195,
+        "right_cheek": 286
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.7303538157139,
+        "left_cheek": 256.7492291298695,
+        "right_cheek": 345.59782315185294
+      }
+    },
+    {
+      "frame": 40,
+      "time_s": 1.3618413484108691,
+      "pixels": {
+        "forehead": 337,
+        "left_cheek": 222,
+        "right_cheek": 283
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.03824546094984,
+        "left_cheek": 259.4111186345108,
+        "right_cheek": 341.9320903609041
+      }
+    },
+    {
+      "frame": 41,
+      "time_s": 1.3958873821211408,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 208,
+        "right_cheek": 283
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.6990869620349,
+        "left_cheek": 260.241194907343,
+        "right_cheek": 336.0900945190806
+      }
+    },
+    {
+      "frame": 42,
+      "time_s": 1.4299334158314125,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 208,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.1108030632604,
+        "left_cheek": 262.7672636935022,
+        "right_cheek": 334.6985702672973
+      }
+    },
+    {
+      "frame": 43,
+      "time_s": 1.4639794495416842,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 210,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.80223595385905,
+        "left_cheek": 261.3233016808517,
+        "right_cheek": 333.09547091135755
+      }
+    },
+    {
+      "frame": 44,
+      "time_s": 1.498025483251956,
+      "pixels": {
+        "forehead": 337,
+        "left_cheek": 229,
+        "right_cheek": 287
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.12288431159686,
+        "left_cheek": 260.23888576589525,
+        "right_cheek": 332.08047785121016
+      }
+    },
+    {
+      "frame": 45,
+      "time_s": 1.5320715169622277,
+      "pixels": {
+        "forehead": 337,
+        "left_cheek": 210,
+        "right_cheek": 287
+      },
+      "continuous_polygon_area": {
+        "forehead": 386.966657262994,
+        "left_cheek": 259.43320582807064,
+        "right_cheek": 331.16646017623134
+      }
+    },
+    {
+      "frame": 46,
+      "time_s": 1.5661175506724994,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 215,
+        "right_cheek": 284
+      },
+      "continuous_polygon_area": {
+        "forehead": 391.4689352863934,
+        "left_cheek": 259.99956707959063,
+        "right_cheek": 331.86561538581736
+      }
+    },
+    {
+      "frame": 47,
+      "time_s": 1.600163584382771,
+      "pixels": {
+        "forehead": 343,
+        "left_cheek": 201,
+        "right_cheek": 293
+      },
+      "continuous_polygon_area": {
+        "forehead": 389.861358428956,
+        "left_cheek": 260.0528848981485,
+        "right_cheek": 333.27553967759013
+      }
+    },
+    {
+      "frame": 48,
+      "time_s": 1.6342096180930428,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 219,
+        "right_cheek": 270
+      },
+      "continuous_polygon_area": {
+        "forehead": 392.8889606165467,
+        "left_cheek": 261.45915365358815,
+        "right_cheek": 332.69009444955736
+      }
+    },
+    {
+      "frame": 49,
+      "time_s": 1.6682556518033145,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 213,
+        "right_cheek": 282
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.15634032699745,
+        "left_cheek": 259.95956369978376,
+        "right_cheek": 333.5046331710182
+      }
+    },
+    {
+      "frame": 50,
+      "time_s": 1.7023016855135862,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 210,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.8343112964649,
+        "left_cheek": 261.274452974787,
+        "right_cheek": 333.1599372343626
+      }
+    },
+    {
+      "frame": 51,
+      "time_s": 1.7363477192238579,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 201,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.38536333013326,
+        "left_cheek": 257.61521235550754,
+        "right_cheek": 332.33064440707676
+      }
+    },
+    {
+      "frame": 52,
+      "time_s": 1.7703937529341298,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 222,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.6468645262066,
+        "left_cheek": 260.9420953511726,
+        "right_cheek": 337.51513603166677
+      }
+    },
+    {
+      "frame": 53,
+      "time_s": 1.8044397866444015,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 209,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.01235799095593,
+        "left_cheek": 258.6347336838953,
+        "right_cheek": 331.7233747863211
+      }
+    },
+    {
+      "frame": 54,
+      "time_s": 1.8384858203546732,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 207,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.0494662623387,
+        "left_cheek": 255.9726830762811,
+        "right_cheek": 334.27020811708644
+      }
+    },
+    {
+      "frame": 55,
+      "time_s": 1.872531854064945,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 220,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.00035458174534,
+        "left_cheek": 263.7849088513758,
+        "right_cheek": 335.26241342676803
+      }
+    },
+    {
+      "frame": 56,
+      "time_s": 1.9065778877752166,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 220,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.8522420632653,
+        "left_cheek": 268.6127638693433,
+        "right_cheek": 336.10546953231096
+      }
+    },
+    {
+      "frame": 57,
+      "time_s": 1.9406239214854883,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 222,
+        "right_cheek": 275
+      },
+      "continuous_polygon_area": {
+        "forehead": 429.21548537770286,
+        "left_cheek": 264.16234609810635,
+        "right_cheek": 328.7228890520055
+      }
+    },
+    {
+      "frame": 58,
+      "time_s": 1.97466995519576,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 223,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.95015562023036,
+        "left_cheek": 263.85101204016246,
+        "right_cheek": 324.57647522585467
+      }
+    },
+    {
+      "frame": 59,
+      "time_s": 2.0087159889060318,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 232,
+        "right_cheek": 275
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.80392181128263,
+        "left_cheek": 262.317967325449,
+        "right_cheek": 326.8399714254774
+      }
+    },
+    {
+      "frame": 60,
+      "time_s": 2.0427620226163037,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 227,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.39478303305805,
+        "left_cheek": 265.9239600233268,
+        "right_cheek": 329.6324145575054
+      }
+    },
+    {
+      "frame": 61,
+      "time_s": 2.076808056326575,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 212,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.08056188584305,
+        "left_cheek": 262.25084424670786,
+        "right_cheek": 329.21756080701016
+      }
+    },
+    {
+      "frame": 62,
+      "time_s": 2.110854090036847,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 213,
+        "right_cheek": 275
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.7349354082253,
+        "left_cheek": 264.7904815967195,
+        "right_cheek": 330.5386349703185
+      }
+    },
+    {
+      "frame": 63,
+      "time_s": 2.1449001237471186,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 232,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 395.6175105853472,
+        "left_cheek": 266.3149559360463,
+        "right_cheek": 331.2254699068144
+      }
+    },
+    {
+      "frame": 64,
+      "time_s": 2.1789461574573905,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 214,
+        "right_cheek": 282
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.3112390623428,
+        "left_cheek": 260.7462855747435,
+        "right_cheek": 329.61181712918915
+      }
+    },
+    {
+      "frame": 65,
+      "time_s": 2.212992191167662,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 227,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.45892822765745,
+        "left_cheek": 262.5171099852305,
+        "right_cheek": 329.39298306568526
+      }
+    },
+    {
+      "frame": 66,
+      "time_s": 2.247038224877934,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 205,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.85954683599994,
+        "left_cheek": 259.59957080637105,
+        "right_cheek": 323.1270077172667
+      }
+    },
+    {
+      "frame": 67,
+      "time_s": 2.2810842585882054,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 209,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 384.5644788269419,
+        "left_cheek": 258.7787657144945,
+        "right_cheek": 322.28964166506194
+      }
+    },
+    {
+      "frame": 68,
+      "time_s": 2.3151302922984773,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 213,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.09828113019466,
+        "left_cheek": 260.9383873741608,
+        "right_cheek": 327.02407854865305
+      }
+    },
+    {
+      "frame": 69,
+      "time_s": 2.3491763260087493,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 227,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 393.02525013964623,
+        "left_cheek": 262.88854534341954,
+        "right_cheek": 333.5735760696698
+      }
+    },
+    {
+      "frame": 70,
+      "time_s": 2.3832223597190207,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 213,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 393.4205034186598,
+        "left_cheek": 261.4622163826134,
+        "right_cheek": 333.9053710657172
+      }
+    },
+    {
+      "frame": 71,
+      "time_s": 2.4172683934292927,
+      "pixels": {
+        "forehead": 391,
+        "left_cheek": 227,
+        "right_cheek": 306
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.0271552086342,
+        "left_cheek": 263.5698385257274,
+        "right_cheek": 336.97560203052126
+      }
+    },
+    {
+      "frame": 72,
+      "time_s": 2.451314427139564,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 213,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.99355118116364,
+        "left_cheek": 263.40293257916346,
+        "right_cheek": 332.70206320355646
+      }
+    },
+    {
+      "frame": 73,
+      "time_s": 2.485360460849836,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 231,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.2487505315803,
+        "left_cheek": 265.90733052487485,
+        "right_cheek": 331.8577210167423
+      }
+    },
+    {
+      "frame": 74,
+      "time_s": 2.5194064945601076,
+      "pixels": {
+        "forehead": 385,
+        "left_cheek": 213,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.58255065092817,
+        "left_cheek": 266.7906795251183,
+        "right_cheek": 329.68623589654453
+      }
+    },
+    {
+      "frame": 75,
+      "time_s": 2.5534525282703795,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 222,
+        "right_cheek": 280
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.32687593763694,
+        "left_cheek": 269.4348971033469,
+        "right_cheek": 333.2905590774026
+      }
+    },
+    {
+      "frame": 76,
+      "time_s": 2.587498561980651,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 222,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.17636406817473,
+        "left_cheek": 269.5589862468187,
+        "right_cheek": 330.32321802247316
+      }
+    },
+    {
+      "frame": 77,
+      "time_s": 2.621544595690923,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 236,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.4035300652031,
+        "left_cheek": 272.10653391992673,
+        "right_cheek": 338.61854182370007
+      }
+    },
+    {
+      "frame": 78,
+      "time_s": 2.6555906294011944,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 220,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.9099919158034,
+        "left_cheek": 267.6601537873503,
+        "right_cheek": 331.2251886543818
+      }
+    },
+    {
+      "frame": 79,
+      "time_s": 2.6896366631114663,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 222,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.2334926254116,
+        "left_cheek": 266.64458279218525,
+        "right_cheek": 330.7925415998325
+      }
+    },
+    {
+      "frame": 80,
+      "time_s": 2.7236826968217382,
+      "pixels": {
+        "forehead": 392,
+        "left_cheek": 215,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 436.3637335430831,
+        "left_cheek": 270.68462236155756,
+        "right_cheek": 326.41329761059023
+      }
+    },
+    {
+      "frame": 81,
+      "time_s": 2.7577287305320097,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 226,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.2350635523908,
+        "left_cheek": 266.1206101770513,
+        "right_cheek": 324.14710299507715
+      }
+    },
+    {
+      "frame": 82,
+      "time_s": 2.7917747642422817,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 215,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.58336342242546,
+        "left_cheek": 268.0702597470954,
+        "right_cheek": 322.5583968977444
+      }
+    },
+    {
+      "frame": 83,
+      "time_s": 2.825820797952553,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 211,
+        "right_cheek": 280
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.15898979688063,
+        "left_cheek": 266.43062782054767,
+        "right_cheek": 324.69115076959133
+      }
+    },
+    {
+      "frame": 84,
+      "time_s": 2.859866831662825,
+      "pixels": {
+        "forehead": 385,
+        "left_cheek": 233,
+        "right_cheek": 265
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.7033582404256,
+        "left_cheek": 271.65820410405286,
+        "right_cheek": 324.10433229315095
+      }
+    },
+    {
+      "frame": 85,
+      "time_s": 2.8939128653730966,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 233,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.6528887192253,
+        "left_cheek": 273.99238355481066,
+        "right_cheek": 325.1766038017813
+      }
+    },
+    {
+      "frame": 86,
+      "time_s": 2.9279588990833685,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 233,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.50749024306424,
+        "left_cheek": 271.85773464874364,
+        "right_cheek": 325.5821280658711
+      }
+    },
+    {
+      "frame": 87,
+      "time_s": 2.96200493279364,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 226,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.9161432129331,
+        "left_cheek": 272.7988336312119,
+        "right_cheek": 327.88969200546853
+      }
+    },
+    {
+      "frame": 88,
+      "time_s": 2.996050966503912,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 236,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.13887103740126,
+        "left_cheek": 272.7302395803854,
+        "right_cheek": 328.86174695333466
+      }
+    },
+    {
+      "frame": 89,
+      "time_s": 3.0300970002141834,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 233,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.1196572803892,
+        "left_cheek": 273.1382616343908,
+        "right_cheek": 329.4357676419895
+      }
+    },
+    {
+      "frame": 90,
+      "time_s": 3.0641430339244553,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 233,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.8293796470389,
+        "left_cheek": 271.73688048287295,
+        "right_cheek": 329.4220404974185
+      }
+    },
+    {
+      "frame": 91,
+      "time_s": 3.0981890676347272,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 233,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.0975241807755,
+        "left_cheek": 271.5028783858288,
+        "right_cheek": 326.9699446600862
+      }
+    },
+    {
+      "frame": 92,
+      "time_s": 3.1322351013449987,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 226,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.74196746828966,
+        "left_cheek": 272.2197696149815,
+        "right_cheek": 325.22153703914955
+      }
+    },
+    {
+      "frame": 93,
+      "time_s": 3.1662811350552706,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 226,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.9654657323845,
+        "left_cheek": 272.50744380941615,
+        "right_cheek": 326.312026305357
+      }
+    },
+    {
+      "frame": 94,
+      "time_s": 3.200327168765542,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 226,
+        "right_cheek": 278
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.0844490104355,
+        "left_cheek": 271.802417074563,
+        "right_cheek": 325.41558096185327
+      }
+    },
+    {
+      "frame": 95,
+      "time_s": 3.234373202475814,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 232,
+        "right_cheek": 278
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.8338724365458,
+        "left_cheek": 270.66939182789065,
+        "right_cheek": 326.0123126900289
+      }
+    },
+    {
+      "frame": 96,
+      "time_s": 3.2684192361860855,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 245,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.78553157439455,
+        "left_cheek": 269.3899937768001,
+        "right_cheek": 326.49662160570733
+      }
+    },
+    {
+      "frame": 97,
+      "time_s": 3.3024652698963575,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 231,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.6410521008074,
+        "left_cheek": 268.3659139533993,
+        "right_cheek": 325.51465296396054
+      }
+    },
+    {
+      "frame": 98,
+      "time_s": 3.336511303606629,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 220,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.46545695280656,
+        "left_cheek": 267.2459287981037,
+        "right_cheek": 322.9469447617885
+      }
+    },
+    {
+      "frame": 99,
+      "time_s": 3.370557337316901,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 213,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.0584469693713,
+        "left_cheek": 266.47788160224445,
+        "right_cheek": 322.80245415726677
+      }
+    },
+    {
+      "frame": 100,
+      "time_s": 3.4046033710271724,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 213,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.0988118471578,
+        "left_cheek": 266.4399524421897,
+        "right_cheek": 322.936517780181
+      }
+    },
+    {
+      "frame": 101,
+      "time_s": 3.4386494047374443,
+      "pixels": {
+        "forehead": 343,
+        "left_cheek": 220,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.1166085344739,
+        "left_cheek": 267.81247456674464,
+        "right_cheek": 323.26475994102657
+      }
+    },
+    {
+      "frame": 102,
+      "time_s": 3.4726954384477158,
+      "pixels": {
+        "forehead": 379,
+        "left_cheek": 236,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.19909982266836,
+        "left_cheek": 272.8337300673593,
+        "right_cheek": 327.6484089277219
+      }
+    },
+    {
+      "frame": 103,
+      "time_s": 3.5067414721579877,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 236,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.57640200364403,
+        "left_cheek": 273.3663610718213,
+        "right_cheek": 328.3665413465351
+      }
+    },
+    {
+      "frame": 104,
+      "time_s": 3.5407875058682596,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 228,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.06278145872056,
+        "left_cheek": 273.1248366476502,
+        "right_cheek": 327.8997012900654
+      }
+    },
+    {
+      "frame": 105,
+      "time_s": 3.574833539578531,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 226,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.56648864783347,
+        "left_cheek": 273.1560919729527,
+        "right_cheek": 328.9928642688319
+      }
+    },
+    {
+      "frame": 106,
+      "time_s": 3.608879573288803,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 236,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.5168284033425,
+        "left_cheek": 275.13156987843104,
+        "right_cheek": 327.8267159478273
+      }
+    },
+    {
+      "frame": 107,
+      "time_s": 3.6429256069990745,
+      "pixels": {
+        "forehead": 385,
+        "left_cheek": 226,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.62596603296697,
+        "left_cheek": 275.9246128005907,
+        "right_cheek": 328.7877745628357
+      }
+    },
+    {
+      "frame": 108,
+      "time_s": 3.6769716407093465,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 226,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.8144664794672,
+        "left_cheek": 277.0171737757046,
+        "right_cheek": 330.295621531317
+      }
+    },
+    {
+      "frame": 109,
+      "time_s": 3.711017674419618,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 236,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.95785457943566,
+        "left_cheek": 276.735676209908,
+        "right_cheek": 334.23408972634934
+      }
+    },
+    {
+      "frame": 110,
+      "time_s": 3.74506370812989,
+      "pixels": {
+        "forehead": 389,
+        "left_cheek": 236,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 427.5230930130929,
+        "left_cheek": 281.20153413526714,
+        "right_cheek": 329.1805673171766
+      }
+    },
+    {
+      "frame": 111,
+      "time_s": 3.7791097418401614,
+      "pixels": {
+        "forehead": 383,
+        "left_cheek": 233,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.72843590099365,
+        "left_cheek": 278.82387264375575,
+        "right_cheek": 326.86337247653864
+      }
+    },
+    {
+      "frame": 112,
+      "time_s": 3.8131557755504333,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 233,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 428.72006307635456,
+        "left_cheek": 279.29778656875715,
+        "right_cheek": 328.7911950722337
+      }
+    },
+    {
+      "frame": 113,
+      "time_s": 3.8472018092607048,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 233,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.31270664394833,
+        "left_cheek": 277.6789275002666,
+        "right_cheek": 329.6535457111895
+      }
+    },
+    {
+      "frame": 114,
+      "time_s": 3.8812478429709767,
+      "pixels": {
+        "forehead": 385,
+        "left_cheek": 226,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 428.4915446389932,
+        "left_cheek": 276.0510045327246,
+        "right_cheek": 328.33733278885484
+      }
+    },
+    {
+      "frame": 115,
+      "time_s": 3.9152938766812486,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 233,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 429.1622273500543,
+        "left_cheek": 276.10263438592665,
+        "right_cheek": 328.7289264255669
+      }
+    },
+    {
+      "frame": 116,
+      "time_s": 3.94933991039152,
+      "pixels": {
+        "forehead": 385,
+        "left_cheek": 222,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.259458106244,
+        "left_cheek": 274.60018758801743,
+        "right_cheek": 328.52027268568054
+      }
+    },
+    {
+      "frame": 117,
+      "time_s": 3.983385944101792,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 226,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.174418046372,
+        "left_cheek": 271.8935998864472,
+        "right_cheek": 327.1668787810486
+      }
+    },
+    {
+      "frame": 118,
+      "time_s": 4.0174319778120635,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 211,
+        "right_cheek": 270
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.6623090438079,
+        "left_cheek": 269.2851748135872,
+        "right_cheek": 326.6483233049512
+      }
+    },
+    {
+      "frame": 119,
+      "time_s": 4.051478011522335,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 222,
+        "right_cheek": 254
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.3028959007934,
+        "left_cheek": 269.1114652620163,
+        "right_cheek": 328.07454028958455
+      }
+    },
+    {
+      "frame": 120,
+      "time_s": 4.085524045232607,
+      "pixels": {
+        "forehead": 355,
+        "left_cheek": 224,
+        "right_cheek": 278
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.04200690286234,
+        "left_cheek": 273.0491181239486,
+        "right_cheek": 330.89257108746096
+      }
+    },
+    {
+      "frame": 121,
+      "time_s": 4.119570078942878,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 235,
+        "right_cheek": 290
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.0100219040178,
+        "left_cheek": 271.0252235340886,
+        "right_cheek": 335.2717833002098
+      }
+    },
+    {
+      "frame": 122,
+      "time_s": 4.15361611265315,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 217,
+        "right_cheek": 301
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.2255452487152,
+        "left_cheek": 268.49208311503753,
+        "right_cheek": 335.1520616116468
+      }
+    },
+    {
+      "frame": 123,
+      "time_s": 4.187662146363422,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 228,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.39598005334847,
+        "left_cheek": 268.56185898790136,
+        "right_cheek": 334.85841917735524
+      }
+    },
+    {
+      "frame": 124,
+      "time_s": 4.221708180073694,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 226,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 398.889072507387,
+        "left_cheek": 273.1505445772782,
+        "right_cheek": 336.08184184413403
+      }
+    },
+    {
+      "frame": 125,
+      "time_s": 4.255754213783965,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 241,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.33242729119956,
+        "left_cheek": 277.1709865136072,
+        "right_cheek": 331.60304377111606
+      }
+    },
+    {
+      "frame": 126,
+      "time_s": 4.289800247494237,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 243,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 402.78271888033487,
+        "left_cheek": 278.81023422349244,
+        "right_cheek": 326.0351890916936
+      }
+    },
+    {
+      "frame": 127,
+      "time_s": 4.323846281204509,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 224,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.0293847238645,
+        "left_cheek": 275.83831170923077,
+        "right_cheek": 333.74301199405454
+      }
+    },
+    {
+      "frame": 128,
+      "time_s": 4.357892314914781,
+      "pixels": {
+        "forehead": 339,
+        "left_cheek": 224,
+        "right_cheek": 283
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.7035472150892,
+        "left_cheek": 273.8166269508656,
+        "right_cheek": 333.4827491422184
+      }
+    },
+    {
+      "frame": 129,
+      "time_s": 4.391938348625053,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 224,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.57034288696013,
+        "left_cheek": 274.01517989858985,
+        "right_cheek": 334.6334313096013
+      }
+    },
+    {
+      "frame": 130,
+      "time_s": 4.425984382335324,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 224,
+        "right_cheek": 292
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.9299787704367,
+        "left_cheek": 273.6514437822625,
+        "right_cheek": 336.2816910396796
+      }
+    },
+    {
+      "frame": 131,
+      "time_s": 4.460030416045596,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 228,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.4040669458918,
+        "left_cheek": 273.0128219064791,
+        "right_cheek": 335.27599352342077
+      }
+    },
+    {
+      "frame": 132,
+      "time_s": 4.494076449755868,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 236,
+        "right_cheek": 291
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.24860777216963,
+        "left_cheek": 269.4493850164581,
+        "right_cheek": 336.5589966578409
+      }
+    },
+    {
+      "frame": 133,
+      "time_s": 4.52812248346614,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 226,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.6280939548742,
+        "left_cheek": 266.6579332128167,
+        "right_cheek": 334.26156067010015
+      }
+    },
+    {
+      "frame": 134,
+      "time_s": 4.562168517176411,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 233,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.1351049498189,
+        "left_cheek": 268.86484296876006,
+        "right_cheek": 334.6602812965866
+      }
+    },
+    {
+      "frame": 135,
+      "time_s": 4.596214550886683,
+      "pixels": {
+        "forehead": 355,
+        "left_cheek": 228,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.2918375800364,
+        "left_cheek": 264.85748569341376,
+        "right_cheek": 329.6535249007866
+      }
+    },
+    {
+      "frame": 136,
+      "time_s": 4.630260584596955,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 217,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.00067940657027,
+        "left_cheek": 264.07434743177146,
+        "right_cheek": 330.2405224274844
+      }
+    },
+    {
+      "frame": 137,
+      "time_s": 4.664306618307227,
+      "pixels": {
+        "forehead": 340,
+        "left_cheek": 211,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.15802148054354,
+        "left_cheek": 266.34830770595,
+        "right_cheek": 327.70353769208305
+      }
+    },
+    {
+      "frame": 138,
+      "time_s": 4.6983526520174985,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 211,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.3736423901282,
+        "left_cheek": 264.98898231214844,
+        "right_cheek": 327.39818142238073
+      }
+    },
+    {
+      "frame": 139,
+      "time_s": 4.73239868572777,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 211,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.609896160895,
+        "left_cheek": 266.7459704177454,
+        "right_cheek": 326.8799772299826
+      }
+    },
+    {
+      "frame": 140,
+      "time_s": 4.7664447194380415,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 216,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.73194741504267,
+        "left_cheek": 264.78933734237216,
+        "right_cheek": 327.9644032579381
+      }
+    },
+    {
+      "frame": 141,
+      "time_s": 4.800490753148313,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 215,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.26990218879655,
+        "left_cheek": 263.99683075770736,
+        "right_cheek": 327.2801025726367
+      }
+    },
+    {
+      "frame": 142,
+      "time_s": 4.834536786858585,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 215,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.6255831948947,
+        "left_cheek": 263.8003311732318,
+        "right_cheek": 327.71392964432016
+      }
+    },
+    {
+      "frame": 143,
+      "time_s": 4.868582820568856,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 215,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.0041405202355,
+        "left_cheek": 265.39346596668474,
+        "right_cheek": 328.2068065563217
+      }
+    },
+    {
+      "frame": 144,
+      "time_s": 4.902628854279128,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 220,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.7266065492295,
+        "left_cheek": 265.62479010247625,
+        "right_cheek": 330.0360000182409
+      }
+    },
+    {
+      "frame": 145,
+      "time_s": 4.9366748879894,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 211,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.42902950779535,
+        "left_cheek": 265.7826992662158,
+        "right_cheek": 328.9507710065227
+      }
+    },
+    {
+      "frame": 146,
+      "time_s": 4.970720921699672,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 222,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.5183694518637,
+        "left_cheek": 269.58487315429375,
+        "right_cheek": 327.4563661252614
+      }
+    },
+    {
+      "frame": 147,
+      "time_s": 5.004766955409943,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 215,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.0293956771493,
+        "left_cheek": 271.82342740218155,
+        "right_cheek": 329.035969652934
+      }
+    },
+    {
+      "frame": 148,
+      "time_s": 5.038812989120215,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 226,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.04513250268064,
+        "left_cheek": 272.2091114479117,
+        "right_cheek": 326.75569995027035
+      }
+    },
+    {
+      "frame": 149,
+      "time_s": 5.072859022830487,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 224,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.99134265095927,
+        "left_cheek": 277.14568470278755,
+        "right_cheek": 326.11089381878264
+      }
+    },
+    {
+      "frame": 150,
+      "time_s": 5.106905056540759,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 224,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.7153402939439,
+        "left_cheek": 274.1825114900712,
+        "right_cheek": 327.29697361029685
+      }
+    },
+    {
+      "frame": 151,
+      "time_s": 5.140951090251031,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 226,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.08801513467915,
+        "left_cheek": 272.5947519489564,
+        "right_cheek": 332.79205067665316
+      }
+    },
+    {
+      "frame": 152,
+      "time_s": 5.174997123961302,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 226,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.5349467578344,
+        "left_cheek": 275.68578400672413,
+        "right_cheek": 328.0419951202348
+      }
+    },
+    {
+      "frame": 153,
+      "time_s": 5.209043157671574,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 230,
+        "right_cheek": 277
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.6512707064394,
+        "left_cheek": 275.5782061961945,
+        "right_cheek": 325.98922969121486
+      }
+    },
+    {
+      "frame": 154,
+      "time_s": 5.243089191381846,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 228,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.0803396955598,
+        "left_cheek": 278.10599706321955,
+        "right_cheek": 320.5871303328313
+      }
+    },
+    {
+      "frame": 155,
+      "time_s": 5.277135225092118,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 241,
+        "right_cheek": 265
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.03114897513296,
+        "left_cheek": 280.2971909092739,
+        "right_cheek": 322.52067830390297
+      }
+    },
+    {
+      "frame": 156,
+      "time_s": 5.311181258802389,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 228,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.0744482607115,
+        "left_cheek": 282.98036016663536,
+        "right_cheek": 323.6044999239966
+      }
+    },
+    {
+      "frame": 157,
+      "time_s": 5.345227292512661,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 236,
+        "right_cheek": 256
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.7137860212242,
+        "left_cheek": 282.7063724268228,
+        "right_cheek": 321.21776274056174
+      }
+    },
+    {
+      "frame": 158,
+      "time_s": 5.379273326222933,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 243,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.01886727823876,
+        "left_cheek": 280.63388178520836,
+        "right_cheek": 320.02754625538364
+      }
+    },
+    {
+      "frame": 159,
+      "time_s": 5.413319359933205,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 236,
+        "right_cheek": 269
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.9021921537351,
+        "left_cheek": 281.2013700141106,
+        "right_cheek": 317.42327027674764
+      }
+    },
+    {
+      "frame": 160,
+      "time_s": 5.4473653936434765,
+      "pixels": {
+        "forehead": 339,
+        "left_cheek": 237,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 398.5337814572267,
+        "left_cheek": 281.0022361893207,
+        "right_cheek": 322.9379804227501
+      }
+    },
+    {
+      "frame": 161,
+      "time_s": 5.4814114273537475,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 226,
+        "right_cheek": 254
+      },
+      "continuous_polygon_area": {
+        "forehead": 397.040248282603,
+        "left_cheek": 282.3701921638567,
+        "right_cheek": 318.96359760290943
+      }
+    },
+    {
+      "frame": 162,
+      "time_s": 5.5154574610640195,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 241,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.56048261222895,
+        "left_cheek": 284.2312854460906,
+        "right_cheek": 316.58386545581743
+      }
+    },
+    {
+      "frame": 163,
+      "time_s": 5.549503494774291,
+      "pixels": {
+        "forehead": 342,
+        "left_cheek": 228,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.7647512763506,
+        "left_cheek": 285.3775521577336,
+        "right_cheek": 314.71229360462166
+      }
+    },
+    {
+      "frame": 164,
+      "time_s": 5.583549528484563,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 234,
+        "right_cheek": 256
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.6190506668063,
+        "left_cheek": 285.88014856074005,
+        "right_cheek": 318.9147951481864
+      }
+    },
+    {
+      "frame": 165,
+      "time_s": 5.617595562194834,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 234,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.39715345588047,
+        "left_cheek": 285.6878807072062,
+        "right_cheek": 322.4903012004215
+      }
+    },
+    {
+      "frame": 166,
+      "time_s": 5.651641595905106,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 247,
+        "right_cheek": 254
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.5354263933841,
+        "left_cheek": 284.80896976497024,
+        "right_cheek": 314.3184389877133
+      }
+    },
+    {
+      "frame": 167,
+      "time_s": 5.685687629615378,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 251,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.7385659359861,
+        "left_cheek": 286.06807698565535,
+        "right_cheek": 312.799335696036
+      }
+    },
+    {
+      "frame": 168,
+      "time_s": 5.71973366332565,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 231,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.895054992754,
+        "left_cheek": 280.4159917163197,
+        "right_cheek": 314.16100352536887
+      }
+    },
+    {
+      "frame": 169,
+      "time_s": 5.753779697035921,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 234,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.6074391230941,
+        "left_cheek": 281.04303546622396,
+        "right_cheek": 312.4659730894491
+      }
+    },
+    {
+      "frame": 170,
+      "time_s": 5.787825730746193,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 238,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.3644441899378,
+        "left_cheek": 282.240166942589,
+        "right_cheek": 312.60658599366434
+      }
+    },
+    {
+      "frame": 171,
+      "time_s": 5.821871764456465,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 228,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.0734598953277,
+        "left_cheek": 281.43352264910936,
+        "right_cheek": 314.5263069877401
+      }
+    },
+    {
+      "frame": 172,
+      "time_s": 5.855917798166737,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 234,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.7996038661804,
+        "left_cheek": 282.8886701858137,
+        "right_cheek": 315.6632454537321
+      }
+    },
+    {
+      "frame": 173,
+      "time_s": 5.889963831877009,
+      "pixels": {
+        "forehead": 379,
+        "left_cheek": 234,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 429.9127232187893,
+        "left_cheek": 282.20419626892544,
+        "right_cheek": 313.626786604058
+      }
+    },
+    {
+      "frame": 174,
+      "time_s": 5.92400986558728,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 235,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 435.8613711569924,
+        "left_cheek": 281.8645728828851,
+        "right_cheek": 315.80811815918423
+      }
+    },
+    {
+      "frame": 175,
+      "time_s": 5.958055899297552,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 245,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 431.44108322961256,
+        "left_cheek": 280.9845862167422,
+        "right_cheek": 314.64829323766753
+      }
+    },
+    {
+      "frame": 176,
+      "time_s": 5.992101933007824,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 245,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 427.24124173959717,
+        "left_cheek": 284.2017393412534,
+        "right_cheek": 313.31024910346605
+      }
+    },
+    {
+      "frame": 177,
+      "time_s": 6.026147966718096,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 234,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.5694796512835,
+        "left_cheek": 282.93302175891586,
+        "right_cheek": 312.7797827012837
+      }
+    },
+    {
+      "frame": 178,
+      "time_s": 6.060194000428367,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 234,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.22707587876357,
+        "left_cheek": 282.1204552242998,
+        "right_cheek": 310.3307027509436
+      }
+    },
+    {
+      "frame": 179,
+      "time_s": 6.094240034138639,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 234,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.3613908912521,
+        "left_cheek": 281.80252269585617,
+        "right_cheek": 309.7511840623338
+      }
+    },
+    {
+      "frame": 180,
+      "time_s": 6.128286067848911,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 236,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.1178304452915,
+        "left_cheek": 279.21354963444173,
+        "right_cheek": 310.2073950506747
+      }
+    },
+    {
+      "frame": 181,
+      "time_s": 6.1623321015591825,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 228,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.0495629659854,
+        "left_cheek": 278.39361608494073,
+        "right_cheek": 310.00917129660957
+      }
+    },
+    {
+      "frame": 182,
+      "time_s": 6.1963781352694545,
+      "pixels": {
+        "forehead": 360,
+        "left_cheek": 228,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.69354152539745,
+        "left_cheek": 279.70491290837526,
+        "right_cheek": 309.9024880658835
+      }
+    },
+    {
+      "frame": 183,
+      "time_s": 6.2304241689797255,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 228,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.46037811180577,
+        "left_cheek": 278.0028140558861,
+        "right_cheek": 310.0391205379274
+      }
+    },
+    {
+      "frame": 184,
+      "time_s": 6.264470202689997,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 228,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.0852723463904,
+        "left_cheek": 279.0178422341123,
+        "right_cheek": 311.13590694894083
+      }
+    },
+    {
+      "frame": 185,
+      "time_s": 6.298516236400269,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 228,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.4202966473531,
+        "left_cheek": 279.19798863772303,
+        "right_cheek": 311.49299208447337
+      }
+    },
+    {
+      "frame": 186,
+      "time_s": 6.332562270110541,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 228,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.30551945092157,
+        "left_cheek": 277.7589046426583,
+        "right_cheek": 311.05405185208656
+      }
+    },
+    {
+      "frame": 187,
+      "time_s": 6.366608303820812,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 228,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.3526305539999,
+        "left_cheek": 279.9791348874569,
+        "right_cheek": 310.61505748168565
+      }
+    },
+    {
+      "frame": 188,
+      "time_s": 6.400654337531084,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 228,
+        "right_cheek": 269
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.4212035492528,
+        "left_cheek": 279.07225917000324,
+        "right_cheek": 311.58421954046935
+      }
+    },
+    {
+      "frame": 189,
+      "time_s": 6.434700371241356,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 228,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.4166477727704,
+        "left_cheek": 279.5225702878088,
+        "right_cheek": 309.9218237071764
+      }
+    },
+    {
+      "frame": 190,
+      "time_s": 6.468746404951628,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 234,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.565659126034,
+        "left_cheek": 278.50871476274915,
+        "right_cheek": 308.9839853476733
+      }
+    },
+    {
+      "frame": 191,
+      "time_s": 6.502792438661899,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 241,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.8066372559406,
+        "left_cheek": 280.6315304839518,
+        "right_cheek": 309.54350751894526
+      }
+    },
+    {
+      "frame": 192,
+      "time_s": 6.536838472372171,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 241,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.09017140977085,
+        "left_cheek": 281.8317260213662,
+        "right_cheek": 310.4706003910396
+      }
+    },
+    {
+      "frame": 193,
+      "time_s": 6.570884506082443,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 243,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.2122505477164,
+        "left_cheek": 284.17296405253,
+        "right_cheek": 314.14252498652786
+      }
+    },
+    {
+      "frame": 194,
+      "time_s": 6.604930539792715,
+      "pixels": {
+        "forehead": 386,
+        "left_cheek": 247,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.5682326592505,
+        "left_cheek": 286.9762531290762,
+        "right_cheek": 313.79823653493077
+      }
+    },
+    {
+      "frame": 195,
+      "time_s": 6.638976573502987,
+      "pixels": {
+        "forehead": 394,
+        "left_cheek": 241,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 431.5557938439306,
+        "left_cheek": 286.6121943045873,
+        "right_cheek": 314.3952135387808
+      }
+    },
+    {
+      "frame": 196,
+      "time_s": 6.673022607213258,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 240,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 435.64279751712456,
+        "left_cheek": 285.53494889102876,
+        "right_cheek": 314.2429353001062
+      }
+    },
+    {
+      "frame": 197,
+      "time_s": 6.70706864092353,
+      "pixels": {
+        "forehead": 392,
+        "left_cheek": 240,
+        "right_cheek": 257
+      },
+      "continuous_polygon_area": {
+        "forehead": 435.7858022302389,
+        "left_cheek": 285.01294980803505,
+        "right_cheek": 313.6543523762375
+      }
+    },
+    {
+      "frame": 198,
+      "time_s": 6.741114674633802,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 244,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 433.94443829823285,
+        "left_cheek": 286.4456922910176,
+        "right_cheek": 312.9777295438107
+      }
+    },
+    {
+      "frame": 199,
+      "time_s": 6.775160708344074,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 249,
+        "right_cheek": 281
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.06217601010576,
+        "left_cheek": 289.8453207486309,
+        "right_cheek": 315.03941832482815
+      }
+    },
+    {
+      "frame": 200,
+      "time_s": 6.809206742054345,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 240,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.24614659976214,
+        "left_cheek": 289.78339067846537,
+        "right_cheek": 313.61862980527803
+      }
+    },
+    {
+      "frame": 201,
+      "time_s": 6.843252775764617,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 253,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.049604768632,
+        "left_cheek": 291.9051736439578,
+        "right_cheek": 317.7053610528819
+      }
+    },
+    {
+      "frame": 202,
+      "time_s": 6.877298809474889,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 255,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.82192237558775,
+        "left_cheek": 294.3722703696694,
+        "right_cheek": 310.8253604704514
+      }
+    },
+    {
+      "frame": 203,
+      "time_s": 6.9113448431851605,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 239,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.39110158896074,
+        "left_cheek": 292.0857953024097,
+        "right_cheek": 316.75475118262693
+      }
+    },
+    {
+      "frame": 204,
+      "time_s": 6.9453908768954316,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 251,
+        "right_cheek": 267
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.9523291795049,
+        "left_cheek": 288.6671762331389,
+        "right_cheek": 313.35725153121166
+      }
+    },
+    {
+      "frame": 205,
+      "time_s": 6.9794369106057035,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 235,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.7925835690694,
+        "left_cheek": 284.70192192308605,
+        "right_cheek": 317.22729929955676
+      }
+    },
+    {
+      "frame": 206,
+      "time_s": 7.013482944315975,
+      "pixels": {
+        "forehead": 320,
+        "left_cheek": 225,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 385.1374372158898,
+        "left_cheek": 282.3312053754926,
+        "right_cheek": 319.46186239807867
+      }
+    },
+    {
+      "frame": 207,
+      "time_s": 7.047528978026247,
+      "pixels": {
+        "forehead": 319,
+        "left_cheek": 239,
+        "right_cheek": 275
+      },
+      "continuous_polygon_area": {
+        "forehead": 385.8192400196567,
+        "left_cheek": 281.9358183485456,
+        "right_cheek": 319.5607499326579
+      }
+    },
+    {
+      "frame": 208,
+      "time_s": 7.081575011736519,
+      "pixels": {
+        "forehead": 322,
+        "left_cheek": 239,
+        "right_cheek": 255
+      },
+      "continuous_polygon_area": {
+        "forehead": 381.089798633242,
+        "left_cheek": 283.1168167195283,
+        "right_cheek": 317.7886062916368
+      }
+    },
+    {
+      "frame": 209,
+      "time_s": 7.11562104544679,
+      "pixels": {
+        "forehead": 305,
+        "left_cheek": 233,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 364.09104257565923,
+        "left_cheek": 280.65677694347687,
+        "right_cheek": 309.5608797187451
+      }
+    },
+    {
+      "frame": 210,
+      "time_s": 7.149667079157062,
+      "pixels": {
+        "forehead": 305,
+        "left_cheek": 229,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 366.6848824820481,
+        "left_cheek": 281.835238939384,
+        "right_cheek": 311.23516197735444
+      }
+    },
+    {
+      "frame": 211,
+      "time_s": 7.183713112867334,
+      "pixels": {
+        "forehead": 287,
+        "left_cheek": 239,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 355.4391561818775,
+        "left_cheek": 281.10715659800917,
+        "right_cheek": 304.62287954753265
+      }
+    },
+    {
+      "frame": 212,
+      "time_s": 7.217759146577606,
+      "pixels": {
+        "forehead": 305,
+        "left_cheek": 229,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 360.2214567732299,
+        "left_cheek": 284.3757313012611,
+        "right_cheek": 303.0753620036412
+      }
+    },
+    {
+      "frame": 213,
+      "time_s": 7.251805180287877,
+      "pixels": {
+        "forehead": 319,
+        "left_cheek": 233,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 369.6263574426994,
+        "left_cheek": 286.9710400721524,
+        "right_cheek": 302.27431569155306
+      }
+    },
+    {
+      "frame": 214,
+      "time_s": 7.285851213998149,
+      "pixels": {
+        "forehead": 310,
+        "left_cheek": 237,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 372.4209630165715,
+        "left_cheek": 288.0762056708336,
+        "right_cheek": 302.6543592948001
+      }
+    },
+    {
+      "frame": 215,
+      "time_s": 7.319897247708421,
+      "pixels": {
+        "forehead": 320,
+        "left_cheek": 237,
+        "right_cheek": 254
+      },
+      "continuous_polygon_area": {
+        "forehead": 376.69180373707786,
+        "left_cheek": 288.4700539461337,
+        "right_cheek": 304.71533465734683
+      }
+    },
+    {
+      "frame": 216,
+      "time_s": 7.353943281418693,
+      "pixels": {
+        "forehead": 318,
+        "left_cheek": 258,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 378.8757585582789,
+        "left_cheek": 291.56368584465235,
+        "right_cheek": 304.07347396365367
+      }
+    },
+    {
+      "frame": 217,
+      "time_s": 7.387989315128965,
+      "pixels": {
+        "forehead": 315,
+        "left_cheek": 231,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.9697544176597,
+        "left_cheek": 291.16036304971203,
+        "right_cheek": 304.55699071707204
+      }
+    },
+    {
+      "frame": 218,
+      "time_s": 7.422035348839236,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 239,
+        "right_cheek": 255
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.88785564829595,
+        "left_cheek": 292.5448623744305,
+        "right_cheek": 305.75903527485207
+      }
+    },
+    {
+      "frame": 219,
+      "time_s": 7.456081382549508,
+      "pixels": {
+        "forehead": 315,
+        "left_cheek": 248,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.9456395378802,
+        "left_cheek": 294.05982364783995,
+        "right_cheek": 303.8900149909314
+      }
+    },
+    {
+      "frame": 220,
+      "time_s": 7.49012741625978,
+      "pixels": {
+        "forehead": 339,
+        "left_cheek": 256,
+        "right_cheek": 256
+      },
+      "continuous_polygon_area": {
+        "forehead": 397.0348924687132,
+        "left_cheek": 298.6256342350971,
+        "right_cheek": 304.7095401682891
+      }
+    },
+    {
+      "frame": 221,
+      "time_s": 7.524173449970052,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 238,
+        "right_cheek": 245
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.49257852882147,
+        "left_cheek": 294.635031884769,
+        "right_cheek": 300.76755348127335
+      }
+    },
+    {
+      "frame": 222,
+      "time_s": 7.558219483680323,
+      "pixels": {
+        "forehead": 320,
+        "left_cheek": 256,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 396.9780751890503,
+        "left_cheek": 297.79355475096963,
+        "right_cheek": 302.3279629868921
+      }
+    },
+    {
+      "frame": 223,
+      "time_s": 7.592265517390595,
+      "pixels": {
+        "forehead": 362,
+        "left_cheek": 245,
+        "right_cheek": 244
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.14249231666327,
+        "left_cheek": 299.38861168851145,
+        "right_cheek": 303.06380954780616
+      }
+    },
+    {
+      "frame": 224,
+      "time_s": 7.626311551100867,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 247,
+        "right_cheek": 240
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.02663765870966,
+        "left_cheek": 296.50923700933345,
+        "right_cheek": 302.12618379853666
+      }
+    },
+    {
+      "frame": 225,
+      "time_s": 7.6603575848111385,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 245,
+        "right_cheek": 233
+      },
+      "continuous_polygon_area": {
+        "forehead": 405.3515242913272,
+        "left_cheek": 297.72267254278995,
+        "right_cheek": 303.48094445164315
+      }
+    },
+    {
+      "frame": 226,
+      "time_s": 7.6944036185214095,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 252,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.05664433701895,
+        "left_cheek": 295.3030455203261,
+        "right_cheek": 305.35364505043253
+      }
+    },
+    {
+      "frame": 227,
+      "time_s": 7.7284496522316815,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 245,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.52652125107124,
+        "left_cheek": 295.21354302274995,
+        "right_cheek": 307.55014218296856
+      }
+    },
+    {
+      "frame": 228,
+      "time_s": 7.762495685941953,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 245,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.0846102447249,
+        "left_cheek": 295.7448460641317,
+        "right_cheek": 308.2970777719747
+      }
+    },
+    {
+      "frame": 229,
+      "time_s": 7.796541719652225,
+      "pixels": {
+        "forehead": 360,
+        "left_cheek": 248,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.8501893575303,
+        "left_cheek": 294.7000357948709,
+        "right_cheek": 308.57597318454646
+      }
+    },
+    {
+      "frame": 230,
+      "time_s": 7.830587753362497,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 248,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.0199694635812,
+        "left_cheek": 293.6145590839442,
+        "right_cheek": 309.1367061433848
+      }
+    },
+    {
+      "frame": 231,
+      "time_s": 7.864633787072768,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 252,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.62002311227843,
+        "left_cheek": 292.24622990051284,
+        "right_cheek": 309.07190454611555
+      }
+    },
+    {
+      "frame": 232,
+      "time_s": 7.89867982078304,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 242,
+        "right_cheek": 256
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.3716682679951,
+        "left_cheek": 289.605428311741,
+        "right_cheek": 309.7525015317369
+      }
+    },
+    {
+      "frame": 233,
+      "time_s": 7.932725854493312,
+      "pixels": {
+        "forehead": 360,
+        "left_cheek": 245,
+        "right_cheek": 257
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.5767353554256,
+        "left_cheek": 289.6188071027864,
+        "right_cheek": 312.9828553982079
+      }
+    },
+    {
+      "frame": 234,
+      "time_s": 7.966771888203584,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 242,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.5784295219928,
+        "left_cheek": 290.09236436500214,
+        "right_cheek": 312.61223535914905
+      }
+    },
+    {
+      "frame": 235,
+      "time_s": 8.000817921913855,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 240,
+        "right_cheek": 257
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.8948019298259,
+        "left_cheek": 287.97924010967836,
+        "right_cheek": 310.5399254022632
+      }
+    },
+    {
+      "frame": 236,
+      "time_s": 8.034863955624127,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 249,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.3828513582703,
+        "left_cheek": 286.8876714054495,
+        "right_cheek": 311.4205190006178
+      }
+    },
+    {
+      "frame": 237,
+      "time_s": 8.068909989334399,
+      "pixels": {
+        "forehead": 345,
+        "left_cheek": 241,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.2540328348987,
+        "left_cheek": 287.1339738292154,
+        "right_cheek": 314.48226096923463
+      }
+    },
+    {
+      "frame": 238,
+      "time_s": 8.10295602304467,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 242,
+        "right_cheek": 279
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.9711926532909,
+        "left_cheek": 284.3993415867444,
+        "right_cheek": 319.68588444776833
+      }
+    },
+    {
+      "frame": 239,
+      "time_s": 8.137002056754943,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 228,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.44669601134956,
+        "left_cheek": 280.4563844590448,
+        "right_cheek": 321.11581090046093
+      }
+    },
+    {
+      "frame": 240,
+      "time_s": 8.171048090465215,
+      "pixels": {
+        "forehead": 369,
+        "left_cheek": 228,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.7514057310764,
+        "left_cheek": 283.3512549668085,
+        "right_cheek": 320.6192359547131
+      }
+    },
+    {
+      "frame": 241,
+      "time_s": 8.205094124175487,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 238,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.346024350496,
+        "left_cheek": 280.96216129441746,
+        "right_cheek": 319.29295434011146
+      }
+    },
+    {
+      "frame": 242,
+      "time_s": 8.239140157885757,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 234,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 410.8850606100168,
+        "left_cheek": 278.92059827945195,
+        "right_cheek": 321.12653792090714
+      }
+    },
+    {
+      "frame": 243,
+      "time_s": 8.273186191596029,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 247,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.76191217801534,
+        "left_cheek": 279.6832069787197,
+        "right_cheek": 323.5236264176201
+      }
+    },
+    {
+      "frame": 244,
+      "time_s": 8.3072322253063,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 253,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.69954244373366,
+        "left_cheek": 281.43929407931864,
+        "right_cheek": 321.37129353452474
+      }
+    },
+    {
+      "frame": 245,
+      "time_s": 8.341278259016573,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 251,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.5839728259016,
+        "left_cheek": 283.8016891302541,
+        "right_cheek": 321.6075910211075
+      }
+    },
+    {
+      "frame": 246,
+      "time_s": 8.375324292726845,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 234,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.5046074197162,
+        "left_cheek": 283.39836840564385,
+        "right_cheek": 320.4568700338714
+      }
+    },
+    {
+      "frame": 247,
+      "time_s": 8.409370326437116,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 234,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.8807075906079,
+        "left_cheek": 284.892317423597,
+        "right_cheek": 318.5540817298461
+      }
+    },
+    {
+      "frame": 248,
+      "time_s": 8.443416360147388,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 251,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.60125130810775,
+        "left_cheek": 283.9284147666767,
+        "right_cheek": 318.88606773642823
+      }
+    },
+    {
+      "frame": 249,
+      "time_s": 8.47746239385766,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 253,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.802855636226,
+        "left_cheek": 281.8045763238333,
+        "right_cheek": 320.5171209068503
+      }
+    },
+    {
+      "frame": 250,
+      "time_s": 8.51150842756793,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 249,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.4407813127618,
+        "left_cheek": 283.89751785155386,
+        "right_cheek": 321.5277705199551
+      }
+    },
+    {
+      "frame": 251,
+      "time_s": 8.545554461278202,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 247,
+        "right_cheek": 260
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.68978660856374,
+        "left_cheek": 284.22207818878815,
+        "right_cheek": 321.6880890033208
+      }
+    },
+    {
+      "frame": 252,
+      "time_s": 8.579600494988474,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 251,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.7686368008144,
+        "left_cheek": 284.34819249180146,
+        "right_cheek": 320.5216377004981
+      }
+    },
+    {
+      "frame": 253,
+      "time_s": 8.613646528698746,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 238,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.2457530081738,
+        "left_cheek": 283.24180285213515,
+        "right_cheek": 317.481230573263
+      }
+    },
+    {
+      "frame": 254,
+      "time_s": 8.647692562409018,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 219,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.1586832739413,
+        "left_cheek": 284.64831121778116,
+        "right_cheek": 317.9797501452267
+      }
+    },
+    {
+      "frame": 255,
+      "time_s": 8.68173859611929,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 234,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.33190487488173,
+        "left_cheek": 283.42164372559637,
+        "right_cheek": 316.5611505829729
+      }
+    },
+    {
+      "frame": 256,
+      "time_s": 8.715784629829562,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 243,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.21049532853067,
+        "left_cheek": 284.16054456075653,
+        "right_cheek": 314.9258749629371
+      }
+    },
+    {
+      "frame": 257,
+      "time_s": 8.749830663539834,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 243,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.8640484986827,
+        "left_cheek": 284.4085116381757,
+        "right_cheek": 316.5253348061815
+      }
+    },
+    {
+      "frame": 258,
+      "time_s": 8.783876697250106,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 230,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.81776152038947,
+        "left_cheek": 282.1281929607503,
+        "right_cheek": 316.3478825225029
+      }
+    },
+    {
+      "frame": 259,
+      "time_s": 8.817922730960376,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 247,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.21010060212575,
+        "left_cheek": 284.36425862647593,
+        "right_cheek": 317.8099309965037
+      }
+    },
+    {
+      "frame": 260,
+      "time_s": 8.851968764670648,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 247,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.24251159187406,
+        "left_cheek": 284.55643681040965,
+        "right_cheek": 316.3509029804263
+      }
+    },
+    {
+      "frame": 261,
+      "time_s": 8.88601479838092,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 239,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.58241780870594,
+        "left_cheek": 285.2017919383943,
+        "right_cheek": 315.67150138760917
+      }
+    },
+    {
+      "frame": 262,
+      "time_s": 8.920060832091192,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 253,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.92521426524036,
+        "left_cheek": 285.29169742856175,
+        "right_cheek": 315.91014636773616
+      }
+    },
+    {
+      "frame": 263,
+      "time_s": 8.954106865801464,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 253,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.64270138484426,
+        "left_cheek": 285.98959245858714,
+        "right_cheek": 314.9692320704926
+      }
+    },
+    {
+      "frame": 264,
+      "time_s": 8.988152899511736,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 239,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.2802561793942,
+        "left_cheek": 285.68656248855405,
+        "right_cheek": 316.17564474372193
+      }
+    },
+    {
+      "frame": 265,
+      "time_s": 9.022198933222008,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 253,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.469373869244,
+        "left_cheek": 285.88325913692825,
+        "right_cheek": 316.0155192108359
+      }
+    },
+    {
+      "frame": 266,
+      "time_s": 9.05624496693228,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 253,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.7076460213866,
+        "left_cheek": 285.77598052541725,
+        "right_cheek": 316.008324122522
+      }
+    },
+    {
+      "frame": 267,
+      "time_s": 9.090291000642551,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 247,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.1291190648917,
+        "left_cheek": 284.8106597918086,
+        "right_cheek": 315.93840967095457
+      }
+    },
+    {
+      "frame": 268,
+      "time_s": 9.124337034352822,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 247,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.0225735299755,
+        "left_cheek": 285.9448759837542,
+        "right_cheek": 317.6073253415525
+      }
+    },
+    {
+      "frame": 269,
+      "time_s": 9.158383068063094,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 238,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.34350814530626,
+        "left_cheek": 283.0590251001995,
+        "right_cheek": 318.06392177473754
+      }
+    },
+    {
+      "frame": 270,
+      "time_s": 9.192429101773365,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 230,
+        "right_cheek": 265
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.9481715753209,
+        "left_cheek": 282.753592079971,
+        "right_cheek": 317.27808029507287
+      }
+    },
+    {
+      "frame": 271,
+      "time_s": 9.226475135483637,
+      "pixels": {
+        "forehead": 379,
+        "left_cheek": 238,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.5884692540858,
+        "left_cheek": 285.2269701748155,
+        "right_cheek": 315.8863211972639
+      }
+    },
+    {
+      "frame": 272,
+      "time_s": 9.26052116919391,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 247,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.99592389026657,
+        "left_cheek": 284.4060849919915,
+        "right_cheek": 315.67948434944265
+      }
+    },
+    {
+      "frame": 273,
+      "time_s": 9.294567202904181,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 236,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.9769022925757,
+        "left_cheek": 283.9042755877599,
+        "right_cheek": 318.19431175035425
+      }
+    },
+    {
+      "frame": 274,
+      "time_s": 9.328613236614453,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 243,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.3092304163147,
+        "left_cheek": 284.78042239299975,
+        "right_cheek": 319.62933778506704
+      }
+    },
+    {
+      "frame": 275,
+      "time_s": 9.362659270324725,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 247,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.86616863519885,
+        "left_cheek": 285.67393657541834,
+        "right_cheek": 317.84286725264974
+      }
+    },
+    {
+      "frame": 276,
+      "time_s": 9.396705304034997,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 234,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.83033617492765,
+        "left_cheek": 286.3605897396337,
+        "right_cheek": 318.1163070274051
+      }
+    },
+    {
+      "frame": 277,
+      "time_s": 9.430751337745267,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 234,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.2843682402745,
+        "left_cheek": 286.3481873413548,
+        "right_cheek": 317.2670087697916
+      }
+    },
+    {
+      "frame": 278,
+      "time_s": 9.46479737145554,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 247,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.138456764631,
+        "left_cheek": 285.8605341091752,
+        "right_cheek": 317.8213179532904
+      }
+    },
+    {
+      "frame": 279,
+      "time_s": 9.498843405165811,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 239,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 427.7494362350553,
+        "left_cheek": 283.01646245480515,
+        "right_cheek": 317.327021591831
+      }
+    },
+    {
+      "frame": 280,
+      "time_s": 9.532889438876083,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 239,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.0622168292757,
+        "left_cheek": 283.1042714128271,
+        "right_cheek": 316.85654992680065
+      }
+    },
+    {
+      "frame": 281,
+      "time_s": 9.566935472586355,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 228,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.9876071473118,
+        "left_cheek": 282.91112783318385,
+        "right_cheek": 318.559729174478
+      }
+    },
+    {
+      "frame": 282,
+      "time_s": 9.600981506296627,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 228,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.44338262523524,
+        "left_cheek": 281.3255493757315,
+        "right_cheek": 317.6715182005428
+      }
+    },
+    {
+      "frame": 283,
+      "time_s": 9.635027540006899,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 240,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.1956902607344,
+        "left_cheek": 283.8366050114855,
+        "right_cheek": 318.19790376815945
+      }
+    },
+    {
+      "frame": 284,
+      "time_s": 9.66907357371717,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 234,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.7517616718542,
+        "left_cheek": 280.4914381587878,
+        "right_cheek": 319.2706781453453
+      }
+    },
+    {
+      "frame": 285,
+      "time_s": 9.703119607427443,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 240,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.44981229957193,
+        "left_cheek": 281.8773445512634,
+        "right_cheek": 319.0217256040778
+      }
+    },
+    {
+      "frame": 286,
+      "time_s": 9.737165641137713,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.6955027373042,
+        "left_cheek": 280.7615060149692,
+        "right_cheek": 317.91261157835834
+      }
+    },
+    {
+      "frame": 287,
+      "time_s": 9.771211674847985,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 228,
+        "right_cheek": 274
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.9631513687782,
+        "left_cheek": 279.94104970176704,
+        "right_cheek": 318.16193284792826
+      }
+    },
+    {
+      "frame": 288,
+      "time_s": 9.805257708558257,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 239,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.8475956711918,
+        "left_cheek": 280.71075407997705,
+        "right_cheek": 317.0690790694207
+      }
+    },
+    {
+      "frame": 289,
+      "time_s": 9.839303742268529,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 239,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.0195958719123,
+        "left_cheek": 282.068211437203,
+        "right_cheek": 317.6856327243149
+      }
+    },
+    {
+      "frame": 290,
+      "time_s": 9.8733497759788,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 239,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.56876348750666,
+        "left_cheek": 282.4274764659349,
+        "right_cheek": 316.92210942017846
+      }
+    },
+    {
+      "frame": 291,
+      "time_s": 9.907395809689072,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 238,
+        "right_cheek": 257
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.49371306831017,
+        "left_cheek": 283.4484395852778,
+        "right_cheek": 316.7505392162129
+      }
+    },
+    {
+      "frame": 292,
+      "time_s": 9.941441843399344,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 234,
+        "right_cheek": 278
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.52707918104716,
+        "left_cheek": 283.33529424108565,
+        "right_cheek": 317.1160938211251
+      }
+    },
+    {
+      "frame": 293,
+      "time_s": 9.975487877109616,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 247,
+        "right_cheek": 278
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.79150989674963,
+        "left_cheek": 282.85276375268586,
+        "right_cheek": 317.7118688537739
+      }
+    },
+    {
+      "frame": 294,
+      "time_s": 10.009533910819886,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 247,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.3775819176808,
+        "left_cheek": 287.3800554734189,
+        "right_cheek": 319.1021297699772
+      }
+    },
+    {
+      "frame": 295,
+      "time_s": 10.043579944530158,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 247,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.1944769900292,
+        "left_cheek": 288.5304990010336,
+        "right_cheek": 321.2161798560992
+      }
+    },
+    {
+      "frame": 296,
+      "time_s": 10.07762597824043,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 240,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.44112482573837,
+        "left_cheek": 288.47359174955636,
+        "right_cheek": 318.3108047915157
+      }
+    },
+    {
+      "frame": 297,
+      "time_s": 10.111672011950702,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 240,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.9338254882023,
+        "left_cheek": 289.70196233293973,
+        "right_cheek": 318.42401580908336
+      }
+    },
+    {
+      "frame": 298,
+      "time_s": 10.145718045660974,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 247,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.206983335549,
+        "left_cheek": 286.53345325775445,
+        "right_cheek": 316.34681656677276
+      }
+    },
+    {
+      "frame": 299,
+      "time_s": 10.179764079371246,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 254,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.7750651971437,
+        "left_cheek": 288.5034699307289,
+        "right_cheek": 316.8545824200846
+      }
+    },
+    {
+      "frame": 300,
+      "time_s": 10.213810113081518,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 245,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.82577939052135,
+        "left_cheek": 285.3308605123311,
+        "right_cheek": 314.4984358542133
+      }
+    },
+    {
+      "frame": 301,
+      "time_s": 10.24785614679179,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 234,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.71915920078754,
+        "left_cheek": 286.32984517677687,
+        "right_cheek": 312.4735750562977
+      }
+    },
+    {
+      "frame": 302,
+      "time_s": 10.281902180502062,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 245,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.82334442669526,
+        "left_cheek": 286.7316017751582,
+        "right_cheek": 312.84013409307227
+      }
+    },
+    {
+      "frame": 303,
+      "time_s": 10.315948214212332,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 245,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.54685027035885,
+        "left_cheek": 286.59559077839367,
+        "right_cheek": 312.92037310055457
+      }
+    },
+    {
+      "frame": 304,
+      "time_s": 10.349994247922604,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 234,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.29377647675574,
+        "left_cheek": 285.15612785727717,
+        "right_cheek": 312.4910387415439
+      }
+    },
+    {
+      "frame": 305,
+      "time_s": 10.384040281632876,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 245,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 429.040368903894,
+        "left_cheek": 286.23715192754753,
+        "right_cheek": 314.0465212452691
+      }
+    },
+    {
+      "frame": 306,
+      "time_s": 10.418086315343148,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 240,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.8807356269099,
+        "left_cheek": 287.4240256610792,
+        "right_cheek": 314.43279134482145
+      }
+    },
+    {
+      "frame": 307,
+      "time_s": 10.45213234905342,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 236,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.45754804462194,
+        "left_cheek": 287.83004609751515,
+        "right_cheek": 315.7166179991327
+      }
+    },
+    {
+      "frame": 308,
+      "time_s": 10.486178382763692,
+      "pixels": {
+        "forehead": 381,
+        "left_cheek": 247,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.8164776011836,
+        "left_cheek": 287.47328271740116,
+        "right_cheek": 319.13973378716037
+      }
+    },
+    {
+      "frame": 309,
+      "time_s": 10.520224416473964,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 247,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.9512196832802,
+        "left_cheek": 287.57631891500205,
+        "right_cheek": 322.11963399033993
+      }
+    },
+    {
+      "frame": 310,
+      "time_s": 10.554270450184235,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 244,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.59624165832065,
+        "left_cheek": 284.37158772023395,
+        "right_cheek": 324.23085624561645
+      }
+    },
+    {
+      "frame": 311,
+      "time_s": 10.588316483894507,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 244,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.21009283396415,
+        "left_cheek": 282.728225779254,
+        "right_cheek": 317.6857035658322
+      }
+    },
+    {
+      "frame": 312,
+      "time_s": 10.622362517604778,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 240,
+        "right_cheek": 281
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.33921460295096,
+        "left_cheek": 283.84210411296226,
+        "right_cheek": 317.831938306801
+      }
+    },
+    {
+      "frame": 313,
+      "time_s": 10.65640855131505,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 240,
+        "right_cheek": 285
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.50074475305155,
+        "left_cheek": 283.2141254413873,
+        "right_cheek": 317.0697369526606
+      }
+    },
+    {
+      "frame": 314,
+      "time_s": 10.690454585025321,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 240,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.98731221747585,
+        "left_cheek": 282.1569445193745,
+        "right_cheek": 318.6219936609268
+      }
+    },
+    {
+      "frame": 315,
+      "time_s": 10.724500618735593,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 240,
+        "right_cheek": 271
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.07200502604246,
+        "left_cheek": 280.80608086963184,
+        "right_cheek": 318.2989296540618
+      }
+    },
+    {
+      "frame": 316,
+      "time_s": 10.758546652445865,
+      "pixels": {
+        "forehead": 368,
+        "left_cheek": 228,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.52547566010617,
+        "left_cheek": 281.65772710670717,
+        "right_cheek": 318.52057585841976
+      }
+    },
+    {
+      "frame": 317,
+      "time_s": 10.792592686156137,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 238,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.07820137823,
+        "left_cheek": 280.7798179448582,
+        "right_cheek": 315.1749415525701
+      }
+    },
+    {
+      "frame": 318,
+      "time_s": 10.82663871986641,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 238,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.43808128964156,
+        "left_cheek": 279.3944500249345,
+        "right_cheek": 314.18592515494674
+      }
+    },
+    {
+      "frame": 319,
+      "time_s": 10.860684753576681,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 228,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.3078310636338,
+        "left_cheek": 280.1043169328477,
+        "right_cheek": 314.252431493951
+      }
+    },
+    {
+      "frame": 320,
+      "time_s": 10.894730787286953,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 232,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.46314195217565,
+        "left_cheek": 280.52369903121144,
+        "right_cheek": 317.1730504522566
+      }
+    },
+    {
+      "frame": 321,
+      "time_s": 10.928776820997223,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 231,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.9388796084095,
+        "left_cheek": 279.47793575003743,
+        "right_cheek": 319.5537655921653
+      }
+    },
+    {
+      "frame": 322,
+      "time_s": 10.962822854707495,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 237,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.6090673140716,
+        "left_cheek": 282.0321232867427,
+        "right_cheek": 321.30054396996275
+      }
+    },
+    {
+      "frame": 323,
+      "time_s": 10.996868888417767,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 251,
+        "right_cheek": 259
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.1062872684561,
+        "left_cheek": 284.6178456780035,
+        "right_cheek": 319.6290856713895
+      }
+    },
+    {
+      "frame": 324,
+      "time_s": 11.030914922128039,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 251,
+        "right_cheek": 273
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.202584204264,
+        "left_cheek": 284.4305328989867,
+        "right_cheek": 317.16765373642556
+      }
+    },
+    {
+      "frame": 325,
+      "time_s": 11.06496095583831,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 251,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.24337295023724,
+        "left_cheek": 286.2613438460976,
+        "right_cheek": 316.9846984781325
+      }
+    },
+    {
+      "frame": 326,
+      "time_s": 11.099006989548583,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 251,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.33791505103,
+        "left_cheek": 286.9528042525053,
+        "right_cheek": 317.49672702513635
+      }
+    },
+    {
+      "frame": 327,
+      "time_s": 11.133053023258855,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 247,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.9647192321718,
+        "left_cheek": 284.94745287066326,
+        "right_cheek": 318.5771910722833
+      }
+    },
+    {
+      "frame": 328,
+      "time_s": 11.167099056969127,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 240,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.2920702630654,
+        "left_cheek": 285.1345708037261,
+        "right_cheek": 320.03550347406417
+      }
+    },
+    {
+      "frame": 329,
+      "time_s": 11.201145090679397,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 240,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.46155562461354,
+        "left_cheek": 285.28963232808746,
+        "right_cheek": 317.12141298898496
+      }
+    },
+    {
+      "frame": 330,
+      "time_s": 11.235191124389669,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 236,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.3370526533108,
+        "left_cheek": 285.2645509594586,
+        "right_cheek": 320.1317287485581
+      }
+    },
+    {
+      "frame": 331,
+      "time_s": 11.26923715809994,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 243,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.3111455447506,
+        "left_cheek": 283.6786434231326,
+        "right_cheek": 317.963820786681
+      }
+    },
+    {
+      "frame": 332,
+      "time_s": 11.303283191810213,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 243,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.0597428679466,
+        "left_cheek": 283.8572806431912,
+        "right_cheek": 320.631683251122
+      }
+    },
+    {
+      "frame": 333,
+      "time_s": 11.337329225520484,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 241,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.08352782786824,
+        "left_cheek": 283.04632286331616,
+        "right_cheek": 319.5959932231344
+      }
+    },
+    {
+      "frame": 334,
+      "time_s": 11.371375259230756,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 247,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.9441497847438,
+        "left_cheek": 284.2237792520318,
+        "right_cheek": 317.7678832607344
+      }
+    },
+    {
+      "frame": 335,
+      "time_s": 11.405421292941028,
+      "pixels": {
+        "forehead": 376,
+        "left_cheek": 247,
+        "right_cheek": 258
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.2589525496587,
+        "left_cheek": 285.85571679868735,
+        "right_cheek": 317.7632344183512
+      }
+    },
+    {
+      "frame": 336,
+      "time_s": 11.4394673266513,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 241,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.32859331718646,
+        "left_cheek": 285.64144907775335,
+        "right_cheek": 317.53721704822965
+      }
+    },
+    {
+      "frame": 337,
+      "time_s": 11.473513360361572,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 247,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.4200146815274,
+        "left_cheek": 283.8507367814891,
+        "right_cheek": 319.5418629851192
+      }
+    },
+    {
+      "frame": 338,
+      "time_s": 11.507559394071842,
+      "pixels": {
+        "forehead": 352,
+        "left_cheek": 247,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.8343040696345,
+        "left_cheek": 282.19902320671827,
+        "right_cheek": 320.90696044662036
+      }
+    },
+    {
+      "frame": 339,
+      "time_s": 11.541605427782114,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.59507167199627,
+        "left_cheek": 281.60115187847987,
+        "right_cheek": 321.6635945350863
+      }
+    },
+    {
+      "frame": 340,
+      "time_s": 11.575651461492386,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.64151514763944,
+        "left_cheek": 281.3303899310995,
+        "right_cheek": 319.29951785644516
+      }
+    },
+    {
+      "frame": 341,
+      "time_s": 11.609697495202658,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.8379664088134,
+        "left_cheek": 281.42146081710234,
+        "right_cheek": 319.98435124056414
+      }
+    },
+    {
+      "frame": 342,
+      "time_s": 11.64374352891293,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.9884489248507,
+        "left_cheek": 281.5337468772195,
+        "right_cheek": 319.4554471145384
+      }
+    },
+    {
+      "frame": 343,
+      "time_s": 11.677789562623202,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.714241837617,
+        "left_cheek": 281.96056354022585,
+        "right_cheek": 320.3348332666792
+      }
+    },
+    {
+      "frame": 344,
+      "time_s": 11.711835596333474,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 234,
+        "right_cheek": 276
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.11991932056844,
+        "left_cheek": 282.1537312217988,
+        "right_cheek": 321.0308880286757
+      }
+    },
+    {
+      "frame": 345,
+      "time_s": 11.745881630043746,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 225,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.21164208301343,
+        "left_cheek": 282.5738944960758,
+        "right_cheek": 321.8375709829852
+      }
+    },
+    {
+      "frame": 346,
+      "time_s": 11.779927663754018,
+      "pixels": {
+        "forehead": 380,
+        "left_cheek": 234,
+        "right_cheek": 263
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.4899856739212,
+        "left_cheek": 284.1260438817553,
+        "right_cheek": 320.53875602502376
+      }
+    },
+    {
+      "frame": 347,
+      "time_s": 11.813973697464288,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 236,
+        "right_cheek": 265
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.7279859809205,
+        "left_cheek": 283.3246195258107,
+        "right_cheek": 319.70224858424626
+      }
+    },
+    {
+      "frame": 348,
+      "time_s": 11.84801973117456,
+      "pixels": {
+        "forehead": 357,
+        "left_cheek": 234,
+        "right_cheek": 266
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.925192581024,
+        "left_cheek": 282.7520335428417,
+        "right_cheek": 318.51851263758726
+      }
+    },
+    {
+      "frame": 349,
+      "time_s": 11.882065764884832,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 234,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.0370936538093,
+        "left_cheek": 283.1042626579292,
+        "right_cheek": 318.287008367246
+      }
+    },
+    {
+      "frame": 350,
+      "time_s": 11.916111798595104,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 234,
+        "right_cheek": 268
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.6712856593076,
+        "left_cheek": 283.582115463214,
+        "right_cheek": 317.88004151685163
+      }
+    },
+    {
+      "frame": 351,
+      "time_s": 11.950157832305376,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 234,
+        "right_cheek": 272
+      },
+      "continuous_polygon_area": {
+        "forehead": 416.2880568266846,
+        "left_cheek": 283.9427036808338,
+        "right_cheek": 319.5244703744538
+      }
+    },
+    {
+      "frame": 352,
+      "time_s": 11.984203866015648,
+      "pixels": {
+        "forehead": 364,
+        "left_cheek": 234,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.17197746247984,
+        "left_cheek": 286.7653792926576,
+        "right_cheek": 320.16839635465294
+      }
+    },
+    {
+      "frame": 353,
+      "time_s": 12.01824989972592,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 238,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.69111526058987,
+        "left_cheek": 285.90455202851444,
+        "right_cheek": 319.54697073670104
+      }
+    },
+    {
+      "frame": 354,
+      "time_s": 12.052295933436191,
+      "pixels": {
+        "forehead": 346,
+        "left_cheek": 244,
+        "right_cheek": 264
+      },
+      "continuous_polygon_area": {
+        "forehead": 415.47753075603396,
+        "left_cheek": 285.8427852205932,
+        "right_cheek": 315.92600217903964
+      }
+    },
+    {
+      "frame": 355,
+      "time_s": 12.086341967146463,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 243,
+        "right_cheek": 246
+      },
+      "continuous_polygon_area": {
+        "forehead": 403.45339199434966,
+        "left_cheek": 282.1508587084245,
+        "right_cheek": 316.4405209585093
+      }
+    },
+    {
+      "frame": 356,
+      "time_s": 12.120388000856734,
+      "pixels": {
+        "forehead": 344,
+        "left_cheek": 219,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 396.4263821563218,
+        "left_cheek": 280.43606039579026,
+        "right_cheek": 314.26652026269585
+      }
+    },
+    {
+      "frame": 357,
+      "time_s": 12.154434034567005,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 233,
+        "right_cheek": 261
+      },
+      "continuous_polygon_area": {
+        "forehead": 396.4750562631525,
+        "left_cheek": 282.3943009010982,
+        "right_cheek": 313.4479528227821
+      }
+    },
+    {
+      "frame": 358,
+      "time_s": 12.188480068277277,
+      "pixels": {
+        "forehead": 350,
+        "left_cheek": 239,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 397.5977097256109,
+        "left_cheek": 283.6793502843939,
+        "right_cheek": 308.20815098681487
+      }
+    },
+    {
+      "frame": 359,
+      "time_s": 12.22252610198755,
+      "pixels": {
+        "forehead": 325,
+        "left_cheek": 245,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.04417522484437,
+        "left_cheek": 287.93243717052974,
+        "right_cheek": 310.8130952829961
+      }
+    },
+    {
+      "frame": 360,
+      "time_s": 12.256572135697821,
+      "pixels": {
+        "forehead": 343,
+        "left_cheek": 233,
+        "right_cheek": 255
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.77933539496735,
+        "left_cheek": 288.90207120077685,
+        "right_cheek": 312.1451263476629
+      }
+    },
+    {
+      "frame": 361,
+      "time_s": 12.290618169408093,
+      "pixels": {
+        "forehead": 339,
+        "left_cheek": 241,
+        "right_cheek": 250
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.2059366062749,
+        "left_cheek": 289.0870024666656,
+        "right_cheek": 309.7357694299426
+      }
+    },
+    {
+      "frame": 362,
+      "time_s": 12.324664203118365,
+      "pixels": {
+        "forehead": 334,
+        "left_cheek": 238,
+        "right_cheek": 262
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.6184544793796,
+        "left_cheek": 293.140937958844,
+        "right_cheek": 304.2863909024745
+      }
+    },
+    {
+      "frame": 363,
+      "time_s": 12.358710236828637,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 244,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.0738457937259,
+        "left_cheek": 298.1752586651128,
+        "right_cheek": 303.29668279737234
+      }
+    },
+    {
+      "frame": 364,
+      "time_s": 12.392756270538909,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 251,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 409.9178552990779,
+        "left_cheek": 300.87155159632675,
+        "right_cheek": 300.1803957489319
+      }
+    },
+    {
+      "frame": 365,
+      "time_s": 12.426802304249179,
+      "pixels": {
+        "forehead": 337,
+        "left_cheek": 262,
+        "right_cheek": 242
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.0870887313504,
+        "left_cheek": 301.22679992066696,
+        "right_cheek": 296.0824479316361
+      }
+    },
+    {
+      "frame": 366,
+      "time_s": 12.460848337959451,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 257,
+        "right_cheek": 228
+      },
+      "continuous_polygon_area": {
+        "forehead": 411.1500102225691,
+        "left_cheek": 307.08755166386254,
+        "right_cheek": 295.0947139780037
+      }
+    },
+    {
+      "frame": 367,
+      "time_s": 12.494894371669723,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 257,
+        "right_cheek": 242
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.6121396818198,
+        "left_cheek": 311.4446729263291,
+        "right_cheek": 291.2283856100403
+      }
+    },
+    {
+      "frame": 368,
+      "time_s": 12.528940405379995,
+      "pixels": {
+        "forehead": 342,
+        "left_cheek": 265,
+        "right_cheek": 244
+      },
+      "continuous_polygon_area": {
+        "forehead": 408.18084034183994,
+        "left_cheek": 313.2003569523804,
+        "right_cheek": 293.31334303715266
+      }
+    },
+    {
+      "frame": 369,
+      "time_s": 12.562986439090267,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 265,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 414.99474691972136,
+        "left_cheek": 314.6953461782541,
+        "right_cheek": 294.4051488637924
+      }
+    },
+    {
+      "frame": 370,
+      "time_s": 12.597032472800539,
+      "pixels": {
+        "forehead": 337,
+        "left_cheek": 253,
+        "right_cheek": 249
+      },
+      "continuous_polygon_area": {
+        "forehead": 407.86754738213494,
+        "left_cheek": 311.0954966209829,
+        "right_cheek": 289.4834184970241
+      }
+    },
+    {
+      "frame": 371,
+      "time_s": 12.63107850651081,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 266,
+        "right_cheek": 235
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.7011477195192,
+        "left_cheek": 309.4736264881212,
+        "right_cheek": 293.2457013037056
+      }
+    },
+    {
+      "frame": 372,
+      "time_s": 12.665124540221083,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 262,
+        "right_cheek": 249
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.3831635741517,
+        "left_cheek": 315.6149058674928,
+        "right_cheek": 295.4861481646076
+      }
+    },
+    {
+      "frame": 373,
+      "time_s": 12.699170573931353,
+      "pixels": {
+        "forehead": 332,
+        "left_cheek": 255,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 404.29997037677094,
+        "left_cheek": 312.634583885083,
+        "right_cheek": 294.2931534368545
+      }
+    },
+    {
+      "frame": 374,
+      "time_s": 12.733216607641625,
+      "pixels": {
+        "forehead": 338,
+        "left_cheek": 262,
+        "right_cheek": 230
+      },
+      "continuous_polygon_area": {
+        "forehead": 406.57292493153363,
+        "left_cheek": 311.79980498878285,
+        "right_cheek": 292.93674390623346
+      }
+    },
+    {
+      "frame": 375,
+      "time_s": 12.767262641351897,
+      "pixels": {
+        "forehead": 327,
+        "left_cheek": 262,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 381.282974120928,
+        "left_cheek": 309.7663283997681,
+        "right_cheek": 286.74512666859664
+      }
+    },
+    {
+      "frame": 376,
+      "time_s": 12.801308675062169,
+      "pixels": {
+        "forehead": 317,
+        "left_cheek": 257,
+        "right_cheek": 221
+      },
+      "continuous_polygon_area": {
+        "forehead": 372.41203343193047,
+        "left_cheek": 307.01978982030414,
+        "right_cheek": 283.61632332368754
+      }
+    },
+    {
+      "frame": 377,
+      "time_s": 12.83535470877244,
+      "pixels": {
+        "forehead": 321,
+        "left_cheek": 263,
+        "right_cheek": 221
+      },
+      "continuous_polygon_area": {
+        "forehead": 384.6806822230574,
+        "left_cheek": 314.1212832357269,
+        "right_cheek": 284.44278263207525
+      }
+    },
+    {
+      "frame": 378,
+      "time_s": 12.869400742482712,
+      "pixels": {
+        "forehead": 334,
+        "left_cheek": 257,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 383.634627499152,
+        "left_cheek": 313.6707603977993,
+        "right_cheek": 284.14042281731963
+      }
+    },
+    {
+      "frame": 379,
+      "time_s": 12.903446776192984,
+      "pixels": {
+        "forehead": 332,
+        "left_cheek": 253,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.5536948489025,
+        "left_cheek": 311.76417270558886,
+        "right_cheek": 285.0292051129509
+      }
+    },
+    {
+      "frame": 380,
+      "time_s": 12.937492809903256,
+      "pixels": {
+        "forehead": 342,
+        "left_cheek": 257,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 390.9813384488225,
+        "left_cheek": 310.5918342580553,
+        "right_cheek": 286.77553275297396
+      }
+    },
+    {
+      "frame": 381,
+      "time_s": 12.971538843613528,
+      "pixels": {
+        "forehead": 334,
+        "left_cheek": 263,
+        "right_cheek": 223
+      },
+      "continuous_polygon_area": {
+        "forehead": 393.2281708351802,
+        "left_cheek": 310.5050856396556,
+        "right_cheek": 287.7615126322489
+      }
+    },
+    {
+      "frame": 382,
+      "time_s": 13.005584877323798,
+      "pixels": {
+        "forehead": 316,
+        "left_cheek": 255,
+        "right_cheek": 223
+      },
+      "continuous_polygon_area": {
+        "forehead": 386.12084382004105,
+        "left_cheek": 309.7754602737259,
+        "right_cheek": 287.5440413043834
+      }
+    },
+    {
+      "frame": 383,
+      "time_s": 13.03963091103407,
+      "pixels": {
+        "forehead": 316,
+        "left_cheek": 259,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 391.7970702138264,
+        "left_cheek": 310.99099684879184,
+        "right_cheek": 286.82174812373705
+      }
+    },
+    {
+      "frame": 384,
+      "time_s": 13.073676944744342,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 255,
+        "right_cheek": 230
+      },
+      "continuous_polygon_area": {
+        "forehead": 397.5743851365987,
+        "left_cheek": 311.22022868087515,
+        "right_cheek": 287.2178758238442
+      }
+    },
+    {
+      "frame": 385,
+      "time_s": 13.107722978454614,
+      "pixels": {
+        "forehead": 340,
+        "left_cheek": 263,
+        "right_cheek": 223
+      },
+      "continuous_polygon_area": {
+        "forehead": 388.11132768075913,
+        "left_cheek": 310.4731452963315,
+        "right_cheek": 287.07028466952033
+      }
+    },
+    {
+      "frame": 386,
+      "time_s": 13.141769012164886,
+      "pixels": {
+        "forehead": 348,
+        "left_cheek": 267,
+        "right_cheek": 231
+      },
+      "continuous_polygon_area": {
+        "forehead": 393.506415769225,
+        "left_cheek": 311.97829792578705,
+        "right_cheek": 288.90343030542135
+      }
+    },
+    {
+      "frame": 387,
+      "time_s": 13.175815045875158,
+      "pixels": {
+        "forehead": 340,
+        "left_cheek": 262,
+        "right_cheek": 235
+      },
+      "continuous_polygon_area": {
+        "forehead": 395.2089237370528,
+        "left_cheek": 310.72457691445015,
+        "right_cheek": 291.3472845563665
+      }
+    },
+    {
+      "frame": 388,
+      "time_s": 13.20986107958543,
+      "pixels": {
+        "forehead": 336,
+        "left_cheek": 255,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 397.38089885539375,
+        "left_cheek": 311.5109086399898,
+        "right_cheek": 292.04130558576435
+      }
+    },
+    {
+      "frame": 389,
+      "time_s": 13.243907113295702,
+      "pixels": {
+        "forehead": 342,
+        "left_cheek": 267,
+        "right_cheek": 242
+      },
+      "continuous_polygon_area": {
+        "forehead": 396.3435882884078,
+        "left_cheek": 309.7089564963244,
+        "right_cheek": 293.1643833706621
+      }
+    },
+    {
+      "frame": 390,
+      "time_s": 13.277953147005974,
+      "pixels": {
+        "forehead": 341,
+        "left_cheek": 266,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 396.6282383007929,
+        "left_cheek": 306.5589878153987,
+        "right_cheek": 292.9980085573625
+      }
+    },
+    {
+      "frame": 391,
+      "time_s": 13.311999180716244,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 255,
+        "right_cheek": 235
+      },
+      "continuous_polygon_area": {
+        "forehead": 399.76829035719857,
+        "left_cheek": 308.04960887297057,
+        "right_cheek": 296.6507261041552
+      }
+    },
+    {
+      "frame": 392,
+      "time_s": 13.346045214426516,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 255,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 400.4308168445714,
+        "left_cheek": 304.80241162586026,
+        "right_cheek": 299.6433631009422
+      }
+    },
+    {
+      "frame": 393,
+      "time_s": 13.380091248136788,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 244,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 412.15047845989466,
+        "left_cheek": 304.7940554362722,
+        "right_cheek": 298.91960391262546
+      }
+    },
+    {
+      "frame": 394,
+      "time_s": 13.41413728184706,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 263,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 417.0524332204368,
+        "left_cheek": 305.68803678802215,
+        "right_cheek": 301.7395663401112
+      }
+    },
+    {
+      "frame": 395,
+      "time_s": 13.448183315557332,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 266,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.4007620967459,
+        "left_cheek": 306.65869560209103,
+        "right_cheek": 302.944431217853
+      }
+    },
+    {
+      "frame": 396,
+      "time_s": 13.482229349267604,
+      "pixels": {
+        "forehead": 368,
+        "left_cheek": 242,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.9422631608322,
+        "left_cheek": 308.47616437170655,
+        "right_cheek": 302.0667385382112
+      }
+    },
+    {
+      "frame": 397,
+      "time_s": 13.516275382977875,
+      "pixels": {
+        "forehead": 347,
+        "left_cheek": 256,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.9558007605374,
+        "left_cheek": 307.7066506471019,
+        "right_cheek": 301.10113637172617
+      }
+    },
+    {
+      "frame": 398,
+      "time_s": 13.550321416688147,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 263,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.6551108364947,
+        "left_cheek": 305.60227823792957,
+        "right_cheek": 300.12987723737024
+      }
+    },
+    {
+      "frame": 399,
+      "time_s": 13.58436745039842,
+      "pixels": {
+        "forehead": 368,
+        "left_cheek": 264,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.9713920059148,
+        "left_cheek": 304.639610060025,
+        "right_cheek": 302.53737728949636
+      }
+    },
+    {
+      "frame": 400,
+      "time_s": 13.61841348410869,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 252,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.9523343946785,
+        "left_cheek": 303.99481113278307,
+        "right_cheek": 302.2655973120127
+      }
+    },
+    {
+      "frame": 401,
+      "time_s": 13.652459517818961,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 256,
+        "right_cheek": 243
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.3437818819657,
+        "left_cheek": 302.4654577439651,
+        "right_cheek": 302.92969093681313
+      }
+    },
+    {
+      "frame": 402,
+      "time_s": 13.686505551529233,
+      "pixels": {
+        "forehead": 370,
+        "left_cheek": 263,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.7722817955073,
+        "left_cheek": 304.97249794052914,
+        "right_cheek": 305.0992819860112
+      }
+    },
+    {
+      "frame": 403,
+      "time_s": 13.720551585239505,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 263,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 418.7234342209995,
+        "left_cheek": 301.93035098933615,
+        "right_cheek": 301.80642988951877
+      }
+    },
+    {
+      "frame": 404,
+      "time_s": 13.754597618949777,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 255,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 413.60341104189865,
+        "left_cheek": 300.29791593248956,
+        "right_cheek": 301.5684187794104
+      }
+    },
+    {
+      "frame": 405,
+      "time_s": 13.788643652660049,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 267,
+        "right_cheek": 243
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.36771886167116,
+        "left_cheek": 303.44625419098884,
+        "right_cheek": 304.5829977756366
+      }
+    },
+    {
+      "frame": 406,
+      "time_s": 13.822689686370321,
+      "pixels": {
+        "forehead": 360,
+        "left_cheek": 263,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.91471198922954,
+        "left_cheek": 302.6634407269303,
+        "right_cheek": 307.9532803585753
+      }
+    },
+    {
+      "frame": 407,
+      "time_s": 13.856735720080593,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 259,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.039090317674,
+        "left_cheek": 302.60666539683007,
+        "right_cheek": 310.77544392552227
+      }
+    },
+    {
+      "frame": 408,
+      "time_s": 13.890781753790863,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 259,
+        "right_cheek": 257
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.500368781155,
+        "left_cheek": 302.60906827636063,
+        "right_cheek": 308.48045633826405
+      }
+    },
+    {
+      "frame": 409,
+      "time_s": 13.924827787501135,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 267,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.95629445975646,
+        "left_cheek": 300.6721939856652,
+        "right_cheek": 307.7176567988936
+      }
+    },
+    {
+      "frame": 410,
+      "time_s": 13.958873821211407,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 267,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.83178585232235,
+        "left_cheek": 300.12754523474723,
+        "right_cheek": 307.3495951090008
+      }
+    },
+    {
+      "frame": 411,
+      "time_s": 13.992919854921679,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 255,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.21270726411603,
+        "left_cheek": 296.42824744200334,
+        "right_cheek": 309.4926289478317
+      }
+    },
+    {
+      "frame": 412,
+      "time_s": 14.02696588863195,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 255,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.24519081925973,
+        "left_cheek": 298.2095924089663,
+        "right_cheek": 308.5872350069694
+      }
+    },
+    {
+      "frame": 413,
+      "time_s": 14.061011922342223,
+      "pixels": {
+        "forehead": 351,
+        "left_cheek": 262,
+        "right_cheek": 251
+      },
+      "continuous_polygon_area": {
+        "forehead": 419.17423016997054,
+        "left_cheek": 300.5849157993216,
+        "right_cheek": 307.36365687078796
+      }
+    },
+    {
+      "frame": 414,
+      "time_s": 14.095057956052495,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 246,
+        "right_cheek": 247
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.0231818910688,
+        "left_cheek": 302.74868499767035,
+        "right_cheek": 307.000061113853
+      }
+    },
+    {
+      "frame": 415,
+      "time_s": 14.129103989762767,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 253,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.13131516985595,
+        "left_cheek": 307.0769767393358,
+        "right_cheek": 305.75385244283825
+      }
+    },
+    {
+      "frame": 416,
+      "time_s": 14.163150023473039,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 249,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.50809828494675,
+        "left_cheek": 305.6889085061848,
+        "right_cheek": 299.57296254183166
+      }
+    },
+    {
+      "frame": 417,
+      "time_s": 14.197196057183309,
+      "pixels": {
+        "forehead": 377,
+        "left_cheek": 258,
+        "right_cheek": 256
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.17108347197063,
+        "left_cheek": 308.1530474515166,
+        "right_cheek": 300.58027377189137
+      }
+    },
+    {
+      "frame": 418,
+      "time_s": 14.23124209089358,
+      "pixels": {
+        "forehead": 359,
+        "left_cheek": 253,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.9654629570432,
+        "left_cheek": 310.9150210104417,
+        "right_cheek": 297.81908016838133
+      }
+    },
+    {
+      "frame": 419,
+      "time_s": 14.265288124603853,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 279,
+        "right_cheek": 242
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.10280060977675,
+        "left_cheek": 311.24956480483525,
+        "right_cheek": 295.0480453763157
+      }
+    },
+    {
+      "frame": 420,
+      "time_s": 14.299334158314124,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 265,
+        "right_cheek": 243
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.97016394371167,
+        "left_cheek": 313.9800527491607,
+        "right_cheek": 292.4139153517317
+      }
+    },
+    {
+      "frame": 421,
+      "time_s": 14.333380192024396,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 267,
+        "right_cheek": 221
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.8798873440828,
+        "left_cheek": 314.03791964426637,
+        "right_cheek": 289.00852740649134
+      }
+    },
+    {
+      "frame": 422,
+      "time_s": 14.367426225734668,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 255,
+        "right_cheek": 221
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.0697640380822,
+        "left_cheek": 313.26630515488796,
+        "right_cheek": 282.5646338346414
+      }
+    },
+    {
+      "frame": 423,
+      "time_s": 14.40147225944494,
+      "pixels": {
+        "forehead": 367,
+        "left_cheek": 263,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 433.78220449690707,
+        "left_cheek": 315.9590034466237,
+        "right_cheek": 281.8401134409942
+      }
+    },
+    {
+      "frame": 424,
+      "time_s": 14.435518293155212,
+      "pixels": {
+        "forehead": 363,
+        "left_cheek": 255,
+        "right_cheek": 235
+      },
+      "continuous_polygon_area": {
+        "forehead": 428.1714388546534,
+        "left_cheek": 314.5466117975302,
+        "right_cheek": 284.11634544003755
+      }
+    },
+    {
+      "frame": 425,
+      "time_s": 14.469564326865484,
+      "pixels": {
+        "forehead": 379,
+        "left_cheek": 255,
+        "right_cheek": 231
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.15585583494976,
+        "left_cheek": 313.0802200823091,
+        "right_cheek": 286.41998932906426
+      }
+    },
+    {
+      "frame": 426,
+      "time_s": 14.503610360575754,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 262,
+        "right_cheek": 228
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.1109632118605,
+        "left_cheek": 309.7086091148667,
+        "right_cheek": 285.2964397922624
+      }
+    },
+    {
+      "frame": 427,
+      "time_s": 14.537656394286026,
+      "pixels": {
+        "forehead": 374,
+        "left_cheek": 255,
+        "right_cheek": 248
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.3356019973289,
+        "left_cheek": 309.7550077920314,
+        "right_cheek": 289.541389091406
+      }
+    },
+    {
+      "frame": 428,
+      "time_s": 14.571702427996298,
+      "pixels": {
+        "forehead": 349,
+        "left_cheek": 246,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.39100496075116,
+        "left_cheek": 310.3092242812272,
+        "right_cheek": 288.3587423330173
+      }
+    },
+    {
+      "frame": 429,
+      "time_s": 14.60574846170657,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 258,
+        "right_cheek": 239
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.5599496557843,
+        "left_cheek": 309.7997440411709,
+        "right_cheek": 288.6830366514623
+      }
+    },
+    {
+      "frame": 430,
+      "time_s": 14.639794495416842,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 267,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 426.53162159537897,
+        "left_cheek": 312.76327988202684,
+        "right_cheek": 290.9562975347508
+      }
+    },
+    {
+      "frame": 431,
+      "time_s": 14.673840529127114,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 267,
+        "right_cheek": 235
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.62126022716984,
+        "left_cheek": 312.12903887359425,
+        "right_cheek": 292.53141104849055
+      }
+    },
+    {
+      "frame": 432,
+      "time_s": 14.707886562837386,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 265,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.0025880862959,
+        "left_cheek": 311.60828157979995,
+        "right_cheek": 291.97421468794346
+      }
+    },
+    {
+      "frame": 433,
+      "time_s": 14.741932596547658,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 253,
+        "right_cheek": 237
+      },
+      "continuous_polygon_area": {
+        "forehead": 424.40379570936784,
+        "left_cheek": 310.61095711262897,
+        "right_cheek": 292.12161194649525
+      }
+    },
+    {
+      "frame": 434,
+      "time_s": 14.77597863025793,
+      "pixels": {
+        "forehead": 371,
+        "left_cheek": 253,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.03182616247796,
+        "left_cheek": 310.4648010705132,
+        "right_cheek": 292.35531977145
+      }
+    },
+    {
+      "frame": 435,
+      "time_s": 14.8100246639682,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 253,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.2293632836081,
+        "left_cheek": 309.8043761360459,
+        "right_cheek": 291.30031824158505
+      }
+    },
+    {
+      "frame": 436,
+      "time_s": 14.844070697678472,
+      "pixels": {
+        "forehead": 382,
+        "left_cheek": 258,
+        "right_cheek": 252
+      },
+      "continuous_polygon_area": {
+        "forehead": 428.9594961972907,
+        "left_cheek": 313.32799180131406,
+        "right_cheek": 291.99688666616566
+      }
+    },
+    {
+      "frame": 437,
+      "time_s": 14.878116731388744,
+      "pixels": {
+        "forehead": 365,
+        "left_cheek": 269,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 436.71915526967496,
+        "left_cheek": 315.1191064522136,
+        "right_cheek": 290.3105733250268
+      }
+    },
+    {
+      "frame": 438,
+      "time_s": 14.912162765099016,
+      "pixels": {
+        "forehead": 356,
+        "left_cheek": 271,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 428.6442815095652,
+        "left_cheek": 312.10105903143995,
+        "right_cheek": 290.72463240334764
+      }
+    },
+    {
+      "frame": 439,
+      "time_s": 14.946208798809288,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 258,
+        "right_cheek": 253
+      },
+      "continuous_polygon_area": {
+        "forehead": 427.5498285724316,
+        "left_cheek": 313.3061306583695,
+        "right_cheek": 288.6994966773782
+      }
+    },
+    {
+      "frame": 440,
+      "time_s": 14.98025483251956,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 269,
+        "right_cheek": 232
+      },
+      "continuous_polygon_area": {
+        "forehead": 431.8818780402653,
+        "left_cheek": 312.6158906528726,
+        "right_cheek": 292.1200076029636
+      }
+    },
+    {
+      "frame": 441,
+      "time_s": 15.014300866229831,
+      "pixels": {
+        "forehead": 373,
+        "left_cheek": 269,
+        "right_cheek": 244
+      },
+      "continuous_polygon_area": {
+        "forehead": 427.4242616461124,
+        "left_cheek": 311.328979088692,
+        "right_cheek": 291.4046109954361
+      }
+    },
+    {
+      "frame": 442,
+      "time_s": 15.048346899940103,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 253,
+        "right_cheek": 234
+      },
+      "continuous_polygon_area": {
+        "forehead": 422.2364132546354,
+        "left_cheek": 309.4873658409342,
+        "right_cheek": 291.1046028328128
+      }
+    },
+    {
+      "frame": 443,
+      "time_s": 15.082392933650373,
+      "pixels": {
+        "forehead": 353,
+        "left_cheek": 253,
+        "right_cheek": 244
+      },
+      "continuous_polygon_area": {
+        "forehead": 425.40062771667726,
+        "left_cheek": 307.10975172626786,
+        "right_cheek": 291.65814730129205
+      }
+    },
+    {
+      "frame": 444,
+      "time_s": 15.116438967360645,
+      "pixels": {
+        "forehead": 372,
+        "left_cheek": 253,
+        "right_cheek": 244
+      },
+      "continuous_polygon_area": {
+        "forehead": 421.7347481944598,
+        "left_cheek": 304.94051938294433,
+        "right_cheek": 294.99463308556005
+      }
+    },
+    {
+      "frame": 445,
+      "time_s": 15.150485001070917,
+      "pixels": {
+        "forehead": 361,
+        "left_cheek": 262,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.7942434605211,
+        "left_cheek": 304.39753403002396,
+        "right_cheek": 292.69254404329695
+      }
+    },
+    {
+      "frame": 446,
+      "time_s": 15.18453103478119,
+      "pixels": {
+        "forehead": 384,
+        "left_cheek": 262,
+        "right_cheek": 238
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.8302364174742,
+        "left_cheek": 301.8707156360615,
+        "right_cheek": 295.571579484269
+      }
+    },
+    {
+      "frame": 447,
+      "time_s": 15.218577068491461,
+      "pixels": {
+        "forehead": 366,
+        "left_cheek": 246,
+        "right_cheek": 246
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.42930127098225,
+        "left_cheek": 301.4606205825694,
+        "right_cheek": 297.57074667559937
+      }
+    },
+    {
+      "frame": 448,
+      "time_s": 15.252623102201733,
+      "pixels": {
+        "forehead": 358,
+        "left_cheek": 246,
+        "right_cheek": 246
+      },
+      "continuous_polygon_area": {
+        "forehead": 423.72132561402395,
+        "left_cheek": 303.4056046239566,
+        "right_cheek": 299.1306979316287
+      }
+    },
+    {
+      "frame": 449,
+      "time_s": 15.286669135912005,
+      "pixels": {
+        "forehead": 354,
+        "left_cheek": 253,
+        "right_cheek": 241
+      },
+      "continuous_polygon_area": {
+        "forehead": 420.18756829667836,
+        "left_cheek": 302.61769828759134,
+        "right_cheek": 301.4500622022897
+      }
+    }
+  ],
+  "area_events": [
+    {
+      "frame": 2,
+      "region": "left_cheek",
+      "raster_relative_step": 0.10810810810810811,
+      "continuous_relative_step": 0.004404300984716225
+    },
+    {
+      "frame": 2,
+      "region": "right_cheek",
+      "raster_relative_step": 0.1062271062271063,
+      "continuous_relative_step": 0.008186237966182341
+    },
+    {
+      "frame": 6,
+      "region": "left_cheek",
+      "raster_relative_step": 0.10810810810810811,
+      "continuous_relative_step": 0.00019885639947969658
+    },
+    {
+      "frame": 12,
+      "region": "left_cheek",
+      "raster_relative_step": 0.12307692307692308,
+      "continuous_relative_step": 0.004722632065555787
+    },
+    {
+      "frame": 40,
+      "region": "left_cheek",
+      "raster_relative_step": 0.1384615384615384,
+      "continuous_relative_step": 0.010367663083790113
+    },
+    {
+      "frame": 52,
+      "region": "left_cheek",
+      "raster_relative_step": 0.10447761194029859,
+      "continuous_relative_step": 0.01291415582661326
+    },
+    {
+      "frame": 71,
+      "region": "forehead",
+      "raster_relative_step": 0.11714285714285722,
+      "continuous_relative_step": 0.06762904210322973
+    },
+    {
+      "frame": 71,
+      "region": "right_cheek",
+      "raster_relative_step": 0.10869565217391308,
+      "continuous_relative_step": 0.009194913382210235
+    },
+    {
+      "frame": 72,
+      "region": "right_cheek",
+      "raster_relative_step": 0.11111111111111116,
+      "continuous_relative_step": 0.0126820422642282
+    },
+    {
+      "frame": 84,
+      "region": "left_cheek",
+      "raster_relative_step": 0.10426540284360186,
+      "continuous_relative_step": 0.01962077831016562
+    },
+    {
+      "frame": 102,
+      "region": "forehead",
+      "raster_relative_step": 0.10495626822157433,
+      "continuous_relative_step": 0.02220025073225318
+    },
+    {
+      "frame": 108,
+      "region": "right_cheek",
+      "raster_relative_step": 0.11068702290076327,
+      "continuous_relative_step": 0.004586079791093711
+    },
+    {
+      "frame": 217,
+      "region": "left_cheek",
+      "raster_relative_step": 0.10465116279069764,
+      "continuous_relative_step": 0.0013833094261100909
+    },
+    {
+      "frame": 223,
+      "region": "forehead",
+      "raster_relative_step": 0.1312500000000001,
+      "continuous_relative_step": 0.018047387438717255
+    },
+    {
+      "frame": 238,
+      "region": "right_cheek",
+      "raster_relative_step": 0.11155378486055767,
+      "continuous_relative_step": 0.01654663592946748
+    },
+    {
+      "frame": 384,
+      "region": "forehead",
+      "raster_relative_step": 0.10126582278481022,
+      "continuous_relative_step": 0.014745681787817766
+    },
+    {
+      "frame": 419,
+      "region": "left_cheek",
+      "raster_relative_step": 0.1027667984189724,
+      "continuous_relative_step": 0.0010759975291843027
+    }
+  ],
+  "limitation": "Continuous hull area is a diagnostic, not the eroded raster mask area or a signal-quality label."
+}

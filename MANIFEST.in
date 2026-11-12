@@ -18,3 +18,6 @@ include examples/ubfc-regional-summary.json
 
 include FROZEN_EVALUATION.md
 recursive-include examples/ubfc-heldout *.json
+
+include SUBJECT14_DIAGNOSIS.md
+recursive-include examples/subject14-diagnosis *.json

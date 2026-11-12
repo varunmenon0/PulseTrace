@@ -61,12 +61,13 @@ def main():
     p.add_argument("--cache",type=Path,required=True)
     p.add_argument("--benchmark",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
+    p.add_argument("--area-policy",choices=["strict","corroborated"],default="strict")
     args=p.parse_args()
     reference=json.loads(args.benchmark.read_text())
     extraction=load_cache(args.cache)
     if len(extraction.time)!=reference["input"]["decoded_frames"] or not np.isclose(extraction.time[-1],reference["input"]["duration_s"]):
         raise ValueError("Cache dimensions/timing do not match reference benchmark")
-    report=score(write_regional_comparison(extraction,args.output),reference)
+    report=score(write_regional_comparison(extraction,args.output,area_policy=args.area_policy),reference)
     (args.output/"regional_comparison.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
     print(json.dumps(report["metrics"],indent=2))
 
