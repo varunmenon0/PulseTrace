@@ -178,7 +178,6 @@ Before implementing a classifier:
 - Evaluate spatial/temporal signal features with person/source-disjoint splits;
   never leak overlapping clips into both training and testing.
 
-
 ## References
 
 - [MediaPipe Face Landmarker Python documentation](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker/python)
@@ -197,3 +196,5 @@ portraits retain their own upstream terms; they are not bundled with this source
 See [STABILIZATION.md](STABILIZATION.md) for baseline/template comparison commands and limits.
 
 See [SEGMENTS.md](SEGMENTS.md) for motion exclusions and independent usable sections.
+
+See [PATCHES.md](PATCHES.md) for the experimental 12-patch comparison.

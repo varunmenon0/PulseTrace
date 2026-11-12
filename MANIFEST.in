@@ -4,3 +4,5 @@ recursive-include tests *.py
 recursive-include .github *.yml
 include STABILIZATION.md
 include SEGMENTS.md
+
+include PATCHES.md
