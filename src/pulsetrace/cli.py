@@ -14,6 +14,7 @@ def main(argv=None):
     real.add_argument("video", type=Path)
     real.add_argument("--model", type=Path, required=True)
     real.add_argument("--max-seconds", type=float)
+    real.add_argument("--regional-quality", action="store_true", help="Write experimental local-region versus global quality comparison")
     real.add_argument("--sampling", choices=["landmarks", "template"], default="landmarks")
     real.add_argument("--overlay", action="store_true", help="Write annotated tracking.avi (contains face video)")
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
@@ -42,6 +43,8 @@ def main(argv=None):
     segments.add_argument("--min-seconds", type=float, default=10.)
     segments.add_argument("--buffer-seconds", type=float, default=.5)
     args = parser.parse_args(argv)
+    if args.command == "analyze" and args.regional_quality and not args.patches:
+        parser.error("--regional-quality requires --patches for the layout comparison")
     try:
         if args.command == "segments":
             from .diagnostics import load_rgb_csv
@@ -100,6 +103,9 @@ def main(argv=None):
         write_diagnostics(extraction, args.output, max_gap=args.max_gap)
         from .quality import write_segments
         segments = write_segments(extraction, args.output, min_seconds=args.min_seconds, max_gap=args.max_gap)
+        if args.command == "analyze" and args.regional_quality:
+            from .regional_quality import write_regional_comparison
+            write_regional_comparison(extraction,args.output)
         if args.patches:
             from .patches import write_patch_comparison
             comparison = write_patch_comparison(extraction, segments, args.output)

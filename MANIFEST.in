@@ -12,3 +12,6 @@ include PUBLIC_VALIDATION.md
 include PUBLIC_VALIDATION_MULTI.md
 recursive-include examples/ubfc-subject* *.json *.txt
 include examples/ubfc-summary.json
+
+include REGIONAL_QUALITY.md
+include examples/ubfc-regional-summary.json

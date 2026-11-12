@@ -36,7 +36,7 @@ def compare(extraction, rt, rb):
     quality = analyze_segments(extraction)
     rows = []
     t = extraction.time
-    for start in np.arange(t[0], t[-1]-12+.02, 6):
+    for start in np.arange(t[0], t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9, 6):
         end = start+12
         chosen = (t >= start) & (t < end)
         row = {"start_s":float(start), "end_s":float(end), "methods":{}}
