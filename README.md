@@ -208,3 +208,5 @@ See [PUBLIC_VALIDATION.md](PUBLIC_VALIDATION.md) for the first public UBFC video
 See [PUBLIC_VALIDATION_MULTI.md](PUBLIC_VALIDATION_MULTI.md) for the three-subject comparison, coverage losses, and reference-dropout findings.
 
 See [REGIONAL_QUALITY.md](REGIONAL_QUALITY.md) for the experimental per-region quality comparison.
+
+See [FROZEN_EVALUATION.md](FROZEN_EVALUATION.md) for the fixed-rule check on previously unprocessed UBFC subjects 12-14.

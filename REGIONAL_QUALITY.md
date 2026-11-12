@@ -85,3 +85,5 @@ counts on these three recordings.
 
 Next step: freeze these rules and test unseen subjects. These development
 results are too small and dependent to justify switching the default gate.
+
+See [FROZEN_EVALUATION.md](FROZEN_EVALUATION.md) for subsequent frozen-rule results on subjects 12-14, including a complete-coverage failure.

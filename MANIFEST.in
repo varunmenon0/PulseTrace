@@ -15,3 +15,6 @@ include examples/ubfc-summary.json
 
 include REGIONAL_QUALITY.md
 include examples/ubfc-regional-summary.json
+
+include FROZEN_EVALUATION.md
+recursive-include examples/ubfc-heldout *.json
