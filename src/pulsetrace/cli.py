@@ -8,7 +8,7 @@ from .report import write_report
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="PulseTrace phase 1: extract rPPG, no deepfake classification")
+    parser = argparse.ArgumentParser(description="PulseTrace: estimate heart rate from facial video using rPPG")
     sub = parser.add_subparsers(dest="command", required=True)
     real = sub.add_parser("analyze", help="Analyze a single-person video with MediaPipe")
     real.add_argument("video", type=Path)

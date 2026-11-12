@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pulsetrace"
 version = "0.2.0"
-description = "Reproducible facial rPPG signal extraction for deepfake research"
+description = "Video-based heart-rate estimation with reproducible facial rPPG extraction"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 license = "MIT"

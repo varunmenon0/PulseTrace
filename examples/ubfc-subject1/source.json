@@ -1,0 +1,21 @@
+{
+  "official_dataset": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+  "mirror": "https://huggingface.co/datasets/thachha901/UBFC",
+  "recording": "Dataset 2 subject1",
+  "files": {
+    "vid.avi": {
+      "sha256": "f6745be5e6b6fe2f00dd6f32dd234aa559bb30b45f38ec9d87cf9a1cc41f6954",
+      "bytes": 1425830568,
+      "url": "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/subject1/vid.avi"
+    },
+    "ground_truth.txt": {
+      "sha256": "836852f57f9cc9e04ecab134ebe506f831ad3e7d95ee73771ab8ac32ce845b67",
+      "bytes": 74262,
+      "url": "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/subject1/ground_truth.txt"
+    }
+  },
+  "notes": [
+    "Official Drive videos were quota-blocked",
+    "Official and mirrored video hashes were not independently matched"
+  ]
+}

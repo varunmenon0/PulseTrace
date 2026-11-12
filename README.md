@@ -1,9 +1,13 @@
 # PulseTrace
 
-Phase 1 of a deepfake research project: a functioning facial remote
-photoplethysmography (rPPG) extraction pipeline. **There is no classifier and no
-real/fake verdict.** MediaPipe provides the pretrained AI face landmark model;
-pulse extraction and estimation use classical signal processing.
+PulseTrace estimates heart rate from facial video using remote
+photoplethysmography (rPPG). It tracks facial skin regions, extracts RGB traces,
+and compares green-channel and POS pulse estimates, with motion exclusions and
+an experimental 12-patch layout. MediaPipe supplies face landmarks; pulse
+extraction uses classical signal processing.
+
+Estimates are research candidates, not clinically validated measurements.
+Deepfake classification is outside the current project scope.
 
 ## Diagnostics update (0.2.0)
 
@@ -160,7 +164,7 @@ attempted an unverified network connection during validation; see `VALIDATION.md
 before using private recordings. This release does not assert network isolation
 of the upstream native runtime.
 
-## Limits and phase 2 gate
+## Limits and validation priorities
 
 A band-limited oscillation is not proof of a heartbeat. Real videos can have weak
 or absent recoverable rPPG due to compression, skin visibility, motion, or light.
@@ -168,15 +172,15 @@ Synthetic/edited videos can preserve or fabricate pulse-like oscillations.
 No detection accuracy, biometric validation, or Intel FakeCatcher-equivalent
 performance is claimed. A missing pulse must not be labeled a deepfake.
 
-Before implementing a classifier:
+Before claiming reliable video-based heart-rate accuracy:
 
 - Test consented real recordings against synchronized contact PPG/ECG or another
   suitable HR reference; report HR error, usable-signal coverage, and failures.
 - Measure behavior across illumination, motion, skin tones, resolution, frame
   rates, and compression, including failure cases rather than only favorable clips.
 - Verify ROI placement and identity continuity on real recordings.
-- Evaluate spatial/temporal signal features with person/source-disjoint splits;
-  never leak overlapping clips into both training and testing.
+- Use independent subjects and recordings for algorithm development and evaluation;
+  never tune thresholds on the clips used to report final accuracy.
 
 ## References
 
@@ -198,3 +202,5 @@ See [STABILIZATION.md](STABILIZATION.md) for baseline/template comparison comman
 See [SEGMENTS.md](SEGMENTS.md) for motion exclusions and independent usable sections.
 
 See [PATCHES.md](PATCHES.md) for the experimental 12-patch comparison.
+
+See [PUBLIC_VALIDATION.md](PUBLIC_VALIDATION.md) for the first public UBFC video comparison.

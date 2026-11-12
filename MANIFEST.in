@@ -6,3 +6,5 @@ include STABILIZATION.md
 include SEGMENTS.md
 
 include PATCHES.md
+
+include PUBLIC_VALIDATION.md
