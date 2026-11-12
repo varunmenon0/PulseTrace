@@ -42,3 +42,16 @@ def test_area_jump_excludes_all_regions():
     r=analyze_segments(e)
     assert r['event_counts']['left_cheek']['area_spike_frames']==1
     assert len(r['segments'])==2
+
+
+def test_exclusion_cause_accounting_is_separate():
+    e=fixture()
+    e.geometry['forehead'][510,2]=.2
+    e.pixels['left_cheek'][700:]=150
+    r=analyze_segments(e)
+    causes=r['exclusion_causes']
+    assert causes['displacement']['raw_flagged_frames']==1
+    assert causes['patch_area']['raw_flagged_frames']==1
+    assert causes['missing']['raw_flagged_frames']==0
+    assert causes['displacement']['excluded_intervals'][0]['end_s']<18
+    assert causes['patch_area']['excluded_intervals'][0]['start_s']>22

@@ -17,6 +17,8 @@ def analyze_segments(extraction, *, min_seconds=10., buffer_seconds=.5,
     t=extraction.time
     if len(t)<2 or not np.isfinite(t).all() or np.any(np.diff(t)<=0):
         raise ValueError('Need finite increasing timestamps')
+    motion_events=np.zeros(len(t),bool)
+    area_events=np.zeros(len(t),bool)
     spike=np.zeros(len(t),bool)
     missing=np.zeros(len(t),bool)
     reasons={}
@@ -32,12 +34,20 @@ def analyze_segments(extraction, *, min_seconds=10., buffer_seconds=.5,
         change=np.zeros(len(t)-1)
         np.divide(np.abs(np.diff(pixels)),pixels[:-1],out=change,where=pairs)
         area[1:]=pairs&(change>area_threshold)
+        motion_events|=motion
+        area_events|=area
         spike|=motion|area
         reasons[name]={'motion_spike_frames':int(motion.sum()),'area_spike_frames':int(area.sum())}
     events=spike|missing
     rejected=events.copy()
     for at in t[events]:
         rejected|=(t>=at-buffer_seconds)&(t<=at+buffer_seconds)
+    cause_masks = {}
+    for name, mask in (("displacement",motion_events),("patch_area",area_events),("missing",missing)):
+        buffered = mask.copy()
+        for at in t[mask]:
+            buffered |= (t>=at-buffer_seconds)&(t<=at+buffer_seconds)
+        cause_masks[name] = (mask,buffered)
     good=np.flatnonzero(~rejected)
     chunks=[] if not len(good) else np.split(good,np.flatnonzero((np.diff(good)>1)|(np.diff(t[good])>max_gap))+1)
     segments=[]
@@ -60,6 +70,13 @@ def analyze_segments(extraction, *, min_seconds=10., buffer_seconds=.5,
     bounds=np.r_[t[0],(t[:-1]+t[1:])/2,t[-1]]
     bad=np.flatnonzero(rejected)
     bad_chunks=[] if not len(bad) else np.split(bad,np.flatnonzero(np.diff(bad)>1)+1)
+    causes = {}
+    for name,(raw,buffered) in cause_masks.items():
+        indices=np.flatnonzero(buffered)
+        groups=[] if not len(indices) else np.split(indices,np.flatnonzero(np.diff(indices)>1)+1)
+        causes[name]={"raw_flagged_frames":int(raw.sum()),
+                      "buffered_rejected_frame_fraction":float(buffered.mean()),
+                      "excluded_intervals":[{"start_s":float(bounds[c[0]]),"end_s":float(bounds[c[-1]+1])} for c in groups]}
     return {'status':'segments_available' if any(s['status']=='eligible' for s in segments) else 'insufficient_usable_footage',
             'configuration':{'min_seconds':min_seconds,'buffer_seconds':buffer_seconds,'motion_threshold':motion_threshold,'area_threshold':area_threshold,'max_gap':max_gap},
             'threshold_status':'unvalidated engineering heuristics',
@@ -67,6 +84,7 @@ def analyze_segments(extraction, *, min_seconds=10., buffer_seconds=.5,
             'rejected_frame_fraction':float(rejected.mean()),
             'retained_duration_s':float(np.sum(np.diff(bounds)[~rejected])),
             'event_counts':reasons,
+            'exclusion_causes':causes,
             'excluded_intervals':[{'start_s':float(bounds[c[0]]),'end_s':float(bounds[c[-1]+1])} for c in bad_chunks],
             'segments':segments,
             'limitations':['Does not detect all off-face patches, lighting changes or motion artifacts',

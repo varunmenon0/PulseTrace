@@ -204,3 +204,5 @@ See [SEGMENTS.md](SEGMENTS.md) for motion exclusions and independent usable sect
 See [PATCHES.md](PATCHES.md) for the experimental 12-patch comparison.
 
 See [PUBLIC_VALIDATION.md](PUBLIC_VALIDATION.md) for the first public UBFC video comparison.
+
+See [PUBLIC_VALIDATION_MULTI.md](PUBLIC_VALIDATION_MULTI.md) for the three-subject comparison, coverage losses, and reference-dropout findings.

@@ -1,0 +1,96 @@
+{
+  "subjects": 3,
+  "recordings": [
+    "examples/ubfc-subject1/benchmark.json",
+    "examples/ubfc-subject10/benchmark.json",
+    "examples/ubfc-subject11/benchmark.json"
+  ],
+  "metrics": {
+    "pos": {
+      "three_regions_all_windows": {
+        "total_windows": 27,
+        "eligible_windows": 23,
+        "compared_windows": 22,
+        "coverage_of_all_windows": 0.8148148148148148,
+        "pooled_window_mae_bpm": 2.3174261921233867,
+        "mean_subject_mae_bpm": 2.2542749699811138,
+        "subjects_with_estimates": 3
+      },
+      "three_regions_motion_excluded": {
+        "total_windows": 27,
+        "eligible_windows": 4,
+        "compared_windows": 4,
+        "coverage_of_all_windows": 0.14814814814814814,
+        "pooled_window_mae_bpm": 1.7569783931509733,
+        "mean_subject_mae_bpm": 1.7569783931509733,
+        "subjects_with_estimates": 2
+      },
+      "twelve_patches_all_windows": {
+        "total_windows": 27,
+        "eligible_windows": 23,
+        "compared_windows": 17,
+        "coverage_of_all_windows": 0.6296296296296297,
+        "pooled_window_mae_bpm": 1.6414392053932838,
+        "mean_subject_mae_bpm": 1.6024641638138064,
+        "subjects_with_estimates": 3
+      },
+      "twelve_patches_motion_excluded": {
+        "total_windows": 27,
+        "eligible_windows": 4,
+        "compared_windows": 3,
+        "coverage_of_all_windows": 0.1111111111111111,
+        "pooled_window_mae_bpm": 1.4308773389663447,
+        "mean_subject_mae_bpm": 1.1447849838190365,
+        "subjects_with_estimates": 2
+      },
+      "paired_all_windows": {
+        "common_windows": 16,
+        "three_regions": 1.84223758109348,
+        "twelve_patches": 1.7396329035248952
+      }
+    },
+    "green": {
+      "three_regions_all_windows": {
+        "total_windows": 27,
+        "eligible_windows": 23,
+        "compared_windows": 11,
+        "coverage_of_all_windows": 0.4074074074074074,
+        "pooled_window_mae_bpm": 15.152945764521204,
+        "mean_subject_mae_bpm": 17.482099731353443,
+        "subjects_with_estimates": 3
+      },
+      "three_regions_motion_excluded": {
+        "total_windows": 27,
+        "eligible_windows": 4,
+        "compared_windows": 2,
+        "coverage_of_all_windows": 0.07407407407407407,
+        "pooled_window_mae_bpm": 1.7339126783680854,
+        "mean_subject_mae_bpm": 1.7339126783680854,
+        "subjects_with_estimates": 2
+      },
+      "twelve_patches_all_windows": {
+        "total_windows": 27,
+        "eligible_windows": 23,
+        "compared_windows": 15,
+        "coverage_of_all_windows": 0.5555555555555556,
+        "pooled_window_mae_bpm": 15.225102834835866,
+        "mean_subject_mae_bpm": 18.38849864240257,
+        "subjects_with_estimates": 3
+      },
+      "twelve_patches_motion_excluded": {
+        "total_windows": 27,
+        "eligible_windows": 4,
+        "compared_windows": 4,
+        "coverage_of_all_windows": 0.14814814814814814,
+        "pooled_window_mae_bpm": 1.5396830724495914,
+        "mean_subject_mae_bpm": 1.5396830724495914,
+        "subjects_with_estimates": 2
+      },
+      "paired_all_windows": {
+        "common_windows": 10,
+        "three_regions": 14.459735236286395,
+        "twelve_patches": 14.503902853151578
+      }
+    }
+  }
+}

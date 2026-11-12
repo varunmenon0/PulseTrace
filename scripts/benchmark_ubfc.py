@@ -41,9 +41,19 @@ def compare(extraction, rt, rb):
         chosen = (t >= start) & (t < end)
         row = {"start_s":float(start), "end_s":float(end), "methods":{}}
         covered = start >= rt[0] and end <= rt[-1]
-        reference = float(np.median(np.interp(np.linspace(start,end,361), rt, rb))) if covered else None
+        raw_reference = float(np.median(np.interp(np.linspace(start,end,361), rt, rb))) if covered else None
+        warning = None if covered else "Reference does not cover complete window"
+        left=max(0,np.searchsorted(rt,start,side="right")-1)
+        right=min(len(rt),np.searchsorted(rt,end,side="left")+1)
+        if covered and (np.any(rb[left:right]<40) or np.any(rb[left:right]>200)):
+            warning = "Reference outside supported 40-200 BPM band; no bridging invalid labels"
+        if covered and np.any(np.diff(rt[left:right])>2.5):
+            warning = "Reference gap exceeds 2.5 seconds"
+        reference = raw_reference if warning is None else None
         motion = any(start < i["end_s"] and end > i["start_s"] for i in quality["excluded_intervals"])
-        row.update(reference_bpm=reference, motion_excluded=motion)
+        causes = [name for name,detail in quality["exclusion_causes"].items()
+                  if any(start < i["end_s"] and end > i["start_s"] for i in detail["excluded_intervals"])]
+        row.update(reference_bpm=reference, raw_reference_median_bpm=raw_reference, reference_warning=warning, motion_excluded=motion, exclusion_causes=causes)
         for method in ("pos", "green"):
             record = {}
             for label, traces, zones in (("three_regions",extraction.rgb,{n:n for n in REGIONS}),
@@ -86,7 +96,8 @@ def compare(extraction, rt, rb):
                              if common else None for layout in ("three_regions","twelve_patches")}}
     return {"alignment":"Assumed shared elapsed-time origin (offset=0); hardware sync not independently verified",
             "reference":"Device-reported BPM, not a waveform correlation benchmark",
-            "limitations":["One subject; overlapping windows are not independent", "Mirror identity not independently checksum-matched to official source",
+            "reference_quality_policy":"Reject entire windows touching device BPM outside 40-200 or gaps over 2.5 s; no bridging",
+            "limitations":["Per-recording results; overlapping windows are not independent", "Mirror identity not independently checksum-matched to official source",
                            "Same filters and thresholds for both layouts; no tuning to reference"],
             "metrics":metrics,"paired_mae_bpm":paired,"windows":rows,"motion_quality":quality}
 
@@ -107,6 +118,14 @@ def main():
     rt,rb = load_reference(args.reference)
     with FaceTracker(args.model) as tracker:
         extraction = extract_video(args.video,tracker,patches=True)
+    args.output.mkdir(parents=True,exist_ok=True)
+    # Preserve extraction locally so later diagnostics need not rerun native inference.
+    np.savez_compressed(args.output/"extraction.npz", time=extraction.time,
+                        **{f"rgb_{k}":v for k,v in extraction.rgb.items()},
+                        **{f"pixels_{k}":v for k,v in extraction.pixels.items()},
+                        **{f"geometry_{k}":v for k,v in extraction.geometry.items()},
+                        **{f"patch_rgb_{k}":v for k,v in extraction.patch_rgb.items()},
+                        **{f"patch_pixels_{k}":v for k,v in extraction.patch_pixels.items()})
     report = compare(extraction,rt,rb)
     report["input"] = {"video_sha256":sha256_file(args.video),
                        "reference_sha256":sha256_file(args.reference),

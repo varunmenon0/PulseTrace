@@ -9,8 +9,9 @@ import urllib.request
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,default=Path('outputs/ubfc-subject1'))
+    p.add_argument('--manifest',type=Path,default=Path(__file__).parents[1]/'examples/ubfc-subject1/source.json')
     args=p.parse_args();args.output.mkdir(parents=True,exist_ok=True)
-    manifest=json.loads((Path(__file__).parents[1]/'examples/ubfc-subject1/source.json').read_text())
+    manifest=json.loads(args.manifest.read_text())
     for name,meta in manifest['files'].items():
         target=args.output/name
         temp=target.with_suffix(target.suffix+'.part')

@@ -73,3 +73,5 @@ including overlays and separate motion versus patch-area rejection analysis.
 Next: repeat across independent subjects, verify reference/video alignment more
 closely, inspect area-trigger exclusions, and report failures and coverage.
 Do not calibrate the gate to make this subject pass.
+
+See [PUBLIC_VALIDATION_MULTI.md](PUBLIC_VALIDATION_MULTI.md) for the subsequent three-recording development check and reference-dropout policy.

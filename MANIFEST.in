@@ -8,3 +8,7 @@ include SEGMENTS.md
 include PATCHES.md
 
 include PUBLIC_VALIDATION.md
+
+include PUBLIC_VALIDATION_MULTI.md
+recursive-include examples/ubfc-subject* *.json *.txt
+include examples/ubfc-summary.json
