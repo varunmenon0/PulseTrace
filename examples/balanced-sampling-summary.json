@@ -1,0 +1,943 @@
+{
+  "recordings": [
+    {
+      "video_sha256": "c39f8f769679d931e8537e77eba6a51fc5c81dffe219273efa9a554f91818b7c",
+      "reference_sha256": "4720d413c36f3338d206929e058bcc5676bc0fa442aa11a6902b0802f9bff51a",
+      "decoded_frames": 2024,
+      "metrics": {
+        "integer": {
+          "pos": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 10,
+                "mae_against_device_bpm": 2.601606691763615,
+                "max_difference_bpm": 7.980872533769713
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 2.0814193618532286,
+                "max_difference_bpm": 2.8536393642270497
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 7,
+                "mae_against_device_bpm": 1.9678205119034604,
+                "max_difference_bpm": 3.182515149463171
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 8,
+                "mae_against_device_bpm": 1.8906525296382526,
+                "max_difference_bpm": 2.798410146975982
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 2.0030620492609614,
+                "max_difference_bpm": 2.798410146975982
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 5,
+                "mae_against_device_bpm": 1.494264320544471,
+                "max_difference_bpm": 2.798410146975982
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 4,
+                "mae_against_device_bpm": 7.271781490049275,
+                "max_difference_bpm": 22.085051046869296
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 1,
+                "mae_against_device_bpm": 1.5042114066555428,
+                "max_difference_bpm": 1.5042114066555428
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 3.219825552501682,
+                "max_difference_bpm": 4.935439698347821
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 5,
+                "mae_against_device_bpm": 2.3770110666551716,
+                "max_difference_bpm": 3.263433813162777
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 2.131277755121282,
+                "max_difference_bpm": 3.263433813162777
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 2.131277755121282,
+                "max_difference_bpm": 3.263433813162777
+              }
+            }
+          }
+        },
+        "fractional": {
+          "pos": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 10,
+                "mae_against_device_bpm": 2.5370460517775273,
+                "max_difference_bpm": 7.425434327543172
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 1.933770051501206,
+                "max_difference_bpm": 2.80053636881037
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 7,
+                "mae_against_device_bpm": 2.0206671517146333,
+                "max_difference_bpm": 3.4197173223148525
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 8,
+                "mae_against_device_bpm": 1.918182786472956,
+                "max_difference_bpm": 3.0656127772321753
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 2.3442471842736268,
+                "max_difference_bpm": 3.0656127772321753
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 6,
+                "mae_against_device_bpm": 2.0582681183469425,
+                "max_difference_bpm": 3.248930853130105
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 7,
+                "mae_against_device_bpm": 1.842427220202426,
+                "max_difference_bpm": 3.186813228548914
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 1.8361798600308816,
+                "max_difference_bpm": 3.186813228548914
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 1.8361798600308816,
+                "max_difference_bpm": 3.186813228548914
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 8,
+                "mae_against_device_bpm": 9.505991533852827,
+                "max_difference_bpm": 55.29339157895496
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 2,
+                "mae_against_device_bpm": 1.9159908437409925,
+                "max_difference_bpm": 3.2509744002632317
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 4,
+                "mae_against_device_bpm": 15.34639336682712,
+                "max_difference_bpm": 55.29339157895496
+              }
+            }
+          }
+        }
+      },
+      "paired_metrics": {
+        "pos": {
+          "three_regions": {
+            "ungated": {
+              "common_windows": 10,
+              "integer_mae": 2.601606691763615,
+              "fractional_mae": 2.5370460517775273
+            },
+            "global_gate": {
+              "common_windows": 2,
+              "integer_mae": 2.0814193618532286,
+              "fractional_mae": 1.933770051501206
+            },
+            "regional_gate": {
+              "common_windows": 7,
+              "integer_mae": 1.9678205119034604,
+              "fractional_mae": 2.0206671517146333
+            }
+          },
+          "twelve_patches": {
+            "ungated": {
+              "common_windows": 7,
+              "integer_mae": 1.809604624719729,
+              "fractional_mae": 1.938967728261805
+            },
+            "global_gate": {
+              "common_windows": 2,
+              "integer_mae": 2.0030620492609614,
+              "fractional_mae": 2.3442471842736268
+            },
+            "regional_gate": {
+              "common_windows": 4,
+              "integer_mae": 1.6644888436125242,
+              "fractional_mae": 2.0578213490277335
+            }
+          }
+        },
+        "green": {
+          "three_regions": {
+            "ungated": {
+              "common_windows": 2,
+              "integer_mae": 1.9574272173700393,
+              "fractional_mae": 1.4495734491456034
+            },
+            "global_gate": {
+              "common_windows": 1,
+              "integer_mae": 1.5042114066555428,
+              "fractional_mae": 0.48554649151284934
+            },
+            "regional_gate": {
+              "common_windows": 1,
+              "integer_mae": 1.5042114066555428,
+              "fractional_mae": 0.48554649151284934
+            }
+          },
+          "twelve_patches": {
+            "ungated": {
+              "common_windows": 4,
+              "integer_mae": 2.266229842049672,
+              "fractional_mae": 2.2252263456683536
+            },
+            "global_gate": {
+              "common_windows": 2,
+              "integer_mae": 2.131277755121282,
+              "fractional_mae": 1.9159908437409925
+            },
+            "regional_gate": {
+              "common_windows": 2,
+              "integer_mae": 2.131277755121282,
+              "fractional_mae": 1.9159908437409925
+            }
+          }
+        }
+      }
+    },
+    {
+      "video_sha256": "42d861504e180d02ff7fe6ad91d11e8a20d719581178033daf1768629aaa3e09",
+      "reference_sha256": "d9762accd5c9a8370aca3e1938a68e4201e6d70a8fc0e89b5305822713833cfc",
+      "decoded_frames": 1993,
+      "metrics": {
+        "integer": {
+          "pos": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 9,
+                "mae_against_device_bpm": 10.982506666882005,
+                "max_difference_bpm": 27.48254629575186
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 10,
+                "mae_against_device_bpm": 11.332708859725445,
+                "max_difference_bpm": 29.008803374921982
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 5,
+                "mae_against_device_bpm": 14.849160088736394,
+                "max_difference_bpm": 31.117150438005453
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 6,
+                "mae_against_device_bpm": 16.35894817194715,
+                "max_difference_bpm": 37.491907025068656
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            }
+          }
+        },
+        "fractional": {
+          "pos": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 9,
+                "mae_against_device_bpm": 10.854063308193268,
+                "max_difference_bpm": 27.442400899581912
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 9,
+                "mae_against_device_bpm": 11.544091211986633,
+                "max_difference_bpm": 29.235771142500226
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 4,
+                "mae_against_device_bpm": 18.357541246431698,
+                "max_difference_bpm": 38.98533002410967
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "ungated": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 8,
+                "mae_against_device_bpm": 12.271399555387053,
+                "max_difference_bpm": 38.631973124368926
+              },
+              "global_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              },
+              "regional_gate": {
+                "total_windows": 10,
+                "reference_valid_windows": 10,
+                "accepted_windows": 0,
+                "mae_against_device_bpm": null,
+                "max_difference_bpm": null
+              }
+            }
+          }
+        }
+      },
+      "paired_metrics": {
+        "pos": {
+          "three_regions": {
+            "ungated": {
+              "common_windows": 8,
+              "integer_mae": 10.110105029522092,
+              "fractional_mae": 10.130567030044908
+            },
+            "global_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            },
+            "regional_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            }
+          },
+          "twelve_patches": {
+            "ungated": {
+              "common_windows": 9,
+              "integer_mae": 11.377140436393033,
+              "fractional_mae": 11.544091211986633
+            },
+            "global_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            },
+            "regional_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            }
+          }
+        },
+        "green": {
+          "three_regions": {
+            "ungated": {
+              "common_windows": 3,
+              "integer_mae": 11.670836356956363,
+              "fractional_mae": 11.481611653872372
+            },
+            "global_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            },
+            "regional_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            }
+          },
+          "twelve_patches": {
+            "ungated": {
+              "common_windows": 6,
+              "integer_mae": 16.35894817194715,
+              "fractional_mae": 13.4264591670102
+            },
+            "global_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            },
+            "regional_gate": {
+              "common_windows": 0,
+              "integer_mae": null,
+              "fractional_mae": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "configuration": {
+    "subdivisions": 8,
+    "square_inset_pixels": 1,
+    "partition": "equal_area",
+    "min_effective_area": 30,
+    "gates": "Fixed to integer baseline",
+    "max_seconds": null
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "opencv-contrib-python": "4.11.0.86",
+    "mediapipe": "0.10.21"
+  },
+  "model_sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+  "patch_observations_per_sampler": 48204,
+  "missing_patch_observations": {
+    "integer": 270,
+    "fractional": 0
+  },
+  "metrics": {
+    "integer": {
+      "pos": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 19,
+            "mae_against_device_bpm": 6.571506679977589,
+            "max_difference_bpm": 27.48254629575186
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 2.0814193618532286,
+            "max_difference_bpm": 2.8536393642270497
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 7,
+            "mae_against_device_bpm": 1.9678205119034604,
+            "max_difference_bpm": 3.182515149463171
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 18,
+            "mae_against_device_bpm": 7.136239379686692,
+            "max_difference_bpm": 29.008803374921982
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 2.0030620492609614,
+            "max_difference_bpm": 2.798410146975982
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 5,
+            "mae_against_device_bpm": 1.494264320544471,
+            "max_difference_bpm": 2.798410146975982
+          }
+        }
+      },
+      "green": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 9,
+            "mae_against_device_bpm": 11.481436267097674,
+            "max_difference_bpm": 31.117150438005453
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 1,
+            "mae_against_device_bpm": 1.5042114066555428,
+            "max_difference_bpm": 1.5042114066555428
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 3.219825552501682,
+            "max_difference_bpm": 4.935439698347821
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 11,
+            "mae_against_device_bpm": 10.00352221499625,
+            "max_difference_bpm": 37.491907025068656
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 2.131277755121282,
+            "max_difference_bpm": 3.263433813162777
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 2.131277755121282,
+            "max_difference_bpm": 3.263433813162777
+          }
+        }
+      }
+    },
+    "fractional": {
+      "pos": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 19,
+            "mae_against_device_bpm": 6.476685804816562,
+            "max_difference_bpm": 27.442400899581912
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 1.933770051501206,
+            "max_difference_bpm": 2.80053636881037
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 7,
+            "mae_against_device_bpm": 2.0206671517146333,
+            "max_difference_bpm": 3.4197173223148525
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 17,
+            "mae_against_device_bpm": 7.014251952921373,
+            "max_difference_bpm": 29.235771142500226
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 2.3442471842736268,
+            "max_difference_bpm": 3.0656127772321753
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 6,
+            "mae_against_device_bpm": 2.0582681183469425,
+            "max_difference_bpm": 3.248930853130105
+          }
+        }
+      },
+      "green": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 11,
+            "mae_against_device_bpm": 7.847923229740343,
+            "max_difference_bpm": 38.98533002410967
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 1.8361798600308816,
+            "max_difference_bpm": 3.186813228548914
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 1.8361798600308816,
+            "max_difference_bpm": 3.186813228548914
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 16,
+            "mae_against_device_bpm": 10.88869554461994,
+            "max_difference_bpm": 55.29339157895496
+          },
+          "global_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 2,
+            "mae_against_device_bpm": 1.9159908437409925,
+            "max_difference_bpm": 3.2509744002632317
+          },
+          "regional_gate": {
+            "total_windows": 20,
+            "reference_valid_windows": 20,
+            "accepted_windows": 4,
+            "mae_against_device_bpm": 15.34639336682712,
+            "max_difference_bpm": 55.29339157895496
+          }
+        }
+      }
+    }
+  },
+  "paired_metrics": {
+    "pos": {
+      "three_regions": {
+        "ungated": {
+          "common_windows": 18,
+          "integer_mae": 5.938717064100716,
+          "fractional_mae": 5.911944264340807
+        },
+        "global_gate": {
+          "common_windows": 2,
+          "integer_mae": 2.0814193618532286,
+          "fractional_mae": 1.933770051501206
+        },
+        "regional_gate": {
+          "common_windows": 7,
+          "integer_mae": 1.9678205119034604,
+          "fractional_mae": 2.0206671517146333
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common_windows": 16,
+          "integer_mae": 7.1913435187859625,
+          "fractional_mae": 7.34184968785702
+        },
+        "global_gate": {
+          "common_windows": 2,
+          "integer_mae": 2.0030620492609614,
+          "fractional_mae": 2.3442471842736268
+        },
+        "regional_gate": {
+          "common_windows": 4,
+          "integer_mae": 1.6644888436125242,
+          "fractional_mae": 2.0578213490277335
+        }
+      }
+    },
+    "green": {
+      "three_regions": {
+        "ungated": {
+          "common_windows": 5,
+          "integer_mae": 7.785472701121833,
+          "fractional_mae": 7.468796371981665
+        },
+        "global_gate": {
+          "common_windows": 1,
+          "integer_mae": 1.5042114066555428,
+          "fractional_mae": 0.48554649151284934
+        },
+        "regional_gate": {
+          "common_windows": 1,
+          "integer_mae": 1.5042114066555428,
+          "fractional_mae": 0.48554649151284934
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common_windows": 10,
+          "integer_mae": 10.721860839988159,
+          "fractional_mae": 8.945966038473461
+        },
+        "global_gate": {
+          "common_windows": 2,
+          "integer_mae": 2.131277755121282,
+          "fractional_mae": 1.9159908437409925
+        },
+        "regional_gate": {
+          "common_windows": 2,
+          "integer_mae": 2.131277755121282,
+          "fractional_mae": 1.9159908437409925
+        }
+      }
+    }
+  },
+  "coverage_changes": {
+    "pos": {
+      "three_regions": {
+        "ungated": {
+          "common": 18,
+          "integer_only": 1,
+          "fractional_only": 1,
+          "neither": 0
+        },
+        "global_gate": {
+          "common": 2,
+          "integer_only": 0,
+          "fractional_only": 0,
+          "neither": 18
+        },
+        "regional_gate": {
+          "common": 7,
+          "integer_only": 0,
+          "fractional_only": 0,
+          "neither": 13
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common": 16,
+          "integer_only": 2,
+          "fractional_only": 1,
+          "neither": 1
+        },
+        "global_gate": {
+          "common": 2,
+          "integer_only": 0,
+          "fractional_only": 0,
+          "neither": 18
+        },
+        "regional_gate": {
+          "common": 4,
+          "integer_only": 1,
+          "fractional_only": 2,
+          "neither": 13
+        }
+      }
+    },
+    "green": {
+      "three_regions": {
+        "ungated": {
+          "common": 5,
+          "integer_only": 4,
+          "fractional_only": 6,
+          "neither": 5
+        },
+        "global_gate": {
+          "common": 1,
+          "integer_only": 0,
+          "fractional_only": 1,
+          "neither": 18
+        },
+        "regional_gate": {
+          "common": 1,
+          "integer_only": 1,
+          "fractional_only": 1,
+          "neither": 17
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common": 10,
+          "integer_only": 1,
+          "fractional_only": 6,
+          "neither": 3
+        },
+        "global_gate": {
+          "common": 2,
+          "integer_only": 0,
+          "fractional_only": 0,
+          "neither": 18
+        },
+        "regional_gate": {
+          "common": 2,
+          "integer_only": 0,
+          "fractional_only": 2,
+          "neither": 16
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Development recordings, not a fresh held-out cohort",
+    "Errors compare stored device BPM labels; reference and synchronization limitations remain",
+    "Pooled errors weight accepted windows equally, not recordings",
+    "All video windows remain in denominators; common-window errors are reported separately",
+    "Overlapping windows are not independent samples"
+  ]
+}

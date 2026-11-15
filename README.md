@@ -9,6 +9,19 @@ extraction uses classical signal processing.
 Estimates are research candidates, not clinically validated measurements.
 Deepfake classification is outside the current project scope.
 
+## Project status
+
+| Area | Current state |
+|---|---|
+| Baseline | Video decoding, face tracking, RGB extraction, POS/green estimates, diagnostics, motion exclusions, tests, and package builds |
+| Experiments | Twelve patches, per-region exclusions, fractional coverage, and geometry-balanced partitions; all optional |
+| Evaluation | Public UBFC development results and a preserved fixed-rule evaluation, including failed windows and reference-label discrepancies |
+| Remaining | Independent reference/timing verification, broader motion and recording tests, and a fresh cohort before claiming reliable accuracy |
+
+See [sampling evaluation](SAMPLING_EVALUATION.md) for the latest paired development
+comparison, [patch support](PATCH_SUPPORT.md) for the scale study, and
+[reference diagnostics](CONTACT_REFERENCE_AUDIT.md) for unresolved label timing.
+
 ## Diagnostics update (0.2.0)
 
 See [DIAGNOSTICS.md](DIAGNOSTICS.md) for patch movement/shape measurements,

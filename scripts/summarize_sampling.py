@@ -6,6 +6,28 @@ from pathlib import Path
 from compare_subpixel import paired_metrics, summarize
 
 
+def coverage_changes(windows):
+    result = {}
+    for method in ('pos', 'green'):
+        result[method] = {}
+        for layout in ('three_regions', 'twelve_patches'):
+            result[method][layout] = {}
+            for gate in ('ungated', 'global_gate', 'regional_gate'):
+                counts = dict(common=0, integer_only=0, fractional_only=0, neither=0)
+                for a, b in zip(windows['integer'], windows['fractional']):
+                    if a['reference_bpm'] is None:
+                        continue
+                    available = []
+                    for row in (a, b):
+                        detail = row['methods'][method][layout]
+                        available.append((detail if gate == 'ungated' else detail[gate])['error_bpm'] is not None)
+                    key = ('common' if all(available) else 'integer_only' if available[0]
+                           else 'fractional_only' if available[1] else 'neither')
+                    counts[key] += 1
+                result[method][layout][gate] = counts
+    return result
+
+
 def summarize_reports(reports):
     if not reports:
         raise ValueError('Need at least one paired report')
@@ -40,6 +62,7 @@ def summarize_reports(reports):
                 missing_patch_observations=missing,
                 metrics={mode: summarize(rows) for mode, rows in windows.items()},
                 paired_metrics=paired_metrics(windows),
+                coverage_changes=coverage_changes(windows),
                 limitations=['Development recordings, not a fresh held-out cohort',
                              'Errors compare stored device BPM labels; reference and synchronization limitations remain',
                              'Pooled errors weight accepted windows equally, not recordings',

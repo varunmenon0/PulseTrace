@@ -25,6 +25,8 @@ def test_pooled_sampling_summary_preserves_failures_and_zero_accepted_gates():
     assert metrics['global_gate']['accepted_windows'] == 0
     assert metrics['global_gate']['mae_against_device_bpm'] is None
     assert result['patch_observations_per_sampler'] == 2 * 1993 * 12
+    coverage = result['coverage_changes']['pos']['twelve_patches']['ungated']
+    assert coverage == dict(common=18, integer_only=2, fractional_only=0, neither=0)
 
 
 def test_duplicate_recording_is_rejected():
