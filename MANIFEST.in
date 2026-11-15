@@ -30,3 +30,7 @@ recursive-include examples/subpixel-subject14 *.json
 
 include PATCH_SUPPORT.md
 recursive-include examples/equal-area-subject14 *.json
+
+include SAMPLING_EVALUATION.md
+recursive-include examples/equal-area-subject10 *.json
+include examples/balanced-sampling-summary.json
