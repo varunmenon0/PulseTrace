@@ -49,3 +49,6 @@ recursive-include examples/zone-consensus *.json
 
 include CONTROLLED_VIDEO.md
 recursive-include examples/controlled-video *.json *.svg *.png
+
+include PULSE_TRENDS.md
+recursive-include examples/pulse-trends *.json *.png *.svg

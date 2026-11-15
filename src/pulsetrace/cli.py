@@ -19,12 +19,14 @@ def main(argv=None):
     real.add_argument("--overlay", action="store_true", help="Write annotated tracking.avi (contains face video)")
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
     demo.add_argument("--bpm", type=float, default=72)
+    demo.add_argument("--end-bpm", type=float, help="End rate for a phase-continuous linear controlled pulse ramp")
     demo.add_argument("--seconds", type=float, default=20)
     demo.add_argument("--fps", type=float, default=30)
     demo.add_argument("--profile", choices=["standard", "clean", "mild_noise", "slow_light", "periodic_light"],
                       default="standard", help="Controlled profiles render a face with lossless skin-localized pulse modulation")
     for cmd in (real, demo):
         cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
+        cmd.add_argument("--track", action="store_true", help="Export quality-gated pulse trends in 12-second windows stepped every 6 seconds")
         cmd.add_argument("--consensus", choices=["patch", "zone"], default="patch",
                          help="Twelve-patch vote policy; zone uses one vote per supported parent region")
         cmd.add_argument("--output", type=Path, default=Path("outputs/run"))
@@ -48,6 +50,10 @@ def main(argv=None):
     segments.add_argument("--min-seconds", type=float, default=10.)
     segments.add_argument("--buffer-seconds", type=float, default=.5)
     args = parser.parse_args(argv)
+    if args.command in ("analyze", "demo") and args.track and not args.patches:
+        parser.error("--track requires --patches")
+    if args.command == "demo" and args.end_bpm is not None and args.profile == "standard":
+        parser.error("--end-bpm requires a controlled profile such as --profile clean")
     if args.command in ("analyze", "demo") and args.consensus == "zone" and not args.patches:
         parser.error("--consensus zone requires --patches")
     if args.command == "analyze" and args.regional_quality and not args.patches:
@@ -89,7 +95,7 @@ def main(argv=None):
             else:
                 from .controlled import make_controlled_video, ControlledTracker
                 metadata = make_controlled_video(video, bpm=args.bpm, seconds=args.seconds,
-                                                  fps=args.fps, profile=args.profile)
+                                                  fps=args.fps, profile=args.profile,end_bpm=args.end_bpm)
                 tracker = ControlledTracker()
             extraction = extract_video(video, tracker, patches=args.patches)
             extraction.metadata.update(metadata)
@@ -117,18 +123,26 @@ def main(argv=None):
             from .controlled import evaluate_controlled
             check = evaluate_controlled(extraction, tracker.background_rgb, consensus_policy=args.consensus)
             (args.output/"controlled_check.json").write_text(json.dumps(check,indent=2,allow_nan=False)+"\n")
-        print(json.dumps({"output": str(args.output.resolve()), "regions": summary["regions"],
-                          "failures": failures}, indent=2))
+        trend = None
+        if args.track or (args.command == "analyze" and args.regional_quality):
+            from .regional_quality import write_regional_comparison
+            regional = write_regional_comparison(extraction,args.output,consensus_policy=args.consensus,max_gap=args.max_gap)
+            if args.track:
+                from .trends import write_trend
+                trend = write_trend(regional,args.output)
+        console = {"output":str(args.output.resolve()),"regions":summary["regions"],"failures":failures}
+        if trend is not None:
+            console['tracking'] = trend['metrics']
+        print(json.dumps(console,indent=2))
         from .diagnostics import write_diagnostics
         write_diagnostics(extraction, args.output, max_gap=args.max_gap)
         from .quality import write_segments
         segments = write_segments(extraction, args.output, min_seconds=args.min_seconds, max_gap=args.max_gap)
-        if args.command == "analyze" and args.regional_quality:
-            from .regional_quality import write_regional_comparison
-            write_regional_comparison(extraction,args.output,consensus_policy=args.consensus)
         if args.patches:
             from .patches import write_patch_comparison
             comparison = write_patch_comparison(extraction, segments, args.output,consensus_policy=args.consensus)
+            if trend is not None:
+                return 0 if trend['metrics'][args.method]['estimated_windows'] else 2
             return 0 if any(row[method]["patch_consensus"]["bpm_candidate"] is not None
                             for row in comparison["segments"] for method in ("green", "pos")) else 2
         return 0 if results and any(r.bpm is not None for r in results.values()) else 2

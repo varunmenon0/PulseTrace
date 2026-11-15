@@ -45,11 +45,13 @@ def scene():
     return image.astype(float), skin
 
 
-def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profile='clean'):
+def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profile='clean', end_bpm=None):
     if not np.isfinite([bpm, seconds, fps]).all() or not 40 < bpm < 200 or seconds < 10 or not 10 <= fps <= 240:
         raise ValueError('Fixture requires 40<BPM<200, >=10 seconds and 10–240 FPS')
     if profile not in PROFILES:
         raise ValueError('Unknown controlled profile')
+    if end_bpm is not None and (not np.isfinite(end_bpm) or not 40 < end_bpm < 200):
+        raise ValueError('end_bpm must be finite and between 40 and 200')
     base, skin = scene()
     config = PROFILES[profile]
     rng = np.random.default_rng(seed)
@@ -61,17 +63,27 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
         for i in range(frames):
             t = i/fps
             image = base.copy()
-            image[skin] += np.sin(2*np.pi*bpm/60*t)*np.array(PULSE_RGB)[::-1]
+            phase = 2*np.pi*bpm/60*t
+            if end_bpm is not None:
+                # Integrate linear frequency so phase stays continuous and its
+                # derivative, rather than phase/time, follows the requested BPM.
+                phase = 2*np.pi*(bpm/60*t + (end_bpm-bpm)*t*t/(120*seconds))
+            image[skin] += np.sin(phase)*np.array(PULSE_RGB)[::-1]
             if config['noise_std']:
                 image[skin] += rng.normal(0, config['noise_std'], (int(skin.sum()), 3))
             image *= 1 + config['lighting_fraction']*np.sin(2*np.pi*config['lighting_hz']*t)
             writer.write(np.clip(np.rint(image), 0, 255).astype(np.uint8))
     finally:
         writer.release()
-    return dict(synthetic=True, profile=profile, expected_bpm=bpm, fps=fps,
+    metadata = dict(synthetic=True, profile=profile, expected_bpm=bpm, fps=fps,
                 seconds=seconds, encoded_frames=frames, width=SIZE[0], height=SIZE[1],
                 codec='FFV1', seed=seed, pulse_rgb_amplitude=list(PULSE_RGB),
                 settings=dict(config), tracking='Known rendered geometry, not MediaPipe inference')
+    if end_bpm is not None:
+        metadata['rate_trajectory'] = dict(kind='linear', start_bpm=bpm, end_bpm=end_bpm, duration_s=seconds)
+        if end_bpm != bpm:
+            metadata['expected_bpm'] = None
+    return metadata
 
 
 def evaluate_controlled(extraction, background_rgb, *, consensus_policy='patch'):

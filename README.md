@@ -10,12 +10,13 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 
 - **12 facial patches** across the forehead and cheeks, with selectable patch or zone voting.
 - **478-landmark face tracking**, timestamp-aware video decoding, and ROI overlays.
+- **Windowed pulse trends** with quality-gated estimates, CSV exports, and plots over time.
 - **Motion-aware analysis** with buffered exclusions and separate continuous segments.
 - **Fractional pixel coverage and geometry-balanced patches** for sampling experiments.
 - **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **146 passing automated tests**, plus an optional model-backed integration check.
+- **153 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
 
 ## Synthetic proof of concept
@@ -28,6 +29,17 @@ with **0.003 BPM mean error** and **less than 0.013 BPM maximum error**. It test
 
 See the [controlled-video benchmark](CONTROLLED_VIDEO.md) for the exact fixtures,
 separate lighting challenge, and reproduction command.
+
+### Track a changing synthetic pulse
+
+```bash
+pulsetrace demo --profile clean --bpm 72 --end-bpm 108 --seconds 60 \
+  --patches --consensus zone --track --output outputs/rising-pulse
+```
+
+The [controlled tracking benchmark](PULSE_TRENDS.md) recovered **21/21 windows**
+across rising, falling, and constant-rate cases, with **0.041 BPM POS mean error**
+against the injected window-average rates.
 
 ## Measured engineering results
 
@@ -127,12 +139,14 @@ availability, and estimate diagnostics. `pulsetrace --help` lists all commands.
 | `regions.png` | Sampled facial-region overlay |
 | `summary.json` | Estimates, timing, sample availability, and diagnostics |
 | `patch_comparison.json` | Three-region versus twelve-patch comparison |
+| `pulse_trend.csv`, `pulse_trend.json`, `pulse_trend.png` | Windowed estimates, timing, coverage, and curves with `--track` |
 | `regional_comparison.json` | Global versus regional exclusion comparison |
 
 ## Evaluation and experiments
 
 | Report | Focus |
 |---|---|
+| [Windowed pulse tracking](PULSE_TRENDS.md) | Changing-rate synthetic videos and quality-gated trends |
 | [Controlled synthetic videos](CONTROLLED_VIDEO.md) | Lossless fixtures, injected pulse references, and lighting cues |
 | [Public video evaluation](PUBLIC_VALIDATION_MULTI.md) | UBFC development recordings and reference checks |
 | [Fixed-rule evaluation](FROZEN_EVALUATION.md) | Preserved protocol and results on subjects 12–14 |
