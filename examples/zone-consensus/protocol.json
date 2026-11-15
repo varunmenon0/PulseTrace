@@ -1,0 +1,62 @@
+{
+  "status": "Development replay plan; previously used recordings, not a fresh held-out cohort",
+  "configuration": {
+    "tolerance_bpm": 5,
+    "minimum_patch_support_per_zone": 2,
+    "minimum_zone_support": 2,
+    "cluster_rule": "Unique largest strict-majority cluster at each level"
+  },
+  "groups": [
+    {
+      "name": "integer_sampling_six_recordings",
+      "format": "regional",
+      "reports": [
+        {
+          "path": "examples/ubfc-subject1/regional_comparison.json",
+          "sha256": "e1f79af2fca703b332d8718de82e7b138ee64fd837ec64a8b15aefec2961739a"
+        },
+        {
+          "path": "examples/ubfc-subject10/regional_comparison.json",
+          "sha256": "cf75d750bbefafc715e62b9e3ccf94e27e59d8a88bb5258b2eb4b56a367fdfa8"
+        },
+        {
+          "path": "examples/ubfc-subject11/regional_comparison.json",
+          "sha256": "d659e8fc55b958a834a9b21b991e8814e27c48816a5b34f51f2dc74c75ff2230"
+        },
+        {
+          "path": "examples/ubfc-heldout/subject12/regional_comparison.json",
+          "sha256": "1e9e705e2037f19cfffeb0f5304fe7eb72fd1776a135ab0cf453691bb8638dc3"
+        },
+        {
+          "path": "examples/ubfc-heldout/subject13/regional_comparison.json",
+          "sha256": "1df85e5d847d2d4007f3fc8789164cb833931c1e645ca10e1857f7e9a6a49148"
+        },
+        {
+          "path": "examples/ubfc-heldout/subject14/regional_comparison.json",
+          "sha256": "733dd7ee9d82c82cdd5e64678918b7de1384fbee4d8a63b7e2b34d05b661a6da"
+        }
+      ]
+    },
+    {
+      "name": "balanced_sampling_two_recordings",
+      "format": "sources",
+      "reports": [
+        {
+          "path": "examples/photometric-guard/subject10.json",
+          "sha256": "2c6b76f087373ae84f539a493510412de757088c161b43723a280af3cbc8380d"
+        },
+        {
+          "path": "examples/photometric-guard/subject14.json",
+          "sha256": "bcee0c41d10d2eb6134f07f5f2e52a80d55083f86e7a557e1707cfbf9563b1bb"
+        }
+      ]
+    }
+  ],
+  "invariants": [
+    "Use stored twelve-patch candidates exactly, including quality-excluded None values",
+    "Reproduce every original patch-vote result before comparing",
+    "Keep source reference labels, frames, spectra, and quality exclusions unchanged",
+    "Report both POS and green, coverage, common-window errors, new/lost decisions, and per-recording results",
+    "Do not pool sampling/gate policies or duplicate recording identities"
+  ]
+}
