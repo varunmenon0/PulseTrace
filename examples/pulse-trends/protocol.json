@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "profile": "clean",
+  "codec": "FFV1",
+  "seed": 7,
+  "consensus_policy": "zone",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "cases": [
+    {"name": "rising", "start_bpm": 72, "end_bpm": 108, "seconds": 60, "fps": 30},
+    {"name": "falling", "start_bpm": 120, "end_bpm": 72, "seconds": 60, "fps": 30},
+    {"name": "constant_control", "start_bpm": 83, "end_bpm": 83, "seconds": 24, "fps": 60}
+  ],
+  "reference": "Analytic mean of the injected linear rate over each window, equivalent to its midpoint rate",
+  "tracking": "Known rendered geometry; no model inference",
+  "analysis": "Fixed filters and regional quality exclusions; missing windows retained; no expected rate supplied to analysis"
+}

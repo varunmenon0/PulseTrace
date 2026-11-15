@@ -71,14 +71,14 @@ def gate_candidates(candidates, zones, usable, *, consensus_policy="patch"):
     return {"individual_candidates":filtered,**choose(filtered,zones)}
 
 
-def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch"):
+def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch", max_gap=.25):
     """Compare saved pulse candidates on matching continuous fixed windows."""
     from .signal import analyze
     from .patches import PATCHES
     if consensus_policy not in ("patch", "zone"):
         raise ValueError("Unknown consensus policy")
-    masks,shared=regional_masks(extraction,area_policy=area_policy)
-    global_quality=analyze_segments(extraction)
+    masks,shared=regional_masks(extraction,area_policy=area_policy,max_gap=max_gap)
+    global_quality=analyze_segments(extraction,max_gap=max_gap)
     t=extraction.time;rows=[]
     for start in np.arange(t[0],t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9,6):
         end=start+12;chosen=(t>=start)&(t<end)
@@ -94,7 +94,7 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
                 for name,rgb in traces.items():
                     samples=rgb[chosen];bpm=None
                     if np.isfinite(samples).all() and np.all(samples>0):
-                        try:bpm=analyze(t[chosen],samples,method=method,min_seconds=11.9).bpm
+                        try:bpm=analyze(t[chosen],samples,method=method,min_seconds=11.9,max_gap=max_gap).bpm
                         except ValueError:pass
                     estimates[name]=bpm
                 policy = consensus_policy if label == "twelve_patches" else "patch"
@@ -104,7 +104,7 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
         rows.append(row)
     report={"policy":"Experimental: region-specific area/displacement/loss; global exclusion when >=2 parent regions are displaced or unavailable",
             "threshold_status":"Unvalidated engineering heuristics",
-            "configuration":{"area_policy":area_policy,"consensus_policy":consensus_policy,"motion_threshold":.05,"area_threshold":.10,"buffer_seconds":.5,"window_seconds":12,"step_seconds":6},
+            "configuration":{"area_policy":area_policy,"consensus_policy":consensus_policy,"max_gap_seconds":max_gap,"motion_threshold":.05,"area_threshold":.10,"buffer_seconds":.5,"window_seconds":12,"step_seconds":6},
             "limitation":"Any excluded frame makes that region unavailable for the complete window; no gap bridging",
             "windows":rows}
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
