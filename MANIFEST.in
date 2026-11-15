@@ -55,3 +55,6 @@ recursive-include examples/pulse-trends *.json *.png *.svg
 
 include MOTION_RECOVERY.md
 recursive-include examples/motion-recovery *.json *.png *.svg
+
+include TRACKING_LOSS.md
+recursive-include examples/tracking-loss *.json *.png *.svg

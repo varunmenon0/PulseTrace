@@ -12,9 +12,14 @@ import numpy as np
 from benchmark_pulse_trends import run
 
 
+def event_interval(record):
+    fixture = record['fixture']
+    return fixture.get('visibility', fixture.get('motion', {})).get('event_interval_s')
+
+
 def recovery_metrics(record):
     """Score decisions after estimation; event truth never selects candidates."""
-    event = record['fixture'].get('motion', {}).get('event_interval_s')
+    event = event_interval(record)
     result = {}
     for method in ('green', 'pos'):
         rows = record['windows']
@@ -30,29 +35,33 @@ def recovery_metrics(record):
     return result
 
 
-def plot(result, output):
+def plot(result, output, *, title='PulseTrace · controlled motion and recovery'):
     fig, axes = plt.subplots(len(result['cases']), 1, figsize=(9, 2.3*len(result['cases'])),
                              constrained_layout=True, squeeze=False)
     axes = axes[:, 0]
     for ax, record in zip(axes, result['cases']):
-        ax.axhline(record['case']['start_bpm'], color='.5', linestyle='--', label='Injected rate')
-        event = record['fixture'].get('motion', {}).get('event_interval_s')
+        case = record['case']
+        low, high = sorted((case['start_bpm'], case['end_bpm']))
+        ax.plot([0, case['seconds']], [case['start_bpm'], case['end_bpm']],
+                color='.5', linestyle='--', label='Injected rate')
+        event = event_interval(record)
         if event:
-            ax.axvspan(*event, color='#e69536', alpha=.3, label='Rendered motion burst')
+            label = 'Face absent' if 'visibility' in record['fixture'] else 'Rendered motion burst'
+            ax.axvspan(*event, color='#e69536', alpha=.3, label=label)
         for row in record['windows']:
             if row['shared_motion_or_loss']:
-                ax.plot(row['center_s'], record['case']['start_bpm']-2.5, 'x', color='#bd3737', markersize=8)
+                ax.plot(row['center_s'], low-2.5, 'x', color='#bd3737', markersize=8)
         for method, color, marker in (('green', '#48a868', 'x'), ('pos', '#377bb5', 'o')):
             ax.plot([r['center_s'] for r in record['windows']],
                 [r['methods'][method]['bpm_candidate'] if r['methods'][method]['bpm_candidate'] is not None else np.nan for r in record['windows']],
                 marker+'-', color=color, label=method.upper(), fillstyle='none')
         ax.set(title=record['case']['name'].replace('_', ' ').title(), ylabel='BPM',
-               ylim=(record['case']['start_bpm']-3, record['case']['end_bpm']+3),
+               ylim=(low-3, high+3),
                xlim=(0, record['case']['seconds']))
         ax.grid(alpha=.2)
-        ax.legend(loc='upper right', fontsize=8, ncol=3)
+        ax.legend(loc='upper left' if low != high else 'upper right', fontsize=8, ncol=3)
     axes[-1].set_xlabel('Window center (seconds); red crosses mark excluded windows')
-    fig.suptitle('PulseTrace · controlled motion and recovery')
+    fig.suptitle(title)
     for suffix in ('png', 'svg'):
         fig.savefig(output/('summary.'+suffix), dpi=160)
     plt.close(fig)

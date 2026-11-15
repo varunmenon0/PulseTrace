@@ -36,6 +36,17 @@ def test_out_of_order_windows_are_rejected():
     with pytest.raises(ValueError):build_trend(source)
 
 
+def test_unavailable_reasons_distinguish_quality_from_pulse_support():
+    source=report()
+    trend=build_trend(source)
+    # One excluded parent does not by itself prevent a two-zone estimate.
+    assert trend['windows'][1]['methods']['pos']['unavailable_reason']=='insufficient_pulse_support'
+    assert trend['windows'][0]['methods']['pos']['unavailable_reason'] is None
+    assert trend['windows'][1]['sample_loss_regions']==[]
+    source['windows'][1]['usable_regions']['forehead']=False
+    assert build_trend(source)['windows'][1]['methods']['pos']['unavailable_reason']=='quality_exclusion'
+
+
 def test_cli_tracks_a_phase_continuous_ramp(tmp_path):
     from pulsetrace.cli import main
     output=tmp_path/'ramp'
