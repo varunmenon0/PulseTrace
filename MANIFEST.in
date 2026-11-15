@@ -24,3 +24,6 @@ recursive-include examples/subject14-diagnosis *.json
 
 include CONTACT_REFERENCE_AUDIT.md
 recursive-include examples/contact-reference-audit *.json
+
+include SUBPIXEL_SAMPLING.md
+recursive-include examples/subpixel-subject14 *.json

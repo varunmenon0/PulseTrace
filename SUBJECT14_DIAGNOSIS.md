@@ -91,3 +91,7 @@ including visual pulse inspection and alignment evidence. Then evaluate a subpix
 weighted sampler against the existing integer sampler using the same frames and
 fixed gates. A reliable sampling fix needs a fresh held-out cohort; simply
 increasing area tolerance is not supported by this experiment.
+
+Follow-up experiments: [fractional sampling](SUBPIXEL_SAMPLING.md) and
+[contact-reference beat timing](CONTACT_REFERENCE_AUDIT.md). These remain
+exploratory; the default sampling and reference labels are unchanged.
