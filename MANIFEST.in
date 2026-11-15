@@ -39,3 +39,7 @@ include REFERENCE_PROTOCOL.md
 
 include AREA_GATE_EVALUATION.md
 recursive-include examples/area-gates *.json
+
+include PHOTOMETRIC_GUARD.md
+
+recursive-include examples/photometric-guard *.json

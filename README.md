@@ -1,150 +1,137 @@
 # PulseTrace
 
-PulseTrace estimates heart rate from facial video using remote
-photoplethysmography (rPPG). It tracks facial skin regions, extracts RGB traces,
-and compares green-channel and POS pulse estimates, with motion exclusions and
-an experimental 12-patch layout. MediaPipe supplies face landmarks; pulse
-extraction uses classical signal processing.
+Video-based heart-rate estimation using computer vision and remote
+photoplethysmography (rPPG). PulseTrace tracks facial regions, extracts RGB
+signals, and estimates pulse frequency with POS and green-channel processing.
 
-Estimates are research candidates, not clinically validated measurements.
-Deepfake classification is outside the current project scope.
+**Python · OpenCV · MediaPipe · NumPy · SciPy · Matplotlib · GitHub Actions**
 
-## Project status
+## Highlights
 
-| Area | Current state |
+- **12 facial patches** across the forehead and cheeks, with regional consensus.
+- **478-landmark face tracking**, timestamp-aware video decoding, and ROI overlays.
+- **Motion-aware analysis** with buffered exclusions and separate continuous segments.
+- **Fractional pixel coverage and geometry-balanced patches** for sampling experiments.
+- **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
+  and external beat-time reference support.
+- **122 passing automated tests**, plus an optional model-backed integration check.
+- **Continuous integration** running tests, a synthetic video demo, and package builds.
+
+## Measured engineering results
+
+| Experiment | Result |
 |---|---|
-| Baseline | Video decoding, face tracking, RGB extraction, POS/green estimates, diagnostics, motion exclusions, tests, and package builds |
-| Experiments | Twelve patches, per-region exclusions, fractional coverage, and geometry-balanced partitions; all optional |
-| Evaluation | Public UBFC development results and a preserved fixed-rule evaluation, including failed windows and reference-label discrepancies |
-| Remaining | Independent reference/timing verification, broader motion and recording tests, and a fresh cohort before claiming reliable accuracy |
+| Balanced patch support | All 12 patches available across 4,017 frames from two UBFC development recordings |
+| Fractional mask geometry | Area-step events fell from 72 to 8 on subject 14 |
+| Area-source gate comparison | Scorable windows increased from 6/20 to 17/20 with unchanged thresholds |
+| Artifact stress suite | Seven deterministic RGB/geometry cases covering motion, sample loss, attenuation, and lighting |
 
-See [sampling evaluation](SAMPLING_EVALUATION.md) for the latest paired development
-comparison, [patch support](PATCH_SUPPORT.md) for the scale study, and
-[reference diagnostics](CONTACT_REFERENCE_AUDIT.md) for unresolved label timing.
-
-## Diagnostics update (0.2.0)
-
-See [DIAGNOSTICS.md](DIAGNOSTICS.md) for patch movement/shape measurements,
-area and RGB artifact flags, window estimates, a video-free `diagnose` command,
-and synchronized-reference evaluation. Signal extraction and thresholds remain
-unchanged; diagnostics do not certify a heartbeat.
+These metrics describe sampling, coverage, and controlled stress tests. Heart-rate
+comparisons, reference definitions, and per-window results are documented in the
+[evaluation reports](#evaluation-and-experiments).
 
 ## Quick start
 
-Use Python **3.10–3.12**, preferably 3.12, in a fresh environment:
+Use Python **3.10–3.12**, preferably 3.12:
 
 ```bash
-cd pulsetrace
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
 pytest -q
-pulsetrace demo --output outputs/demo
+pulsetrace demo --patches --output outputs/demo
 ```
 
 Windows: use `py -3.12 -m venv .venv` and `.venv\Scripts\activate`.
-The demo needs no downloaded model. It encodes a noisy synthetic 72 BPM video,
-decodes it through OpenCV, samples known fixture patches, extracts POS signals,
-and exports the same report format as real analysis. It is an engineering test,
-not evidence of physiological accuracy or face detection performance.
+The model-free demo creates a noisy synthetic video with a known 72 BPM component
+and runs it through video decoding, regional sampling, signal processing, and
+report generation.
 
-On minimal Ubuntu/Debian systems, MediaPipe may require:
+Minimal Ubuntu/Debian environments may need:
 
 ```bash
 sudo apt-get update
 sudo apt-get install libgles2 libegl1 libgl1 libglib2.0-0
 ```
 
-Use only one OpenCV wheel provider in the environment. The project uses
-`opencv-contrib-python` because MediaPipe declares it as a dependency; adding
-`opencv-python` or `opencv-python-headless` can overwrite the shared `cv2` module.
-No GUI/display is needed; plots use Matplotlib's Agg backend.
+Use the project's `opencv-contrib-python` dependency as the single OpenCV wheel
+provider. Charts render headlessly with Matplotlib's Agg backend.
 
-## Real-video CLI
+## Analyze a video
 
-Download the official versioned Face Landmarker model (SHA256 checked):
+Download the versioned Face Landmarker asset with SHA256 verification:
 
 ```bash
 python scripts/download_model.py
-pulsetrace analyze recording.mp4 --model models/face_landmarker.task \
+pulsetrace analyze recording.mp4 \
+  --model models/face_landmarker.task \
+  --patches --regional-quality \
   --output outputs/recording --method pos
-pulsetrace analyze recording.mp4 --model models/face_landmarker.task \
-  --output outputs/green --method green --max-seconds 30
 ```
 
-Record one consenting person for 20–30 seconds at about 30 FPS. Keep the face
-large, unobstructed, and nearly still, with stable diffuse light. Avoid filters,
-heavy compression, moving shadows, screen flicker, and automatic exposure
-changes. At least 10 seconds of a usable continuous region is required by default.
-`--min-seconds` and `--max-gap` configure segment selection; default maximum
-bridged detection gap is 0.25 seconds. Region size must be at least 30 inset pixels.
-A face leaving the frame produces missing samples, not reused landmarks.
+Use `--method green` to compare green-channel extraction, `--max-seconds 30` to
+select a duration, and `--overlay` to export annotated tracking video. The default
+sampling mode uses the three parent regions; `--patches` adds the twelve-patch
+comparison. Fractional sampling and photometric policies have dedicated offline
+experiment commands in the linked reports.
 
-Exit code 0 means at least one region has a spectral HR candidate. Code 2 means
-invalid input, no sufficient segment, or no usable HR candidate; reports are
-still written when decoding succeeded and per-region analysis was attempted.
-CLI estimates are **candidates**, not calibrated confidence values. The metadata
-`synthetic` flag records whether the built-in fixture demo was used; it does not
-classify an input video as real or synthetic.
+For repeatable captures, record one consenting person for 20–30 seconds at about
+30 FPS, with a large, unobstructed face and stable diffuse lighting. The default
+minimum continuous segment is 10 seconds, maximum interpolated internal detection
+gap is 0.25 seconds, and minimum inset region size is 30 pixels.
+
+Exit code 0 indicates an available estimate; code 2 identifies invalid input or
+insufficient usable data. Reports include timestamps, selected segments, sample
+availability, and estimate diagnostics. `pulsetrace --help` lists all commands.
+
+## Pipeline
+
+1. **Decode:** stream frames and timestamps through OpenCV, recording timing fallbacks.
+2. **Track:** run MediaPipe VIDEO inference and accept single-face frames.
+3. **Sample:** average RGB over landmark-anchored, eroded forehead and cheek masks;
+   optionally subdivide them into twelve patches.
+4. **Prepare:** select continuous segments, resample to a uniform time grid, and
+   interpolate short internal detection gaps.
+5. **Extract:** use normalized green intensity or rolling 1.6-second POS projection.
+6. **Filter:** detrend and apply an offline fourth-order, zero-phase Butterworth
+   bandpass covering 40–200 BPM.
+7. **Estimate:** calculate Welch power spectra, refine the spectral peak, and apply
+   flat-signal, band-edge, and concentration checks.
+8. **Compare:** combine regional candidates with consensus and export waveforms,
+   spectra, overlays, quality diagnostics, and evaluation metrics.
 
 ## Outputs
 
 | File | Contents |
-| --- | --- |
-| `rgb.csv` | Every decoded timestamp; per-region R/G/B means and pixel counts; missing detections are NaN with 0 pixels |
-| `forehead_pulse.csv`, `left_cheek_pulse.csv`, `right_cheek_pulse.csv` | Uniform timestamps and filtered relative-amplitude waveforms for each analyzed segment |
+|---|---|
+| `rgb.csv` | Timestamps, RGB means, pixel counts, and geometry diagnostics |
+| `*_pulse.csv` | Filtered regional waveforms |
 | `*_spectrum.csv` | Welch power spectral density |
-| `waveforms.png` | Regional waveforms and spectra, with candidate HR markers |
-| `regions.png` | First frame with all three valid ROI masks overlaid |
-| `summary.json` | Method, input timing, valid frame fractions, segments, HR candidates, warnings and failures |
+| `waveforms.png` | Regional waveform and spectrum plots |
+| `regions.png` | Sampled facial-region overlay |
+| `summary.json` | Estimates, timing, sample availability, and diagnostics |
+| `patch_comparison.json` | Three-region versus twelve-patch comparison |
+| `regional_comparison.json` | Global versus regional exclusion comparison |
 
-Independent regions can use different longest valid segments. Compare segment
-timestamps before any future spatial-coherence analysis. The plotted first and
-last second can contain filter/window edge artifacts; those seconds are excluded
-from spectral HR estimation.
+## Evaluation and experiments
 
-## Modules and algorithm
+| Report | Focus |
+|---|---|
+| [Public video evaluation](PUBLIC_VALIDATION_MULTI.md) | UBFC development recordings and reference checks |
+| [Fixed-rule evaluation](FROZEN_EVALUATION.md) | Preserved protocol and results on subjects 12–14 |
+| [Sampling comparison](SAMPLING_EVALUATION.md) | Paired integer and balanced fractional sampling |
+| [Patch support](PATCH_SUPPORT.md) | Geometry scale and sampling-lattice study |
+| [Area-source gates](AREA_GATE_EVALUATION.md) | Identical-RGB comparison of gate area measurements |
+| [Artifact stress tests](PHOTOMETRIC_GUARD.md) | Optional broad RGB-step guard and controlled lighting cases |
+| [External beat references](REFERENCE_PROTOCOL.md) | Provenance, clock offsets, and beat-time scoring |
+| [Diagnostics](DIAGNOSTICS.md) | RGB, shape, movement, and window-level inspection |
 
-| Module | Responsibility |
-| --- | --- |
-| `video.py` | Stream OpenCV frames; presentation timestamps with monotonic FPS fallback |
-| `tracking.py` | MediaPipe Tasks VIDEO inference, millisecond timestamps, single-face acceptance |
-| `regions.py` | Landmark-based forehead and cheek polygons, convex masks, boundary erosion, RGB averages |
-| `pipeline.py` | Coordinate stages with injectable tracker for reproducible tests |
-| `signal.py` | Segment selection, resampling, green/POS extraction, filtering, spectral estimation |
-| `report.py` | Headless visualization and CSV/JSON exports |
-| `synthetic.py` | Deterministic video fixture and known geometry, used exclusively in demo/tests |
-| `cli.py` | `demo` and `analyze` entry points |
+Each report identifies its input data, settings, scoring protocol, and results.
+Synthetic fixtures and natural-video evaluations are reported separately.
+Numeric examples live in `examples/`; recordings and model assets are acquired
+through the documented download scripts.
 
-1. Decode BGR frames and timestamps. Use OpenCV presentation timestamps when
-   monotonic; otherwise use FPS-based fallback and record its count. OpenCV may
-   stop early on damaged media, so decoded frame count is not proof of completeness.
-2. Track landmarks using MediaPipe's VIDEO mode. Configure up to two faces and
-   reject frames unless exactly one is detected. This disables MediaPipe's
-   single-face landmark smoothing. It is not an identity tracker; use one person
-   throughout the clip. Cuts between people are outside current scope.
-3. Build three landmark-anchored, eroded convex patches. Reject out-of-frame or
-   small patches. Average their pixels in RGB order. These are geometric patches,
-   not semantic skin segmentation; inspect `regions.png` for hair/occlusion.
-4. For each region, select the longest valid segment, break on gaps over 0.25 s,
-   interpolate only short internal gaps, and resample to the median timestamp
-   cadence. Do not fill endpoints or bridge long tracking losses.
-5. Extract normalized green intensity or rolling **1.6-second POS**:
-   normalize RGB by temporal means, project `X=G−B` and `Y=G+B−2R`, combine
-   `X + std(X)/std(Y) * Y`, subtract each window's mean, and average overlapping
-   contributions. This is a documented implementation variant using overlap
-   averaging; it is not a claimed exact reproduction of a published benchmark.
-6. Detrend and apply a fourth-order Butterworth bandpass at 40–200 BPM using
-   second-order sections and forward/backward filtering. This is offline,
-   zero-phase processing, not a causal real-time filter.
-7. Trim one second at each end for HR estimation. Estimate Welch PSD with up to
-   10-second windows and 4× zero-padding, select the band peak, and refine it with
-   log-parabolic interpolation. Zero-padding does not improve physical resolution.
-8. Reject flat signals, band-edge peaks, and diffuse spectra. `peak_fraction`
-   is power within ±0.15 Hz of the peak divided by in-band power. Its 0.35 cutoff
-   is an engineering heuristic, not a validated physiological quality threshold.
-
-## Tests and reproducibility
+## Development
 
 ```bash
 pytest -q
@@ -152,74 +139,26 @@ pulsetrace demo --bpm 96 --seconds 20 --method green --output outputs/green-demo
 python -m build
 ```
 
-Tests cover 48/72/120/180 BPM, both extraction methods, lighting drift, noise,
-flat signals, NaNs, nonmonotonic timing, irregular sampling, short/long gaps,
-Nyquist limits, ROI validity, channel ordering, missing faces, video decoding,
-CLI artifacts, and the MediaPipe adapter contract. Tests do not download assets.
-
-To run the optional actual MediaPipe integration test, set asset paths:
+Tests cover signal processing, ROI geometry, twelve-patch consensus, timestamps,
+tracking loss, motion exclusions, photometric stress cases, reference provenance,
+CLI reports, and package integration. The optional MediaPipe test uses explicit
+asset paths:
 
 ```bash
 PULSETRACE_TEST_MODEL=models/face_landmarker.task \
-PULSETRACE_TEST_PORTRAIT=/absolute/path/to/a/portrait.jpg pytest -q
+PULSETRACE_TEST_PORTRAIT=/absolute/path/to/portrait.jpg pytest -q
 ```
 
-This integration test repeats a portrait into a video with a known injected
-color oscillation and small movement, and also checks a blank frame. It verifies
-model execution and pipeline wiring. It does not validate natural human pulse
-recovery. See `VALIDATION.md` for the checks actually performed for this release.
-`requirements-tested.txt` records the environment used, while `pyproject.toml`
-contains supported dependency ranges. GitHub Actions runs ordinary tests and a
-synthetic demo on Python 3.12. Real model inference is an explicit optional check.
-Actual model inference and the real-video CLI passed on a public portrait video
-with an injected pulse signal. The installed MediaPipe native runtime also
-attempted an unverified network connection during validation; see `VALIDATION.md`
-before using private recordings. This release does not assert network isolation
-of the upstream native runtime.
-
-## Limits and validation priorities
-
-A band-limited oscillation is not proof of a heartbeat. Real videos can have weak
-or absent recoverable rPPG due to compression, skin visibility, motion, or light.
-Synthetic/edited videos can preserve or fabricate pulse-like oscillations.
-No detection accuracy, biometric validation, or Intel FakeCatcher-equivalent
-performance is claimed. A missing pulse must not be labeled a deepfake.
-
-Before claiming reliable video-based heart-rate accuracy:
-
-- Test consented real recordings against synchronized contact PPG/ECG or another
-  suitable HR reference; report HR error, usable-signal coverage, and failures.
-- Measure behavior across illumination, motion, skin tones, resolution, frame
-  rates, and compression, including failure cases rather than only favorable clips.
-- Verify ROI placement and identity continuity on real recordings.
-- Use independent subjects and recordings for algorithm development and evaluation;
-  never tune thresholds on the clips used to report final accuracy.
+See [VALIDATION.md](VALIDATION.md) for environment and model-integration records.
+`requirements-tested.txt` records the tested environment; `pyproject.toml`
+defines supported dependency ranges.
 
 ## References
 
-- [MediaPipe Face Landmarker Python documentation](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker/python)
-- [Official versioned model](https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task)
-- Wang, W., den Brinker, A. C., Stuijk, S., & de Haan, G. (2017).
-  Algorithmic principles of remote PPG. *IEEE Transactions on Biomedical
-  Engineering, 64*(7), 1479–1491. [DOI](https://doi.org/10.1109/TBME.2016.2609282)
-- [SciPy SOS zero-phase filtering](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.sosfiltfilt.html)
+- [MediaPipe Face Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker/python)
+- Wang et al. (2017), *Algorithmic principles of remote PPG*,
+  [IEEE TBME](https://doi.org/10.1109/TBME.2016.2609282)
+- [SciPy zero-phase filtering](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.sosfiltfilt.html)
 - [SciPy Welch PSD](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html)
 
-The source is MIT licensed. Downloaded models and optional third-party test
-portraits retain their own upstream terms; they are not bundled with this source.
-
-## Experimental stabilization and overlay
-
-See [STABILIZATION.md](STABILIZATION.md) for baseline/template comparison commands and limits.
-
-See [SEGMENTS.md](SEGMENTS.md) for motion exclusions and independent usable sections.
-
-See [PATCHES.md](PATCHES.md) for the experimental 12-patch comparison.
-
-See [PUBLIC_VALIDATION.md](PUBLIC_VALIDATION.md) for the first public UBFC video comparison.
-
-See [PUBLIC_VALIDATION_MULTI.md](PUBLIC_VALIDATION_MULTI.md) for the three-subject comparison, coverage losses, and reference-dropout findings.
-
-See [REGIONAL_QUALITY.md](REGIONAL_QUALITY.md) for the experimental per-region quality comparison.
-
-See [FROZEN_EVALUATION.md](FROZEN_EVALUATION.md) for the fixed-rule check on previously unprocessed UBFC subjects 12-14.
+MIT licensed. Downloaded models and dataset assets retain their upstream terms.

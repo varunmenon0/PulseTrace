@@ -90,3 +90,7 @@ Keep this gate offline. Next evaluation needs externally reviewed references,
 motion/occlusion cases that test rejection safety, and a fresh cohort after the
 sampling/gating protocol is frozen. Neither higher coverage nor the small
 accepted-set error on subject 10 justifies a default change yet.
+
+The optional [photometric guard and artifact stress suite](PHOTOMETRIC_GUARD.md)
+tests broad RGB-step exclusions separately. Its default is disabled, and its
+known gradual/periodic lighting blind spots are documented.
