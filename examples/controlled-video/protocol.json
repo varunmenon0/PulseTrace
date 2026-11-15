@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "seconds": 20,
+  "seed": 7,
+  "codec": "FFV1",
+  "consensus_policy": "zone",
+  "agreement_tolerance_bpm": 5,
+  "cases": [
+    {
+      "name": "clean_48_30",
+      "profile": "clean",
+      "bpm": 48,
+      "fps": 30,
+      "group": "clean"
+    },
+    {
+      "name": "clean_72_30",
+      "profile": "clean",
+      "bpm": 72,
+      "fps": 30,
+      "group": "clean"
+    },
+    {
+      "name": "clean_83_30",
+      "profile": "clean",
+      "bpm": 83,
+      "fps": 30,
+      "group": "clean"
+    },
+    {
+      "name": "clean_120_30",
+      "profile": "clean",
+      "bpm": 120,
+      "fps": 30,
+      "group": "clean"
+    },
+    {
+      "name": "clean_180_30",
+      "profile": "clean",
+      "bpm": 180,
+      "fps": 30,
+      "group": "clean"
+    },
+    {
+      "name": "clean_72_60",
+      "profile": "clean",
+      "bpm": 72,
+      "fps": 60,
+      "group": "clean"
+    },
+    {
+      "name": "mild_noise_72",
+      "profile": "mild_noise",
+      "bpm": 72,
+      "fps": 30,
+      "group": "controlled_variations"
+    },
+    {
+      "name": "slow_light_72",
+      "profile": "slow_light",
+      "bpm": 72,
+      "fps": 30,
+      "group": "controlled_variations"
+    },
+    {
+      "name": "periodic_light_72",
+      "profile": "periodic_light",
+      "bpm": 72,
+      "fps": 30,
+      "group": "lighting_challenge"
+    }
+  ],
+  "scoring": "Score decoded-video estimates against injected BPM after analysis; preserve missing estimates",
+  "tracking": "Known rendered geometry; model-free proof of concept",
+  "cue": "Green/POS disagreement plus background-frequency match; reference BPM does not enter this decision"
+}

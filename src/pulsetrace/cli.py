@@ -20,6 +20,9 @@ def main(argv=None):
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
     demo.add_argument("--bpm", type=float, default=72)
     demo.add_argument("--seconds", type=float, default=20)
+    demo.add_argument("--fps", type=float, default=30)
+    demo.add_argument("--profile", choices=["standard", "clean", "mild_noise", "slow_light", "periodic_light"],
+                      default="standard", help="Controlled profiles render a face with lossless skin-localized pulse modulation")
     for cmd in (real, demo):
         cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
         cmd.add_argument("--consensus", choices=["patch", "zone"], default="patch",
@@ -78,10 +81,18 @@ def main(argv=None):
             from .synthetic import make_video, SyntheticTracker
             args.output.mkdir(parents=True, exist_ok=True)
             video = args.output / "synthetic.avi"
-            make_video(video, bpm=args.bpm, seconds=args.seconds)
-            extraction = extract_video(video, SyntheticTracker(), patches=args.patches)
-            extraction.metadata.update({"synthetic": True, "expected_bpm": args.bpm,
-                                         "tracking": "known fixture geometry; not MediaPipe"})
+            if args.profile == "standard":
+                make_video(video, bpm=args.bpm, seconds=args.seconds, fps=args.fps)
+                tracker = SyntheticTracker()
+                metadata = {"synthetic": True, "expected_bpm": args.bpm,
+                            "profile": "standard", "tracking": "known fixture geometry; not MediaPipe"}
+            else:
+                from .controlled import make_controlled_video, ControlledTracker
+                metadata = make_controlled_video(video, bpm=args.bpm, seconds=args.seconds,
+                                                  fps=args.fps, profile=args.profile)
+                tracker = ControlledTracker()
+            extraction = extract_video(video, tracker, patches=args.patches)
+            extraction.metadata.update(metadata)
         else:
             from .tracking import FaceTracker
             with FaceTracker(args.model) as tracker:
@@ -102,6 +113,10 @@ def main(argv=None):
             for name in ("pulsetrace", "numpy", "scipy", "opencv-contrib-python", "mediapipe", "matplotlib")
         }
         summary = write_report(extraction, results, failures, args.output, args.method)
+        if args.command == "demo" and args.profile != "standard":
+            from .controlled import evaluate_controlled
+            check = evaluate_controlled(extraction, tracker.background_rgb, consensus_policy=args.consensus)
+            (args.output/"controlled_check.json").write_text(json.dumps(check,indent=2,allow_nan=False)+"\n")
         print(json.dumps({"output": str(args.output.resolve()), "regions": summary["regions"],
                           "failures": failures}, indent=2))
         from .diagnostics import write_diagnostics
