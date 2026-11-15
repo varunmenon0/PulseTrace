@@ -85,6 +85,9 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
         usable={n:not bool(m[chosen].any()) for n,m in masks.items()}
         globally_usable=not any(start<i["end_s"] and end>i["start_s"] for i in global_quality["excluded_intervals"])
         row={"start_s":float(start),"end_s":float(end),"usable_regions":usable,
+             "sample_loss_regions":sorted(n for n in REGIONS if np.any(
+                 (extraction.pixels[n][chosen]<=0) | ~np.isfinite(extraction.rgb[n][chosen]).all(axis=1) |
+                 (extraction.rgb[n][chosen]<=0).any(axis=1))),
              "shared_motion_or_loss":bool(shared[chosen].any()),"methods":{}}
         for method in ("pos","green"):
             layouts={}

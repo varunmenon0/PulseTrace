@@ -12,9 +12,17 @@ PROFILES = {
     'periodic_light': dict(noise_std=0., lighting_hz=1.8, lighting_fraction=.05),
     'steady_motion': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
     'motion_burst': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
+    'face_loss': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
+    'face_loss_tail': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
 }
 SIZE = (320, 240)
 PULSE_RGB = (.6, 3., .2)
+
+
+def face_visible(profile, time):
+    """Known visibility of the rendered face; never infers or supplies pulse."""
+    return not ((profile == 'face_loss' and 20 <= time < 22) or
+                (profile == 'face_loss_tail' and time >= 20))
 
 
 def motion_offset(profile, time):
@@ -38,10 +46,12 @@ class ControlledTracker(SyntheticTracker):
 
     def detect(self, bgr, time):
         h, w = bgr.shape[:2]
+        self.background_rgb.append(bgr[:max(1, h//10), :max(1, w//10)].mean(axis=(0, 1))[::-1])
+        if not face_visible(self.profile, time):
+            return None
         points = super().detect(bgr, time)
         points[33], points[263] = (.3*w, .35*h), (.7*w, .35*h)
         points += motion_offset(self.profile, time)
-        self.background_rgb.append(bgr[:max(1, h//10), :max(1, w//10)].mean(axis=(0, 1))[::-1])
         return points
 
 
@@ -66,8 +76,8 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
         raise ValueError('Fixture requires 40<BPM<200, >=10 seconds and 10–240 FPS')
     if profile not in PROFILES:
         raise ValueError('Unknown controlled profile')
-    if profile == 'motion_burst' and seconds < 36:
-        raise ValueError('motion_burst requires >=36 seconds to include recovery after the 20–22 second event')
+    if profile in ('motion_burst', 'face_loss', 'face_loss_tail') and seconds < 36:
+        raise ValueError(f'{profile} requires >=36 seconds to include the event and subsequent windows')
     if end_bpm is not None and (not np.isfinite(end_bpm) or not 40 < end_bpm < 200):
         raise ValueError('end_bpm must be finite and between 40 and 200')
     base, skin = scene()
@@ -90,6 +100,8 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
             if config['noise_std']:
                 image[skin] += rng.normal(0, config['noise_std'], (int(skin.sum()), 3))
             image *= 1 + config['lighting_fraction']*np.sin(2*np.pi*config['lighting_hz']*t)
+            if not face_visible(profile, t):
+                image[:] = (60, 45, 35)
             if profile in ('steady_motion', 'motion_burst'):
                 dx, dy = motion_offset(profile, t)
                 image = cv2.warpAffine(image, np.float32([[1, 0, dx], [0, 1, dy]]), SIZE,
@@ -105,6 +117,9 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
         metadata['motion'] = dict(kind=profile, translation_units='pixels',
             description='Perfect known tracking of translated rendered face',
             event_interval_s=[20, 22] if profile == 'motion_burst' else None)
+    if profile in ('face_loss', 'face_loss_tail'):
+        metadata['visibility'] = dict(kind=profile, event_interval_s=[20, 22 if profile == 'face_loss' else seconds],
+            description='Rendered face absent; known fixture tracker returns no landmarks')
     if end_bpm is not None:
         metadata['rate_trajectory'] = dict(kind='linear', start_bpm=bpm, end_bpm=end_bpm, duration_s=seconds)
         if end_bpm != bpm:
