@@ -1,0 +1,89 @@
+{
+  "recordings": 3,
+  "metrics": {
+    "pos": {
+      "three_regions": {
+        "global_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 4,
+          "coverage": 0.17391304347826086,
+          "mae_bpm": 1.7569783931509733
+        },
+        "regional_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 11,
+          "coverage": 0.4782608695652174,
+          "mae_bpm": 1.9299168927598307
+        },
+        "newly_admitted": {
+          "windows": 7,
+          "mae_bpm": 2.0287388925363206,
+          "max_absolute_error_bpm": 3.894624181255253
+        },
+        "lost_global_estimates": 0
+      },
+      "twelve_patches": {
+        "global_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 3,
+          "coverage": 0.13043478260869565,
+          "mae_bpm": 1.4308773389663447
+        },
+        "regional_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 7,
+          "coverage": 0.30434782608695654,
+          "mae_bpm": 1.231378530726212
+        },
+        "newly_admitted": {
+          "windows": 4,
+          "mae_bpm": 1.0817544245461121,
+          "max_absolute_error_bpm": 2.5889689371798283
+        },
+        "lost_global_estimates": 0
+      }
+    },
+    "green": {
+      "three_regions": {
+        "global_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 2,
+          "coverage": 0.08695652173913043,
+          "mae_bpm": 1.7339126783680854
+        },
+        "regional_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 4,
+          "coverage": 0.17391304347826086,
+          "mae_bpm": 2.380863510073784
+        },
+        "newly_admitted": {
+          "windows": 2,
+          "mae_bpm": 3.0278143417794823,
+          "max_absolute_error_bpm": 4.935439698347835
+        },
+        "lost_global_estimates": 0
+      },
+      "twelve_patches": {
+        "global_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 4,
+          "coverage": 0.17391304347826086,
+          "mae_bpm": 1.5396830724495914
+        },
+        "regional_gate": {
+          "reference_valid_windows": 23,
+          "accepted_windows": 5,
+          "coverage": 0.21739130434782608,
+          "mae_bpm": 1.462077194127221
+        },
+        "newly_admitted": {
+          "windows": 1,
+          "mae_bpm": 1.1516536808377396,
+          "max_absolute_error_bpm": 1.1516536808377396
+        },
+        "lost_global_estimates": 0
+      }
+    }
+  }
+}

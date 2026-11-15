@@ -1,0 +1,130 @@
+{
+  "method": "Contact-only PSD peak and independently detected interbeat intervals",
+  "limitations": [
+    "Exploratory, not a validated PPG reference extractor",
+    "Device BPM may be averaged or misaligned; no cause established",
+    "Video estimates are never used to choose PPG peaks or reference labels"
+  ],
+  "windows": [
+    {
+      "start_s": 0.0,
+      "end_s": 12.0,
+      "device_median_bpm": 98.0,
+      "ppg_spectral_bpm": 69.00000000000001,
+      "ppg_interbeat_bpm": 72.0,
+      "spectral_peak_fraction": 0.7340375014326379,
+      "interbeat_cv": 0.13751384329452543,
+      "device_ppg_difference_bpm": 28.999999999999986,
+      "device_ppg_disagreement_over_10_bpm": true,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 6.0,
+      "end_s": 18.0,
+      "device_median_bpm": 82.0,
+      "ppg_spectral_bpm": 72.00000000000001,
+      "ppg_interbeat_bpm": 72.0,
+      "spectral_peak_fraction": 0.6968517016569429,
+      "interbeat_cv": 0.06592558621363548,
+      "device_ppg_difference_bpm": 9.999999999999986,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 12.0,
+      "end_s": 24.0,
+      "device_median_bpm": 82.0,
+      "ppg_spectral_bpm": 69.00000000000001,
+      "ppg_interbeat_bpm": 69.23076923076923,
+      "spectral_peak_fraction": 0.7984968754806943,
+      "interbeat_cv": 0.04351653904827795,
+      "device_ppg_difference_bpm": 12.999999999999986,
+      "device_ppg_disagreement_over_10_bpm": true,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 18.0,
+      "end_s": 30.0,
+      "device_median_bpm": 73.0,
+      "ppg_spectral_bpm": 72.00000000000001,
+      "ppg_interbeat_bpm": 73.46938775510205,
+      "spectral_peak_fraction": 0.7657179123874736,
+      "interbeat_cv": 0.04732863826479691,
+      "device_ppg_difference_bpm": 0.9999999999999858,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 24.0,
+      "end_s": 36.0,
+      "device_median_bpm": 74.0,
+      "ppg_spectral_bpm": 81.0,
+      "ppg_interbeat_bpm": 80.0,
+      "spectral_peak_fraction": 0.7258013949827913,
+      "interbeat_cv": 0.08814072831879834,
+      "device_ppg_difference_bpm": -7.0,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 30.0,
+      "end_s": 42.0,
+      "device_median_bpm": 76.0,
+      "ppg_spectral_bpm": 87.00000000000001,
+      "ppg_interbeat_bpm": 81.81818181818181,
+      "spectral_peak_fraction": 0.5934836604731334,
+      "interbeat_cv": 0.11639712395267535,
+      "device_ppg_difference_bpm": -11.000000000000014,
+      "device_ppg_disagreement_over_10_bpm": true,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 36.0,
+      "end_s": 48.0,
+      "device_median_bpm": 75.0,
+      "ppg_spectral_bpm": 79.50000000000001,
+      "ppg_interbeat_bpm": 75.0,
+      "spectral_peak_fraction": 0.6781260882041593,
+      "interbeat_cv": 0.11395976506069058,
+      "device_ppg_difference_bpm": -4.500000000000014,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 42.0,
+      "end_s": 54.0,
+      "device_median_bpm": 75.0,
+      "ppg_spectral_bpm": 66.0,
+      "ppg_interbeat_bpm": 75.0,
+      "spectral_peak_fraction": 0.6832527808107072,
+      "interbeat_cv": 0.15690690680224784,
+      "device_ppg_difference_bpm": 9.0,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": true
+    },
+    {
+      "start_s": 48.0,
+      "end_s": 60.0,
+      "device_median_bpm": 77.0,
+      "ppg_spectral_bpm": 70.5,
+      "ppg_interbeat_bpm": 78.26086956521739,
+      "spectral_peak_fraction": 0.6669253591526351,
+      "interbeat_cv": 0.13501124566521455,
+      "device_ppg_difference_bpm": 6.5,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": true
+    },
+    {
+      "start_s": 54.0,
+      "end_s": 66.0,
+      "device_median_bpm": 81.0,
+      "ppg_spectral_bpm": 76.50000000000001,
+      "ppg_interbeat_bpm": 76.59574468085106,
+      "spectral_peak_fraction": 0.5563770514789741,
+      "interbeat_cv": 0.08421519210665192,
+      "device_ppg_difference_bpm": 4.499999999999986,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    }
+  ]
+}

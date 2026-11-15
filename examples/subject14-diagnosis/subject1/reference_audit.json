@@ -1,0 +1,94 @@
+{
+  "method": "Contact-only PSD peak and independently detected interbeat intervals",
+  "limitations": [
+    "Exploratory, not a validated PPG reference extractor",
+    "Device BPM may be averaged or misaligned; no cause established",
+    "Video estimates are never used to choose PPG peaks or reference labels"
+  ],
+  "windows": [
+    {
+      "start_s": 0.0,
+      "end_s": 12.0,
+      "device_median_bpm": 99.0,
+      "ppg_spectral_bpm": 99.00000000000001,
+      "ppg_interbeat_bpm": 100.0,
+      "spectral_peak_fraction": 0.8895277326299773,
+      "interbeat_cv": 0.05924675632159565,
+      "device_ppg_difference_bpm": -1.4210854715202004e-14,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 6.0,
+      "end_s": 18.0,
+      "device_median_bpm": 100.0,
+      "ppg_spectral_bpm": 105.0,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.9113471455062732,
+      "interbeat_cv": 0.03500606951323153,
+      "device_ppg_difference_bpm": -5.0,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 12.0,
+      "end_s": 24.0,
+      "device_median_bpm": 108.0,
+      "ppg_spectral_bpm": 109.50000000000001,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.9588867097999408,
+      "interbeat_cv": 0.038436670702116905,
+      "device_ppg_difference_bpm": -1.5000000000000142,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 18.0,
+      "end_s": 30.0,
+      "device_median_bpm": 109.0,
+      "ppg_spectral_bpm": 106.50000000000001,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.9356613617689622,
+      "interbeat_cv": 0.037728221431569585,
+      "device_ppg_difference_bpm": 2.499999999999986,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 24.0,
+      "end_s": 36.0,
+      "device_median_bpm": 110.0,
+      "ppg_spectral_bpm": 109.50000000000001,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.921222436506671,
+      "interbeat_cv": 0.037728221431569585,
+      "device_ppg_difference_bpm": 0.4999999999999858,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 30.0,
+      "end_s": 42.0,
+      "device_median_bpm": 111.0,
+      "ppg_spectral_bpm": 106.50000000000001,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.9141211952987092,
+      "interbeat_cv": 0.044892330058275684,
+      "device_ppg_difference_bpm": 4.499999999999986,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    },
+    {
+      "start_s": 36.0,
+      "end_s": 48.0,
+      "device_median_bpm": 109.0,
+      "ppg_spectral_bpm": 106.50000000000001,
+      "ppg_interbeat_bpm": 105.88235294117648,
+      "spectral_peak_fraction": 0.9140490940504103,
+      "interbeat_cv": 0.04804032707553934,
+      "device_ppg_difference_bpm": 2.499999999999986,
+      "device_ppg_disagreement_over_10_bpm": false,
+      "ppg_methods_disagree_over_6_bpm": false
+    }
+  ]
+}

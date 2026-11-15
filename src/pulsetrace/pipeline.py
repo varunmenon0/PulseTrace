@@ -6,6 +6,7 @@ from contextlib import ExitStack
 from pathlib import Path
 from .video import VideoReader
 from .regions import REGIONS, extract_regions
+from .patches import PATCHES, sample_patches
 from .signal import analyze, PulseResult
 
 
@@ -20,7 +21,11 @@ class Extraction:
     geometry: dict[str, np.ndarray] = field(default_factory=dict)
 
 
-def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="landmarks", overlay_path=None):
+    patch_rgb: dict[str, np.ndarray] = field(default_factory=dict)
+    patch_pixels: dict[str, np.ndarray] = field(default_factory=dict)
+
+
+def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="landmarks", overlay_path=None, patches=False):
     if max_seconds is not None and (not np.isfinite(max_seconds) or max_seconds <= 0):
         raise ValueError("max_seconds must be positive")
     if min_pixels < 1:
@@ -30,6 +35,8 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
     from .stabilization import TemplateStabilizer
     stabilizer = TemplateStabilizer()
     from .diagnostics import geometry_sample
+    patch_rgb = {name: [] for name in PATCHES} if patches else {}
+    patch_pixels = {name: [] for name in patch_rgb}
     timestamps = []
     rgb = {name: [] for name in REGIONS}
     pixels = {name: [] for name in REGIONS}
@@ -55,6 +62,12 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
                 current_masks = {}
             else:
                 values, counts, current_masks = extract_regions(frame.bgr, landmarks, min_pixels)
+            if patches:
+                samples = sample_patches(frame.bgr, current_masks, min_pixels)
+                for name in PATCHES:
+                    color, count = samples.get(name, (np.full(3, np.nan), 0))
+                    patch_rgb[name].append(color)
+                    patch_pixels[name].append(count)
             scale = np.nan
             if landmarks is not None:
                 scale = float(np.linalg.norm(landmarks[33]-landmarks[263]))
@@ -99,7 +112,9 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
     if not timestamps:
         raise ValueError("Video contains no decodable frames")
     return Extraction(np.asarray(timestamps), {k: np.asarray(v) for k,v in rgb.items()},
-                      {k: np.asarray(v) for k,v in pixels.items()}, preview, masks, metadata, {k:np.asarray(v) for k,v in geometry.items()})
+                      {k: np.asarray(v) for k,v in pixels.items()}, preview, masks, metadata, {k:np.asarray(v) for k,v in geometry.items()},
+                      {k:np.asarray(v) for k,v in patch_rgb.items()},
+                      {k:np.asarray(v) for k,v in patch_pixels.items()})
 
 
 def analyze_extraction(extraction, **options):

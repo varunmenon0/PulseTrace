@@ -1,0 +1,4547 @@
+{
+  "experiment": "Exploratory sampling comparison on development video; not independent validation",
+  "configuration": {
+    "subdivisions": 8,
+    "square_inset_pixels": 1,
+    "partition": "equal_area",
+    "min_effective_area": 30,
+    "gates": "Fixed to integer baseline",
+    "max_seconds": null
+  },
+  "limitations": [
+    "Fractional coverage and continuous inset/quadrant boundaries change sampled support",
+    "Area-event reduction does not establish better pulse estimation",
+    "Device BPM discrepancies and unverified timestamp alignment remain unresolved",
+    "Overlapping windows and accepted-window errors are not full-cohort accuracy"
+  ],
+  "input": {
+    "video_sha256": "42d861504e180d02ff7fe6ad91d11e8a20d719581178033daf1768629aaa3e09",
+    "reference_sha256": "d9762accd5c9a8370aca3e1938a68e4201e6d70a8fc0e89b5305822713833cfc",
+    "model_sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+    "sampling": "landmarks",
+    "geometry_describes": "sampled polygons",
+    "overlay_timing": "constant source FPS; labels show decoded timestamps",
+    "source_fps": 29.371997,
+    "timestamp_fallbacks": 0,
+    "decoded_frames": 1993
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "opencv-contrib-python": "4.11.0.86",
+    "mediapipe": "0.10.21"
+  },
+  "area_steps": {
+    "forehead": {
+      "integer": {
+        "events_over_10_percent": 37,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.17041800643086816
+      },
+      "fractional": {
+        "events_over_10_percent": 8,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.13784155899173903
+      }
+    },
+    "left_cheek": {
+      "integer": {
+        "events_over_10_percent": 19,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.13846153846153847
+      },
+      "fractional": {
+        "events_over_10_percent": 0,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.06777437691298645
+      }
+    },
+    "right_cheek": {
+      "integer": {
+        "events_over_10_percent": 16,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.14224137931034483
+      },
+      "fractional": {
+        "events_over_10_percent": 0,
+        "comparable_pairs": 1992,
+        "maximum_relative_step": 0.05261619409529377
+      }
+    }
+  },
+  "missing_patch_frames": {
+    "integer": {
+      "forehead_tl": 0,
+      "forehead_tr": 0,
+      "forehead_bl": 0,
+      "forehead_br": 0,
+      "left_cheek_tl": 0,
+      "left_cheek_tr": 0,
+      "left_cheek_bl": 0,
+      "left_cheek_br": 187,
+      "right_cheek_tl": 0,
+      "right_cheek_tr": 83,
+      "right_cheek_bl": 0,
+      "right_cheek_br": 0
+    },
+    "fractional": {
+      "forehead_tl": 0,
+      "forehead_tr": 0,
+      "forehead_bl": 0,
+      "forehead_br": 0,
+      "left_cheek_tl": 0,
+      "left_cheek_tr": 0,
+      "left_cheek_bl": 0,
+      "left_cheek_br": 0,
+      "right_cheek_tl": 0,
+      "right_cheek_tr": 0,
+      "right_cheek_bl": 0,
+      "right_cheek_br": 0
+    }
+  },
+  "metrics": {
+    "integer": {
+      "pos": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 9,
+            "mae_against_device_bpm": 10.982506666882005,
+            "max_difference_bpm": 27.48254629575186
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 10,
+            "mae_against_device_bpm": 11.332708859725445,
+            "max_difference_bpm": 29.008803374921982
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        }
+      },
+      "green": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 5,
+            "mae_against_device_bpm": 14.849160088736394,
+            "max_difference_bpm": 31.117150438005453
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 6,
+            "mae_against_device_bpm": 16.35894817194715,
+            "max_difference_bpm": 37.491907025068656
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        }
+      }
+    },
+    "fractional": {
+      "pos": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 9,
+            "mae_against_device_bpm": 10.854063308193268,
+            "max_difference_bpm": 27.442400899581912
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 9,
+            "mae_against_device_bpm": 11.544091211986633,
+            "max_difference_bpm": 29.235771142500226
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        }
+      },
+      "green": {
+        "three_regions": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 4,
+            "mae_against_device_bpm": 18.357541246431698,
+            "max_difference_bpm": 38.98533002410967
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        },
+        "twelve_patches": {
+          "ungated": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 8,
+            "mae_against_device_bpm": 12.271399555387053,
+            "max_difference_bpm": 38.631973124368926
+          },
+          "global_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          },
+          "regional_gate": {
+            "total_windows": 10,
+            "reference_valid_windows": 10,
+            "accepted_windows": 0,
+            "mae_against_device_bpm": null,
+            "max_difference_bpm": null
+          }
+        }
+      }
+    }
+  },
+  "paired_metrics": {
+    "pos": {
+      "three_regions": {
+        "ungated": {
+          "common_windows": 8,
+          "integer_mae": 10.110105029522092,
+          "fractional_mae": 10.130567030044908
+        },
+        "global_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        },
+        "regional_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common_windows": 9,
+          "integer_mae": 11.377140436393033,
+          "fractional_mae": 11.544091211986633
+        },
+        "global_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        },
+        "regional_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        }
+      }
+    },
+    "green": {
+      "three_regions": {
+        "ungated": {
+          "common_windows": 3,
+          "integer_mae": 11.670836356956363,
+          "fractional_mae": 11.481611653872372
+        },
+        "global_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        },
+        "regional_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        }
+      },
+      "twelve_patches": {
+        "ungated": {
+          "common_windows": 6,
+          "integer_mae": 16.35894817194715,
+          "fractional_mae": 13.4264591670102
+        },
+        "global_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        },
+        "regional_gate": {
+          "common_windows": 0,
+          "integer_mae": null,
+          "fractional_mae": null
+        }
+      }
+    }
+  },
+  "windows": {
+    "integer": [
+      {
+        "start_s": 0.0,
+        "end_s": 12.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 68.51372404826122,
+                "left_cheek": 70.51745370424814,
+                "right_cheek": 70.53123508552163
+              },
+              "bpm_candidate": 70.51745370424814,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -27.48254629575186,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 68.14223049409229,
+                "forehead_tr": 67.46135115354612,
+                "forehead_bl": 69.41968166668921,
+                "forehead_br": 69.51039535378501,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 68.99119662507802,
+                "left_cheek_bl": 52.14281761837766,
+                "left_cheek_br": null,
+                "right_cheek_tl": 68.90520396616022,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 69.77812999769858,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 68.99119662507802,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "right_cheek_tl",
+                "left_cheek_tr",
+                "forehead_bl",
+                "forehead_br",
+                "right_cheek_bl"
+              ],
+              "error_bpm": -29.008803374921982,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 62.421734515035105,
+                "left_cheek": 56.45402278098215,
+                "right_cheek": 59.043107100308895
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 62.36658561334333,
+                "forehead_tr": 62.347564455598956,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": null,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 58.659110915391544,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 56.85244061610717,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 60.508092974931344,
+              "support": [
+                "right_cheek_tl",
+                "forehead_tr",
+                "forehead_tl"
+              ],
+              "error_bpm": -37.491907025068656,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 98.0,
+        "raw_reference_median_bpm": 98.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 6.0,
+        "end_s": 18.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 70.90434275385574,
+                "left_cheek": 71.14368362088653,
+                "right_cheek": 71.89081547294991
+              },
+              "bpm_candidate": 71.14368362088653,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -10.856316379113466,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 70.55482356121668,
+                "forehead_tr": 70.90057735472047,
+                "forehead_bl": 71.07187019291507,
+                "forehead_br": 70.880939221508,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 70.93580586097629,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 71.60647044520364,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 71.33311324500711,
+                "right_cheek_br": 72.92214404101335
+              },
+              "bpm_candidate": 70.93580586097629,
+              "support": [
+                "forehead_tl",
+                "forehead_br",
+                "forehead_tr",
+                "left_cheek_tr",
+                "forehead_bl",
+                "right_cheek_bl",
+                "right_cheek_tl",
+                "right_cheek_br"
+              ],
+              "error_bpm": -11.064194139023712,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": 69.46486986762847,
+                "right_cheek": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": 55.98239658689881,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 70.55106292394538,
+                "left_cheek_bl": 113.466355333596,
+                "left_cheek_br": null,
+                "right_cheek_tl": null,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 48.78860887488236,
+                "right_cheek_br": 46.93430833724875
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 82.0,
+        "raw_reference_median_bpm": 82.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 12.0,
+        "end_s": 24.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 67.98575991353403,
+                "left_cheek": 68.42834107146456,
+                "right_cheek": 68.13006851923015
+              },
+              "bpm_candidate": 68.13006851923015,
+              "support": [
+                "forehead",
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": -13.86993148076985,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 67.7379373247616,
+                "forehead_tr": 67.62195455598736,
+                "forehead_bl": 67.94735158895071,
+                "forehead_br": 68.3963164451491,
+                "left_cheek_tl": 69.05620241814752,
+                "left_cheek_tr": 68.21210978506764,
+                "left_cheek_bl": 68.57584449603122,
+                "left_cheek_br": null,
+                "right_cheek_tl": 68.31685289272401,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 67.17875240441437,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 67.84264445685616,
+              "support": [
+                "right_cheek_bl",
+                "forehead_tr",
+                "forehead_tl",
+                "forehead_bl",
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "forehead_br",
+                "left_cheek_bl",
+                "left_cheek_tl"
+              ],
+              "error_bpm": -14.157355543143836,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 65.34842899852451,
+                "left_cheek": 67.40897182387889,
+                "right_cheek": 68.00792069844597
+              },
+              "bpm_candidate": 67.40897182387889,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -14.591028176121114,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 65.22640875354595,
+                "forehead_tr": 65.19943776133442,
+                "forehead_bl": 65.99272847918107,
+                "forehead_br": 66.68098115044832,
+                "left_cheek_tl": 65.25385467336602,
+                "left_cheek_tr": 67.99254848033517,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 68.86274281854055,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 66.62320157685059,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "left_cheek_tl",
+                "forehead_bl",
+                "forehead_br",
+                "left_cheek_tr",
+                "right_cheek_tl"
+              ],
+              "error_bpm": -15.37679842314941,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 82.0,
+        "raw_reference_median_bpm": 82.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 18.0,
+        "end_s": 30.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 74.92828919468444,
+                "left_cheek": 73.58756654199452,
+                "right_cheek": 75.69142250206619
+              },
+              "bpm_candidate": 74.92828919468444,
+              "support": [
+                "left_cheek",
+                "forehead",
+                "right_cheek"
+              ],
+              "error_bpm": 1.9282891946844387,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 74.891469516409,
+                "forehead_tr": 75.79598068561215,
+                "forehead_bl": 74.36938349305123,
+                "forehead_br": 74.75870758986775,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 74.60511666697636,
+                "left_cheek_bl": 73.15782980363443,
+                "left_cheek_br": null,
+                "right_cheek_tl": 75.29919257141924,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 75.59071853585297,
+                "right_cheek_br": 61.798015865369806
+              },
+              "bpm_candidate": 74.82508855313839,
+              "support": [
+                "left_cheek_bl",
+                "forehead_bl",
+                "left_cheek_tr",
+                "forehead_br",
+                "forehead_tl",
+                "right_cheek_tl",
+                "right_cheek_bl",
+                "forehead_tr"
+              ],
+              "error_bpm": 1.8250885531383858,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": null,
+                "right_cheek": 110.55417404615633
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 74.55010402128954,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 73.7832135045873,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": 53.71856084788245
+              },
+              "bpm_candidate": 74.16665876293843,
+              "support": [
+                "right_cheek_tl",
+                "left_cheek_tr"
+              ],
+              "error_bpm": 1.1666587629384253,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 73.0,
+        "raw_reference_median_bpm": 73.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 24.0,
+        "end_s": 36.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 80.41816996474276,
+                "left_cheek": 81.31129122324896,
+                "right_cheek": 79.44614958092141
+              },
+              "bpm_candidate": 80.41816996474276,
+              "support": [
+                "right_cheek",
+                "forehead",
+                "left_cheek"
+              ],
+              "error_bpm": 6.418169964742759,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 79.96051640813953,
+                "forehead_tr": 79.705479762299,
+                "forehead_bl": 81.05416514028668,
+                "forehead_br": 80.9442596237375,
+                "left_cheek_tl": 81.06533579484498,
+                "left_cheek_tr": 81.51482321526625,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 80.43550278518015,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 80.1674591613249,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 80.45238801593851,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "right_cheek_bl",
+                "right_cheek_tl",
+                "forehead_br",
+                "forehead_bl",
+                "left_cheek_tl",
+                "left_cheek_tr"
+              ],
+              "error_bpm": 6.45238801593851,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": null,
+                "right_cheek": 82.23056615961775
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 81.06142154159022,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 81.06594600538713,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 81.17837646602335,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 81.09179138864774,
+              "support": [
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "right_cheek_bl"
+              ],
+              "error_bpm": 7.091791388647735,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 74.0,
+        "raw_reference_median_bpm": 74.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 30.0,
+        "end_s": 42.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 91.61839598259283,
+                "left_cheek": 96.30504354892977,
+                "right_cheek": null
+              },
+              "bpm_candidate": 93.9617197657613,
+              "support": [
+                "forehead",
+                "left_cheek"
+              ],
+              "error_bpm": 17.961719765761302,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 92.06223508725854,
+                "forehead_tr": 89.09518376542658,
+                "forehead_bl": null,
+                "forehead_br": 91.28058549133989,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 91.95754706404213,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 90.0261522637977,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 95.53005170429888,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 91.28058549133989,
+              "support": [
+                "forehead_tr",
+                "right_cheek_tl",
+                "forehead_br",
+                "left_cheek_tr",
+                "forehead_tl"
+              ],
+              "error_bpm": 15.280585491339892,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 119.5715232712476,
+                "left_cheek": 64.32964635722549,
+                "right_cheek": 46.119965691794974
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": 117.82536655834008,
+                "forehead_bl": 120.11319929526564,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 64.15029506384174,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": null,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 46.177391558969546,
+                "right_cheek_br": 45.937181724636545
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 76.0,
+        "raw_reference_median_bpm": 76.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 36.0,
+        "end_s": 48.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 80.45178901488426,
+                "left_cheek": 79.57013404913828,
+                "right_cheek": 78.07136191197029
+              },
+              "bpm_candidate": 79.57013404913828,
+              "support": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ],
+              "error_bpm": 4.570134049138275,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 80.61019826092844,
+                "forehead_tr": 78.14127351100096,
+                "forehead_bl": 81.31713237755537,
+                "forehead_br": 81.27868308934259,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 81.20475657223214,
+                "left_cheek_bl": 77.66611877255586,
+                "left_cheek_br": null,
+                "right_cheek_tl": 80.2643371100297,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 91.2662637149363,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 80.2643371100297,
+              "support": [
+                "left_cheek_bl",
+                "forehead_tr",
+                "right_cheek_tl",
+                "forehead_tl",
+                "left_cheek_tr",
+                "forehead_br",
+                "forehead_bl"
+              ],
+              "error_bpm": 5.2643371100297,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 48.65660388468505,
+                "left_cheek": 82.23179158745617,
+                "right_cheek": 82.01723418434591
+              },
+              "bpm_candidate": 82.12451288590104,
+              "support": [
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": 7.124512885901041,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 48.583182813053995,
+                "forehead_tr": 48.59482232736036,
+                "forehead_bl": 49.07102452319706,
+                "forehead_br": 48.9182067214003,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 79.91440350676734,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 81.30321607303725,
+                "right_cheek_tr": 81.19576953788157,
+                "right_cheek_bl": 81.13454286783535,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 75.0,
+        "raw_reference_median_bpm": 75.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 42.0,
+        "end_s": 54.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 66.30966055939157,
+                "left_cheek": 64.55130628060955,
+                "right_cheek": 63.5717568532714
+              },
+              "bpm_candidate": 64.55130628060955,
+              "support": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ],
+              "error_bpm": -10.448693719390448,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 67.24024319759728,
+                "forehead_tr": null,
+                "forehead_bl": 67.75611832389163,
+                "forehead_br": 66.5664837502811,
+                "left_cheek_tl": 63.05969016687669,
+                "left_cheek_tr": 66.32007707505039,
+                "left_cheek_bl": 63.89298928729628,
+                "left_cheek_br": null,
+                "right_cheek_tl": 64.77447631276335,
+                "right_cheek_tr": 51.21838052357726,
+                "right_cheek_bl": 63.35987434780235,
+                "right_cheek_br": 60.9956410662017
+              },
+              "bpm_candidate": 64.06717533028285,
+              "support": [
+                "left_cheek_tl",
+                "right_cheek_bl",
+                "left_cheek_bl",
+                "right_cheek_tl",
+                "left_cheek_tr",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_bl"
+              ],
+              "error_bpm": -10.93282466971715,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 51.201159056701925,
+                "left_cheek": 65.83555289134779,
+                "right_cheek": 67.93216523903735
+              },
+              "bpm_candidate": 66.88385906519257,
+              "support": [
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -8.116140934807433,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 51.382804128413746,
+                "forehead_tr": 51.50807199967894,
+                "forehead_bl": 50.61085979090278,
+                "forehead_br": 50.54429395175551,
+                "left_cheek_tl": 66.05132166336115,
+                "left_cheek_tr": 67.88158442089738,
+                "left_cheek_bl": 64.99737371822243,
+                "left_cheek_br": null,
+                "right_cheek_tl": 67.97330187288789,
+                "right_cheek_tr": 51.6792934347423,
+                "right_cheek_bl": null,
+                "right_cheek_br": 51.00730065372369
+              },
+              "bpm_candidate": 51.17006450194563,
+              "support": [
+                "forehead_br",
+                "forehead_bl",
+                "right_cheek_br",
+                "forehead_tl",
+                "forehead_tr",
+                "right_cheek_tr"
+              ],
+              "error_bpm": -23.82993549805437,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 75.0,
+        "raw_reference_median_bpm": 75.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 48.0,
+        "end_s": 60.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 73.1959191442848,
+                "left_cheek": null,
+                "right_cheek": 61.92851717090349
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 62.603717909685045,
+                "forehead_tr": 73.76423262033212,
+                "forehead_bl": 62.135552865455466,
+                "forehead_br": 62.5029884646366,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 69.96122741768285,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 61.58579654580861,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 63.6212060462983,
+                "right_cheek_br": 62.04200932684752
+              },
+              "bpm_candidate": 62.27249889574206,
+              "support": [
+                "right_cheek_tl",
+                "right_cheek_br",
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "right_cheek_bl"
+              ],
+              "error_bpm": -14.72750110425794,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 43.83594774535254,
+                "left_cheek": 68.80284199907017,
+                "right_cheek": 47.929751378636546
+              },
+              "bpm_candidate": 45.88284956199455,
+              "support": [
+                "forehead",
+                "right_cheek"
+              ],
+              "error_bpm": -31.117150438005453,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 43.77831938615994,
+                "forehead_tr": 43.762412241682284,
+                "forehead_bl": 44.062663669571236,
+                "forehead_br": null,
+                "left_cheek_tl": 68.77063641399465,
+                "left_cheek_tr": 70.19647483649398,
+                "left_cheek_bl": 69.11942686274121,
+                "left_cheek_br": null,
+                "right_cheek_tl": null,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 59.75429085363689,
+                "right_cheek_br": 49.122072424406454
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 77.0,
+        "raw_reference_median_bpm": 77.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 54.0,
+        "end_s": 66.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 75.46681254029156,
+                "left_cheek": 87.61211805523753,
+                "right_cheek": 85.00140024993374
+              },
+              "bpm_candidate": 86.30675915258564,
+              "support": [
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": 5.3067591525856415,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": 76.21799693166491,
+                "forehead_br": 90.70607032187962,
+                "left_cheek_tl": 91.33168423851784,
+                "left_cheek_tr": 84.3650841681525,
+                "left_cheek_bl": 88.06323950467667,
+                "left_cheek_br": null,
+                "right_cheek_tl": 83.89152407286296,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 86.13619463728116,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 85.61401059574334,
+              "support": [
+                "right_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "left_cheek_bl"
+              ],
+              "error_bpm": 4.614010595743338,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 93.24586472470878,
+                "left_cheek": 95.34807129298507,
+                "right_cheek": null
+              },
+              "bpm_candidate": 94.29696800884693,
+              "support": [
+                "forehead",
+                "left_cheek"
+              ],
+              "error_bpm": 13.296968008846932,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 93.27272827404744,
+                "forehead_tr": 93.00938119283563,
+                "forehead_bl": 93.4066117993059,
+                "forehead_br": 93.28580287480888,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 74.80604793896877,
+                "left_cheek_bl": 95.11393029322045,
+                "left_cheek_br": null,
+                "right_cheek_tl": 75.11407958869196,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 94.19659793382431,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "forehead_br",
+                "forehead_bl",
+                "left_cheek_bl"
+              ],
+              "error_bpm": 13.196597933824307,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 81.0,
+        "raw_reference_median_bpm": 81.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      }
+    ],
+    "fractional": [
+      {
+        "start_s": 0.0,
+        "end_s": 12.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 68.46768050833984,
+                "left_cheek": 70.9328027022442,
+                "right_cheek": 70.55759910041809
+              },
+              "bpm_candidate": 70.55759910041809,
+              "support": [
+                "forehead",
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": -27.442400899581912,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 68.15526738728533,
+                "forehead_tr": 67.04580688877834,
+                "forehead_bl": 69.44015135982832,
+                "forehead_br": 69.37319032771421,
+                "left_cheek_tl": 48.37560992889809,
+                "left_cheek_tr": 68.66721699181466,
+                "left_cheek_bl": null,
+                "left_cheek_br": 68.81780538488036,
+                "right_cheek_tl": 68.57706618109734,
+                "right_cheek_tr": 70.76977246060514,
+                "right_cheek_bl": 70.13495165867855,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 68.76422885749977,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "right_cheek_tl",
+                "left_cheek_tr",
+                "left_cheek_br",
+                "forehead_br",
+                "forehead_bl",
+                "right_cheek_bl",
+                "right_cheek_tr"
+              ],
+              "error_bpm": -29.235771142500226,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 62.35461339274137,
+                "left_cheek": 57.60384298013278,
+                "right_cheek": 59.01466997589033
+              },
+              "bpm_candidate": 59.01466997589033,
+              "support": [
+                "left_cheek",
+                "right_cheek",
+                "forehead"
+              ],
+              "error_bpm": -38.98533002410967,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 62.45909354442853,
+                "forehead_tr": 62.41683361520484,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": 59.368026875631074,
+                "left_cheek_tr": 69.12298506630002,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 66.03661885851061,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": 58.94921463462029
+              },
+              "bpm_candidate": 59.368026875631074,
+              "support": [
+                "right_cheek_br",
+                "left_cheek_tl",
+                "forehead_tr",
+                "forehead_tl"
+              ],
+              "error_bpm": -38.631973124368926,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 98.0,
+        "raw_reference_median_bpm": 98.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 6.0,
+        "end_s": 18.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 70.87180055944775,
+                "left_cheek": 71.19183534464872,
+                "right_cheek": 71.94255397767678
+              },
+              "bpm_candidate": 71.19183534464872,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -10.808164655351277,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 70.6188749990985,
+                "forehead_tr": 70.54242301824509,
+                "forehead_bl": 70.88193944724033,
+                "forehead_br": 71.34435626151802,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 71.09946822275522,
+                "left_cheek_bl": null,
+                "left_cheek_br": 70.82309272298264,
+                "right_cheek_tl": 71.34009547088543,
+                "right_cheek_tr": 71.91878644712725,
+                "right_cheek_bl": 71.81060538694538,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 70.96128047286894,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "left_cheek_br",
+                "forehead_bl",
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "forehead_br",
+                "right_cheek_bl",
+                "right_cheek_tr"
+              ],
+              "error_bpm": -11.038719527131065,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": 69.56079738902366,
+                "right_cheek": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": 51.33858656019305,
+                "left_cheek_tl": 68.60495451555757,
+                "left_cheek_tr": 70.39504235569703,
+                "left_cheek_bl": null,
+                "left_cheek_br": 70.08771265756887,
+                "right_cheek_tl": 71.02298543942157,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 70.55534904849523,
+              "support": [
+                "left_cheek_tl",
+                "left_cheek_br",
+                "left_cheek_tr",
+                "right_cheek_tl"
+              ],
+              "error_bpm": -11.44465095150477,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 82.0,
+        "raw_reference_median_bpm": 82.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 12.0,
+        "end_s": 24.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 68.00021066171534,
+                "left_cheek": 68.10349049949934,
+                "right_cheek": 68.0942129529768
+              },
+              "bpm_candidate": 68.0942129529768,
+              "support": [
+                "forehead",
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": -13.905787047023196,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 67.43765894200182,
+                "forehead_tr": 67.61728870054412,
+                "forehead_bl": 68.18052418395676,
+                "forehead_br": 68.56130412242612,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 67.94649258933272,
+                "left_cheek_bl": null,
+                "left_cheek_br": 68.53779906723294,
+                "right_cheek_tl": 68.35360419759014,
+                "right_cheek_tr": 67.80321455372079,
+                "right_cheek_bl": 68.14617627332967,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 68.14617627332967,
+              "support": [
+                "forehead_tl",
+                "forehead_tr",
+                "right_cheek_tr",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "forehead_bl",
+                "right_cheek_tl",
+                "left_cheek_br",
+                "forehead_br"
+              ],
+              "error_bpm": -13.853823726670328,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 65.7584132150093,
+                "left_cheek": 67.72568210784402,
+                "right_cheek": 68.77070502357125
+              },
+              "bpm_candidate": 67.72568210784402,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -14.274317892155977,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 65.49540512675365,
+                "forehead_tr": 65.47694843957423,
+                "forehead_bl": 66.1976273283544,
+                "forehead_br": 66.40769383707442,
+                "left_cheek_tl": 67.4786924930466,
+                "left_cheek_tr": 68.09275336595474,
+                "left_cheek_bl": 66.76122388342748,
+                "left_cheek_br": 68.23760147038998,
+                "right_cheek_tl": 68.0937842512164,
+                "right_cheek_tr": 67.09256799478669,
+                "right_cheek_bl": 69.1919721112018,
+                "right_cheek_br": 73.07628069457621
+              },
+              "bpm_candidate": 67.78572292950066,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "forehead_bl",
+                "forehead_br",
+                "left_cheek_bl",
+                "right_cheek_tr",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "left_cheek_br",
+                "right_cheek_bl"
+              ],
+              "error_bpm": -14.214277070499335,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 82.0,
+        "raw_reference_median_bpm": 82.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 18.0,
+        "end_s": 30.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 74.99964994552059,
+                "left_cheek": 74.03183142007161,
+                "right_cheek": 75.66131289798395
+              },
+              "bpm_candidate": 74.99964994552059,
+              "support": [
+                "left_cheek",
+                "forehead",
+                "right_cheek"
+              ],
+              "error_bpm": 1.9996499455205878,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 74.81424937235013,
+                "forehead_tr": 75.7273259297016,
+                "forehead_bl": 74.40280171175411,
+                "forehead_br": 74.94608317097152,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 75.03306828931791,
+                "left_cheek_bl": 73.53330945810723,
+                "left_cheek_br": 73.48684530983701,
+                "right_cheek_tl": 75.44071347587126,
+                "right_cheek_tr": 77.53556114884287,
+                "right_cheek_bl": 74.36153258608768,
+                "right_cheek_br": 61.2092535494546
+              },
+              "bpm_candidate": 74.88016627166083,
+              "support": [
+                "left_cheek_br",
+                "left_cheek_bl",
+                "right_cheek_bl",
+                "forehead_bl",
+                "forehead_tl",
+                "forehead_br",
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "forehead_tr",
+                "right_cheek_tr"
+              ],
+              "error_bpm": 1.8801662716608263,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": 74.45176485379002,
+                "right_cheek": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 75.21218733813663,
+                "left_cheek_bl": null,
+                "left_cheek_br": 73.84450392576636,
+                "right_cheek_tl": 73.86148911344839,
+                "right_cheek_tr": null,
+                "right_cheek_bl": null,
+                "right_cheek_br": 109.17929805797034
+              },
+              "bpm_candidate": 74.19491737269993,
+              "support": [
+                "left_cheek_br",
+                "right_cheek_tl",
+                "left_cheek_tr"
+              ],
+              "error_bpm": 1.1949173726999334,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 73.0,
+        "raw_reference_median_bpm": 73.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 24.0,
+        "end_s": 36.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 80.41797489791146,
+                "left_cheek": 81.14692141579923,
+                "right_cheek": 79.7408630615912
+              },
+              "bpm_candidate": 80.41797489791146,
+              "support": [
+                "right_cheek",
+                "forehead",
+                "left_cheek"
+              ],
+              "error_bpm": 6.4179748979114635,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 80.22235924076969,
+                "forehead_tr": 79.68538807409391,
+                "forehead_bl": 80.84662804045902,
+                "forehead_br": 81.14388253802129,
+                "left_cheek_tl": 80.71918475773127,
+                "left_cheek_tr": 81.51841495263547,
+                "left_cheek_bl": 81.25318865644323,
+                "left_cheek_br": 80.79044164051415,
+                "right_cheek_tl": 80.36514738348374,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 80.30819006189661,
+                "right_cheek_br": 104.19448012083167
+              },
+              "bpm_candidate": 80.53449364061436,
+              "support": [
+                "forehead_tr",
+                "forehead_tl",
+                "right_cheek_bl",
+                "right_cheek_tl",
+                "left_cheek_tl",
+                "left_cheek_br",
+                "forehead_bl",
+                "forehead_br",
+                "left_cheek_bl",
+                "left_cheek_tr"
+              ],
+              "error_bpm": 6.5344936406143574,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": null,
+                "left_cheek": null,
+                "right_cheek": 81.159894486922
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": null,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 80.86670087445187,
+                "left_cheek_bl": null,
+                "left_cheek_br": 81.1277746500802,
+                "right_cheek_tl": 81.0581979214362,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 81.0586006969162,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 81.02781853572111,
+              "support": [
+                "left_cheek_tr",
+                "right_cheek_tl",
+                "right_cheek_bl",
+                "left_cheek_br"
+              ],
+              "error_bpm": 7.02781853572111,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 74.0,
+        "raw_reference_median_bpm": 74.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 30.0,
+        "end_s": 42.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 91.87725655215942,
+                "left_cheek": 97.76791250772038,
+                "right_cheek": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 92.93644862709802,
+                "forehead_tr": 89.1108306351179,
+                "forehead_bl": 93.56750962682936,
+                "forehead_br": 90.69748671423403,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 92.12280718162297,
+                "left_cheek_bl": null,
+                "left_cheek_br": 92.84124924741332,
+                "right_cheek_tl": null,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 94.0747055128665,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 92.48202821451815,
+              "support": [
+                "forehead_tr",
+                "forehead_br",
+                "left_cheek_tr",
+                "left_cheek_br",
+                "forehead_tl",
+                "forehead_bl",
+                "right_cheek_bl"
+              ],
+              "error_bpm": 16.482028214518152,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 117.3013576315569,
+                "left_cheek": 63.63377714681689,
+                "right_cheek": 47.618175837070105
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": 117.36409980703392,
+                "forehead_bl": 117.6123061947857,
+                "forehead_br": 116.9164239258894,
+                "left_cheek_tl": 63.017826749516175,
+                "left_cheek_tr": 64.15044428976617,
+                "left_cheek_bl": null,
+                "left_cheek_br": 63.926013608753344,
+                "right_cheek_tl": null,
+                "right_cheek_tr": 48.99387343965975,
+                "right_cheek_bl": 47.31604022979682,
+                "right_cheek_br": 47.776790604454696
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 76.0,
+        "raw_reference_median_bpm": 76.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 36.0,
+        "end_s": 48.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 80.20620796919967,
+                "left_cheek": 79.12559532078483,
+                "right_cheek": 77.82064930040791
+              },
+              "bpm_candidate": 79.12559532078483,
+              "support": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ],
+              "error_bpm": 4.125595320784825,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 79.92636864221654,
+                "forehead_tr": 78.21105128606648,
+                "forehead_bl": 81.066649561809,
+                "forehead_br": 81.22883796374836,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 82.18481111606852,
+                "left_cheek_bl": 75.47116910617858,
+                "left_cheek_br": 80.2468781137467,
+                "right_cheek_tl": 79.57629261706224,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 78.8697639737665,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 80.49650910201277,
+              "support": [
+                "forehead_tr",
+                "right_cheek_bl",
+                "right_cheek_tl",
+                "forehead_tl",
+                "left_cheek_br",
+                "forehead_bl",
+                "forehead_br",
+                "left_cheek_tr"
+              ],
+              "error_bpm": 5.496509102012766,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 48.321078617913386,
+                "left_cheek": 81.4881166812889,
+                "right_cheek": 81.34308855618872
+              },
+              "bpm_candidate": 81.4156026187388,
+              "support": [
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": 6.415602618738802,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 48.223173821125954,
+                "forehead_tr": 48.036831193676385,
+                "forehead_bl": 48.4767547382374,
+                "forehead_br": 48.743688935972116,
+                "left_cheek_tl": null,
+                "left_cheek_tr": 81.21605330711729,
+                "left_cheek_bl": null,
+                "left_cheek_br": 80.67459154977644,
+                "right_cheek_tl": 80.51848705295748,
+                "right_cheek_tr": 81.60069899131952,
+                "right_cheek_bl": 81.17981810990854,
+                "right_cheek_br": 81.78778761765952
+              },
+              "bpm_candidate": 81.16779048953045,
+              "support": [
+                "right_cheek_tl",
+                "left_cheek_br",
+                "right_cheek_bl",
+                "left_cheek_tr",
+                "right_cheek_tr",
+                "right_cheek_br"
+              ],
+              "error_bpm": 6.1677904895304465,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 75.0,
+        "raw_reference_median_bpm": 75.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 42.0,
+        "end_s": 54.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 66.19098405256439,
+                "left_cheek": 63.99416526370188,
+                "right_cheek": 63.792018480518834
+              },
+              "bpm_candidate": 63.99416526370188,
+              "support": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ],
+              "error_bpm": -11.00583473629812,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 66.22551007532053,
+                "forehead_tr": 81.03816211996026,
+                "forehead_bl": 67.84062535404684,
+                "forehead_br": 66.18625140892443,
+                "left_cheek_tl": 62.78389470421763,
+                "left_cheek_tr": 66.16415497787247,
+                "left_cheek_bl": 64.37420558926414,
+                "left_cheek_br": 66.50601516374877,
+                "right_cheek_tl": 69.77187739420143,
+                "right_cheek_tr": 51.66046744815576,
+                "right_cheek_bl": 65.84672490882755,
+                "right_cheek_br": 60.789675654907086
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 51.06010234818968,
+                "left_cheek": 66.29376469437412,
+                "right_cheek": null
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 51.37196170757567,
+                "forehead_tr": 51.23592823265595,
+                "forehead_bl": 50.70150842060779,
+                "forehead_br": 50.63842453505905,
+                "left_cheek_tl": 65.59432113942735,
+                "left_cheek_tr": 67.90646369032648,
+                "left_cheek_bl": 64.93946827482216,
+                "left_cheek_br": 67.2033631022457,
+                "right_cheek_tl": 69.68887279984489,
+                "right_cheek_tr": 67.59200768404318,
+                "right_cheek_bl": 69.17185062892,
+                "right_cheek_br": 50.90373918850783
+              },
+              "bpm_candidate": 67.78534637487826,
+              "support": [
+                "left_cheek_bl",
+                "left_cheek_tl",
+                "left_cheek_br",
+                "right_cheek_tr",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_tl"
+              ],
+              "error_bpm": -7.214653625121741,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 75.0,
+        "raw_reference_median_bpm": 75.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 48.0,
+        "end_s": 60.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 72.89829139266668,
+                "left_cheek": 59.28135579019509,
+                "right_cheek": 61.434577143044585
+              },
+              "bpm_candidate": 60.35796646661984,
+              "support": [
+                "left_cheek",
+                "right_cheek"
+              ],
+              "error_bpm": -16.642033533380157,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": 73.03698061456775,
+                "forehead_bl": 62.20563732014658,
+                "forehead_br": 62.468129969291375,
+                "left_cheek_tl": 58.315340387971204,
+                "left_cheek_tr": 62.738175964654715,
+                "left_cheek_bl": null,
+                "left_cheek_br": null,
+                "right_cheek_tl": 61.48409073876165,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 62.819485331568735,
+                "right_cheek_br": null
+              },
+              "bpm_candidate": 62.1517880351652,
+              "support": [
+                "left_cheek_tl",
+                "right_cheek_tl",
+                "forehead_bl",
+                "forehead_br",
+                "left_cheek_tr",
+                "right_cheek_bl"
+              ],
+              "error_bpm": -14.848211964834803,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 43.729116967330356,
+                "left_cheek": 69.07667263049254,
+                "right_cheek": 59.63397591948018
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 43.780659002666155,
+                "forehead_tr": null,
+                "forehead_bl": null,
+                "forehead_br": 43.72338865752542,
+                "left_cheek_tl": 68.25470998028456,
+                "left_cheek_tr": 69.39794640969622,
+                "left_cheek_bl": 69.12883225179253,
+                "left_cheek_br": 70.22487112682894,
+                "right_cheek_tl": 61.19496200564472,
+                "right_cheek_tr": null,
+                "right_cheek_bl": 60.706066528194626,
+                "right_cheek_br": 47.88106023420478
+              },
+              "bpm_candidate": null,
+              "support": [],
+              "error_bpm": null,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 77.0,
+        "raw_reference_median_bpm": 77.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      },
+      {
+        "start_s": 54.0,
+        "end_s": 66.0,
+        "methods": {
+          "pos": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 75.37790485909954,
+                "left_cheek": 87.06012898476739,
+                "right_cheek": 85.61812849100835
+              },
+              "bpm_candidate": 86.33912873788788,
+              "support": [
+                "right_cheek",
+                "left_cheek"
+              ],
+              "error_bpm": 5.339128737887876,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": null,
+                "forehead_tr": null,
+                "forehead_bl": 76.07398476207788,
+                "forehead_br": 90.68994553841031,
+                "left_cheek_tl": 92.98401567171464,
+                "left_cheek_tr": 85.06313847311387,
+                "left_cheek_bl": null,
+                "left_cheek_br": 85.10137051792758,
+                "right_cheek_tl": 84.18355302700715,
+                "right_cheek_tr": 86.45914389597458,
+                "right_cheek_bl": 85.48473638473266,
+                "right_cheek_br": 88.3408710801502
+              },
+              "bpm_candidate": 85.52709731793716,
+              "support": [
+                "right_cheek_tl",
+                "left_cheek_tr",
+                "left_cheek_br",
+                "right_cheek_bl",
+                "right_cheek_tr",
+                "right_cheek_br"
+              ],
+              "error_bpm": 4.527097317937162,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          },
+          "green": {
+            "three_regions": {
+              "individual_candidates": {
+                "forehead": 93.09362000929593,
+                "left_cheek": 96.41620889214873,
+                "right_cheek": 75.6800869032077
+              },
+              "bpm_candidate": 94.75491445072234,
+              "support": [
+                "forehead",
+                "left_cheek"
+              ],
+              "error_bpm": 13.754914450722339,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead": null,
+                  "left_cheek": null,
+                  "right_cheek": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            },
+            "twelve_patches": {
+              "individual_candidates": {
+                "forehead_tl": 93.19194050359603,
+                "forehead_tr": 92.77485306152384,
+                "forehead_bl": 93.46844439283845,
+                "forehead_br": 93.35829004370429,
+                "left_cheek_tl": 95.16299559481376,
+                "left_cheek_tr": 64.1558903271703,
+                "left_cheek_bl": 96.10229296188284,
+                "left_cheek_br": 64.01211994605863,
+                "right_cheek_tl": 75.33740713691164,
+                "right_cheek_tr": 66.18577817164035,
+                "right_cheek_bl": 75.77950457734596,
+                "right_cheek_br": 92.73081761207077
+              },
+              "bpm_candidate": 93.27511527365016,
+              "support": [
+                "right_cheek_br",
+                "forehead_tr",
+                "forehead_tl",
+                "forehead_br",
+                "forehead_bl",
+                "left_cheek_tl",
+                "left_cheek_bl"
+              ],
+              "error_bpm": 12.275115273650158,
+              "global_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              },
+              "regional_gate": {
+                "individual_candidates": {
+                  "forehead_tl": null,
+                  "forehead_tr": null,
+                  "forehead_bl": null,
+                  "forehead_br": null,
+                  "left_cheek_tl": null,
+                  "left_cheek_tr": null,
+                  "left_cheek_bl": null,
+                  "left_cheek_br": null,
+                  "right_cheek_tl": null,
+                  "right_cheek_tr": null,
+                  "right_cheek_bl": null,
+                  "right_cheek_br": null
+                },
+                "bpm_candidate": null,
+                "support": [],
+                "error_bpm": null
+              }
+            }
+          }
+        },
+        "reference_bpm": 81.0,
+        "raw_reference_median_bpm": 81.0,
+        "reference_warning": null,
+        "motion_excluded": true,
+        "exclusion_causes": [
+          "patch_area"
+        ]
+      }
+    ]
+  }
+}

@@ -8,18 +8,20 @@ from .report import write_report
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="PulseTrace phase 1: extract rPPG, no deepfake classification")
+    parser = argparse.ArgumentParser(description="PulseTrace: estimate heart rate from facial video using rPPG")
     sub = parser.add_subparsers(dest="command", required=True)
     real = sub.add_parser("analyze", help="Analyze a single-person video with MediaPipe")
     real.add_argument("video", type=Path)
     real.add_argument("--model", type=Path, required=True)
     real.add_argument("--max-seconds", type=float)
+    real.add_argument("--regional-quality", action="store_true", help="Write experimental local-region versus global quality comparison")
     real.add_argument("--sampling", choices=["landmarks", "template"], default="landmarks")
     real.add_argument("--overlay", action="store_true", help="Write annotated tracking.avi (contains face video)")
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
     demo.add_argument("--bpm", type=float, default=72)
     demo.add_argument("--seconds", type=float, default=20)
     for cmd in (real, demo):
+        cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
         cmd.add_argument("--output", type=Path, default=Path("outputs/run"))
         cmd.add_argument("--method", choices=["green", "pos"], default="pos")
         cmd.add_argument("--min-seconds", type=float, default=10)
@@ -41,6 +43,8 @@ def main(argv=None):
     segments.add_argument("--min-seconds", type=float, default=10.)
     segments.add_argument("--buffer-seconds", type=float, default=.5)
     args = parser.parse_args(argv)
+    if args.command == "analyze" and args.regional_quality and not args.patches:
+        parser.error("--regional-quality requires --patches for the layout comparison")
     try:
         if args.command == "segments":
             from .diagnostics import load_rgb_csv
@@ -71,14 +75,14 @@ def main(argv=None):
             args.output.mkdir(parents=True, exist_ok=True)
             video = args.output / "synthetic.avi"
             make_video(video, bpm=args.bpm, seconds=args.seconds)
-            extraction = extract_video(video, SyntheticTracker())
+            extraction = extract_video(video, SyntheticTracker(), patches=args.patches)
             extraction.metadata.update({"synthetic": True, "expected_bpm": args.bpm,
                                          "tracking": "known fixture geometry; not MediaPipe"})
         else:
             from .tracking import FaceTracker
             with FaceTracker(args.model) as tracker:
                 extraction = extract_video(args.video, tracker, max_seconds=args.max_seconds, sampling=args.sampling,
-                                           overlay_path=args.output/"tracking.avi" if args.overlay else None)
+                                           overlay_path=args.output/"tracking.avi" if args.overlay else None, patches=args.patches)
             extraction.metadata["synthetic"] = False
             extraction.metadata["tracking"] = "MediaPipe Face Landmarker VIDEO"
         results, failures = analyze_extraction(extraction, method=args.method,
@@ -98,7 +102,15 @@ def main(argv=None):
         from .diagnostics import write_diagnostics
         write_diagnostics(extraction, args.output, max_gap=args.max_gap)
         from .quality import write_segments
-        write_segments(extraction, args.output, min_seconds=args.min_seconds, max_gap=args.max_gap)
+        segments = write_segments(extraction, args.output, min_seconds=args.min_seconds, max_gap=args.max_gap)
+        if args.command == "analyze" and args.regional_quality:
+            from .regional_quality import write_regional_comparison
+            write_regional_comparison(extraction,args.output)
+        if args.patches:
+            from .patches import write_patch_comparison
+            comparison = write_patch_comparison(extraction, segments, args.output)
+            return 0 if any(row[method]["patch_consensus"]["bpm_candidate"] is not None
+                            for row in comparison["segments"] for method in ("green", "pos")) else 2
         return 0 if results and any(r.bpm is not None for r in results.values()) else 2
     except (ValueError, OSError, RuntimeError) as exc:
         parser.exit(2, f"pulsetrace: {exc}\n")

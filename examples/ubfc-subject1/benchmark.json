@@ -1,0 +1,914 @@
+{
+  "alignment": "Assumed shared elapsed-time origin (offset=0); hardware sync not independently verified",
+  "reference": "Device-reported BPM, not a waveform correlation benchmark",
+  "limitations": [
+    "One subject; overlapping windows are not independent",
+    "Mirror identity not independently checksum-matched to official source",
+    "Same filters and thresholds for both layouts; no tuning to reference"
+  ],
+  "metrics": {
+    "pos": {
+      "three_regions_all_windows": {
+        "total_windows": 7,
+        "eligible_windows": 7,
+        "compared_windows": 6,
+        "coverage_of_all_windows": 0.8571428571428571,
+        "mae_bpm": 2.590962143098667
+      },
+      "three_regions_motion_excluded": {
+        "total_windows": 7,
+        "eligible_windows": 2,
+        "compared_windows": 2,
+        "coverage_of_all_windows": 0.2857142857142857,
+        "mae_bpm": 1.432537424448718
+      },
+      "twelve_patches_all_windows": {
+        "total_windows": 7,
+        "eligible_windows": 7,
+        "compared_windows": 5,
+        "coverage_of_all_windows": 0.7142857142857143,
+        "mae_bpm": 1.1122864073671366
+      },
+      "twelve_patches_motion_excluded": {
+        "total_windows": 7,
+        "eligible_windows": 2,
+        "compared_windows": 1,
+        "coverage_of_all_windows": 0.14285714285714285,
+        "mae_bpm": 0.28650791837711154
+      }
+    },
+    "green": {
+      "three_regions_all_windows": {
+        "total_windows": 7,
+        "eligible_windows": 7,
+        "compared_windows": 4,
+        "coverage_of_all_windows": 0.5714285714285714,
+        "mae_bpm": 2.071724337502971
+      },
+      "three_regions_motion_excluded": {
+        "total_windows": 7,
+        "eligible_windows": 2,
+        "compared_windows": 1,
+        "coverage_of_all_windows": 0.14285714285714285,
+        "mae_bpm": 1.963613950080628
+      },
+      "twelve_patches_all_windows": {
+        "total_windows": 7,
+        "eligible_windows": 7,
+        "compared_windows": 6,
+        "coverage_of_all_windows": 0.8571428571428571,
+        "mae_bpm": 2.6687738735259523
+      },
+      "twelve_patches_motion_excluded": {
+        "total_windows": 7,
+        "eligible_windows": 2,
+        "compared_windows": 2,
+        "coverage_of_all_windows": 0.2857142857142857,
+        "mae_bpm": 0.9480883897779009
+      }
+    }
+  },
+  "windows": [
+    {
+      "start_s": 0.0,
+      "end_s": 12.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 99.17207661811709,
+              "left_cheek": 98.58892652788927,
+              "right_cheek": 98.15760922994764
+            },
+            "bpm_candidate": 98.58892652788927,
+            "support": [
+              "right_cheek",
+              "left_cheek",
+              "forehead"
+            ],
+            "error_bpm": -0.4110734721107292,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 98.01394851325834,
+              "forehead_tr": null,
+              "forehead_bl": 98.9898130714431,
+              "forehead_br": 99.07377348532138,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 97.16865565166108,
+              "left_cheek_bl": 98.128527786904,
+              "left_cheek_br": null,
+              "right_cheek_tl": null,
+              "right_cheek_tr": 101.52282245845458,
+              "right_cheek_bl": 143.85444677960513,
+              "right_cheek_br": 96.82800707245981
+            },
+            "bpm_candidate": 98.9898130714431,
+            "support": [
+              "right_cheek_br",
+              "left_cheek_tr",
+              "forehead_tl",
+              "left_cheek_bl",
+              "forehead_bl",
+              "forehead_br",
+              "right_cheek_tr"
+            ],
+            "error_bpm": -0.010186928556905173,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 100.04877998149723,
+              "left_cheek": 97.02527309557972,
+              "right_cheek": null
+            },
+            "bpm_candidate": 98.53702653853847,
+            "support": [
+              "left_cheek",
+              "forehead"
+            ],
+            "error_bpm": -0.4629734614615302,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 99.00270668923628,
+              "forehead_tr": null,
+              "forehead_bl": 98.22145434357017,
+              "forehead_br": 98.43202800027983,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 100.58411917035792,
+              "left_cheek_bl": null,
+              "left_cheek_br": 99.72108229118152,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": null,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 99.29231436552477,
+            "support": [
+              "forehead_bl",
+              "forehead_br",
+              "forehead_tl",
+              "left_cheek_br",
+              "left_cheek_tr"
+            ],
+            "error_bpm": 0.2923143655247742,
+            "retained_after_motion_exclusion": false
+          }
+        }
+      },
+      "reference_bpm": 99.0,
+      "motion_excluded": true
+    },
+    {
+      "start_s": 6.0,
+      "end_s": 18.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 107.79598885249473,
+              "left_cheek": 106.91657512495424,
+              "right_cheek": 106.98302606810732
+            },
+            "bpm_candidate": 106.98302606810732,
+            "support": [
+              "left_cheek",
+              "right_cheek",
+              "forehead"
+            ],
+            "error_bpm": 6.983026068107321,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": null,
+              "forehead_tr": 107.95337408034617,
+              "forehead_bl": 106.9100632982543,
+              "forehead_br": null,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": null,
+              "left_cheek_br": null,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": null,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": null,
+              "left_cheek": null,
+              "right_cheek": null
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 75.75457208260893,
+              "forehead_tr": null,
+              "forehead_bl": null,
+              "forehead_br": 78.77832149324325,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": 107.11543990387543,
+              "left_cheek_br": 107.39178880313732,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 107.59212670906005,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 107.42287053128322,
+            "support": [
+              "left_cheek_bl",
+              "left_cheek_br",
+              "right_cheek_bl"
+            ],
+            "error_bpm": 7.422870531283223,
+            "retained_after_motion_exclusion": false
+          }
+        }
+      },
+      "reference_bpm": 100.0,
+      "motion_excluded": true
+    },
+    {
+      "start_s": 12.0,
+      "end_s": 24.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 106.88519672209408,
+              "left_cheek": 107.72551686414346,
+              "right_cheek": null
+            },
+            "bpm_candidate": 107.30535679311876,
+            "support": [
+              "forehead",
+              "left_cheek"
+            ],
+            "error_bpm": -0.6946432068812385,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 106.49980184310839,
+              "forehead_tr": 107.4098536336683,
+              "forehead_bl": 107.787520475339,
+              "forehead_br": 107.01708088894583,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 107.6312275025386,
+              "left_cheek_bl": null,
+              "left_cheek_br": 106.4945571989112,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 107.64916793615865,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 107.21346726130707,
+            "support": [
+              "left_cheek_br",
+              "forehead_tl",
+              "forehead_br",
+              "forehead_tr",
+              "left_cheek_tr",
+              "right_cheek_bl",
+              "forehead_bl"
+            ],
+            "error_bpm": -0.7865327386929266,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 106.37941973384368,
+              "left_cheek": 107.38020229573408,
+              "right_cheek": null
+            },
+            "bpm_candidate": 106.87981101478888,
+            "support": [
+              "forehead",
+              "left_cheek"
+            ],
+            "error_bpm": -1.120188985211115,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 106.42327080082966,
+              "forehead_tr": 106.66669446254316,
+              "forehead_bl": 107.12155783608848,
+              "forehead_br": 107.35856371734853,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": null,
+              "left_cheek_br": 106.8025664890087,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 108.54226963384251,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 106.89412614931582,
+            "support": [
+              "forehead_tl",
+              "forehead_tr",
+              "left_cheek_br",
+              "forehead_bl",
+              "forehead_br",
+              "right_cheek_bl"
+            ],
+            "error_bpm": -1.1058738506841763,
+            "retained_after_motion_exclusion": false
+          }
+        }
+      },
+      "reference_bpm": 108.0,
+      "motion_excluded": true
+    },
+    {
+      "start_s": 18.0,
+      "end_s": 30.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": null,
+              "left_cheek": 108.44144177559771,
+              "right_cheek": 110.72024642215143
+            },
+            "bpm_candidate": 109.58084409887456,
+            "support": [
+              "left_cheek",
+              "right_cheek"
+            ],
+            "error_bpm": 0.5808440988745645,
+            "retained_after_motion_exclusion": true
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": null,
+              "forehead_tr": null,
+              "forehead_bl": 109.5527205623078,
+              "forehead_br": null,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 109.02029527444641,
+              "left_cheek_bl": null,
+              "left_cheek_br": 131.79925684565862,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": null,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 109.28650791837711,
+            "support": [
+              "left_cheek_tr",
+              "forehead_bl"
+            ],
+            "error_bpm": 0.28650791837711154,
+            "retained_after_motion_exclusion": true
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": null,
+              "left_cheek": 109.83897293087297,
+              "right_cheek": 63.316063987440074
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": null,
+              "forehead_tr": null,
+              "forehead_bl": 110.77443498875853,
+              "forehead_br": null,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 108.53173581285928,
+              "left_cheek_bl": null,
+              "left_cheek_br": 108.0623098776744,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 108.24202796038657,
+              "right_cheek_br": 109.28762664472134
+            },
+            "bpm_candidate": 108.76482730255395,
+            "support": [
+              "left_cheek_br",
+              "right_cheek_bl",
+              "left_cheek_tr",
+              "right_cheek_br",
+              "forehead_bl"
+            ],
+            "error_bpm": -0.23517269744604619,
+            "retained_after_motion_exclusion": true
+          }
+        }
+      },
+      "reference_bpm": 109.0,
+      "motion_excluded": false
+    },
+    {
+      "start_s": 24.0,
+      "end_s": 36.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 107.51931154232128,
+              "left_cheek": 107.71576924997713,
+              "right_cheek": 109.00667333799355
+            },
+            "bpm_candidate": 107.71576924997713,
+            "support": [
+              "forehead",
+              "left_cheek",
+              "right_cheek"
+            ],
+            "error_bpm": -2.2842307500228713,
+            "retained_after_motion_exclusion": true
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": null,
+              "forehead_tr": null,
+              "forehead_bl": null,
+              "forehead_br": 108.04189945009416,
+              "left_cheek_tl": null,
+              "left_cheek_tr": 105.95282347890952,
+              "left_cheek_bl": null,
+              "left_cheek_br": null,
+              "right_cheek_tl": 107.21267046702232,
+              "right_cheek_tr": 114.05023376401888,
+              "right_cheek_bl": 98.96629706614132,
+              "right_cheek_br": 114.32186326337471
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": null,
+              "left_cheek": 108.54881873674638,
+              "right_cheek": 107.52395336309235
+            },
+            "bpm_candidate": 108.03638604991937,
+            "support": [
+              "right_cheek",
+              "left_cheek"
+            ],
+            "error_bpm": -1.963613950080628,
+            "retained_after_motion_exclusion": true
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": null,
+              "forehead_tr": null,
+              "forehead_bl": 108.30096210883283,
+              "forehead_br": 108.09796280710567,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": null,
+              "left_cheek_br": 109.59573119475104,
+              "right_cheek_tl": 106.72377466546354,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 108.33899591789024,
+              "right_cheek_br": 108.60932572313365
+            },
+            "bpm_candidate": 108.33899591789024,
+            "support": [
+              "right_cheek_tl",
+              "forehead_br",
+              "forehead_bl",
+              "right_cheek_bl",
+              "right_cheek_br",
+              "left_cheek_br"
+            ],
+            "error_bpm": -1.6610040821097556,
+            "retained_after_motion_exclusion": true
+          }
+        }
+      },
+      "reference_bpm": 110.0,
+      "motion_excluded": false
+    },
+    {
+      "start_s": 30.0,
+      "end_s": 42.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 106.0091468051736,
+              "left_cheek": 106.40804473740472,
+              "right_cheek": 107.80270690008477
+            },
+            "bpm_candidate": 106.40804473740472,
+            "support": [
+              "forehead",
+              "left_cheek",
+              "right_cheek"
+            ],
+            "error_bpm": -4.5919552625952775,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 105.70408329961248,
+              "forehead_tr": 106.76751808120432,
+              "forehead_bl": 106.53113547242472,
+              "forehead_br": 105.8566725304705,
+              "left_cheek_tl": 107.0125657125997,
+              "left_cheek_tr": 106.99036716670992,
+              "left_cheek_bl": null,
+              "left_cheek_br": 105.7881070204721,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 95.34036322878609,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": 106.59213558407876,
+            "support": [
+              "forehead_tl",
+              "left_cheek_br",
+              "forehead_br",
+              "forehead_bl",
+              "forehead_tr",
+              "left_cheek_tr",
+              "left_cheek_tl"
+            ],
+            "error_bpm": -4.407864415921239,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 106.82283101691263,
+              "left_cheek": 105.69692707657015,
+              "right_cheek": null
+            },
+            "bpm_candidate": 106.25987904674139,
+            "support": [
+              "left_cheek",
+              "forehead"
+            ],
+            "error_bpm": -4.740120953258611,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 106.51238877953516,
+              "forehead_tr": null,
+              "forehead_bl": 106.50671719282239,
+              "forehead_br": 106.41342455108745,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": null,
+              "left_cheek_br": 104.90246737896214,
+              "right_cheek_tl": null,
+              "right_cheek_tr": 86.04840146411232,
+              "right_cheek_bl": null,
+              "right_cheek_br": 84.87402051255448
+            },
+            "bpm_candidate": 105.70459228589226,
+            "support": [
+              "left_cheek_br",
+              "forehead_br",
+              "forehead_bl",
+              "forehead_tl"
+            ],
+            "error_bpm": -5.295407714107739,
+            "retained_after_motion_exclusion": false
+          }
+        }
+      },
+      "reference_bpm": 111.0,
+      "motion_excluded": true
+    },
+    {
+      "start_s": 36.0,
+      "end_s": 48.0,
+      "methods": {
+        "pos": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 110.01120158122582,
+              "left_cheek": null,
+              "right_cheek": 68.34200394219076
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 109.0030924851596,
+              "forehead_tr": null,
+              "forehead_bl": 110.09344493076034,
+              "forehead_br": 110.23219835971732,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": null,
+              "left_cheek_br": 108.04723513981466,
+              "right_cheek_tl": 85.08210872248543,
+              "right_cheek_tr": null,
+              "right_cheek_bl": null,
+              "right_cheek_br": 69.27448816963553
+            },
+            "bpm_candidate": 109.0703400352875,
+            "support": [
+              "left_cheek_br",
+              "forehead_tl",
+              "forehead_bl",
+              "forehead_br"
+            ],
+            "error_bpm": 0.07034003528750077,
+            "retained_after_motion_exclusion": false
+          }
+        },
+        "green": {
+          "three_regions": {
+            "individual_candidates": {
+              "forehead": 109.69155757219472,
+              "left_cheek": null,
+              "right_cheek": null
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          },
+          "twelve_patches": {
+            "individual_candidates": {
+              "forehead_tl": 109.11832444241563,
+              "forehead_tr": null,
+              "forehead_bl": 109.25750679673625,
+              "forehead_br": 109.81718067244515,
+              "left_cheek_tl": null,
+              "left_cheek_tr": null,
+              "left_cheek_bl": 55.00976962498813,
+              "left_cheek_br": null,
+              "right_cheek_tl": null,
+              "right_cheek_tr": null,
+              "right_cheek_bl": 94.94242163134213,
+              "right_cheek_br": null
+            },
+            "bpm_candidate": null,
+            "support": [],
+            "error_bpm": null,
+            "retained_after_motion_exclusion": false
+          }
+        }
+      },
+      "reference_bpm": 109.0,
+      "motion_excluded": true
+    }
+  ],
+  "motion_quality": {
+    "status": "segments_available",
+    "configuration": {
+      "min_seconds": 10.0,
+      "buffer_seconds": 0.5,
+      "motion_threshold": 0.05,
+      "area_threshold": 0.1,
+      "max_gap": 0.25
+    },
+    "threshold_status": "unvalidated engineering heuristics",
+    "policy": "Any region motion/area spike excludes all regions; missing samples also excluded; no gap bridging",
+    "rejected_frame_fraction": 0.09372979961215255,
+    "retained_duration_s": 47.87434818613629,
+    "event_counts": {
+      "forehead": {
+        "motion_spike_frames": 0,
+        "area_spike_frames": 1
+      },
+      "left_cheek": {
+        "motion_spike_frames": 0,
+        "area_spike_frames": 1
+      },
+      "right_cheek": {
+        "motion_spike_frames": 0,
+        "area_spike_frames": 3
+      }
+    },
+    "excluded_intervals": [
+      {
+        "start_s": 0.11960044157849893,
+        "end_s": 1.1105755289432044
+      },
+      {
+        "start_s": 3.4000696963030412,
+        "end_s": 4.391044783667747
+      },
+      {
+        "start_s": 9.82432198680527,
+        "end_s": 10.815297074169976
+      },
+      {
+        "start_s": 13.549021453107093,
+        "end_s": 14.539996540471797
+      },
+      {
+        "start_s": 36.819850228809315,
+        "end_s": 37.81082531617402
+      }
+    ],
+    "segments": [
+      {
+        "start_s": 0.0,
+        "end_s": 0.10251466421014194,
+        "duration_s": 0.10251466421014194,
+        "regions": {},
+        "status": "too_short"
+      },
+      {
+        "start_s": 1.1276613063115615,
+        "end_s": 3.3829839189346838,
+        "duration_s": 2.2553226126231225,
+        "regions": {},
+        "status": "too_short"
+      },
+      {
+        "start_s": 4.408130561036104,
+        "end_s": 9.807236209436912,
+        "duration_s": 5.399105648400808,
+        "regions": {},
+        "status": "too_short"
+      },
+      {
+        "start_s": 10.832382851538332,
+        "end_s": 13.531935675738735,
+        "duration_s": 2.6995528242004028,
+        "regions": {},
+        "status": "too_short"
+      },
+      {
+        "start_s": 14.557082317840155,
+        "end_s": 36.80276445144096,
+        "duration_s": 22.245682133600802,
+        "regions": {
+          "forehead": {
+            "pos": {
+              "bpm_candidate": 107.91155514336809,
+              "peak_fraction": 0.43540308337246975,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            },
+            "green": {
+              "bpm_candidate": null,
+              "peak_fraction": 0.3383940071427575,
+              "warnings": [
+                "Diffuse spectrum: no usable pulse estimate"
+              ]
+            }
+          },
+          "left_cheek": {
+            "pos": {
+              "bpm_candidate": 107.89784378455283,
+              "peak_fraction": 0.5009127184941882,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            },
+            "green": {
+              "bpm_candidate": 107.02799169336005,
+              "peak_fraction": 0.5087982268610557,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            }
+          },
+          "right_cheek": {
+            "pos": {
+              "bpm_candidate": 109.39281651136733,
+              "peak_fraction": 0.39418459694362573,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            },
+            "green": {
+              "bpm_candidate": 107.66290427758754,
+              "peak_fraction": 0.37806293765993687,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            }
+          }
+        },
+        "status": "eligible"
+      },
+      {
+        "start_s": 37.827911093542376,
+        "end_s": 52.829223622959816,
+        "duration_s": 15.00131252941744,
+        "regions": {
+          "forehead": {
+            "pos": {
+              "bpm_candidate": 104.82670364488902,
+              "peak_fraction": 0.6864197481012874,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            },
+            "green": {
+              "bpm_candidate": 105.2142852858874,
+              "peak_fraction": 0.5575483720005021,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            }
+          },
+          "left_cheek": {
+            "pos": {
+              "bpm_candidate": 103.97985402438435,
+              "peak_fraction": 0.5665304682380211,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            },
+            "green": {
+              "bpm_candidate": null,
+              "peak_fraction": 0.26239340417357704,
+              "warnings": [
+                "Diffuse spectrum: no usable pulse estimate"
+              ]
+            }
+          },
+          "right_cheek": {
+            "pos": {
+              "bpm_candidate": null,
+              "peak_fraction": 0.24620884728415188,
+              "warnings": [
+                "Diffuse spectrum: no usable pulse estimate"
+              ]
+            },
+            "green": {
+              "bpm_candidate": 89.73599193561051,
+              "peak_fraction": 0.39752931703519057,
+              "warnings": [
+                "Spectral HR candidate only; motion or lighting may mimic a pulse"
+              ]
+            }
+          }
+        },
+        "status": "eligible"
+      }
+    ],
+    "limitations": [
+      "Does not detect all off-face patches, lighting changes or motion artifacts",
+      "No RGB-spike or expected-BPM-based selection; all eligible segments reported",
+      "No clip-level BPM or validated accuracy implied"
+    ]
+  },
+  "input": {
+    "video_sha256": "f6745be5e6b6fe2f00dd6f32dd234aa559bb30b45f38ec9d87cf9a1cc41f6954",
+    "reference_sha256": "836852f57f9cc9e04ecab134ebe506f831ad3e7d95ee73771ab8ac32ce845b67",
+    "decoded_frames": 1547,
+    "duration_s": 52.829223622959816,
+    "reference_duration_s": 52.691
+  },
+  "paired_mae_bpm": {
+    "pos": {
+      "common_windows": 4,
+      "three_regions": 1.5696290101154524,
+      "twelve_patches": 1.3727730003870455
+    },
+    "green": {
+      "common_windows": 4,
+      "three_regions": 2.071724337502971,
+      "twelve_patches": 2.0886500031066113
+    }
+  },
+  "runtime": {
+    "mediapipe": "0.10.21",
+    "numpy": "1.26.4",
+    "opencv": "4.11.0",
+    "notes": "MediaPipe 0.10.35 crashed natively in original and fresh environments; isolated older supported runtime completed"
+  }
+}

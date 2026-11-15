@@ -1,0 +1,226 @@
+{
+  "reference": "Stored device BPM labels, not independently verified ground truth",
+  "cohort_status": "All six recordings are development data for this new policy",
+  "strict": {
+    "recordings": 6,
+    "metrics": {
+      "pos": {
+        "three_regions": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 9,
+            "coverage": 0.16981132075471697,
+            "mae_bpm": 1.8929376611156148
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 23,
+            "coverage": 0.4339622641509434,
+            "mae_bpm": 1.6368282236851657
+          },
+          "newly_admitted": {
+            "windows": 14,
+            "mae_bpm": 1.472186442479877,
+            "max_absolute_error_bpm": 3.894624181255253
+          },
+          "lost_global_estimates": 0
+        },
+        "twelve_patches": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 7,
+            "coverage": 0.1320754716981132,
+            "mae_bpm": 1.789309519866664
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 17,
+            "coverage": 0.32075471698113206,
+            "mae_bpm": 1.2856739861973376
+          },
+          "newly_admitted": {
+            "windows": 10,
+            "mae_bpm": 0.9331291126288093,
+            "max_absolute_error_bpm": 2.5889689371798283
+          },
+          "lost_global_estimates": 0
+        }
+      },
+      "green": {
+        "three_regions": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 5,
+            "coverage": 0.09433962264150944,
+            "mae_bpm": 2.001555600497531
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 12,
+            "coverage": 0.22641509433962265,
+            "mae_bpm": 1.7953343783010507
+          },
+          "newly_admitted": {
+            "windows": 7,
+            "mae_bpm": 1.6480335053035648,
+            "max_absolute_error_bpm": 4.935439698347835
+          },
+          "lost_global_estimates": 0
+        },
+        "twelve_patches": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 7,
+            "coverage": 0.1320754716981132,
+            "mae_bpm": 1.7668034251638798
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 13,
+            "coverage": 0.24528301886792453,
+            "mae_bpm": 1.651628801534349
+          },
+          "newly_admitted": {
+            "windows": 6,
+            "mae_bpm": 1.5172584072998963,
+            "max_absolute_error_bpm": 3.610703042410549
+          },
+          "lost_global_estimates": 0
+        }
+      }
+    }
+  },
+  "corroborated": {
+    "recordings": 6,
+    "metrics": {
+      "pos": {
+        "three_regions": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 9,
+            "coverage": 0.16981132075471697,
+            "mae_bpm": 1.8929376611156148
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 47,
+            "coverage": 0.8867924528301887,
+            "mae_bpm": 3.4329147509964124
+          },
+          "newly_admitted": {
+            "windows": 38,
+            "mae_bpm": 3.797646167020812,
+            "max_absolute_error_bpm": 27.475655605115122
+          },
+          "lost_global_estimates": 0
+        },
+        "twelve_patches": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 7,
+            "coverage": 0.1320754716981132,
+            "mae_bpm": 1.789309519866666
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 40,
+            "coverage": 0.7547169811320755,
+            "mae_bpm": 3.3023014242138586
+          },
+          "newly_admitted": {
+            "windows": 33,
+            "mae_bpm": 3.6232391008935654,
+            "max_absolute_error_bpm": 28.833568196496287
+          },
+          "lost_global_estimates": 0
+        }
+      },
+      "green": {
+        "three_regions": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 5,
+            "coverage": 0.09433962264150944,
+            "mae_bpm": 2.001555600497528
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 23,
+            "coverage": 0.4339622641509434,
+            "mae_bpm": 4.5030331716303
+          },
+          "newly_admitted": {
+            "windows": 18,
+            "mae_bpm": 5.197888052500513,
+            "max_absolute_error_bpm": 40.25143505935448
+          },
+          "lost_global_estimates": 0
+        },
+        "twelve_patches": {
+          "global_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 7,
+            "coverage": 0.1320754716981132,
+            "mae_bpm": 1.7668034251638807
+          },
+          "regional_gate": {
+            "reference_valid_windows": 53,
+            "accepted_windows": 29,
+            "coverage": 0.5471698113207547,
+            "mae_bpm": 5.561423506213742
+          },
+          "newly_admitted": {
+            "windows": 22,
+            "mae_bpm": 6.768802622911424,
+            "max_absolute_error_bpm": 70.3338892903177
+          },
+          "lost_global_estimates": 0
+        }
+      }
+    }
+  },
+  "contact_audit": [
+    {
+      "subject": "subject1",
+      "windows": 7,
+      "audited_windows": 7,
+      "device_ppg_disagreements_over_10_bpm": 0,
+      "ppg_method_disagreements_over_6_bpm": 0
+    },
+    {
+      "subject": "subject10",
+      "windows": 10,
+      "audited_windows": 10,
+      "device_ppg_disagreements_over_10_bpm": 0,
+      "ppg_method_disagreements_over_6_bpm": 0
+    },
+    {
+      "subject": "subject11",
+      "windows": 10,
+      "audited_windows": 10,
+      "device_ppg_disagreements_over_10_bpm": 2,
+      "ppg_method_disagreements_over_6_bpm": 1
+    },
+    {
+      "subject": "subject12",
+      "windows": 10,
+      "audited_windows": 10,
+      "device_ppg_disagreements_over_10_bpm": 1,
+      "ppg_method_disagreements_over_6_bpm": 0
+    },
+    {
+      "subject": "subject13",
+      "windows": 10,
+      "audited_windows": 10,
+      "device_ppg_disagreements_over_10_bpm": 0,
+      "ppg_method_disagreements_over_6_bpm": 0
+    },
+    {
+      "subject": "subject14",
+      "windows": 10,
+      "audited_windows": 10,
+      "device_ppg_disagreements_over_10_bpm": 3,
+      "ppg_method_disagreements_over_6_bpm": 2
+    }
+  ]
+}
