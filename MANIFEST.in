@@ -27,3 +27,6 @@ recursive-include examples/contact-reference-audit *.json
 
 include SUBPIXEL_SAMPLING.md
 recursive-include examples/subpixel-subject14 *.json
+
+include PATCH_SUPPORT.md
+recursive-include examples/equal-area-subject14 *.json

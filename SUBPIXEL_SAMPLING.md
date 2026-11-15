@@ -96,3 +96,6 @@ coverage is approximately equal, not guaranteed identical. The parent weights
 are unchanged, and the four patch masks still sum to the parent exactly.
 The existing bounding-box split remains the default. The offline paired evaluator
 accepts `--partition equal_area`; no production CLI behavior changes.
+
+Results for the optional balanced partition and controlled geometry-scale
+study are documented in [Patch support](PATCH_SUPPORT.md).
