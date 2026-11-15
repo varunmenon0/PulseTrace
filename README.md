@@ -8,13 +8,13 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 
 ## Highlights
 
-- **12 facial patches** across the forehead and cheeks, with regional consensus.
+- **12 facial patches** across the forehead and cheeks, with selectable patch or zone voting.
 - **478-landmark face tracking**, timestamp-aware video decoding, and ROI overlays.
 - **Motion-aware analysis** with buffered exclusions and separate continuous segments.
 - **Fractional pixel coverage and geometry-balanced patches** for sampling experiments.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **122 passing automated tests**, plus an optional model-backed integration check.
+- **137 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
 
 ## Measured engineering results
@@ -69,6 +69,9 @@ pulsetrace analyze recording.mp4 \
   --output outputs/recording --method pos
 ```
 
+Use `--consensus zone` with `--patches` to give each supported facial region one
+vote. Both patch and regional reports record the chosen policy.
+
 Use `--method green` to compare green-channel extraction, `--max-seconds 30` to
 select a duration, and `--overlay` to export annotated tracking video. The default
 sampling mode uses the three parent regions; `--patches` adds the twelve-patch
@@ -119,6 +122,7 @@ availability, and estimate diagnostics. `pulsetrace --help` lists all commands.
 |---|---|
 | [Public video evaluation](PUBLIC_VALIDATION_MULTI.md) | UBFC development recordings and reference checks |
 | [Fixed-rule evaluation](FROZEN_EVALUATION.md) | Preserved protocol and results on subjects 12–14 |
+| [Region-balanced voting](ZONE_CONSENSUS.md) | Two-level consensus and six-recording candidate replay |
 | [Sampling comparison](SAMPLING_EVALUATION.md) | Paired integer and balanced fractional sampling |
 | [Patch support](PATCH_SUPPORT.md) | Geometry scale and sampling-lattice study |
 | [Area-source gates](AREA_GATE_EVALUATION.md) | Identical-RGB comparison of gate area measurements |

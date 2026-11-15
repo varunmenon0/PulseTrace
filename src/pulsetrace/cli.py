@@ -22,6 +22,8 @@ def main(argv=None):
     demo.add_argument("--seconds", type=float, default=20)
     for cmd in (real, demo):
         cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
+        cmd.add_argument("--consensus", choices=["patch", "zone"], default="patch",
+                         help="Twelve-patch vote policy; zone uses one vote per supported parent region")
         cmd.add_argument("--output", type=Path, default=Path("outputs/run"))
         cmd.add_argument("--method", choices=["green", "pos"], default="pos")
         cmd.add_argument("--min-seconds", type=float, default=10)
@@ -43,6 +45,8 @@ def main(argv=None):
     segments.add_argument("--min-seconds", type=float, default=10.)
     segments.add_argument("--buffer-seconds", type=float, default=.5)
     args = parser.parse_args(argv)
+    if args.command in ("analyze", "demo") and args.consensus == "zone" and not args.patches:
+        parser.error("--consensus zone requires --patches")
     if args.command == "analyze" and args.regional_quality and not args.patches:
         parser.error("--regional-quality requires --patches for the layout comparison")
     try:
@@ -91,6 +95,7 @@ def main(argv=None):
             "min_seconds": args.min_seconds, "max_gap_s": args.max_gap,
             "band_bpm": [40, 200], "pos_window_s": 1.6,
             "filter_order": 4, "spectral_peak_fraction_cutoff": .35,
+            "consensus_policy": args.consensus,
         }
         extraction.metadata["versions"] = {
             name: importlib.metadata.version(name)
@@ -105,10 +110,10 @@ def main(argv=None):
         segments = write_segments(extraction, args.output, min_seconds=args.min_seconds, max_gap=args.max_gap)
         if args.command == "analyze" and args.regional_quality:
             from .regional_quality import write_regional_comparison
-            write_regional_comparison(extraction,args.output)
+            write_regional_comparison(extraction,args.output,consensus_policy=args.consensus)
         if args.patches:
             from .patches import write_patch_comparison
-            comparison = write_patch_comparison(extraction, segments, args.output)
+            comparison = write_patch_comparison(extraction, segments, args.output,consensus_policy=args.consensus)
             return 0 if any(row[method]["patch_consensus"]["bpm_candidate"] is not None
                             for row in comparison["segments"] for method in ("green", "pos")) else 2
         return 0 if results and any(r.bpm is not None for r in results.values()) else 2

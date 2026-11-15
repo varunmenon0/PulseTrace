@@ -43,3 +43,6 @@ recursive-include examples/area-gates *.json
 include PHOTOMETRIC_GUARD.md
 
 recursive-include examples/photometric-guard *.json
+
+include ZONE_CONSENSUS.md
+recursive-include examples/zone-consensus *.json

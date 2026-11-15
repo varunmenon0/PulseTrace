@@ -44,7 +44,11 @@ def consensus(candidates, zones, tolerance=5.):
     return {"bpm_candidate": float(np.median(medians)), "support": group}
 
 
-def write_patch_comparison(extraction, segments, output):
+def write_patch_comparison(extraction, segments, output, *, consensus_policy="patch"):
+    if consensus_policy not in ("patch", "zone"):
+        raise ValueError("Unknown consensus policy")
+    from .zone_consensus import hierarchical_consensus
+    choose = hierarchical_consensus if consensus_policy == "zone" else consensus
     t = extraction.time
     config = segments["configuration"]
     patch_rgb = extraction.patch_rgb
@@ -55,6 +59,7 @@ def write_patch_comparison(extraction, segments, output):
             writer.writerow([ts] + [v for n in PATCHES for v in
                              (*patch_rgb[n][i], extraction.patch_pixels[n][i])])
     report = {"status": segments["status"], "consensus_tolerance_bpm": 5,
+              "consensus_policy": consensus_policy,
               "note": "Experimental spectral candidates; agreement is not a pulse reference.",
               "segments": []}
     for segment in segments["segments"]:
@@ -84,7 +89,7 @@ def write_patch_comparison(extraction, segments, output):
                 "baseline_regions": base,
                 "baseline_consensus": consensus(base, {n:n for n in REGIONS}),
                 "patches": patches,
-                "patch_consensus": consensus({n:d["bpm_candidate"] for n,d in patches.items()}, PATCHES),
+                "patch_consensus": choose({n:d["bpm_candidate"] for n,d in patches.items()}, PATCHES),
             }
         report["segments"].append(row)
     (output/"patch_comparison.json").write_text(json.dumps(report, indent=2, allow_nan=False)+"\n")

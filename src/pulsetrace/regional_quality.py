@@ -62,15 +62,21 @@ def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
     return masks,global_bad
 
 
-def gate_candidates(candidates, zones, usable):
+def gate_candidates(candidates, zones, usable, *, consensus_policy="patch"):
+    if consensus_policy not in ("patch", "zone"):
+        raise ValueError("Unknown consensus policy")
+    from .zone_consensus import hierarchical_consensus
     filtered={name:value if usable[zones[name]] else None for name,value in candidates.items()}
-    return {"individual_candidates":filtered,**consensus(filtered,zones)}
+    choose = hierarchical_consensus if consensus_policy == "zone" else consensus
+    return {"individual_candidates":filtered,**choose(filtered,zones)}
 
 
-def write_regional_comparison(extraction, output, *, area_policy="strict"):
+def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch"):
     """Compare saved pulse candidates on matching continuous fixed windows."""
     from .signal import analyze
     from .patches import PATCHES
+    if consensus_policy not in ("patch", "zone"):
+        raise ValueError("Unknown consensus policy")
     masks,shared=regional_masks(extraction,area_policy=area_policy)
     global_quality=analyze_segments(extraction)
     t=extraction.time;rows=[]
@@ -91,13 +97,14 @@ def write_regional_comparison(extraction, output, *, area_policy="strict"):
                         try:bpm=analyze(t[chosen],samples,method=method,min_seconds=11.9).bpm
                         except ValueError:pass
                     estimates[name]=bpm
-                layouts[label]={"global_gate":gate_candidates(estimates,zones,{n:globally_usable for n in REGIONS}),
-                                "regional_gate":gate_candidates(estimates,zones,usable)}
+                policy = consensus_policy if label == "twelve_patches" else "patch"
+                layouts[label]={"global_gate":gate_candidates(estimates,zones,{n:globally_usable for n in REGIONS},consensus_policy=policy),
+                                "regional_gate":gate_candidates(estimates,zones,usable,consensus_policy=policy)}
             row["methods"][method]=layouts
         rows.append(row)
     report={"policy":"Experimental: region-specific area/displacement/loss; global exclusion when >=2 parent regions are displaced or unavailable",
             "threshold_status":"Unvalidated engineering heuristics",
-            "configuration":{"area_policy":area_policy,"motion_threshold":.05,"area_threshold":.10,"buffer_seconds":.5,"window_seconds":12,"step_seconds":6},
+            "configuration":{"area_policy":area_policy,"consensus_policy":consensus_policy,"motion_threshold":.05,"area_threshold":.10,"buffer_seconds":.5,"window_seconds":12,"step_seconds":6},
             "limitation":"Any excluded frame makes that region unavailable for the complete window; no gap bridging",
             "windows":rows}
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
