@@ -86,3 +86,13 @@ patch support and lattice convergence across multiple recording scales without
 using expected BPM to choose settings. A future policy that uses fractional area
 for exclusions must be evaluated separately from this fixed-gate sampler test,
 with independent reference processing and a fresh held-out cohort.
+
+## Optional geometry-balanced partition
+
+`fractional_masks(..., partition="equal_area")` bisects the continuous inset
+polygon by area vertically, then bisects each half horizontally. It uses polygon
+geometry only. The fixed subpixel lattice approximates these continuous cuts, so
+coverage is approximately equal, not guaranteed identical. The parent weights
+are unchanged, and the four patch masks still sum to the parent exactly.
+The existing bounding-box split remains the default. The offline paired evaluator
+accepts `--partition equal_area`; no production CLI behavior changes.

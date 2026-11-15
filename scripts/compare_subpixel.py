@@ -20,8 +20,9 @@ from pulsetrace.tracking import FaceTracker
 class PairedTracker:
     """Sample fractional masks before returning the same landmarks to the baseline."""
 
-    def __init__(self, tracker, subdivisions):
+    def __init__(self, tracker, subdivisions, partition="bbox"):
         self.tracker, self.subdivisions = tracker, subdivisions
+        self.partition = partition
         self.rgb = {n: [] for n in REGIONS}
         self.areas = {n: [] for n in REGIONS}
         self.patch_rgb = {n: [] for n in PATCHES}
@@ -34,7 +35,8 @@ class PairedTracker:
             if landmarks is not None:
                 try:
                     parent, patches = fractional_masks(
-                        bgr.shape, landmarks[list(indices)], subdivisions=self.subdivisions)
+                        bgr.shape, landmarks[list(indices)], subdivisions=self.subdivisions,
+                        partition=self.partition)
                     area = parent.area
                     color = parent.mean_rgb(bgr)
                 except ValueError:
@@ -154,9 +156,10 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--max-seconds', type=float)
     parser.add_argument('--subdivisions', type=int, default=8, choices=range(1, 33))
+    parser.add_argument('--partition', choices=('bbox', 'equal_area'), default='bbox')
     args = parser.parse_args()
     with FaceTracker(args.model) as tracker:
-        paired = PairedTracker(tracker, args.subdivisions)
+        paired = PairedTracker(tracker, args.subdivisions, args.partition)
         baseline = extract_video(args.video, paired, patches=True, max_seconds=args.max_seconds)
     weighted = replace(baseline, rgb={n: np.asarray(v) for n, v in paired.rgb.items()},
                        patch_rgb={n: np.asarray(v) for n, v in paired.patch_rgb.items()})
@@ -164,6 +167,7 @@ def main():
     report = dict(
         experiment='Exploratory sampling comparison on development video; not independent validation',
         configuration=dict(subdivisions=args.subdivisions, square_inset_pixels=1,
+                           partition=args.partition,
                            min_effective_area=30, gates='Fixed to integer baseline',
                            max_seconds=args.max_seconds),
         limitations=['Fractional coverage and continuous inset/quadrant boundaries change sampled support',

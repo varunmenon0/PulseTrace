@@ -43,3 +43,26 @@ def test_small_fractional_regions_are_rejected():
         parent.mean_rgb(np.ones((50, 50, 3)))
     with pytest.raises(ValueError, match="too small"):
         patches['tl'].mean_rgb(np.ones((50, 50, 3)))
+
+
+def test_equal_area_partition_balances_triangle_without_changing_parent():
+    points = np.array([[5., 5.], [45., 5.], [5., 45.]])
+    original, uneven = fractional_masks((50, 50, 3), points, subdivisions=32)
+    parent, balanced = fractional_masks((50, 50, 3), points, subdivisions=32,
+                                        partition='equal_area')
+    assert np.array_equal(parent.weights, original.weights)
+    assert np.allclose(sum(p.weights for p in balanced.values()), parent.weights)
+    assert max(abs(p.area-parent.area/4) for p in balanced.values()) < 1
+    assert min(p.area for p in uneven.values()) < parent.area/8
+
+
+def test_equal_area_empty_inset_is_rejected_as_small():
+    parent, patches = fractional_masks((50, 50, 3), rectangle(), inset=11,
+                                       partition='equal_area')
+    assert parent.area == 0
+    assert all(p.area == 0 for p in patches.values())
+
+
+def test_unknown_partition_is_rejected():
+    with pytest.raises(ValueError, match='partition'):
+        fractional_masks((50, 50, 3), rectangle(), partition='unknown')
