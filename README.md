@@ -16,7 +16,7 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 - **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **153 passing automated tests**, plus an optional model-backed integration check.
+- **157 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
 
 ## Synthetic proof of concept
@@ -40,6 +40,18 @@ pulsetrace demo --profile clean --bpm 72 --end-bpm 108 --seconds 60 \
 The [controlled tracking benchmark](PULSE_TRENDS.md) recovered **21/21 windows**
 across rising, falling, and constant-rate cases, with **0.041 BPM POS mean error**
 against the injected window-average rates.
+
+### Recover after abrupt motion
+
+The [controlled motion benchmark](MOTION_RECOVERY.md) retains **7/7 readings**
+during gentle translation, excludes both windows affected by a sharp motion
+burst, and recovers all five clean windows. Trend exports include the excluded
+regions and shared motion/loss flags.
+
+```bash
+pulsetrace demo --profile motion_burst --bpm 72 --seconds 48 \
+  --patches --consensus zone --track --output outputs/motion-demo
+```
 
 ## Measured engineering results
 

@@ -52,3 +52,6 @@ recursive-include examples/controlled-video *.json *.svg *.png
 
 include PULSE_TRENDS.md
 recursive-include examples/pulse-trends *.json *.png *.svg
+
+include MOTION_RECOVERY.md
+recursive-include examples/motion-recovery *.json *.png *.svg

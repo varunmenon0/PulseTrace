@@ -27,6 +27,8 @@ def test_missing_windows_remain_in_json_csv_and_coverage(tmp_path):
     with (tmp_path/'pulse_trend.csv').open() as file:
         rows=list(csv.DictReader(file))
     assert rows[1]['pos_bpm']=='' and len(rows)==3
+    assert rows[1]['excluded_regions']=='right_cheek'
+    assert result['windows'][1]['excluded_regions']==['right_cheek']
 
 
 def test_out_of_order_windows_are_rejected():

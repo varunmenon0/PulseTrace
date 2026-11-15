@@ -48,9 +48,10 @@ def run(protocol, output):
     for case in protocol['cases']:
         folder=output/case['name'];folder.mkdir(exist_ok=True)
         video=folder/'synthetic.avi'
+        profile=case.get('profile',protocol['profile'])
         metadata=make_controlled_video(video,bpm=case['start_bpm'],end_bpm=case['end_bpm'],
-            seconds=case['seconds'],fps=case['fps'],seed=protocol['seed'],profile=protocol['profile'])
-        extraction=extract_video(video,ControlledTracker(),patches=True)
+            seconds=case['seconds'],fps=case['fps'],seed=protocol['seed'],profile=profile)
+        extraction=extract_video(video,ControlledTracker(profile=profile),patches=True)
         if len(extraction.time)!=metadata['encoded_frames']:
             raise ValueError('Decoded frame count differs from fixture truth')
         regional=write_regional_comparison(extraction,folder,consensus_policy=protocol['consensus_policy'])
