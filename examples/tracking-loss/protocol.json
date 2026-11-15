@@ -1,0 +1,13 @@
+{
+  "profile": "face_loss",
+  "codec": "FFV1",
+  "seed": 7,
+  "consensus_policy": "zone",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "cases": [
+    {"name": "constant_pulse_with_loss", "profile": "face_loss", "start_bpm": 72, "end_bpm": 72, "seconds": 48, "fps": 30},
+    {"name": "rising_pulse_with_loss", "profile": "face_loss", "start_bpm": 72, "end_bpm": 108, "seconds": 48, "fps": 60},
+    {"name": "face_does_not_return", "profile": "face_loss_tail", "start_bpm": 72, "end_bpm": 108, "seconds": 48, "fps": 30}
+  ]
+}

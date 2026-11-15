@@ -16,7 +16,7 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 - **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **157 passing automated tests**, plus an optional model-backed integration check.
+- **161 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
 
 ## Synthetic proof of concept
@@ -52,6 +52,10 @@ regions and shared motion/loss flags.
 pulsetrace demo --profile motion_burst --bpm 72 --seconds 48 \
   --patches --consensus zone --track --output outputs/motion-demo
 ```
+
+The [face-loss benchmark](TRACKING_LOSS.md) also tests a brief disappearance
+during a rising pulse and a face that never returns. Trend exports retain gaps,
+identify missing-sample regions, and explain unavailable estimates.
 
 ## Measured engineering results
 
