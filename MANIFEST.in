@@ -34,3 +34,8 @@ recursive-include examples/equal-area-subject14 *.json
 include SAMPLING_EVALUATION.md
 recursive-include examples/equal-area-subject10 *.json
 include examples/balanced-sampling-summary.json
+
+include REFERENCE_PROTOCOL.md
+
+include AREA_GATE_EVALUATION.md
+recursive-include examples/area-gates *.json
