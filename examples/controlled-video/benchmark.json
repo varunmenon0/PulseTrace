@@ -1,0 +1,3241 @@
+{
+  "experiment": "Encoded synthetic-video proof of concept with known rendered geometry",
+  "protocol": {
+    "version": 1,
+    "seconds": 20,
+    "seed": 7,
+    "codec": "FFV1",
+    "consensus_policy": "zone",
+    "agreement_tolerance_bpm": 5,
+    "cases": [
+      {
+        "name": "clean_48_30",
+        "profile": "clean",
+        "bpm": 48,
+        "fps": 30,
+        "group": "clean"
+      },
+      {
+        "name": "clean_72_30",
+        "profile": "clean",
+        "bpm": 72,
+        "fps": 30,
+        "group": "clean"
+      },
+      {
+        "name": "clean_83_30",
+        "profile": "clean",
+        "bpm": 83,
+        "fps": 30,
+        "group": "clean"
+      },
+      {
+        "name": "clean_120_30",
+        "profile": "clean",
+        "bpm": 120,
+        "fps": 30,
+        "group": "clean"
+      },
+      {
+        "name": "clean_180_30",
+        "profile": "clean",
+        "bpm": 180,
+        "fps": 30,
+        "group": "clean"
+      },
+      {
+        "name": "clean_72_60",
+        "profile": "clean",
+        "bpm": 72,
+        "fps": 60,
+        "group": "clean"
+      },
+      {
+        "name": "mild_noise_72",
+        "profile": "mild_noise",
+        "bpm": 72,
+        "fps": 30,
+        "group": "controlled_variations"
+      },
+      {
+        "name": "slow_light_72",
+        "profile": "slow_light",
+        "bpm": 72,
+        "fps": 30,
+        "group": "controlled_variations"
+      },
+      {
+        "name": "periodic_light_72",
+        "profile": "periodic_light",
+        "bpm": 72,
+        "fps": 30,
+        "group": "lighting_challenge"
+      }
+    ],
+    "scoring": "Score decoded-video estimates against injected BPM after analysis; preserve missing estimates",
+    "tracking": "Known rendered geometry; model-free proof of concept",
+    "cue": "Green/POS disagreement plus background-frequency match; reference BPM does not enter this decision"
+  },
+  "records": [
+    {
+      "case": {
+        "name": "clean_48_30",
+        "profile": "clean",
+        "bpm": 48,
+        "fps": 30,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 48,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "5f0e47083dbb99e6e3efbd63a1f6dffa3727ec8e2f62a673ffb6b0acb4ff0405",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "left_cheek": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "right_cheek": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "forehead_tr": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "forehead_bl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "forehead_br": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 47.99677339870917,
+                "peak_fraction": 0.9935033357920641
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 47.99677339870917,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 47.99677339870917,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 47.99677339870917,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 47.99677339870917,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 47.99677339870917,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "left_cheek": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "right_cheek": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "forehead_tr": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "forehead_bl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "forehead_br": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 47.99601340920945,
+                "peak_fraction": 0.9756177161709655
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 47.99601340920945,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 47.99601340920945,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 47.99601340920945,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 47.99601340920945,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 47.99601340920945,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 0.000759989499719893,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": -0.003226601290826636,
+        "pos": -0.003986590790546529
+      }
+    },
+    {
+      "case": {
+        "name": "clean_72_30",
+        "profile": "clean",
+        "bpm": 72,
+        "fps": 30,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 72,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "b8c77da5de45b559339b43a44d7be2388ba4122e9ba92055d0ac0cd0aa3a07ad",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.99979510233554,
+                "peak_fraction": 0.993276594872632
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99979510233554,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.99979510233554,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99979510233554,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.99979510233554,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99979510233554,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.99979313174674,
+                "peak_fraction": 0.993256868298478
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99979313174674,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.99979313174674,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99979313174674,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.99979313174674,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99979313174674,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 1.9705887979171166e-06,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": -0.00020489766446019075,
+        "pos": -0.00020686825325810787
+      }
+    },
+    {
+      "case": {
+        "name": "clean_83_30",
+        "profile": "clean",
+        "bpm": 83,
+        "fps": 30,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 83,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "54369cb2475ff589e44850f1727eef0a869b768ac219e5d65aa89a8e7314879c",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "left_cheek": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "right_cheek": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "forehead_tr": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "forehead_bl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "forehead_br": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 83.01239289291078,
+                "peak_fraction": 0.9936805792337772
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 83.01239289291078,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 83.01239289291078,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 83.01239289291078,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 83.01239289291078,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 83.01239289291078,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "left_cheek": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "right_cheek": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "forehead_tr": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "forehead_bl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "forehead_br": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 83.01244087658269,
+                "peak_fraction": 0.9941110081228793
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 83.01244087658269,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 83.01244087658269,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 83.01244087658269,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 83.01244087658269,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 83.01244087658269,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 4.798367190517183e-05,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": 0.012392892910781939,
+        "pos": 0.01244087658268711
+      }
+    },
+    {
+      "case": {
+        "name": "clean_120_30",
+        "profile": "clean",
+        "bpm": 120,
+        "fps": 30,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 120,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "79e8ec8e069fcf673d9b4c43c9ffd13a700a9b3684354d15a63c986a055e841a",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "left_cheek": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "right_cheek": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "forehead_tr": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "forehead_bl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "forehead_br": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 120.00005614247185,
+                "peak_fraction": 0.9933898796233589
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 120.00005614247185,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 120.00005614247185,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 120.00005614247185,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 120.00005614247185,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 120.00005614247185,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "left_cheek": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "right_cheek": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "forehead_tr": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "forehead_bl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "forehead_br": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 120.00005000463686,
+                "peak_fraction": 0.99338999581001
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 120.00005000463686,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 120.00005000463686,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 120.00005000463686,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 120.00005000463686,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 120.00005000463686,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 6.137834986930102e-06,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": 5.614247184837495e-05,
+        "pos": 5.000463686144485e-05
+      }
+    },
+    {
+      "case": {
+        "name": "clean_180_30",
+        "profile": "clean",
+        "bpm": 180,
+        "fps": 30,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 180,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "a036c2aa1b8928984cb80537d7ee62562cc6b0c26aec4af06a3e5aa83879f38e",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "left_cheek": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "right_cheek": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "forehead_tr": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "forehead_bl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "forehead_br": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 180.0000185693553,
+                "peak_fraction": 0.9934112309752048
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 180.0000185693553,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 180.0000185693553,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 180.0000185693553,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 180.0000185693553,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 180.0000185693553,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "left_cheek": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "right_cheek": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "forehead_tr": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "forehead_bl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "forehead_br": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 180.00003722009316,
+                "peak_fraction": 0.9934111320798578
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 180.00003722009316,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 180.00003722009316,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 180.00003722009316,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 180.00003722009316,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 180.00003722009316,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 1.865073787143956e-05,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": 1.8569355290765088e-05,
+        "pos": 3.722009316220465e-05
+      }
+    },
+    {
+      "case": {
+        "name": "clean_72_60",
+        "profile": "clean",
+        "bpm": 72,
+        "fps": 60,
+        "group": "clean"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "clean",
+        "expected_bpm": 72,
+        "fps": 60,
+        "seconds": 20,
+        "encoded_frames": 1200,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 1200,
+      "timing": {
+        "source_fps": 60.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "28081581770bf55a3b43cb8d1cf322dd0bdb285cb638da747cc0f3fee57d0f31",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.9996650004653,
+                "peak_fraction": 0.9933926531960707
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.9996650004653,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.9996650004653,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.9996650004653,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.9996650004653,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.9996650004653,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.99967536643118,
+                "peak_fraction": 0.993392755640332
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99967536643118,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.99967536643118,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99967536643118,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.99967536643118,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99967536643118,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 1.0365965877667804e-05,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": -0.00033499953470084165,
+        "pos": -0.00032463356882317385
+      }
+    },
+    {
+      "case": {
+        "name": "mild_noise_72",
+        "profile": "mild_noise",
+        "bpm": 72,
+        "fps": 30,
+        "group": "controlled_variations"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "mild_noise",
+        "expected_bpm": 72,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.25,
+          "lighting_hz": 0.0,
+          "lighting_fraction": 0.0
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "dfb0e35eb81f059eb607319be6127e516799309476d4f3cf36e0f7deb4e925d7",
+      "estimates": {
+        "background": {
+          "bpm_candidate": null,
+          "peak_fraction": 0.0
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99971474136446,
+                "peak_fraction": 0.993394734885124
+              },
+              "left_cheek": {
+                "bpm_candidate": 72.0003440948404,
+                "peak_fraction": 0.9934101982987715
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99987492596146,
+                "peak_fraction": 0.9933798182150787
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99972595190633,
+                "peak_fraction": 0.993395954006962
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99891600289175,
+                "peak_fraction": 0.9934089595738826
+              },
+              "forehead_bl": {
+                "bpm_candidate": 72.00155572450858,
+                "peak_fraction": 0.9934213709312623
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99869951637123,
+                "peak_fraction": 0.9933850259270401
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 72.00043883458864,
+                "peak_fraction": 0.9934130926455749
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 72.0009795404117,
+                "peak_fraction": 0.9934244020651761
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99926691661862,
+                "peak_fraction": 0.9933883734425073
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 72.00072543392352,
+                "peak_fraction": 0.9934065228065334
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99924149657477,
+                "peak_fraction": 0.9934049530861366
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.9993131804102,
+                "peak_fraction": 0.9933780186130395
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99938320826159,
+                "peak_fraction": 0.9933620048935631
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 72.00160417761663,
+                "peak_fraction": 0.9934039999815419
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99987492596146,
+              "support": [
+                "forehead",
+                "right_cheek",
+                "left_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.9993481943359,
+              "support": [
+                "forehead_br",
+                "forehead_tr",
+                "forehead_tl",
+                "forehead_bl",
+                "right_cheek_tl",
+                "right_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "left_cheek_bl",
+                "left_cheek_tl",
+                "left_cheek_br",
+                "left_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "right_cheek",
+                "left_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99932097739904,
+                  "support": [
+                    "forehead_br",
+                    "forehead_tr",
+                    "forehead_tl",
+                    "forehead_bl"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 72.00058213425608,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_tl",
+                    "left_cheek_br",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.9993481943359,
+                  "support": [
+                    "right_cheek_tl",
+                    "right_cheek_tr",
+                    "right_cheek_bl",
+                    "right_cheek_br"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 72.00057678819294,
+                "peak_fraction": 0.9934012796861924
+              },
+              "left_cheek": {
+                "bpm_candidate": 72.00035430456307,
+                "peak_fraction": 0.9934053923686982
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99908889642504,
+                "peak_fraction": 0.9933972624386808
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 72.00032068441799,
+                "peak_fraction": 0.9933917742869133
+              },
+              "forehead_tr": {
+                "bpm_candidate": 72.00104847308484,
+                "peak_fraction": 0.9933927526220163
+              },
+              "forehead_bl": {
+                "bpm_candidate": 72.00092478062052,
+                "peak_fraction": 0.9934231692343406
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99999118981346,
+                "peak_fraction": 0.9933458314334352
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 72.00088967416973,
+                "peak_fraction": 0.9934060370110449
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 72.00021491897363,
+                "peak_fraction": 0.9934145506351357
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99951549285416,
+                "peak_fraction": 0.9933866573096679
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 72.00081450432278,
+                "peak_fraction": 0.9934070926224987
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99803112035733,
+                "peak_fraction": 0.9934273923230849
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99703674620393,
+                "peak_fraction": 0.993413989914137
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99906577347804,
+                "peak_fraction": 0.9933626011800937
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 72.0022634943351,
+                "peak_fraction": 0.9934039338270391
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 72.00035430456307,
+              "support": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 72.00051471164821,
+              "support": [
+                "right_cheek_tr",
+                "right_cheek_tl",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "left_cheek_bl",
+                "left_cheek_tr",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_bl",
+                "forehead_tr"
+              ],
+              "supporting_zones": [
+                "right_cheek",
+                "left_cheek",
+                "forehead"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 72.00062273251925,
+                  "support": [
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_bl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 72.00051471164821,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_tr",
+                    "left_cheek_br",
+                    "left_cheek_tl"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99854844691768,
+                  "support": [
+                    "right_cheek_tr",
+                    "right_cheek_tl",
+                    "right_cheek_bl",
+                    "right_cheek_br"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 0.001166517312313431,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": -0.0006518056641056091,
+        "pos": 0.0005147116482078218
+      }
+    },
+    {
+      "case": {
+        "name": "slow_light_72",
+        "profile": "slow_light",
+        "bpm": 72,
+        "fps": 30,
+        "group": "controlled_variations"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "slow_light",
+        "expected_bpm": 72,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 0.15,
+          "lighting_fraction": 0.04
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "a9214c1ce1a0e27473e831dbd1f988725f6859d48f7e1e93f92c33fce31d3953",
+      "estimates": {
+        "background": {
+          "bpm_candidate": 80.99345741969698,
+          "peak_fraction": 0.4847687604655874
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.99739246943635,
+                "peak_fraction": 0.9922462209334368
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99739246943635,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.99739246943635,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99739246943635,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.99739246943635,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99739246943635,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "left_cheek": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "right_cheek": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "forehead_tr": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "forehead_bl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "forehead_br": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 71.99451089450186,
+                "peak_fraction": 0.9868706165736542
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 71.99451089450186,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 71.99451089450186,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 71.99451089450186,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 71.99451089450186,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 71.99451089450186,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "agreement",
+          "difference_bpm": 0.002881574934491482,
+          "shared_lighting_cue": false,
+          "background_overlap": false
+        }
+      },
+      "errors_bpm": {
+        "green": -0.0026075305636510393,
+        "pos": -0.005489105498142521
+      }
+    },
+    {
+      "case": {
+        "name": "periodic_light_72",
+        "profile": "periodic_light",
+        "bpm": 72,
+        "fps": 30,
+        "group": "lighting_challenge"
+      },
+      "fixture": {
+        "synthetic": true,
+        "profile": "periodic_light",
+        "expected_bpm": 72,
+        "fps": 30,
+        "seconds": 20,
+        "encoded_frames": 600,
+        "width": 320,
+        "height": 240,
+        "codec": "FFV1",
+        "seed": 7,
+        "pulse_rgb_amplitude": [
+          0.6,
+          3.0,
+          0.2
+        ],
+        "settings": {
+          "noise_std": 0.0,
+          "lighting_hz": 1.8,
+          "lighting_fraction": 0.05
+        },
+        "tracking": "Known rendered geometry, not MediaPipe inference"
+      },
+      "decoded_frames": 600,
+      "timing": {
+        "source_fps": 30.0,
+        "timestamp_fallbacks": 0
+      },
+      "valid_frame_fraction": {
+        "forehead": 1.0,
+        "left_cheek": 1.0,
+        "right_cheek": 1.0
+      },
+      "valid_patch_frame_fraction": {
+        "forehead_tl": 1.0,
+        "forehead_tr": 1.0,
+        "forehead_bl": 1.0,
+        "forehead_br": 1.0,
+        "left_cheek_tl": 1.0,
+        "left_cheek_tr": 1.0,
+        "left_cheek_bl": 1.0,
+        "left_cheek_br": 1.0,
+        "right_cheek_tl": 1.0,
+        "right_cheek_tr": 1.0,
+        "right_cheek_bl": 1.0,
+        "right_cheek_br": 1.0
+      },
+      "video_sha256": "bbc26bf74cb7939b6611264646b8d1dee634eb1cae3e2411e1ce33108a815863",
+      "estimates": {
+        "background": {
+          "bpm_candidate": 107.99997797488417,
+          "peak_fraction": 0.9904209275592378
+        },
+        "consensus_policy": "zone",
+        "methods": {
+          "green": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "left_cheek": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "right_cheek": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "forehead_tr": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "forehead_bl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "forehead_br": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 108.00937020160477,
+                "peak_fraction": 0.7657824481902555
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 108.00937020160477,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 108.00937020160477,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 108.00937020160477,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 108.00937020160477,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 108.00937020160477,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          },
+          "pos": {
+            "regions": {
+              "forehead": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "left_cheek": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "right_cheek": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              }
+            },
+            "patches": {
+              "forehead_tl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "forehead_tr": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "forehead_bl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "forehead_br": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "left_cheek_tl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "left_cheek_tr": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "left_cheek_bl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "left_cheek_br": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "right_cheek_tl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "right_cheek_tr": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "right_cheek_bl": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              },
+              "right_cheek_br": {
+                "bpm_candidate": 72.00020264101825,
+                "peak_fraction": 0.9915369635515966
+              }
+            },
+            "region_consensus": {
+              "bpm_candidate": 72.00020264101825,
+              "support": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ]
+            },
+            "patch_consensus": {
+              "bpm_candidate": 72.00020264101825,
+              "support": [
+                "forehead_bl",
+                "forehead_br",
+                "forehead_tl",
+                "forehead_tr",
+                "left_cheek_bl",
+                "left_cheek_br",
+                "left_cheek_tl",
+                "left_cheek_tr",
+                "right_cheek_bl",
+                "right_cheek_br",
+                "right_cheek_tl",
+                "right_cheek_tr"
+              ],
+              "supporting_zones": [
+                "forehead",
+                "left_cheek",
+                "right_cheek"
+              ],
+              "zone_candidates": {
+                "forehead": {
+                  "bpm_candidate": 72.00020264101825,
+                  "support": [
+                    "forehead_bl",
+                    "forehead_br",
+                    "forehead_tl",
+                    "forehead_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "left_cheek": {
+                  "bpm_candidate": 72.00020264101825,
+                  "support": [
+                    "left_cheek_bl",
+                    "left_cheek_br",
+                    "left_cheek_tl",
+                    "left_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                },
+                "right_cheek": {
+                  "bpm_candidate": 72.00020264101825,
+                  "support": [
+                    "right_cheek_bl",
+                    "right_cheek_br",
+                    "right_cheek_tl",
+                    "right_cheek_tr"
+                  ],
+                  "valid_patches": 4,
+                  "status": "accepted"
+                }
+              },
+              "accepted_zone_count": 3,
+              "rejection_reason": null
+            }
+          }
+        },
+        "agreement_layout": "patch_consensus",
+        "method_agreement": {
+          "status": "method_disagreement",
+          "difference_bpm": 36.00916756058652,
+          "shared_lighting_cue": true,
+          "background_overlap": true
+        }
+      },
+      "errors_bpm": {
+        "green": 36.00937020160477,
+        "pos": 0.00020264101824807312
+      }
+    }
+  ],
+  "summary": {
+    "clean": {
+      "cases": 6,
+      "decoded_frames": 4200,
+      "shared_lighting_cue_cases": 0,
+      "methods": {
+        "green": {
+          "estimated_cases": 6,
+          "total_cases": 6,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 0.0027056838713181244,
+          "max_error_bpm": 0.012392892910781939
+        },
+        "pos": {
+          "estimated_cases": 6,
+          "total_cases": 6,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 0.0028410323208897617,
+          "max_error_bpm": 0.01244087658268711
+        }
+      }
+    },
+    "controlled_variations": {
+      "cases": 2,
+      "decoded_frames": 1200,
+      "shared_lighting_cue_cases": 0,
+      "methods": {
+        "green": {
+          "estimated_cases": 2,
+          "total_cases": 2,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 0.0016296681138783242,
+          "max_error_bpm": 0.0026075305636510393
+        },
+        "pos": {
+          "estimated_cases": 2,
+          "total_cases": 2,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 0.0030019085731751716,
+          "max_error_bpm": 0.005489105498142521
+        }
+      }
+    },
+    "lighting_challenge": {
+      "cases": 1,
+      "decoded_frames": 600,
+      "shared_lighting_cue_cases": 1,
+      "methods": {
+        "green": {
+          "estimated_cases": 1,
+          "total_cases": 1,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 36.00937020160477,
+          "max_error_bpm": 36.00937020160477
+        },
+        "pos": {
+          "estimated_cases": 1,
+          "total_cases": 1,
+          "coverage": 1.0,
+          "mae_against_injected_bpm": 0.00020264101824807312,
+          "max_error_bpm": 0.00020264101824807312
+        }
+      }
+    }
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "opencv-contrib-python": "4.11.0.86"
+  },
+  "scoring": "Injected BPM is used only after independent signal estimation",
+  "tracking": "Known fixture coordinates; no model inference is measured",
+  "protocol_sha256": "b8439de5625fc799447bedf15acef498786285352aa034d5898a1004c258c296"
+}

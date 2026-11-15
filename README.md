@@ -12,10 +12,22 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 - **478-landmark face tracking**, timestamp-aware video decoding, and ROI overlays.
 - **Motion-aware analysis** with buffered exclusions and separate continuous segments.
 - **Fractional pixel coverage and geometry-balanced patches** for sampling experiments.
+- **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **137 passing automated tests**, plus an optional model-backed integration check.
+- **146 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
+
+## Synthetic proof of concept
+
+The controlled video suite recovers injected pulse rates across six clean clips
+with **0.003 BPM mean error** and **less than 0.013 BPM maximum error**. It tests
+48–180 BPM signals and 30/60 FPS inputs using known rendered geometry.
+
+![Controlled video benchmark](examples/controlled-video/summary.png)
+
+See the [controlled-video benchmark](CONTROLLED_VIDEO.md) for the exact fixtures,
+separate lighting challenge, and reproduction command.
 
 ## Measured engineering results
 
@@ -39,13 +51,14 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
 pytest -q
-pulsetrace demo --patches --output outputs/demo
+pulsetrace demo --profile clean --patches --consensus zone --output outputs/demo
 ```
 
 Windows: use `py -3.12 -m venv .venv` and `.venv\Scripts\activate`.
-The model-free demo creates a noisy synthetic video with a known 72 BPM component
-and runs it through video decoding, regional sampling, signal processing, and
-report generation.
+The model-free demo renders a clean face-shaped video with a known 72 BPM skin
+pulse and runs it through lossless decoding, twelve-patch sampling, signal
+processing, and report generation. Use `--profile standard` for the original
+noisy fixture, or compare `mild_noise`, `slow_light`, and `periodic_light` profiles.
 
 Minimal Ubuntu/Debian environments may need:
 
@@ -120,6 +133,7 @@ availability, and estimate diagnostics. `pulsetrace --help` lists all commands.
 
 | Report | Focus |
 |---|---|
+| [Controlled synthetic videos](CONTROLLED_VIDEO.md) | Lossless fixtures, injected pulse references, and lighting cues |
 | [Public video evaluation](PUBLIC_VALIDATION_MULTI.md) | UBFC development recordings and reference checks |
 | [Fixed-rule evaluation](FROZEN_EVALUATION.md) | Preserved protocol and results on subjects 12–14 |
 | [Region-balanced voting](ZONE_CONSENSUS.md) | Two-level consensus and six-recording candidate replay |
