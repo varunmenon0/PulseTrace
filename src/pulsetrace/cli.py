@@ -22,7 +22,8 @@ def main(argv=None):
     demo.add_argument("--end-bpm", type=float, help="End rate for a phase-continuous linear controlled pulse ramp")
     demo.add_argument("--seconds", type=float, default=20)
     demo.add_argument("--fps", type=float, default=30)
-    demo.add_argument("--profile", choices=["standard", "clean", "mild_noise", "slow_light", "periodic_light"],
+    from .controlled import PROFILES
+    demo.add_argument("--profile", choices=["standard", *PROFILES],
                       default="standard", help="Controlled profiles render a face with lossless skin-localized pulse modulation")
     for cmd in (real, demo):
         cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
@@ -96,7 +97,7 @@ def main(argv=None):
                 from .controlled import make_controlled_video, ControlledTracker
                 metadata = make_controlled_video(video, bpm=args.bpm, seconds=args.seconds,
                                                   fps=args.fps, profile=args.profile,end_bpm=args.end_bpm)
-                tracker = ControlledTracker()
+                tracker = ControlledTracker(profile=args.profile)
             extraction = extract_video(video, tracker, patches=args.patches)
             extraction.metadata.update(metadata)
         else:

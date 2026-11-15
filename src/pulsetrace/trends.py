@@ -19,7 +19,10 @@ def build_trend(report):
             raise ValueError('Need ordered, finite, positive-duration windows')
         previous = start
         row = dict(start_s=start, end_s=end, center_s=(start+end)/2,
-                   available_at_s=end, usable_regions=window['usable_regions'], methods={})
+                   available_at_s=end, usable_regions=window['usable_regions'],
+                   shared_motion_or_loss=window.get('shared_motion_or_loss', False),
+                   excluded_regions=sorted(n for n, usable in window['usable_regions'].items() if not usable),
+                   methods={})
         for method in ('green', 'pos'):
             detail = window['methods'][method]['twelve_patches']['regional_gate']
             row['methods'][method] = dict(bpm_candidate=detail['bpm_candidate'], support=detail['support'],
@@ -39,10 +42,12 @@ def write_trend(report, output):
     (output/'pulse_trend.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
     with (output/'pulse_trend.csv').open('w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['start_s','end_s','center_s','available_at_s','green_bpm','pos_bpm'])
+        writer.writerow(['start_s','end_s','center_s','available_at_s','green_bpm','pos_bpm',
+                         'shared_motion_or_loss','excluded_regions'])
         for row in result['windows']:
             writer.writerow([row[k] for k in ('start_s','end_s','center_s','available_at_s')]+
-                            [row['methods'][m]['bpm_candidate'] for m in ('green','pos')])
+                            [row['methods'][m]['bpm_candidate'] for m in ('green','pos')]+
+                            [row['shared_motion_or_loss'], ';'.join(row['excluded_regions'])])
     fig, ax = plt.subplots(figsize=(9, 4), constrained_layout=True)
     for method, color in (('green','#48a868'), ('pos','#377bb5')):
         centers = [r['center_s'] for r in result['windows']]

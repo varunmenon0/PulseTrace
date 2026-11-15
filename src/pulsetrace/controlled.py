@@ -10,21 +10,37 @@ PROFILES = {
     'mild_noise': dict(noise_std=.25, lighting_hz=0., lighting_fraction=0.),
     'slow_light': dict(noise_std=0., lighting_hz=.15, lighting_fraction=.04),
     'periodic_light': dict(noise_std=0., lighting_hz=1.8, lighting_fraction=.05),
+    'steady_motion': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
+    'motion_burst': dict(noise_std=0., lighting_hz=0., lighting_fraction=0.),
 }
 SIZE = (320, 240)
 PULSE_RGB = (.6, 3., .2)
 
 
+def motion_offset(profile, time):
+    """Integer rendered translation in pixels; independent of pulse frequency."""
+    if profile == 'steady_motion':
+        return np.rint([6*np.sin(2*np.pi*.5*time), 3*np.sin(2*np.pi*.25*time)]).astype(int)
+    if profile == 'motion_burst' and 20 <= time < 22:
+        # A 5 Hz square wave makes abrupt, 28-pixel horizontal displacements.
+        return np.array([14 if int((time-20)*10+1e-7) % 2 == 0 else -14, 0])
+    return np.zeros(2, dtype=int)
+
+
 class ControlledTracker(SyntheticTracker):
     """Known fixture geometry; also observe an unmodulated corner reference."""
 
-    def __init__(self):
+    def __init__(self, profile='clean'):
+        if profile not in PROFILES:
+            raise ValueError('Unknown controlled profile')
+        self.profile = profile
         self.background_rgb = []
 
     def detect(self, bgr, time):
         h, w = bgr.shape[:2]
         points = super().detect(bgr, time)
         points[33], points[263] = (.3*w, .35*h), (.7*w, .35*h)
+        points += motion_offset(self.profile, time)
         self.background_rgb.append(bgr[:max(1, h//10), :max(1, w//10)].mean(axis=(0, 1))[::-1])
         return points
 
@@ -50,6 +66,8 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
         raise ValueError('Fixture requires 40<BPM<200, >=10 seconds and 10–240 FPS')
     if profile not in PROFILES:
         raise ValueError('Unknown controlled profile')
+    if profile == 'motion_burst' and seconds < 36:
+        raise ValueError('motion_burst requires >=36 seconds to include recovery after the 20–22 second event')
     if end_bpm is not None and (not np.isfinite(end_bpm) or not 40 < end_bpm < 200):
         raise ValueError('end_bpm must be finite and between 40 and 200')
     base, skin = scene()
@@ -72,6 +90,10 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
             if config['noise_std']:
                 image[skin] += rng.normal(0, config['noise_std'], (int(skin.sum()), 3))
             image *= 1 + config['lighting_fraction']*np.sin(2*np.pi*config['lighting_hz']*t)
+            if profile in ('steady_motion', 'motion_burst'):
+                dx, dy = motion_offset(profile, t)
+                image = cv2.warpAffine(image, np.float32([[1, 0, dx], [0, 1, dy]]), SIZE,
+                    flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=(60, 45, 35))
             writer.write(np.clip(np.rint(image), 0, 255).astype(np.uint8))
     finally:
         writer.release()
@@ -79,6 +101,10 @@ def make_controlled_video(path, *, bpm=72., seconds=20., fps=30., seed=7, profil
                 seconds=seconds, encoded_frames=frames, width=SIZE[0], height=SIZE[1],
                 codec='FFV1', seed=seed, pulse_rgb_amplitude=list(PULSE_RGB),
                 settings=dict(config), tracking='Known rendered geometry, not MediaPipe inference')
+    if profile in ('steady_motion', 'motion_burst'):
+        metadata['motion'] = dict(kind=profile, translation_units='pixels',
+            description='Perfect known tracking of translated rendered face',
+            event_interval_s=[20, 22] if profile == 'motion_burst' else None)
     if end_bpm is not None:
         metadata['rate_trajectory'] = dict(kind='linear', start_bpm=bpm, end_bpm=end_bpm, duration_s=seconds)
         if end_bpm != bpm:
