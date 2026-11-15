@@ -31,6 +31,9 @@ def audit(path):
         peak=f[np.argmax(p)]*60;peaks,_=signal.find_peaks(x,distance=9,prominence=.5*np.std(x));rr=np.diff(peaks)/30
         ibi=float(60/np.median(rr)) if len(rr)>=3 else None
         row.update(ppg_spectral_bpm=float(peak),ppg_interbeat_bpm=ibi,
+                   analyzed_start_s=float(start+1),analyzed_end_s=float(end-1),
+                   detected_peak_times_s=(start+1+peaks/30).tolist(),
+                   interbeat_intervals_s=rr.tolist(),
                    spectral_peak_fraction=float(p[np.abs(f*60-peak)<=9].sum()/max(p.sum(),1e-30)),
                    interbeat_cv=float(np.std(rr)/np.mean(rr)) if len(rr) else None,
                    device_ppg_difference_bpm=float(bpm-peak),
@@ -39,6 +42,7 @@ def audit(path):
         rows.append(row)
     return {'method':'Contact-only PSD peak and independently detected interbeat intervals',
             'limitations':['Exploratory, not a validated PPG reference extractor','Device BPM may be averaged or misaligned; no cause established',
+                           'Peak times refer to the filtered waveform after trimming one second at each edge',
                            'Video estimates are never used to choose PPG peaks or reference labels'], 'windows':rows}
 
 

@@ -21,3 +21,6 @@ recursive-include examples/ubfc-heldout *.json
 
 include SUBJECT14_DIAGNOSIS.md
 recursive-include examples/subject14-diagnosis *.json
+
+include CONTACT_REFERENCE_AUDIT.md
+recursive-include examples/contact-reference-audit *.json
