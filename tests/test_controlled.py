@@ -5,7 +5,7 @@ import numpy as np
 import pytest
 
 from pulsetrace.agreement import method_agreement
-from pulsetrace.controlled import make_controlled_video, ControlledTracker, scene
+from pulsetrace.controlled import make_controlled_video, ControlledTracker, scene, evaluate_controlled
 from pulsetrace.pipeline import extract_video
 
 
@@ -51,6 +51,17 @@ def test_lighting_cue_uses_estimates_not_expected_rate():
     assert method_agreement(72, 72)['status'] == 'agreement'
     assert method_agreement(None, 72)['status'] == 'insufficient_estimates'
     assert not method_agreement(72, 72, background_bpm=72)['shared_lighting_cue']
+
+
+def test_fixture_truth_metadata_does_not_drive_estimation(tmp_path):
+    path=tmp_path/'pulse.avi'
+    make_controlled_video(path,bpm=72,seconds=12)
+    tracker=ControlledTracker()
+    extraction=extract_video(path,tracker,patches=True)
+    extraction.metadata['expected_bpm']=150
+    result=evaluate_controlled(extraction,tracker.background_rgb,consensus_policy='zone')
+    for method in ('green','pos'):
+        assert abs(result['methods'][method]['patch_consensus']['bpm_candidate']-72)<2
 
 
 @pytest.mark.parametrize('kwargs', [dict(bpm=np.nan), dict(fps=0), dict(seconds=1), dict(profile='unknown')])

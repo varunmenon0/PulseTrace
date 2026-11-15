@@ -45,3 +45,47 @@ These are encoded synthetic video tests with known geometry, not natural-video
 or MediaPipe face-detection measurements. The original `standard` demo remains
 available. Artifact profiles are independent test cases rather than conditions
 selected to match an expected heart rate.
+
+## Measured proof-of-concept results
+
+The fixed nine-case suite generated and decoded 6,000 frames. All parent regions
+and all twelve patches retained 100% valid frame coverage. Rates below are scored
+after decoding against the known injected skin-pulse frequency.
+
+| Group | Clips | Decoded frames | Green mean absolute error | POS mean absolute error |
+|---|---:|---:|---:|---:|
+| Clean controls | 6 | 4,200 | 0.002706 BPM | 0.002841 BPM |
+| Mild noise / slow lighting | 2 | 1,200 | 0.001630 BPM | 0.003002 BPM |
+| Isolated periodic lighting | 1 | 600 | 36.009370 BPM | 0.000203 BPM |
+
+Both methods returned estimates in every case. Across the six clean clips, the
+maximum error was 0.012441 BPM. Those clips cover five distinct rates from 48 to
+180 BPM, including an off-grid 83 BPM signal, and 30/60 FPS video inputs. These
+frame rates describe the test inputs; no processing-throughput claim is made.
+
+In the periodic-lighting case, green estimated 108.009 BPM, the independently
+sampled background estimated approximately 108 BPM, and POS estimated 72.000 BPM.
+The shared-lighting cue was active on that case and inactive on all eight clean
+or mild-variation cases. The diagnostic records both estimates; it does not
+substitute an injected/expected rate into the result.
+
+![Controlled synthetic-video proof of concept](examples/controlled-video/summary.png)
+
+## Reproduce the suite
+
+```sh
+python scripts/benchmark_controlled.py --output outputs/controlled-video/benchmark
+```
+
+Outputs include lossless AVI fixtures, per-frame truth CSV files, a complete JSON
+report, and PNG/SVG summary plots. The committed results are in
+`examples/controlled-video/benchmark.json`; input videos are regenerated from the
+protocol rather than committed. Each report records video hashes, seeds, profile
+settings, codec, frame counts, sample coverage, estimates, cue results, and
+separate per-group error/coverage summaries. Missing estimates remain counted.
+
+Tests verify lossless round trips, pulse localization, unchanged clean background,
+CLI execution, all twelve patch reports, and cue logic. A regression test changes
+`expected_bpm` metadata to an incorrect value and confirms that signal estimates
+still follow the decoded video's actual injected component. The full pipeline
+runs without a face-model download for these controlled fixtures.

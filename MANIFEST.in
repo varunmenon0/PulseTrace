@@ -48,4 +48,4 @@ include ZONE_CONSENSUS.md
 recursive-include examples/zone-consensus *.json
 
 include CONTROLLED_VIDEO.md
-recursive-include examples/controlled-video *.json *.svg
+recursive-include examples/controlled-video *.json *.svg *.png
