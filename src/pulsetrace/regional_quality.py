@@ -9,13 +9,29 @@ from .patches import PATCHES, consensus
 from .quality import analyze_segments
 
 
+def broad_color_steps(rgb, pairs, threshold):
+    """Same-direction relative steps in at least two valid RGB channels."""
+    change = np.zeros_like(rgb[1:], dtype=float)
+    np.divide(np.diff(rgb, axis=0), rgb[:-1], out=change,
+              where=np.broadcast_to(pairs[:, None], change.shape))
+    return np.r_[False, pairs & ((np.sum(change > threshold, axis=1) >= 2) |
+                                (np.sum(change < -threshold, axis=1) >= 2))]
+
+
 def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
-                   buffer_seconds=.5, max_gap=.25, area_policy="strict"):
-    """Exclude a region locally; two displaced/unavailable parents exclude all."""
+                   buffer_seconds=.5, max_gap=.25, area_policy="strict",
+                   photometric_threshold=None):
+    """Exclude locally; two displaced/unavailable parents exclude all.
+
+    Optional photometric steps reject a region independently of area changes.
+    The default None keeps that unvalidated guard disabled.
+    """
     if not np.isfinite([motion_threshold,area_threshold,buffer_seconds,max_gap]).all() or min(motion_threshold,area_threshold,max_gap)<=0 or buffer_seconds<0:
         raise ValueError("Invalid regional quality settings")
     if area_policy not in ("strict","corroborated"):
         raise ValueError("Unknown area policy")
+    if photometric_threshold is not None and (not np.isfinite(photometric_threshold) or photometric_threshold <= 0):
+        raise ValueError("photometric_threshold must be finite and positive")
     t=extraction.time
     if len(t)<2 or not np.isfinite(t).all() or np.any(np.diff(t)<=0):
         raise ValueError("Need finite increasing timestamps")
@@ -31,11 +47,10 @@ def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
         np.divide(np.abs(np.diff(px)),px[:-1],out=delta,where=pairs)
         area=np.r_[False,pairs&(delta>area_threshold)]
         if area_policy == "corroborated":
-            color=np.zeros_like(rgb[1:],dtype=float)
-            np.divide(np.diff(rgb,axis=0),rgb[:-1],out=color,where=np.broadcast_to(pairs[:,None],color.shape))
-            broad=np.r_[False,(np.sum(color>.02,axis=1)>=2)|(np.sum(color<-.02,axis=1)>=2)]
+            broad=broad_color_steps(rgb,pairs,.02)
             area &= broad | (g[:,3]>.03)
-        local[name]=motion|area|~valid
+        photo = np.zeros(len(t), dtype=bool) if photometric_threshold is None else broad_color_steps(rgb,pairs,photometric_threshold)
+        local[name]=motion|area|~valid|photo
         shared_events.append(motion|~valid)
     shared=np.sum(shared_events,axis=0)>=2
     def buffered(mask):

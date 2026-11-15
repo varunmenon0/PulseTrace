@@ -1,4 +1,4 @@
-"""Compare integer-area and fractional-area regional gates on identical RGB."""
+"""Compare area-source and optional photometric regional gates on identical RGB."""
 import argparse
 from dataclasses import replace
 import importlib.metadata
@@ -16,11 +16,15 @@ from pulsetrace.regions import REGIONS
 from pulsetrace.tracking import FaceTracker
 
 
-def compare_gates(baseline, fractional, rt, rb):
+def compare_gates(baseline, fractional, rt, rb, *, photometric_threshold=None):
     # Both gate variants vote on the same fractional RGB and spectral candidates.
     rows = score_pair(baseline, fractional, rt, rb)['fractional']
     sources = {'integer_area': baseline, 'fractional_area': fractional}
-    masks = {name: regional_masks(extraction)[0] for name, extraction in sources.items()}
+    if photometric_threshold is not None:
+        sources['fractional_area_photometric'] = fractional
+    masks = {name: regional_masks(extraction, photometric_threshold=
+             photometric_threshold if name == 'fractional_area_photometric' else None)[0]
+             for name, extraction in sources.items()}
     result = []
     for row in rows:
         chosen = (baseline.time >= row['start_s']) & (baseline.time < row['end_s'])
@@ -59,7 +63,7 @@ def summarize(rows):
         result[method] = {}
         for layout in ('three_regions', 'twelve_patches'):
             metrics = {}
-            for source in ('integer_area', 'fractional_area'):
+            for source in (rows[0]['sources'] if rows else ('integer_area', 'fractional_area')):
                 details = [r['sources'][source]['methods'][method][layout] for r in rows]
                 errors = [d['error_bpm'] for d in details if d['error_bpm'] is not None]
                 metrics[source] = dict(total_windows=len(rows),
@@ -85,6 +89,24 @@ def summarize(rows):
                 newly_scorable_windows=len(changes['newly_scorable']), lost_windows=len(changes['lost']),
                 newly_scorable_mae=float(np.mean(np.abs(changes['newly_scorable']))) if changes['newly_scorable'] else None,
                 newly_scorable_max_difference=float(np.max(np.abs(changes['newly_scorable']))) if changes['newly_scorable'] else None)
+            if 'fractional_area_photometric' in metrics:
+                common, added, lost = [], [], []
+                for r in rows:
+                    a, b = [r['sources'][s]['methods'][method][layout]['error_bpm'] for s in
+                            ('fractional_area', 'fractional_area_photometric')]
+                    if a is not None and b is not None:
+                        common.append([a, b])
+                    elif b is not None:
+                        added.append(b)
+                    elif a is not None:
+                        lost.append(a)
+                metrics['photometric_comparison'] = dict(common_windows=len(common),
+                    unguarded_common_mae=float(np.mean(np.abs(np.array(common)[:, 0]))) if common else None,
+                    guarded_common_mae=float(np.mean(np.abs(np.array(common)[:, 1]))) if common else None,
+                    newly_scorable_windows=len(added), lost_windows=len(lost),
+                    newly_scorable_device_difference_mean=float(np.mean(np.abs(added))) if added else None,
+                    newly_scorable_max_device_difference=float(np.max(np.abs(added))) if added else None,
+                    lost_window_device_difference_mean=float(np.mean(np.abs(lost))) if lost else None)
             result[method][layout] = metrics
     return result
 
@@ -93,6 +115,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('video', 'reference', 'model', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
+    parser.add_argument('--photometric-guard', action='store_true',
+                        help='Also test independent 2%% broad RGB-step exclusions')
     args = parser.parse_args()
     with FaceTracker(args.model) as tracker:
         paired = PairedTracker(tracker, 8, 'equal_area')
@@ -100,20 +124,24 @@ def main():
     fractional = replace(baseline, rgb={n: np.asarray(v) for n, v in paired.rgb.items()},
                          patch_rgb={n: np.asarray(v) for n, v in paired.patch_rgb.items()},
                          pixels={n: np.asarray(v) for n, v in paired.areas.items()})
-    rows = compare_gates(baseline, fractional, *load_reference(args.reference))
+    photo_threshold = .02 if args.photometric_guard else None
+    rows = compare_gates(baseline, fractional, *load_reference(args.reference),
+                         photometric_threshold=photo_threshold)
     report = dict(experiment='Exploratory area-source gate comparison on development data',
-        configuration=dict(sampling='equal-area fractional RGB for both gates', subdivisions=8,
+        configuration=dict(sampling='equal-area fractional RGB for every policy', subdivisions=8,
                            area_threshold=.10, motion_threshold=.05, buffer_seconds=.5,
                            window_seconds=12, step_seconds=6, max_gap_seconds=.25),
         input=dict(video_sha256=sha256(args.video), reference_sha256=sha256(args.reference),
                    model_sha256=sha256(args.model), **baseline.metadata),
         versions={n: importlib.metadata.version(n) for n in ('numpy', 'scipy', 'opencv-contrib-python', 'mediapipe')},
-        limitations=['Only area source and resulting sample validity change; thresholds are unvalidated',
+        limitations=['Area source/sample validity differ; the optional extra policy independently rejects broad RGB steps',
+                     'Thresholds are unvalidated engineering heuristics',
                      'Displacement, shared motion/loss, buffers, spectra, and consensus stay unchanged',
                      'Stored device BPM and assumed shared time origin are not independently validated',
                      'No device labels, time offsets, or expected BPM select candidates',
                      'No default or previously frozen evaluation changes'],
         metrics=summarize(rows), windows=rows)
+    report['configuration']['photometric_threshold'] = photo_threshold
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
 
