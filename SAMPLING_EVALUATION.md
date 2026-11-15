@@ -104,3 +104,7 @@ coverage remain the next scientific hurdles. Further changes need independent
 reference processing and recording alignment evidence, broader motion/lighting
 coverage, and a fresh evaluation cohort. Avoid choosing geometry or gates by
 whether they match a subject's expected BPM.
+
+A separate [fractional-area gate experiment](AREA_GATE_EVALUATION.md) changes
+the gate area source while keeping fractional RGB fixed. It leaves the default
+and the fixed-gate sampling comparisons above unchanged.
