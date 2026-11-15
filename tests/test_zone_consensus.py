@@ -76,6 +76,16 @@ def test_cli_zone_option_requires_patches():
         main(['demo', '--consensus', 'zone'])
 
 
+def test_common_lighting_can_still_agree_across_all_zones():
+    from pathlib import Path
+    source = json.loads((Path(__file__).parents[1]/'examples/photometric-guard/synthetic.json').read_text())
+    methods = source['cases']['periodic_lighting']['windows'][0]['sources']['fractional_area_photometric']['methods']
+    for method, expected in (('green', 108), ('pos', 72)):
+        result = hierarchical_consensus(methods[method]['twelve_patches']['individual_candidates'], PATCHES)
+        assert len(result['supporting_zones']) == 3
+        assert abs(result['bpm_candidate'] - expected) < 2
+
+
 def test_cli_zone_policy_reaches_patch_and_regional_reports(tmp_path, monkeypatch):
     from pulsetrace.cli import main
     from pulsetrace.synthetic import make_video, SyntheticTracker
