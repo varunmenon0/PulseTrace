@@ -1,0 +1,13 @@
+{
+  "profile": "clean",
+  "codec": "FFV1",
+  "seed": 7,
+  "consensus_policy": "zone",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "cases": [
+    {"name": "stationary_control", "profile": "clean", "start_bpm": 72, "end_bpm": 72, "seconds": 48, "fps": 30},
+    {"name": "gentle_translation", "profile": "steady_motion", "start_bpm": 72, "end_bpm": 72, "seconds": 48, "fps": 30},
+    {"name": "burst_and_recovery", "profile": "motion_burst", "start_bpm": 72, "end_bpm": 72, "seconds": 48, "fps": 30}
+  ]
+}
