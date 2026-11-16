@@ -68,7 +68,7 @@ convergence or justify a new default resolution.
 ## Reproduce
 
 Acquire the checksum-verified recording using the existing subject 14 source
-manifest, as documented in `CONTACT_REFERENCE_AUDIT.md`.
+manifest, as documented in [CONTACT_REFERENCE_AUDIT.md](CONTACT_REFERENCE_AUDIT.md).
 
 ```sh
 python scripts/compare_subpixel.py \

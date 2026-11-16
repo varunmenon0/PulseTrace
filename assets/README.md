@@ -10,7 +10,7 @@ Source: UBFC-rPPG subject 16, acquired from the
 [public mirror](https://huggingface.co/datasets/thachha901/UBFC).
 See the [official dataset](https://sites.google.com/view/ybenezeth/ubfcrppg),
 [checksum manifest](../examples/real-video-recovery/subject16/source.json), and
-[selection and evaluation protocol](../PUBLIC_DEMONSTRATION.md).
+[selection and evaluation protocol](../docs/PUBLIC_DEMONSTRATION.md).
 The project's MIT license does not replace upstream dataset terms.
 
 The video shows recorded, completed-window analysis. The red line is the

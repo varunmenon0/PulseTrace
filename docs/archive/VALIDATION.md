@@ -4,7 +4,7 @@
 segments before/after a simulated motion spike, injected 72 BPM recovery on each
 side, missing-frame hard splits, area jumps and insufficient footage. Uploaded
 baseline and template CSVs processed with fixed default thresholds. No natural
-pulse accuracy claim or new MediaPipe inference. See SEGMENTS.md.
+pulse accuracy claim or new MediaPipe inference. See [SEGMENTS.md](SEGMENTS.md).
 
 # Overlay/template update (October 26, 2026)
 
@@ -13,7 +13,7 @@ similarity-transform/jitter/reset tests, degenerate-anchor rejection, missing-fa
 overlay frame-count verification and template video-to-pulse recovery (72 BPM).
 The existing extraction tests still pass. No new actual MediaPipe inference or
 natural-video stabilization benchmark was run for this update. The subject CSV
-cannot reconstruct source frames. See STABILIZATION.md for use and limitations.
+cannot reconstruct source frames. See [STABILIZATION.md](STABILIZATION.md) for use and limitations.
 No improvement in natural pulse accuracy is claimed.
 
 # Phase 1 validation
@@ -30,7 +30,7 @@ No improvement in natural pulse accuracy is claimed.
   heuristic cutoffs. These counts are not calibrated quality measures.
   Historical CSVs lack landmark coordinates, so actual motion was not reconstructed.
 - Public raw-video exploratory check ran actual MediaPipe on `p1_normal.MP4`
-  from the dataset linked in DIAGNOSTICS.md, after resizing from 1920x1080 to
+  from the dataset linked in [DIAGNOSTICS.md](../DIAGNOSTICS.md), after resizing from 1920x1080 to
   640x360 and encoding MJPG at the source 25 FPS. All regions retained 100%
   valid frames. Whole-clip POS candidates: forehead 64.189 BPM, left cheek
   63.187 BPM; right cheek rejected (diffuse spectrum).

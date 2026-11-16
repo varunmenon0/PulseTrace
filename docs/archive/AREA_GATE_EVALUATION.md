@@ -80,7 +80,7 @@ rejected. These tests do not establish natural-video physiological validity.
 
 ## Reference path and next decision
 
-The new [external beat-reference evaluator](REFERENCE_PROTOCOL.md) can supplement
+The new [external beat-reference evaluator](../REFERENCE_PROTOCOL.md) can supplement
 these reports once independently reviewed beats and clock-mapping evidence are
 available. Its synthetic tests verify aggregation and provenance checks; no
 reviewed natural-recording annotations were imported in this experiment. Existing

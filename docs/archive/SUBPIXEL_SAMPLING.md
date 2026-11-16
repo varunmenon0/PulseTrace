@@ -58,7 +58,7 @@ It is saved at `examples/subpixel-subject14/comparison.json`.
 
 ## Reproduce
 
-Use the source downloader documented in `CONTACT_REFERENCE_AUDIT.md`, then run:
+Use the source downloader documented in [CONTACT_REFERENCE_AUDIT.md](CONTACT_REFERENCE_AUDIT.md), then run:
 
 ```sh
 python scripts/compare_subpixel.py \

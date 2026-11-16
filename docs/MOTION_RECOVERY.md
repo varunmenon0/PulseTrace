@@ -5,7 +5,7 @@ quality decisions behind gaps in its pulse trends. This experiment exercises the
 existing motion gate through video encoding, decoding, 12-patch sampling, and
 windowed signal estimation.
 
-![Controlled motion and recovery](examples/motion-recovery/summary.png)
+![Controlled motion and recovery](../examples/motion-recovery/summary.png)
 
 ## Results
 
@@ -45,8 +45,8 @@ available at 36 seconds. The resulting availability delay after the event is
   The motion policy conservatively rejects rapid displacement even with perfect
   landmark tracking and an otherwise clean pulse signal.
 
-The committed [protocol](examples/motion-recovery/protocol.json) defines the cases.
-The [machine-readable result](examples/motion-recovery/benchmark.json) records video
+The committed [protocol](../examples/motion-recovery/protocol.json) defines the cases.
+The [machine-readable result](../examples/motion-recovery/benchmark.json) records video
 hashes, decoded counts, per-window estimates, exclusions, errors, and recovery
 availability times. The benchmark uses synthetic geometry, separately from
 MediaPipe tracking of natural video.

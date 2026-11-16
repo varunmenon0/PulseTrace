@@ -1,69 +1,25 @@
-include LICENSE README.md VALIDATION.md DIAGNOSTICS.md requirements-tested.txt
+include LICENSE README.md requirements-tested.txt
 recursive-include scripts *.py
 recursive-include tests *.py
 recursive-include .github *.yml
-include STABILIZATION.md
-include SEGMENTS.md
-
-include PATCHES.md
-
-include PUBLIC_VALIDATION.md
-
-include PUBLIC_VALIDATION_MULTI.md
 recursive-include examples/ubfc-subject* *.json *.txt
 include examples/ubfc-summary.json
-
-include REGIONAL_QUALITY.md
 include examples/ubfc-regional-summary.json
-
-include FROZEN_EVALUATION.md
 recursive-include examples/ubfc-heldout *.json
-
-include SUBJECT14_DIAGNOSIS.md
 recursive-include examples/subject14-diagnosis *.json
-
-include CONTACT_REFERENCE_AUDIT.md
 recursive-include examples/contact-reference-audit *.json
-
-include SUBPIXEL_SAMPLING.md
 recursive-include examples/subpixel-subject14 *.json
-
-include PATCH_SUPPORT.md
 recursive-include examples/equal-area-subject14 *.json
-
-include SAMPLING_EVALUATION.md
 recursive-include examples/equal-area-subject10 *.json
 include examples/balanced-sampling-summary.json
-
-include REFERENCE_PROTOCOL.md
-
-include AREA_GATE_EVALUATION.md
 recursive-include examples/area-gates *.json
-
-include PHOTOMETRIC_GUARD.md
-
 recursive-include examples/photometric-guard *.json
-
-include ZONE_CONSENSUS.md
 recursive-include examples/zone-consensus *.json
-
-include CONTROLLED_VIDEO.md
 recursive-include examples/controlled-video *.json *.svg *.png
-
-include PULSE_TRENDS.md
 recursive-include examples/pulse-trends *.json *.png *.svg
-
-include MOTION_RECOVERY.md
 recursive-include examples/motion-recovery *.json *.png *.svg
-
-include TRACKING_LOSS.md
 recursive-include examples/tracking-loss *.json *.png *.svg
-
-include REAL_VIDEO_RECOVERY.md
 recursive-include examples/real-video-recovery *.json *.png *.svg
-
-include PUBLIC_DEMONSTRATION.md
 recursive-include examples/public-demonstration *.json
-
 recursive-include docs *.md
 recursive-include assets *.md *.png *.mp4
