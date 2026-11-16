@@ -64,3 +64,6 @@ recursive-include examples/real-video-recovery *.json *.png *.svg
 
 include PUBLIC_DEMONSTRATION.md
 recursive-include examples/public-demonstration *.json
+
+recursive-include docs *.md
+recursive-include assets *.md *.png *.mp4

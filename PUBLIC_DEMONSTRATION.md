@@ -6,12 +6,13 @@ waveform from a supported patch, completed-window BPM, the matching device-label
 reference, and a pulse trend. The estimator is the same frozen implementation
 used in the preceding real-video study.
 
-The demonstration is **68.47 seconds at 720p**, encoded as H.264 at 15 presentation
+The demonstration is **68.47 seconds at 1440×900**, encoded as H.264 at 15 presentation
 FPS. Its complete source recording yields **10/10 scorable windows**. The source
 is a development recording selected for presentation under an explicit rule,
-separate from the five new benchmark recordings below. The annotated recording
-and individual pulse measurements are delivered privately; the public repository
-contains reproducible code, protocols, source manifests, and cohort aggregates.
+separate from the five new benchmark recordings below. The curated [demo](assets/PulseTrace-Demo.mp4) and [preview](assets/demo-preview.png)
+are included at the repository owner’s request. Raw recordings and detailed
+measurement reports remain local. The repository also contains reproducible code,
+protocols, source manifests, and cohort aggregates.
 
 ## Completed full-length checks
 
