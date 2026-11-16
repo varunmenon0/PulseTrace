@@ -1,0 +1,18 @@
+{
+  "purpose": "Frozen paired real-video check of integrated fractional sampling",
+  "development_subjects": ["subject15", "subject16"],
+  "fresh_subjects": ["subject17", "subject18"],
+  "selection": "Next two IDs after the continuous-window check; fixed before acquisition or analysis",
+  "sampling": "Fractional polygon coverage, subdivisions=8, inset=1 pixel, equal-area geometry-only patch partition",
+  "primary_method": "pos",
+  "consensus_policy": "patch",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "motion_threshold": 0.05,
+  "area_threshold": 0.10,
+  "buffer_seconds": 0.5,
+  "policies": ["full", "continuous"],
+  "comparison": "Same decoded frames and landmarks; fractional and integer sampling each use their own measured areas with identical quality thresholds",
+  "reference": "Stored device BPM, assumed zero offset; report contact-waveform audit separately",
+  "failure_policy": "No substitutions, no threshold changes after fresh results, defaults remain unchanged"
+}
