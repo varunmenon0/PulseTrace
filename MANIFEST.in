@@ -58,3 +58,6 @@ recursive-include examples/motion-recovery *.json *.png *.svg
 
 include TRACKING_LOSS.md
 recursive-include examples/tracking-loss *.json *.png *.svg
+
+include REAL_VIDEO_RECOVERY.md
+recursive-include examples/real-video-recovery *.json *.png *.svg

@@ -16,8 +16,27 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 - **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **161 passing automated tests**, plus an optional model-backed integration check.
+- **177 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
+
+## Real-video analysis
+
+```bash
+pulsetrace analyze recording.mov --model models/face_landmarker.task \
+  --sampling fractional --patches --method pos --track \
+  --window-policy continuous --output outputs/real-recording
+```
+
+The optional fractional sampler was tested on two new real UBFC recordings
+using identical tracked landmarks. Scorable 12-patch POS coverage increased
+from **11/17 to 13/17 windows**, while average absolute device-label difference
+changed from **2.67 to 1.97 BPM**. Across the nine common windows it changed from
+2.47 to 2.25 BPM. Four new recordings were processed with native face tracking,
+covering **8,150 frames**.
+
+See [real-video results and reproduction](REAL_VIDEO_RECOVERY.md), including
+aggregate outcomes, gained/lost counts, reference checks, and comparison
+with the original sampling and full-window policies.
 
 ## Synthetic proof of concept
 

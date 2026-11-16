@@ -15,7 +15,7 @@ def main(argv=None):
     real.add_argument("--model", type=Path, required=True)
     real.add_argument("--max-seconds", type=float)
     real.add_argument("--regional-quality", action="store_true", help="Write experimental local-region versus global quality comparison")
-    real.add_argument("--sampling", choices=["landmarks", "template"], default="landmarks")
+    real.add_argument("--sampling", choices=["landmarks", "template", "fractional"], default="landmarks")
     real.add_argument("--overlay", action="store_true", help="Write annotated tracking.avi (contains face video)")
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
     demo.add_argument("--bpm", type=float, default=72)
@@ -28,6 +28,8 @@ def main(argv=None):
     for cmd in (real, demo):
         cmd.add_argument("--patches", action="store_true", help="Compare 12 patches with three parent regions")
         cmd.add_argument("--track", action="store_true", help="Export quality-gated pulse trends in 12-second windows stepped every 6 seconds")
+        cmd.add_argument("--window-policy", choices=['full','continuous'],default='full',
+                         help="With --track, optionally select >=10 contiguous clean seconds within each 12-second window")
         cmd.add_argument("--consensus", choices=["patch", "zone"], default="patch",
                          help="Twelve-patch vote policy; zone uses one vote per supported parent region")
         cmd.add_argument("--output", type=Path, default=Path("outputs/run"))
@@ -53,6 +55,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.command in ("analyze", "demo") and args.track and not args.patches:
         parser.error("--track requires --patches")
+    if args.command in ('analyze','demo') and args.window_policy != 'full' and not args.track:
+        parser.error('--window-policy continuous requires --track')
     if args.command == "demo" and args.end_bpm is not None and args.profile == "standard":
         parser.error("--end-bpm requires a controlled profile such as --profile clean")
     if args.command in ("analyze", "demo") and args.consensus == "zone" and not args.patches:
@@ -114,6 +118,7 @@ def main(argv=None):
             "band_bpm": [40, 200], "pos_window_s": 1.6,
             "filter_order": 4, "spectral_peak_fraction_cutoff": .35,
             "consensus_policy": args.consensus,
+            "window_policy": args.window_policy,
         }
         extraction.metadata["versions"] = {
             name: importlib.metadata.version(name)
@@ -130,6 +135,9 @@ def main(argv=None):
             regional = write_regional_comparison(extraction,args.output,consensus_policy=args.consensus,max_gap=args.max_gap)
             if args.track:
                 from .trends import write_trend
+                if args.window_policy == 'continuous':
+                    regional=write_regional_comparison(extraction,args.output,consensus_policy=args.consensus,
+                        max_gap=args.max_gap,window_policy='continuous')
                 trend = write_trend(regional,args.output)
         console = {"output":str(args.output.resolve()),"regions":summary["regions"],"failures":failures}
         if trend is not None:
