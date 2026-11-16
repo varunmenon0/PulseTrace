@@ -1,100 +1,65 @@
 # PulseTrace
 
-Video-based heart-rate estimation using computer vision and remote
-photoplethysmography (rPPG). PulseTrace tracks facial regions, extracts RGB
-signals, and estimates pulse frequency with POS and green-channel processing.
+Heart-rate estimation from video. PulseTrace tracks facial skin, extracts subtle
+color changes, and turns them into quality-gated pulse estimates, waveforms, and
+trends. Built with Python, OpenCV, MediaPipe, NumPy, and SciPy.
 
-**Python · OpenCV · MediaPipe · NumPy · SciPy · Matplotlib · GitHub Actions**
+## Demo
 
-## Highlights
+[![PulseTrace recorded-video demo](assets/demo-preview.png)](https://github.com/varunmenon0/PulseTrace/blob/main/assets/PulseTrace-Demo.mp4)
 
-- **12 facial patches** across the forehead and cheeks, with selectable patch or zone voting.
-- **478-landmark face tracking**, timestamp-aware video decoding, and ROI overlays.
-- **Windowed pulse trends** with quality-gated estimates, CSV exports, and plots over time.
-- **Motion-aware analysis** with buffered exclusions and separate continuous segments.
-- **Fractional pixel coverage and geometry-balanced patches** for sampling experiments.
-- **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
-- **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
-  and external beat-time reference support.
-- **182 passing automated tests**, plus an optional model-backed integration check.
-- **Continuous integration** running tests, a synthetic video demo, and package builds.
+[Watch the full 68-second demo](https://github.com/varunmenon0/PulseTrace/blob/main/assets/PulseTrace-Demo.mp4)
+· [Download the video](https://raw.githubusercontent.com/varunmenon0/PulseTrace/main/assets/PulseTrace-Demo.mp4)
 
-## Real-video analysis
+A complete public webcam recording, analyzed with twelve facial patches and POS
+signal extraction. The demo shows the extracted waveform, completed-window heart
+rate, matching sensor reference, and pulse trend. All **10/10 windows** in this
+selected development recording are scorable. Estimates appear only after their
+analysis window ends; unavailable estimates remain gaps.
 
-The [public-video demonstration](PUBLIC_DEMONSTRATION.md) renders facial patches,
-an extracted pulse waveform, completed-window BPM, and reference comparison over
-a complete real recording with **10/10 scorable windows**. A separate frozen
-five-recording check processed **9,463 new frames**, with twelve-patch POS scoring
-**28/36 reference-valid windows** at **3.96 BPM mean device-label difference**.
-The report retains all-window counts, failures, and maximum differences.
+The interface uses native sans-serif typography, generous spacing, neutral
+surfaces, and a restrained red pulse accent. See the [design notes](docs/DEMO_DESIGN.md)
+and [source attribution](assets/README.md).
 
-```bash
-pulsetrace analyze recording.mov --model models/face_landmarker.task \
-  --sampling fractional --patches --method pos --track \
-  --window-policy continuous --output outputs/real-recording
-```
+## Features
 
-The optional fractional sampler was tested on two new real UBFC recordings
-using identical tracked landmarks. Scorable 12-patch POS coverage increased
-from **11/17 to 13/17 windows**, while average absolute device-label difference
-changed from **2.67 to 1.97 BPM**. Across the nine common windows it changed from
-2.47 to 2.25 BPM. Four new recordings were processed with native face tracking,
-covering **8,150 frames**.
+- **Face tracking:** 478 landmarks anchor forehead and cheek sampling regions.
+- **Twelve-patch sampling:** geometry-balanced patches with optional fractional
+  pixel coverage and patch or region voting.
+- **Pulse extraction:** POS and green-channel methods with spectral diagnostics.
+- **Quality-aware trends:** motion and tracking-loss exclusions, clean continuous
+  support, and explicit gaps when a window cannot support an estimate.
+- **Useful exports:** CSV signals, JSON diagnostics, plots, and annotated video.
+- **Reproducible evaluation:** fixed protocols, source hashes, paired comparisons,
+  reference checks, synthetic fixtures, and automated CI.
 
-See [real-video results and reproduction](REAL_VIDEO_RECOVERY.md), including
-aggregate outcomes, gained/lost counts, reference checks, and comparison
-with the original sampling and full-window policies.
+## Measured results
 
-## Synthetic proof of concept
-
-The controlled video suite recovers injected pulse rates across six clean clips
-with **0.003 BPM mean error** and **less than 0.013 BPM maximum error**. It tests
-48–180 BPM signals and 30/60 FPS inputs using known rendered geometry.
-
-![Controlled video benchmark](examples/controlled-video/summary.png)
-
-See the [controlled-video benchmark](CONTROLLED_VIDEO.md) for the exact fixtures,
-separate lighting challenge, and reproduction command.
-
-### Track a changing synthetic pulse
-
-```bash
-pulsetrace demo --profile clean --bpm 72 --end-bpm 108 --seconds 60 \
-  --patches --consensus zone --track --output outputs/rising-pulse
-```
-
-The [controlled tracking benchmark](PULSE_TRENDS.md) recovered **21/21 windows**
-across rising, falling, and constant-rate cases, with **0.041 BPM POS mean error**
-against the injected window-average rates.
-
-### Recover after abrupt motion
-
-The [controlled motion benchmark](MOTION_RECOVERY.md) retains **7/7 readings**
-during gentle translation, excludes both windows affected by a sharp motion
-burst, and recovers all five clean windows. Trend exports include the excluded
-regions and shared motion/loss flags.
-
-```bash
-pulsetrace demo --profile motion_burst --bpm 72 --seconds 48 \
-  --patches --consensus zone --track --output outputs/motion-demo
-```
-
-The [face-loss benchmark](TRACKING_LOSS.md) also tests a brief disappearance
-during a rising pulse and a face that never returns. Trend exports retain gaps,
-identify missing-sample regions, and explain unavailable estimates.
-
-## Measured engineering results
-
-| Experiment | Result |
+| Evaluation | Result |
 |---|---|
-| Balanced patch support | All 12 patches available across 4,017 frames from two UBFC development recordings |
-| Fractional mask geometry | Area-step events fell from 72 to 8 on subject 14 |
-| Area-source gate comparison | Scorable windows increased from 6/20 to 17/20 with unchanged thresholds |
-| Artifact stress suite | Seven deterministic RGB/geometry cases covering motion, sample loss, attenuation, and lighting |
+| Selected demo recording | 10/10 scorable windows |
+| Frozen five-recording real-video check | 28/36 reference-valid windows scorable; 3.96 BPM mean absolute difference from device labels |
+| Largest accepted difference in that check | 15.16 BPM |
+| Six clean synthetic clips, 48–180 BPM | 0.003 BPM mean error; less than 0.013 BPM maximum error |
+| Changing-rate synthetic tracking | 21/21 windows recovered; 0.041 BPM POS mean error |
 
-These metrics describe sampling, coverage, and controlled stress tests. Heart-rate
-comparisons, reference definitions, and per-window results are documented in the
-[evaluation reports](#evaluation-and-experiments).
+The five-recording evaluation decoded 9,463 frames and produced estimates in
+34/49 nominal windows; 28 estimates were reference-valid and scorable. These
+small-cohort comparisons use the original device labels and assumed zero clock
+offset. The selected demo is separate from that frozen cohort. Synthetic results
+measure recovery of injected signals and are reported separately from natural
+video results.
+
+See the [real-video demonstration and frozen evaluation](PUBLIC_DEMONSTRATION.md),
+[real-video sampling study](REAL_VIDEO_RECOVERY.md),
+[controlled-video benchmark](CONTROLLED_VIDEO.md), and
+[changing-pulse benchmark](PULSE_TRENDS.md) for protocols and complete denominators.
+
+PulseTrace is a complete **recorded-video analysis project**. Live camera capture
+is a future application: the current processing uses offline filtering and
+buffered motion exclusions. The [live-camera design notes](docs/LIVE_CAMERA.md)
+document the timing and validation work needed for streaming. These evaluations
+do not establish medical-device accuracy.
 
 ## Quick start
 
