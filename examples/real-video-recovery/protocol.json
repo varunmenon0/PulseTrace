@@ -1,0 +1,20 @@
+{
+  "purpose": "Real-video baseline reproduction and clean continuous subwindow comparison",
+  "development_subjects": ["subject1", "subject10", "subject11", "subject12", "subject13", "subject14"],
+  "fresh_subjects": ["subject15", "subject16"],
+  "selection": "Next two subject IDs after previously processed subjects; fixed before inspecting their signals or labels",
+  "primary_method": "pos",
+  "consensus_policy": "patch",
+  "layouts": ["three_regions", "twelve_patches"],
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "continuous_min_seconds": 10,
+  "continuous_selection": "Longest contiguous section shared by at least two usable parent regions; ties favor more usable regions then earliest start; never consult pulse estimates or references",
+  "motion_threshold": 0.05,
+  "area_threshold": 0.10,
+  "buffer_seconds": 0.5,
+  "max_gap_seconds": 0.25,
+  "reference": "Stored device BPM on the exact analyzed support; retain existing band/gap validity checks and assumed elapsed-time offset zero",
+  "metrics": ["accepted/reference-valid windows", "accepted-set device-label MAE", "common-window differences", "newly admitted errors", "failure reasons", "actual analyzed intervals"],
+  "failure_policy": "Do not substitute failed downloads or inference; do not adjust thresholds after fresh outcomes; keep the full-window policy as default"
+}
