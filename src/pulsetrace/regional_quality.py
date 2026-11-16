@@ -71,24 +71,40 @@ def gate_candidates(candidates, zones, usable, *, consensus_policy="patch"):
     return {"individual_candidates":filtered,**choose(filtered,zones)}
 
 
-def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch", max_gap=.25):
+def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch", max_gap=.25,
+                              window_policy="full", continuous_min_seconds=10.):
     """Compare saved pulse candidates on matching continuous fixed windows."""
     from .signal import analyze
     from .patches import PATCHES
     if consensus_policy not in ("patch", "zone"):
         raise ValueError("Unknown consensus policy")
+    if window_policy not in ('full', 'continuous'):
+        raise ValueError('Unknown window policy')
+    if not np.isfinite(continuous_min_seconds) or not 0 < continuous_min_seconds < 12:
+        raise ValueError('continuous_min_seconds must be positive and below 12')
     masks,shared=regional_masks(extraction,area_policy=area_policy,max_gap=max_gap)
     global_quality=analyze_segments(extraction,max_gap=max_gap)
     t=extraction.time;rows=[]
     for start in np.arange(t[0],t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9,6):
-        end=start+12;chosen=(t>=start)&(t<end)
-        usable={n:not bool(m[chosen].any()) for n,m in masks.items()}
-        globally_usable=not any(start<i["end_s"] and end>i["start_s"] for i in global_quality["excluded_intervals"])
+        end=start+12;nominal=(t>=start)&(t<end)
+        chosen=nominal
+        if window_policy == 'continuous':
+            from .continuous import select_interval
+            indices, _ = select_interval(t,masks,nominal,min_seconds=continuous_min_seconds,max_gap=max_gap)
+            chosen=np.zeros(len(t),dtype=bool);chosen[indices]=True
+        usable={n:bool(chosen.any()) and not bool(m[chosen].any()) for n,m in masks.items()}
+        support_start=float(t[chosen][0]) if chosen.any() else None
+        support_end=float(t[chosen][-1]) if chosen.any() else None
+        gate_start,gate_end=(start,end) if window_policy == 'full' else (support_start,support_end)
+        globally_usable=bool(chosen.any()) and not any(gate_start<i["end_s"] and gate_end>i["start_s"] for i in global_quality["excluded_intervals"])
         row={"start_s":float(start),"end_s":float(end),"usable_regions":usable,
              "sample_loss_regions":sorted(n for n in REGIONS if np.any(
-                 (extraction.pixels[n][chosen]<=0) | ~np.isfinite(extraction.rgb[n][chosen]).all(axis=1) |
-                 (extraction.rgb[n][chosen]<=0).any(axis=1))),
-             "shared_motion_or_loss":bool(shared[chosen].any()),"methods":{}}
+                 (extraction.pixels[n][nominal]<=0) | ~np.isfinite(extraction.rgb[n][nominal]).all(axis=1) |
+                 (extraction.rgb[n][nominal]<=0).any(axis=1))),
+             "shared_motion_or_loss":bool(shared[nominal].any()),"methods":{}}
+        if window_policy == 'continuous':
+            row.update(analysis_start_s=support_start,analysis_end_s=support_end,
+                       analysis_duration_s=None if support_start is None else support_end-support_start)
         for method in ("pos","green"):
             layouts={}
             for label,traces,zones in (("three_regions",extraction.rgb,{n:n for n in REGIONS}),
@@ -96,8 +112,9 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
                 estimates={}
                 for name,rgb in traces.items():
                     samples=rgb[chosen];bpm=None
-                    if np.isfinite(samples).all() and np.all(samples>0):
-                        try:bpm=analyze(t[chosen],samples,method=method,min_seconds=11.9,max_gap=max_gap).bpm
+                    if len(samples) and np.isfinite(samples).all() and np.all(samples>0):
+                        try:bpm=analyze(t[chosen],samples,method=method,
+                                       min_seconds=11.9 if window_policy=='full' else continuous_min_seconds,max_gap=max_gap).bpm
                         except ValueError:pass
                     estimates[name]=bpm
                 policy = consensus_policy if label == "twelve_patches" else "patch"
@@ -111,5 +128,9 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
             "limitation":"Any excluded frame makes that region unavailable for the complete window; no gap bridging",
             "windows":rows}
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
-    (output/"regional_comparison.json").write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
+    if window_policy == 'continuous':
+        report['configuration'].update(window_policy=window_policy,continuous_min_seconds=continuous_min_seconds)
+        report['limitation']='Analyze only the selected contiguous clean support, never bridge exclusions; nominal window may include unused artifacts'
+    filename='regional_comparison.json' if window_policy=='full' else 'continuous_comparison.json'
+    (output/filename).write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
     return report

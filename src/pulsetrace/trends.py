@@ -24,6 +24,10 @@ def build_trend(report):
                    excluded_regions=sorted(n for n, usable in window['usable_regions'].items() if not usable),
                    sample_loss_regions=window.get('sample_loss_regions', []),
                    methods={})
+        if 'analysis_start_s' in window:
+            row.update({k:window[k] for k in ('analysis_start_s','analysis_end_s','analysis_duration_s')})
+            if window['analysis_start_s'] is not None:
+                row['center_s']=(window['analysis_start_s']+window['analysis_end_s'])/2
         for method in ('green', 'pos'):
             detail = window['methods'][method]['twelve_patches']['regional_gate']
             row['methods'][method] = dict(bpm_candidate=detail['bpm_candidate'], support=detail['support'],
@@ -34,7 +38,7 @@ def build_trend(report):
     metrics = {m: dict(total_windows=len(rows),
                       estimated_windows=sum(r['methods'][m]['bpm_candidate'] is not None for r in rows))
                for m in ('green', 'pos')}
-    return dict(configuration=report['configuration'], timing='Offline window averages, plotted at window centers; available after window end',
+    return dict(configuration=report['configuration'], timing='Offline estimates at analyzed-support centers; available after nominal window end',
                 policy='Regional quality gate; missing estimates stay missing', metrics=metrics, windows=rows)
 
 
@@ -47,13 +51,15 @@ def write_trend(report, output):
         writer = csv.writer(file)
         writer.writerow(['start_s','end_s','center_s','available_at_s','green_bpm','pos_bpm',
                          'shared_motion_or_loss','excluded_regions','sample_loss_regions',
-                         'green_unavailable_reason','pos_unavailable_reason'])
+                         'green_unavailable_reason','pos_unavailable_reason',
+                         'analysis_start_s','analysis_end_s','analysis_duration_s'])
         for row in result['windows']:
             writer.writerow([row[k] for k in ('start_s','end_s','center_s','available_at_s')]+
                             [row['methods'][m]['bpm_candidate'] for m in ('green','pos')]+
                             [row['shared_motion_or_loss'], ';'.join(row['excluded_regions']),
                              ';'.join(row['sample_loss_regions'])]+
-                            [row['methods'][m]['unavailable_reason'] for m in ('green','pos')])
+                            [row['methods'][m]['unavailable_reason'] for m in ('green','pos')]+
+                            [row.get(k) for k in ('analysis_start_s','analysis_end_s','analysis_duration_s')])
     fig, ax = plt.subplots(figsize=(9, 4), constrained_layout=True)
     for method, color in (('green','#48a868'), ('pos','#377bb5')):
         centers = [r['center_s'] for r in result['windows']]
