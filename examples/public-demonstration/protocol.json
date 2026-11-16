@@ -1,0 +1,19 @@
+{
+  "purpose": "Complete full-length development checks, select a demonstration, then evaluate five new public recordings with a frozen estimator",
+  "frozen_estimator_commit": "44c7d8442fe87bddd3ef0540d17be0c094490911",
+  "development_subjects": ["subject15", "subject16"],
+  "demo_candidates": ["subject15", "subject16", "subject17", "subject18"],
+  "fresh_subjects": ["subject20", "subject22", "subject23", "subject24", "subject25"],
+  "selection": "First five numerically ordered available dataset directories after subject18; availability listing inspected before downloading recordings or reference measurements; subject19 and subject21 absent from mirror",
+  "sampling": "fractional, subdivisions=8, inset=1, equal-area partitions",
+  "primary_method": "pos",
+  "consensus_policy": "patch",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "continuous_min_seconds": 10,
+  "policies": ["full", "continuous"],
+  "demo_selection": "Development recordings only: >=80% nominal windows have a scorable estimate and accepted-set device-label MAE <=5 BPM; rank by scorable fraction then MAE then recording ID; select continuous policy for presentation",
+  "reference": "Stored device BPM on analyzed support, existing validity checks, assumed elapsed-time offset zero",
+  "failure_policy": "Keep unavailable downloads, inference failures and rejected windows explicit; no substitutions or estimator changes after fresh results",
+  "public_outputs": "Code, acquisition manifests and cohort aggregates only; annotated recording and detailed pulse measurements are delivered privately"
+}
