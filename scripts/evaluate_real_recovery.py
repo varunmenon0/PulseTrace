@@ -2,6 +2,7 @@
 import argparse
 from collections import Counter
 import hashlib
+import importlib.metadata
 import json
 from pathlib import Path
 
@@ -116,7 +117,8 @@ def evaluate(folder, output):
                         raise ValueError('Historical baseline vote did not reproduce')
         reproduced=True
     record=dict(recording=folder.name,input=original['input'],cache_sha256=digest(cache),
-        reference_sha256=digest(reference),historical_baseline_reproduced=reproduced,windows=windows)
+        reference_sha256=digest(reference),sampling=original.get('sampling',{'sampling':'legacy integer landmarks'}),
+        historical_baseline_reproduced=reproduced,windows=windows)
     record['metrics']=summarize([record])
     return record
 
@@ -136,6 +138,7 @@ def main():
         except (ValueError,OSError,KeyError) as error:
             failures.append(dict(recording=subject,error=str(error)));print(subject,str(error),flush=True)
     result=dict(cohort=args.cohort,protocol=protocol,protocol_sha256=digest(args.protocol),records=records,
+        versions={n:importlib.metadata.version(n) for n in ('numpy','scipy','opencv-contrib-python','mediapipe')},
         failures=failures,metrics=summarize(records),reference='Stored device labels, assumed elapsed-time offset zero; waveform/device disagreements unresolved',
         comparison='Same nominal windows and quality thresholds; continuous policy scores the exact selected shorter support; accepted subsets and support can differ')
     (args.output/'summary.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')

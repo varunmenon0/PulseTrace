@@ -1,0 +1,17 @@
+{
+  "recording": "subject18",
+  "mirror": "https://huggingface.co/datasets/thachha901/UBFC",
+  "official_dataset": "https://sites.google.com/view/ybenezeth/ubfcrppg",
+  "files": {
+    "ground_truth.txt": {
+      "url": "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/subject18/ground_truth.txt?download=true",
+      "sha256": "431941c186a679c836a8f665f87886835f6fdc8d2273d82f93ca48054a718b3b",
+      "bytes": 97638
+    },
+    "vid.avi": {
+      "url": "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/subject18/vid.avi?download=true",
+      "sha256": "d7ae0de691acbcc846fdf50d1953fa387e890e54523181c4953c166d7e66c0bd",
+      "bytes": 1874665352
+    }
+  }
+}

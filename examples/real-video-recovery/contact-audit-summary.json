@@ -1,0 +1,6 @@
+{
+  "recordings": 10,
+  "total_windows": 97,
+  "device_ppg_disagreement_over_10_bpm": 7,
+  "note": "Aggregate exploratory contact-only audit; device labels and time offsets unchanged"
+}
