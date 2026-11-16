@@ -11,7 +11,7 @@ The newly added report script only aggregates saved outcomes.
 
 This is a small same-dataset subject holdout, not cross-dataset or clinical
 validation. The public mirror and elapsed-time alignment assumptions from
-PUBLIC_VALIDATION_MULTI.md still apply. Overlapping windows are dependent;
+[PUBLIC_VALIDATION_MULTI.md](PUBLIC_VALIDATION_MULTI.md) still apply. Overlapping windows are dependent;
 both window-weighted MAE and mean subject MAE are reported with subject counts.
 Subjects without estimates are retained explicitly and have no finite MAE.
 
@@ -23,7 +23,7 @@ replaced by easier subjects. No source videos or extraction caches are committed
 
 Use the same isolated MediaPipe 0.10.21 runtime. Each subject folder includes
 source.json compatible with scripts/download_ubfc_sample.py. After downloading,
-run benchmark_ubfc.py and evaluate_regional_quality.py as in REGIONAL_QUALITY.md.
+run benchmark_ubfc.py and evaluate_regional_quality.py as in [REGIONAL_QUALITY.md](REGIONAL_QUALITY.md).
 The evaluator receives labels only after region-quality selection has finished.
 
 Aggregate the cohort:

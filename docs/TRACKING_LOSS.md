@@ -5,7 +5,7 @@ disappears. The fixture tracker returns no landmarks while the face is absent,
 so the full pipeline receives missing RGB samples and zero sampled pixels.
 The pulse phase continues with video time when the face returns.
 
-![Face loss and recovery](examples/tracking-loss/summary.png)
+![Face loss and recovery](../examples/tracking-loss/summary.png)
 
 ## Protocol
 
@@ -19,8 +19,8 @@ do not receive injected BPM or visibility metadata.
 | Rising pulse with loss | 60 FPS | 72→108 BPM linear ramp | 20–22 seconds |
 | Face does not return | 30 FPS | 72→108 BPM linear ramp | 20 seconds through clip end |
 
-The [fixed protocol](examples/tracking-loss/protocol.json) specifies these cases.
-The [results](examples/tracking-loss/benchmark.json) include source hashes,
+The [fixed protocol](../examples/tracking-loss/protocol.json) specifies these cases.
+The [results](../examples/tracking-loss/benchmark.json) include source hashes,
 decoded frame counts, patch coverage, every window decision, errors against the
 injected window-average rate, and estimate availability after recovery.
 

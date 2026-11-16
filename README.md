@@ -50,10 +50,10 @@ offset. The selected demo is separate from that frozen cohort. Synthetic results
 measure recovery of injected signals and are reported separately from natural
 video results.
 
-See the [real-video demonstration and frozen evaluation](PUBLIC_DEMONSTRATION.md),
-[real-video sampling study](REAL_VIDEO_RECOVERY.md),
-[controlled-video benchmark](CONTROLLED_VIDEO.md), and
-[changing-pulse benchmark](PULSE_TRENDS.md) for protocols and complete denominators.
+See the [real-video demonstration and frozen evaluation](docs/PUBLIC_DEMONSTRATION.md),
+[real-video sampling study](docs/REAL_VIDEO_RECOVERY.md),
+[controlled-video benchmark](docs/CONTROLLED_VIDEO.md), and
+[changing-pulse benchmark](docs/PULSE_TRENDS.md) for protocols and complete denominators.
 
 PulseTrace is a complete **recorded-video analysis project**. Live camera capture
 is a future application: the current processing uses offline filtering and
@@ -149,26 +149,11 @@ availability, and estimate diagnostics. `pulsetrace --help` lists all commands.
 | `pulse_trend.csv`, `pulse_trend.json`, `pulse_trend.png` | Windowed estimates, timing, coverage, and curves with `--track` |
 | `regional_comparison.json` | Global versus regional exclusion comparison |
 
-## Evaluation and experiments
+## Documentation
 
-| Report | Focus |
-|---|---|
-| [Windowed pulse tracking](PULSE_TRENDS.md) | Changing-rate synthetic videos and quality-gated trends |
-| [Controlled synthetic videos](CONTROLLED_VIDEO.md) | Lossless fixtures, injected pulse references, and lighting cues |
-| [Public video evaluation](PUBLIC_VALIDATION_MULTI.md) | UBFC development recordings and reference checks |
-| [Fixed-rule evaluation](FROZEN_EVALUATION.md) | Preserved protocol and results on subjects 12–14 |
-| [Region-balanced voting](ZONE_CONSENSUS.md) | Two-level consensus and six-recording candidate replay |
-| [Sampling comparison](SAMPLING_EVALUATION.md) | Paired integer and balanced fractional sampling |
-| [Patch support](PATCH_SUPPORT.md) | Geometry scale and sampling-lattice study |
-| [Area-source gates](AREA_GATE_EVALUATION.md) | Identical-RGB comparison of gate area measurements |
-| [Artifact stress tests](PHOTOMETRIC_GUARD.md) | Optional broad RGB-step guard and controlled lighting cases |
-| [External beat references](REFERENCE_PROTOCOL.md) | Provenance, clock offsets, and beat-time scoring |
-| [Diagnostics](DIAGNOSTICS.md) | RGB, shape, movement, and window-level inspection |
-
-Each report identifies its input data, settings, scoring protocol, and results.
-Synthetic fixtures and natural-video evaluations are reported separately.
-Numeric examples live in `examples/`; recordings and model assets are acquired
-through the documented download scripts.
+See the [documentation index](docs/README.md) for evaluation results, reproduction
+instructions, diagnostics, interface design, and the path to live-camera use.
+Earlier experiments remain available in the [research archive](docs/archive/README.md).
 
 ## Development
 
@@ -188,7 +173,7 @@ PULSETRACE_TEST_MODEL=models/face_landmarker.task \
 PULSETRACE_TEST_PORTRAIT=/absolute/path/to/portrait.jpg pytest -q
 ```
 
-See [VALIDATION.md](VALIDATION.md) for environment and model-integration records.
+See [VALIDATION.md](docs/archive/VALIDATION.md) for environment and model-integration records.
 `requirements-tested.txt` records the tested environment; `pyproject.toml`
 defines supported dependency ranges.
 

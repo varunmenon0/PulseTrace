@@ -69,7 +69,7 @@ The shared-lighting cue was active on that case and inactive on all eight clean
 or mild-variation cases. The diagnostic records both estimates; it does not
 substitute an injected/expected rate into the result.
 
-![Controlled synthetic-video proof of concept](examples/controlled-video/summary.png)
+![Controlled synthetic-video proof of concept](../examples/controlled-video/summary.png)
 
 ## Reproduce the suite
 

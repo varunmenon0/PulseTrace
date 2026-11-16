@@ -68,7 +68,7 @@ against analytic window-average rates of clean synthetic signals. Windows
 overlap, and the renderer supplies known geometry. The input frame rates are
 fixture settings, not measured processing throughput.
 
-![Controlled pulse-rate tracking](examples/pulse-trends/summary.png)
+![Controlled pulse-rate tracking](../examples/pulse-trends/summary.png)
 
 ## Reproduce
 

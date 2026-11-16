@@ -74,7 +74,7 @@ unchanged; these sampler experiments use development data.
 ## Reproduce and inspect
 
 Use `examples/ubfc-subject10/source.json` with the existing checksum-verifying
-downloader, then run the same commands documented in `PATCH_SUPPORT.md`, replacing
+downloader, then run the same commands documented in [PATCH_SUPPORT.md](PATCH_SUPPORT.md), replacing
 subject14 paths with subject10. The source/model hashes, dependency versions,
 settings, all candidates, and geometry summaries are preserved in
 `examples/equal-area-subject10/`. Subject 14's corresponding reports stay in

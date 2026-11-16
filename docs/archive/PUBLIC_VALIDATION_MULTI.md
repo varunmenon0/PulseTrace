@@ -67,7 +67,7 @@ unchanged. No threshold was loosened to improve these results.
 
 ## Reproduce
 
-Use the isolated runtime in PUBLIC_VALIDATION.md (MediaPipe 0.10.21 completed;
+Use the isolated runtime in [PUBLIC_VALIDATION.md](PUBLIC_VALIDATION.md) (MediaPipe 0.10.21 completed;
 0.10.35 crashed in earlier attempts). For each new subject:
 
 ```sh
