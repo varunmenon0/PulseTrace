@@ -1,0 +1,14 @@
+{
+  "synthetic": false,
+  "scorable_windows": 10,
+  "total_windows": 10,
+  "width": 1280,
+  "height": 720,
+  "codec": "h264",
+  "output_fps": 15,
+  "rendered_frames": 1027,
+  "duration_s": 68.46666666666667,
+  "timing": "Offline completed-window display; no future estimates before nominal window end",
+  "source": "Development recording selected by protocol, separate from frozen five-recording cohort",
+  "distribution": "Annotated recording and individual pulse measurements stay private; public repository contains renderer and aggregate metrics"
+}

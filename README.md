@@ -16,10 +16,17 @@ signals, and estimates pulse frequency with POS and green-channel processing.
 - **Lossless synthetic demos** with skin-localized pulse signals and an independent background reference.
 - **Reproducible evaluation** with source hashes, paired comparisons, coverage metrics,
   and external beat-time reference support.
-- **177 passing automated tests**, plus an optional model-backed integration check.
+- **182 passing automated tests**, plus an optional model-backed integration check.
 - **Continuous integration** running tests, a synthetic video demo, and package builds.
 
 ## Real-video analysis
+
+The [public-video demonstration](PUBLIC_DEMONSTRATION.md) renders facial patches,
+an extracted pulse waveform, completed-window BPM, and reference comparison over
+a complete real recording with **10/10 scorable windows**. A separate frozen
+five-recording check processed **9,463 new frames**, with twelve-patch POS scoring
+**28/36 reference-valid windows** at **3.96 BPM mean device-label difference**.
+The report retains all-window counts, failures, and maximum differences.
 
 ```bash
 pulsetrace analyze recording.mov --model models/face_landmarker.task \

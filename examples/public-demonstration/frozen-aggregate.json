@@ -1,0 +1,171 @@
+{
+  "planned_recordings": 5,
+  "completed_recordings": 5,
+  "failed_recordings": 0,
+  "decoded_frames": 9463,
+  "metrics": {
+    "pos": {
+      "three_regions": {
+        "full": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 42,
+          "scorable_windows": 31,
+          "mae_against_device_bpm": 4.059248240634197,
+          "max_difference_bpm": 15.0182461179553,
+          "rejection_counts": {
+            "no_majority_consensus": 1,
+            "quality_exclusions": 2,
+            "insufficient_spectral_support": 4
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "continuous": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 42,
+          "scorable_windows": 31,
+          "mae_against_device_bpm": 4.059248240634197,
+          "max_difference_bpm": 15.0182461179553,
+          "rejection_counts": {
+            "no_majority_consensus": 1,
+            "quality_exclusions": 2,
+            "insufficient_spectral_support": 4
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "paired": {
+          "common_windows": 31,
+          "full_common_mae": 4.059248240634197,
+          "continuous_common_mae": 4.059248240634197,
+          "newly_scorable_windows": 0,
+          "newly_scorable_mae": null,
+          "lost_windows": 0,
+          "newly_scorable_max_difference_bpm": null
+        }
+      },
+      "twelve_patches": {
+        "full": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 34,
+          "scorable_windows": 28,
+          "mae_against_device_bpm": 3.9585489405558376,
+          "max_difference_bpm": 15.157609576931009,
+          "rejection_counts": {
+            "no_majority_consensus": 7,
+            "insufficient_spectral_support": 6,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "continuous": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 34,
+          "scorable_windows": 28,
+          "mae_against_device_bpm": 3.9585489405558376,
+          "max_difference_bpm": 15.157609576931009,
+          "rejection_counts": {
+            "no_majority_consensus": 7,
+            "insufficient_spectral_support": 6,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "paired": {
+          "common_windows": 28,
+          "full_common_mae": 3.9585489405558376,
+          "continuous_common_mae": 3.9585489405558376,
+          "newly_scorable_windows": 0,
+          "newly_scorable_mae": null,
+          "lost_windows": 0,
+          "newly_scorable_max_difference_bpm": null
+        }
+      }
+    },
+    "green": {
+      "three_regions": {
+        "full": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 39,
+          "scorable_windows": 33,
+          "mae_against_device_bpm": 5.40040834577237,
+          "max_difference_bpm": 56.89001412870831,
+          "rejection_counts": {
+            "no_majority_consensus": 4,
+            "insufficient_spectral_support": 4,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "continuous": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 39,
+          "scorable_windows": 33,
+          "mae_against_device_bpm": 5.40040834577237,
+          "max_difference_bpm": 56.89001412870831,
+          "rejection_counts": {
+            "no_majority_consensus": 4,
+            "insufficient_spectral_support": 4,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "paired": {
+          "common_windows": 33,
+          "full_common_mae": 5.40040834577237,
+          "continuous_common_mae": 5.40040834577237,
+          "newly_scorable_windows": 0,
+          "newly_scorable_mae": null,
+          "lost_windows": 0,
+          "newly_scorable_max_difference_bpm": null
+        }
+      },
+      "twelve_patches": {
+        "full": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 38,
+          "scorable_windows": 33,
+          "mae_against_device_bpm": 5.327298564260183,
+          "max_difference_bpm": 55.65560692023087,
+          "rejection_counts": {
+            "no_majority_consensus": 4,
+            "insufficient_spectral_support": 5,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "continuous": {
+          "total_windows": 49,
+          "reference_valid_windows": 36,
+          "estimated_windows": 38,
+          "scorable_windows": 33,
+          "mae_against_device_bpm": 5.327298564260183,
+          "max_difference_bpm": 55.65560692023087,
+          "rejection_counts": {
+            "no_majority_consensus": 4,
+            "insufficient_spectral_support": 5,
+            "quality_exclusions": 2
+          },
+          "subjects_with_scored_estimates": 5
+        },
+        "paired": {
+          "common_windows": 33,
+          "full_common_mae": 5.327298564260183,
+          "continuous_common_mae": 5.327298564260183,
+          "newly_scorable_windows": 0,
+          "newly_scorable_mae": null,
+          "lost_windows": 0,
+          "newly_scorable_max_difference_bpm": null
+        }
+      }
+    }
+  },
+  "frozen_estimator_commit": "44c7d8442fe87bddd3ef0540d17be0c094490911",
+  "reference": "Stored device labels; assumed shared elapsed-time origin; overlapping windows are dependent",
+  "outputs": "Cohort aggregate; individual pulse outcomes stay in private-results.json"
+}
