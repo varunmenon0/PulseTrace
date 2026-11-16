@@ -133,3 +133,31 @@ def fractional_masks(shape, points, *, subdivisions=8, inset=1., partition="bbox
         ("tl", "tr", "bl", "br"),
         (left & top, ~left & top, left & ~top, ~left & ~top))}
     return parent, patches
+
+
+def extract_fractional(bgr, landmarks, min_pixels=30):
+    """Production-path adapter for the previously evaluated fractional sampler.
+
+    Counts are effective covered areas. Display masks mark contributing pixels;
+    their integer areas are never used for the fractional quality decisions.
+    """
+    from .regions import REGIONS
+    values, counts, masks, samples = {}, {}, {}, {}
+    for name, indices in REGIONS.items():
+        values[name], counts[name] = np.full(3, np.nan), 0.
+        try:
+            parent, children = fractional_masks(bgr.shape, landmarks[list(indices)],
+                subdivisions=8, inset=1., partition='equal_area')
+            values[name], counts[name] = parent.mean_rgb(bgr, min_pixels), parent.area
+        except ValueError:
+            continue
+        display = np.zeros(bgr.shape[:2], dtype=np.uint8)
+        h,w = parent.weights.shape
+        display[parent.y:parent.y+h,parent.x:parent.x+w] = (parent.weights>0).astype(np.uint8)*255
+        masks[name] = display
+        for quadrant, child in children.items():
+            try:
+                samples[name+'_'+quadrant] = (child.mean_rgb(bgr, min_pixels),child.area)
+            except ValueError:
+                pass
+    return values, counts, masks, samples

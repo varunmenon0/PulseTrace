@@ -15,7 +15,7 @@ def main(argv=None):
     real.add_argument("--model", type=Path, required=True)
     real.add_argument("--max-seconds", type=float)
     real.add_argument("--regional-quality", action="store_true", help="Write experimental local-region versus global quality comparison")
-    real.add_argument("--sampling", choices=["landmarks", "template"], default="landmarks")
+    real.add_argument("--sampling", choices=["landmarks", "template", "fractional"], default="landmarks")
     real.add_argument("--overlay", action="store_true", help="Write annotated tracking.avi (contains face video)")
     demo = sub.add_parser("demo", help="Synthetic video integration demo; no model required")
     demo.add_argument("--bpm", type=float, default=72)

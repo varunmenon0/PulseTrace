@@ -30,7 +30,7 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
         raise ValueError("max_seconds must be positive")
     if min_pixels < 1:
         raise ValueError("min_pixels must be positive")
-    if sampling not in ("landmarks", "template"):
+    if sampling not in ("landmarks", "template", "fractional"):
         raise ValueError("Unknown sampling mode")
     from .stabilization import TemplateStabilizer
     stabilizer = TemplateStabilizer()
@@ -60,10 +60,14 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
                 values = {name: np.full(3, np.nan) for name in REGIONS}
                 counts = {name: 0 for name in REGIONS}
                 current_masks = {}
+                fractional_samples = {}
+            elif sampling == 'fractional':
+                from .subpixel import extract_fractional
+                values, counts, current_masks, fractional_samples = extract_fractional(frame.bgr,landmarks,min_pixels)
             else:
                 values, counts, current_masks = extract_regions(frame.bgr, landmarks, min_pixels)
             if patches:
-                samples = sample_patches(frame.bgr, current_masks, min_pixels)
+                samples = fractional_samples if sampling == 'fractional' else sample_patches(frame.bgr, current_masks, min_pixels)
                 for name in PATCHES:
                     color, count = samples.get(name, (np.full(3, np.nan), 0))
                     patch_rgb[name].append(color)
@@ -111,6 +115,9 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
                     "decoded_frames": len(timestamps)}
     if not timestamps:
         raise ValueError("Video contains no decodable frames")
+    if sampling == 'fractional':
+        metadata['fractional_sampling'] = dict(subdivisions=8,inset_pixels=1.,partition='equal_area',
+            area_units='effective covered pixels; previews show any contributing pixel')
     return Extraction(np.asarray(timestamps), {k: np.asarray(v) for k,v in rgb.items()},
                       {k: np.asarray(v) for k,v in pixels.items()}, preview, masks, metadata, {k:np.asarray(v) for k,v in geometry.items()},
                       {k:np.asarray(v) for k,v in patch_rgb.items()},
