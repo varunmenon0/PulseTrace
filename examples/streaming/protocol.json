@@ -1,0 +1,23 @@
+{
+  "experiment": "Controlled frame-by-frame replay and identical-sample batch parity",
+  "synthetic": true,
+  "tracking": "Known fixture geometry, not MediaPipe",
+  "sampling": "fractional",
+  "method": "pos",
+  "consensus": "patch",
+  "window_policy": "continuous",
+  "window_seconds": 12,
+  "step_seconds": 6,
+  "lookahead_seconds": 0.5,
+  "fps": 15,
+  "seed": 7,
+  "cases": [
+    {"name": "clean", "profile": "clean", "seconds": 36, "start_bpm": 72, "end_bpm": 72},
+    {"name": "rising", "profile": "clean", "seconds": 48, "start_bpm": 72, "end_bpm": 108},
+    {"name": "motion", "profile": "motion_burst", "seconds": 48, "start_bpm": 72, "end_bpm": 72},
+    {"name": "face_loss", "profile": "face_loss", "seconds": 48, "start_bpm": 72, "end_bpm": 72}
+  ],
+  "reference": "Analytic injected mean rate over the selected support, consulted only after estimation",
+  "tail_policy": "Do not flush windows whose look-ahead has not arrived",
+  "limitations": "Synthetic replay checks timing and software parity, not camera accuracy or live throughput"
+}

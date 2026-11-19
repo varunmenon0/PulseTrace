@@ -1,0 +1,375 @@
+{
+  "synthetic": true,
+  "protocol": {
+    "experiment": "Controlled frame-by-frame replay and identical-sample batch parity",
+    "synthetic": true,
+    "tracking": "Known fixture geometry, not MediaPipe",
+    "sampling": "fractional",
+    "method": "pos",
+    "consensus": "patch",
+    "window_policy": "continuous",
+    "window_seconds": 12,
+    "step_seconds": 6,
+    "lookahead_seconds": 0.5,
+    "fps": 15,
+    "seed": 7,
+    "cases": [
+      {
+        "name": "clean",
+        "profile": "clean",
+        "seconds": 36,
+        "start_bpm": 72,
+        "end_bpm": 72
+      },
+      {
+        "name": "rising",
+        "profile": "clean",
+        "seconds": 48,
+        "start_bpm": 72,
+        "end_bpm": 108
+      },
+      {
+        "name": "motion",
+        "profile": "motion_burst",
+        "seconds": 48,
+        "start_bpm": 72,
+        "end_bpm": 72
+      },
+      {
+        "name": "face_loss",
+        "profile": "face_loss",
+        "seconds": 48,
+        "start_bpm": 72,
+        "end_bpm": 72
+      }
+    ],
+    "reference": "Analytic injected mean rate over the selected support, consulted only after estimation",
+    "tail_policy": "Do not flush windows whose look-ahead has not arrived",
+    "limitations": "Synthetic replay checks timing and software parity, not camera accuracy or live throughput"
+  },
+  "cases": [
+    {
+      "name": "clean",
+      "source_sha256": "4439858bf9adb0469ffa1639b0010b0b63a779349fb2293dd4dbcc95a9cf8bb8",
+      "frames": 540,
+      "finalized_windows": 4,
+      "estimated_windows": 4,
+      "unavailable_windows": 0,
+      "batch_parity": {
+        "passed": true,
+        "compared_windows": 4,
+        "unfinalized_batch_windows": 1,
+        "note": "Same tracked samples; parity is not physiological validation or a throughput benchmark"
+      },
+      "mae_against_injected_support_mean_bpm": 0.0008755562641695747,
+      "maximum_error_bpm": 0.002287518947198919,
+      "windows": [
+        {
+          "start_s": 0.0,
+          "end_s": 12.0,
+          "available_at_s": 12.5,
+          "observed_at_s": 12.533333333333333,
+          "analysis_start_s": 0.0,
+          "analysis_end_s": 11.933333333333334,
+          "bpm": 71.99998341035166,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 6.0,
+          "end_s": 18.0,
+          "available_at_s": 18.5,
+          "observed_at_s": 18.53333333333333,
+          "analysis_start_s": 6.0,
+          "analysis_end_s": 17.933333333333334,
+          "bpm": 71.99989865080894,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 12.0,
+          "end_s": 24.0,
+          "available_at_s": 24.5,
+          "observed_at_s": 24.53333333333333,
+          "analysis_start_s": 12.0,
+          "analysis_end_s": 23.933333333333334,
+          "bpm": 71.9977124810528,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 18.0,
+          "end_s": 30.0,
+          "available_at_s": 30.5,
+          "observed_at_s": 30.53333333333333,
+          "analysis_start_s": 18.0,
+          "analysis_end_s": 29.933333333333334,
+          "bpm": 72.00109676727008,
+          "status": "estimate",
+          "unavailable_reason": null
+        }
+      ]
+    },
+    {
+      "name": "rising",
+      "source_sha256": "6e55c981255384daaf49e3eafbd069b1e6b57aad7acd7655d23be43d3d69fe18",
+      "frames": 720,
+      "finalized_windows": 6,
+      "estimated_windows": 6,
+      "unavailable_windows": 0,
+      "batch_parity": {
+        "passed": true,
+        "compared_windows": 6,
+        "unfinalized_batch_windows": 1,
+        "note": "Same tracked samples; parity is not physiological validation or a throughput benchmark"
+      },
+      "mae_against_injected_support_mean_bpm": 0.06612881220028062,
+      "maximum_error_bpm": 0.13322443240821258,
+      "windows": [
+        {
+          "start_s": 0.0,
+          "end_s": 12.0,
+          "available_at_s": 12.5,
+          "observed_at_s": 12.533333333333333,
+          "analysis_start_s": 0.0,
+          "analysis_end_s": 11.933333333333334,
+          "bpm": 76.59517033537429,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 6.0,
+          "end_s": 18.0,
+          "available_at_s": 18.5,
+          "observed_at_s": 18.53333333333333,
+          "analysis_start_s": 6.0,
+          "analysis_end_s": 17.933333333333334,
+          "bpm": 80.96166562342651,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 12.0,
+          "end_s": 24.0,
+          "available_at_s": 24.5,
+          "observed_at_s": 24.53333333333333,
+          "analysis_start_s": 12.0,
+          "analysis_end_s": 23.933333333333334,
+          "bpm": 85.48858588639041,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 18.0,
+          "end_s": 30.0,
+          "available_at_s": 30.5,
+          "observed_at_s": 30.53333333333333,
+          "analysis_start_s": 18.0,
+          "analysis_end_s": 29.933333333333334,
+          "bpm": 90.03586513122585,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 24.0,
+          "end_s": 36.0,
+          "available_at_s": 36.5,
+          "observed_at_s": 36.53333333333333,
+          "analysis_start_s": 24.0,
+          "analysis_end_s": 35.93333333333333,
+          "bpm": 94.53059271122942,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 30.0,
+          "end_s": 42.0,
+          "available_at_s": 42.5,
+          "observed_at_s": 42.53333333333333,
+          "analysis_start_s": 30.0,
+          "analysis_end_s": 41.93333333333333,
+          "bpm": 98.8417755675918,
+          "status": "estimate",
+          "unavailable_reason": null
+        }
+      ]
+    },
+    {
+      "name": "motion",
+      "source_sha256": "beed81e9d2fa4b2e90b48351c33ea2587854acd5652bc392e89a37d18d540a53",
+      "frames": 720,
+      "finalized_windows": 6,
+      "estimated_windows": 4,
+      "unavailable_windows": 2,
+      "batch_parity": {
+        "passed": true,
+        "compared_windows": 6,
+        "unfinalized_batch_windows": 1,
+        "note": "Same tracked samples; parity is not physiological validation or a throughput benchmark"
+      },
+      "mae_against_injected_support_mean_bpm": 0.0006765617468360574,
+      "maximum_error_bpm": 0.0025717184996096876,
+      "windows": [
+        {
+          "start_s": 0.0,
+          "end_s": 12.0,
+          "available_at_s": 12.5,
+          "observed_at_s": 12.533333333333333,
+          "analysis_start_s": 0.0,
+          "analysis_end_s": 11.933333333333334,
+          "bpm": 71.99998341035166,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 6.0,
+          "end_s": 18.0,
+          "available_at_s": 18.5,
+          "observed_at_s": 18.53333333333333,
+          "analysis_start_s": 6.0,
+          "analysis_end_s": 17.933333333333334,
+          "bpm": 71.99989865080894,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 12.0,
+          "end_s": 24.0,
+          "available_at_s": 24.5,
+          "observed_at_s": 24.53333333333333,
+          "analysis_start_s": null,
+          "analysis_end_s": null,
+          "bpm": null,
+          "status": "unavailable",
+          "unavailable_reason": "quality_exclusion"
+        },
+        {
+          "start_s": 18.0,
+          "end_s": 30.0,
+          "available_at_s": 30.5,
+          "observed_at_s": 30.53333333333333,
+          "analysis_start_s": null,
+          "analysis_end_s": null,
+          "bpm": null,
+          "status": "unavailable",
+          "unavailable_reason": "quality_exclusion"
+        },
+        {
+          "start_s": 24.0,
+          "end_s": 36.0,
+          "available_at_s": 36.5,
+          "observed_at_s": 36.53333333333333,
+          "analysis_start_s": 24.0,
+          "analysis_end_s": 35.93333333333333,
+          "bpm": 71.99742828150039,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 30.0,
+          "end_s": 42.0,
+          "available_at_s": 42.5,
+          "observed_at_s": 42.53333333333333,
+          "analysis_start_s": 30.0,
+          "analysis_end_s": 41.93333333333333,
+          "bpm": 71.99998341035166,
+          "status": "estimate",
+          "unavailable_reason": null
+        }
+      ]
+    },
+    {
+      "name": "face_loss",
+      "source_sha256": "ff743d2226cfea88463a5fc16fef70a87edc9f2c6d1b2f5fd89ec899998c76f7",
+      "frames": 720,
+      "finalized_windows": 6,
+      "estimated_windows": 4,
+      "unavailable_windows": 2,
+      "batch_parity": {
+        "passed": true,
+        "compared_windows": 6,
+        "unfinalized_batch_windows": 1,
+        "note": "Same tracked samples; parity is not physiological validation or a throughput benchmark"
+      },
+      "mae_against_injected_support_mean_bpm": 0.0006765617468360574,
+      "maximum_error_bpm": 0.0025717184996096876,
+      "windows": [
+        {
+          "start_s": 0.0,
+          "end_s": 12.0,
+          "available_at_s": 12.5,
+          "observed_at_s": 12.533333333333333,
+          "analysis_start_s": 0.0,
+          "analysis_end_s": 11.933333333333334,
+          "bpm": 71.99998341035166,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 6.0,
+          "end_s": 18.0,
+          "available_at_s": 18.5,
+          "observed_at_s": 18.53333333333333,
+          "analysis_start_s": 6.0,
+          "analysis_end_s": 17.933333333333334,
+          "bpm": 71.99989865080894,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 12.0,
+          "end_s": 24.0,
+          "available_at_s": 24.5,
+          "observed_at_s": 24.53333333333333,
+          "analysis_start_s": null,
+          "analysis_end_s": null,
+          "bpm": null,
+          "status": "unavailable",
+          "unavailable_reason": "quality_exclusion"
+        },
+        {
+          "start_s": 18.0,
+          "end_s": 30.0,
+          "available_at_s": 30.5,
+          "observed_at_s": 30.53333333333333,
+          "analysis_start_s": null,
+          "analysis_end_s": null,
+          "bpm": null,
+          "status": "unavailable",
+          "unavailable_reason": "quality_exclusion"
+        },
+        {
+          "start_s": 24.0,
+          "end_s": 36.0,
+          "available_at_s": 36.5,
+          "observed_at_s": 36.53333333333333,
+          "analysis_start_s": 24.0,
+          "analysis_end_s": 35.93333333333333,
+          "bpm": 71.99742828150039,
+          "status": "estimate",
+          "unavailable_reason": null
+        },
+        {
+          "start_s": 30.0,
+          "end_s": 42.0,
+          "available_at_s": 42.5,
+          "observed_at_s": 42.53333333333333,
+          "analysis_start_s": 30.0,
+          "analysis_end_s": 41.93333333333333,
+          "bpm": 71.99998341035166,
+          "status": "estimate",
+          "unavailable_reason": null
+        }
+      ]
+    }
+  ],
+  "total_frames": 2700,
+  "total_finalized_windows": 22,
+  "total_estimated_windows": 18,
+  "versions": {
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "opencv-contrib-python": "4.14.0.94"
+  },
+  "protocol_sha256": "48f38b027b41b18f7f2f6bf659862b1a718b1dae4609cfc051ac81e69f0e7886"
+}

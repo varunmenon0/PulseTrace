@@ -1,5 +1,10 @@
 # Path to camera-based estimation
 
+The separate `work/live-window-engine` branch now implements the first rolling
+engine, recorded streaming replay with a same-sample batch audit, and a local
+webcam command. See [prototype usage and timing](STREAMING.md). This does not
+establish camera accuracy or replace the remaining validation work below.
+
 The completed CLI analyzes recorded video. The next application milestone is a
 camera session that uses the same measured processing rules and makes estimate
 timing explicit. Presentation changes must not be reported as accuracy gains.

@@ -157,6 +157,11 @@ Earlier experiments remain available in the [research archive](docs/archive/READ
 
 ## Development
 
+This branch (`work/live-window-engine`) also includes an experimental local
+webcam command and streaming replay with a same-sample batch check. See the
+[streaming prototype guide](docs/STREAMING.md) for setup, timing, and limitations.
+The prototype is kept separate from `main`; live-camera accuracy is not yet measured.
+
 ```bash
 pytest -q
 pulsetrace demo --bpm 96 --seconds 20 --method green --output outputs/green-demo
