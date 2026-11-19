@@ -52,6 +52,25 @@ def main(argv=None):
     segments.add_argument("--output", type=Path, default=Path("outputs/segments"))
     segments.add_argument("--min-seconds", type=float, default=10.)
     segments.add_argument("--buffer-seconds", type=float, default=.5)
+    replay = sub.add_parser('replay', help='Replay video frame by frame through the rolling live engine')
+    replay.add_argument('video', type=Path)
+    tracker = replay.add_mutually_exclusive_group(required=True)
+    tracker.add_argument('--model', type=Path)
+    tracker.add_argument('--fixture-profile', choices=list(PROFILES),
+                         help='Known synthetic fixture geometry only; never use for natural video')
+    replay.add_argument('--verify-batch', action='store_true',
+                        help='Retain all sampled measurements for an identical-sample batch comparison')
+    live = sub.add_parser('webcam', help='Estimate completed-window pulse from a local camera')
+    live.add_argument('--model', type=Path, required=True)
+    live.add_argument('--camera', type=int, default=0)
+    live.add_argument('--seconds', type=float, help='Stop after this many wall-clock seconds')
+    live.add_argument('--no-preview', action='store_true', help='Console only; stop with Ctrl+C')
+    for cmd, folder in ((replay, 'replay'), (live, 'webcam')):
+        cmd.add_argument('--sampling', choices=['landmarks', 'fractional'], default='fractional')
+        cmd.add_argument('--method', choices=['pos', 'green'], default='pos')
+        cmd.add_argument('--consensus', choices=['patch', 'zone'], default='patch')
+        cmd.add_argument('--window-policy', choices=['full', 'continuous'], default='continuous')
+        cmd.add_argument('--output', type=Path, default=Path('outputs')/folder)
     args = parser.parse_args(argv)
     if args.command in ("analyze", "demo") and args.track and not args.patches:
         parser.error("--track requires --patches")
@@ -64,6 +83,27 @@ def main(argv=None):
     if args.command == "analyze" and args.regional_quality and not args.patches:
         parser.error("--regional-quality requires --patches for the layout comparison")
     try:
+        if args.command in ('replay', 'webcam'):
+            from contextlib import nullcontext
+            from .live import replay as run_replay, webcam as run_webcam
+            options = dict(sampling=args.sampling, method=args.method, consensus=args.consensus,
+                           window_policy=args.window_policy)
+            synthetic = args.command == 'replay' and args.fixture_profile is not None
+            if synthetic:
+                from .controlled import ControlledTracker
+                context = nullcontext(ControlledTracker(profile=args.fixture_profile))
+            else:
+                from .tracking import FaceTracker
+                context = FaceTracker(args.model)
+            with context as tracker:
+                if args.command == 'replay':
+                    summary = run_replay(args.video, tracker, args.output, verify=args.verify_batch,
+                                         synthetic=synthetic, **options)
+                else:
+                    summary = run_webcam(tracker, args.output, device=args.camera, seconds=args.seconds,
+                                         preview=not args.no_preview, **options)
+            print(json.dumps(summary, indent=2))
+            return 0 if summary['estimated_windows'] else 2
         if args.command == "segments":
             from .diagnostics import load_rgb_csv
             from .quality import write_segments

@@ -71,8 +71,8 @@ def gate_candidates(candidates, zones, usable, *, consensus_policy="patch"):
     return {"individual_candidates":filtered,**choose(filtered,zones)}
 
 
-def write_regional_comparison(extraction, output, *, area_policy="strict", consensus_policy="patch", max_gap=.25,
-                              window_policy="full", continuous_min_seconds=10.):
+def build_regional_comparison(extraction, *, area_policy="strict", consensus_policy="patch", max_gap=.25,
+                              window_policy="full", continuous_min_seconds=10., window_starts=None):
     """Compare saved pulse candidates on matching continuous fixed windows."""
     from .signal import analyze
     from .patches import PATCHES
@@ -85,7 +85,8 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
     masks,shared=regional_masks(extraction,area_policy=area_policy,max_gap=max_gap)
     global_quality=analyze_segments(extraction,max_gap=max_gap)
     t=extraction.time;rows=[]
-    for start in np.arange(t[0],t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9,6):
+    starts = np.arange(t[0],t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9,6) if window_starts is None else window_starts
+    for start in starts:
         end=start+12;nominal=(t>=start)&(t<end)
         chosen=nominal
         if window_policy == 'continuous':
@@ -127,10 +128,16 @@ def write_regional_comparison(extraction, output, *, area_policy="strict", conse
             "configuration":{"area_policy":area_policy,"consensus_policy":consensus_policy,"max_gap_seconds":max_gap,"motion_threshold":.05,"area_threshold":.10,"buffer_seconds":.5,"window_seconds":12,"step_seconds":6},
             "limitation":"Any excluded frame makes that region unavailable for the complete window; no gap bridging",
             "windows":rows}
-    output=Path(output);output.mkdir(parents=True,exist_ok=True)
     if window_policy == 'continuous':
         report['configuration'].update(window_policy=window_policy,continuous_min_seconds=continuous_min_seconds)
         report['limitation']='Analyze only the selected contiguous clean support, never bridge exclusions; nominal window may include unused artifacts'
-    filename='regional_comparison.json' if window_policy=='full' else 'continuous_comparison.json'
-    (output/filename).write_text(json.dumps(report,indent=2,allow_nan=False)+"\n")
+    return report
+
+
+def write_regional_comparison(extraction, output, **options):
+    report = build_regional_comparison(extraction, **options)
+    output = Path(output)
+    output.mkdir(parents=True, exist_ok=True)
+    filename = 'continuous_comparison.json' if options.get('window_policy') == 'continuous' else 'regional_comparison.json'
+    (output/filename).write_text(json.dumps(report, indent=2, allow_nan=False)+"\n")
     return report

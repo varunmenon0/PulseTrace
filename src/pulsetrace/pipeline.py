@@ -5,8 +5,8 @@ import cv2
 from contextlib import ExitStack
 from pathlib import Path
 from .video import VideoReader
-from .regions import REGIONS, extract_regions
-from .patches import PATCHES, sample_patches
+from .regions import REGIONS
+from .patches import PATCHES
 from .signal import analyze, PulseResult
 
 
@@ -32,9 +32,8 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
         raise ValueError("min_pixels must be positive")
     if sampling not in ("landmarks", "template", "fractional"):
         raise ValueError("Unknown sampling mode")
-    from .stabilization import TemplateStabilizer
-    stabilizer = TemplateStabilizer()
-    from .diagnostics import geometry_sample
+    from .sampling import FrameSampler
+    sampler = FrameSampler(sampling=sampling, min_pixels=min_pixels, patches=patches)
     patch_rgb = {name: [] for name in PATCHES} if patches else {}
     patch_pixels = {name: [] for name in patch_rgb}
     timestamps = []
@@ -42,8 +41,6 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
     pixels = {name: [] for name in REGIONS}
     preview, masks = None, {}
     geometry = {name: [] for name in REGIONS}
-    previous = {name: None for name in REGIONS}
-    previous_time = None
     with ExitStack() as stack:
         reader = stack.enter_context(VideoReader(path))
         writer = None
@@ -52,40 +49,14 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
                 break
             landmarks = tracker.detect(frame.bgr, frame.time)
             raw_landmarks = landmarks
-            if landmarks is None or (previous_time is not None and frame.time-previous_time > .25):
-                stabilizer.reset()
-            if sampling == "template" and landmarks is not None:
-                landmarks = stabilizer.apply(landmarks)
-            if landmarks is None:
-                values = {name: np.full(3, np.nan) for name in REGIONS}
-                counts = {name: 0 for name in REGIONS}
-                current_masks = {}
-                fractional_samples = {}
-            elif sampling == 'fractional':
-                from .subpixel import extract_fractional
-                values, counts, current_masks, fractional_samples = extract_fractional(frame.bgr,landmarks,min_pixels)
-            else:
-                values, counts, current_masks = extract_regions(frame.bgr, landmarks, min_pixels)
-            if patches:
-                samples = fractional_samples if sampling == 'fractional' else sample_patches(frame.bgr, current_masks, min_pixels)
-                for name in PATCHES:
-                    color, count = samples.get(name, (np.full(3, np.nan), 0))
-                    patch_rgb[name].append(color)
-                    patch_pixels[name].append(count)
-            scale = np.nan
-            if landmarks is not None:
-                scale = float(np.linalg.norm(landmarks[33]-landmarks[263]))
-                if scale <= 0:
-                    patch_points = landmarks[list({i for indices in REGIONS.values() for i in indices})]
-                    scale = float(np.linalg.norm(np.ptp(patch_points,axis=0)))
-            for name, indices in REGIONS.items():
-                if name in current_masks:
-                    old = previous[name] if previous_time is not None and frame.time-previous_time <= .25 else None
-                    geometry[name].append(geometry_sample(landmarks,indices,old,scale))
-                    previous[name] = landmarks[list(indices)].copy()
-                else:
-                    geometry[name].append(np.full(5,np.nan))
-                    previous[name] = None
+            sample = sampler.sample(frame.bgr, landmarks, frame.time)
+            landmarks, current_masks = sampler.landmarks, sampler.masks
+            values, counts = sample.rgb, sample.pixels
+            for name in patch_rgb:
+                patch_rgb[name].append(sample.patch_rgb[name])
+                patch_pixels[name].append(sample.patch_pixels[name])
+            for name in REGIONS:
+                geometry[name].append(sample.geometry[name])
             if overlay_path is not None:
                 if writer is None:
                     Path(overlay_path).parent.mkdir(parents=True, exist_ok=True)
@@ -104,7 +75,6 @@ def extract_video(path, tracker, *, max_seconds=None, min_pixels=30, sampling="l
                 cv2.putText(annotated,f"{frame.time:.3f}s {sampling} | gray: raw, green: sampled" + (" | NO SAMPLE" if not current_masks else ""),
                             (10,25),cv2.FONT_HERSHEY_SIMPLEX,.5,(0,255,255),1)
                 writer.write(annotated)
-            previous_time = frame.time
             if preview is None and len(current_masks) == len(REGIONS):
                 preview, masks = frame.bgr.copy(), current_masks
             timestamps.append(frame.time)
