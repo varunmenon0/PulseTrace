@@ -20,7 +20,7 @@ def broad_color_steps(rgb, pairs, threshold):
 
 def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
                    buffer_seconds=.5, max_gap=.25, area_policy="strict",
-                   photometric_threshold=None):
+                   photometric_threshold=None, return_details=False):
     """Exclude locally; two displaced/unavailable parents exclude all.
 
     Optional photometric steps reject a region independently of area changes.
@@ -35,7 +35,7 @@ def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
     t=extraction.time
     if len(t)<2 or not np.isfinite(t).all() or np.any(np.diff(t)<=0):
         raise ValueError("Need finite increasing timestamps")
-    local={}; shared_events=[]
+    local={}; shared_events=[]; details={}
     for name in REGIONS:
         if name not in extraction.geometry:
             raise ValueError("Regional quality requires geometry")
@@ -52,6 +52,10 @@ def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
         photo = np.zeros(len(t), dtype=bool) if photometric_threshold is None else broad_color_steps(rgb,pairs,photometric_threshold)
         local[name]=motion|area|~valid|photo
         shared_events.append(motion|~valid)
+        if return_details:
+            details[name] = dict(motion=motion, area_change=area, missing_samples=~valid,
+                                 photometric_step=photo, displacement=g[:,2],
+                                 area_change_fraction=np.r_[np.nan, np.where(pairs, delta, np.nan)])
     shared=np.sum(shared_events,axis=0)>=2
     def buffered(mask):
         out=mask.copy()
@@ -59,6 +63,14 @@ def regional_masks(extraction, *, motion_threshold=.05, area_threshold=.10,
         return out
     global_bad=buffered(shared)
     masks={n:buffered(raw)|global_bad for n,raw in local.items()}
+    if return_details:
+        causes = {name: {cause: buffered(d[cause]) for cause in
+                        ('motion', 'area_change', 'missing_samples', 'photometric_step')}
+                  for name, d in details.items()}
+        return masks, global_bad, dict(raw=details, buffered=causes, shared_raw=shared,
+            thresholds=dict(motion_face_units=motion_threshold, area_step_fraction=area_threshold,
+                            buffer_seconds=buffer_seconds, max_gap_seconds=max_gap,
+                            area_policy=area_policy, photometric_threshold=photometric_threshold))
     return masks,global_bad
 
 
@@ -72,7 +84,8 @@ def gate_candidates(candidates, zones, usable, *, consensus_policy="patch"):
 
 
 def build_regional_comparison(extraction, *, area_policy="strict", consensus_policy="patch", max_gap=.25,
-                              window_policy="full", continuous_min_seconds=10., window_starts=None):
+                              window_policy="full", continuous_min_seconds=10., window_starts=None,
+                              include_diagnostics=False):
     """Compare saved pulse candidates on matching continuous fixed windows."""
     from .signal import analyze
     from .patches import PATCHES
@@ -82,7 +95,9 @@ def build_regional_comparison(extraction, *, area_policy="strict", consensus_pol
         raise ValueError('Unknown window policy')
     if not np.isfinite(continuous_min_seconds) or not 0 < continuous_min_seconds < 12:
         raise ValueError('continuous_min_seconds must be positive and below 12')
-    masks,shared=regional_masks(extraction,area_policy=area_policy,max_gap=max_gap)
+    mask_result=regional_masks(extraction,area_policy=area_policy,max_gap=max_gap,
+                               return_details=include_diagnostics)
+    masks,shared=mask_result[:2]
     global_quality=analyze_segments(extraction,max_gap=max_gap)
     t=extraction.time;rows=[]
     starts = np.arange(t[0],t[-1]-12+float(np.median(np.diff(t)))*1.1+1e-9,6) if window_starts is None else window_starts
@@ -106,6 +121,13 @@ def build_regional_comparison(extraction, *, area_policy="strict", consensus_pol
         if window_policy == 'continuous':
             row.update(analysis_start_s=support_start,analysis_end_s=support_end,
                        analysis_duration_s=None if support_start is None else support_end-support_start)
+        if include_diagnostics:
+            from .stream_diagnostics import window_quality
+            row['quality'] = window_quality(extraction, nominal, masks, shared, mask_result[2],
+                                           min_seconds=continuous_min_seconds, max_gap=max_gap)
+            row['quality'].update(window_policy=window_policy,
+                                  usable_regions_on_selected_support=usable.copy(),
+                                  selected_support_start_s=support_start, selected_support_end_s=support_end)
         for method in ("pos","green"):
             layouts={}
             for label,traces,zones in (("three_regions",extraction.rgb,{n:n for n in REGIONS}),

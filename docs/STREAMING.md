@@ -30,6 +30,47 @@ The command writes sampled-result events to `outputs/webcam/stream.jsonl` and
 a final `stream-summary.json`. These contain derived measurements and timing;
 they remain local and are not tracked by Git. Use `--output` to choose a folder.
 
+Each finalized window now includes a `quality` object, including when its BPM
+is unavailable. The session configuration identifies this as
+`quality_diagnostics_version: 1`. These observations do not change any gate,
+threshold, selected interval, pulse estimate, or consensus decision.
+
+- `quality.regions` reports raw motion, sampled-area-step, missing-sample, and
+  optional photometric flag counts for the forehead and both cheeks. Missing
+  samples can reflect an unusable sampling region as well as face-detection loss;
+  the log does not claim to distinguish those causes.
+- Buffered exclusion counts show the effect of the existing 0.5-second buffer.
+  Raw counts cover events inside the nominal window; buffered counts can include
+  an event just outside it. Causes overlap and must not be added together.
+- Shared motion/loss in two parent regions excludes every region. A region can
+  therefore be excluded with no raw flags of its own; the log names this cause.
+- `longest_clean_interval` gives each region's longest uninterrupted clean span.
+  `clean_pairs` and `longest_clean_pair` do the same for each pair of regions.
+  Durations are last-sample time minus first-sample time, not frame-count/FPS.
+- `clean_pair_requirement_met` reports whether a pair has at least the required
+  ten clean seconds. This alone is not enough for `--window-policy full`, which
+  requires clean support across the full window. The selected-policy usable
+  regions and support endpoints are logged separately.
+- Peak displacement, peak relative area change, and timestamp-gap counts help
+  distinguish repeated small coverage disturbances from missing footage. An
+  unavailable peak is `null`, never a fabricated zero or a non-JSON NaN value.
+
+The latest finalized window's diagnostics are also included in the final summary
+when that window is still retained as the current reading. `stream.jsonl` keeps
+every finalized window's diagnostics even if face loss later clears the display.
+
+For another diagnostic test, preserve the first run and use a new folder:
+
+```bash
+pulsetrace webcam --model models/face_landmarker.task --seconds 60 \
+  --output outputs/webcam-test-2
+```
+
+Remain still with your face visible for the first 30 seconds before testing a
+brief face disappearance. Share both JSON files from the new folder. Earlier
+logs without `quality` cannot retroactively identify the per-region rejection
+cause; RGB samples and geometry were not saved in those files.
+
 ## Replay a recording before testing the camera
 
 ```bash

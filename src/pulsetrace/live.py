@@ -29,6 +29,7 @@ def configuration(engine):
                 window_policy=engine.window_policy, window_seconds=engine.window_seconds,
                 step_seconds=engine.step_seconds, lookahead_seconds=engine.lookahead_seconds,
                 max_gap_seconds=engine.max_gap, max_buffer_samples=engine.max_samples,
+                quality_diagnostics_version=1,
                 threshold_status='Unvalidated engineering heuristics')
 
 

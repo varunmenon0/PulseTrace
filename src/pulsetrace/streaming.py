@@ -6,6 +6,7 @@ The engine owns its samples and keeps no recording or growing result history.
 from collections import deque
 from copy import deepcopy
 from dataclasses import asdict, dataclass
+import json
 
 import numpy as np
 
@@ -27,9 +28,12 @@ class Reading:
     status: str
     unavailable_reason: str | None
     support: tuple
+    quality_json: str = '{}'
 
     def to_dict(self):
-        return {"type": "window", **asdict(self)}
+        result = asdict(self)
+        result['quality'] = json.loads(result.pop('quality_json'))
+        return {"type": "window", **result}
 
 
 class PulseStream:
@@ -105,7 +109,8 @@ class PulseStream:
         while t+1e-9 >= self.next_start+self.window_seconds+self.lookahead_seconds:
             start = self.next_start
             report = build_regional_comparison(samples_to_extraction(self.samples),
-                consensus_policy=self.consensus, window_policy=self.window_policy, window_starts=[start])
+                consensus_policy=self.consensus, window_policy=self.window_policy, window_starts=[start],
+                include_diagnostics=True)
             row = report['windows'][0]
             decision = row['methods'][self.method]['twelve_patches']['regional_gate']
             bpm = decision['bpm_candidate']
@@ -116,7 +121,8 @@ class PulseStream:
             analysis_end = row.get('analysis_end_s', chosen[-1] if chosen else None)
             reading = Reading(self.session, start, start+self.window_seconds,
                 start+self.window_seconds+self.lookahead_seconds, t, analysis_start, analysis_end,
-                bpm, 'estimate' if bpm is not None else 'unavailable', reason, tuple(decision['support']))
+                bpm, 'estimate' if bpm is not None else 'unavailable', reason, tuple(decision['support']),
+                json.dumps(row['quality'], allow_nan=False))
             self.latest = reading
             readings.append(reading)
             self.finalized_windows += 1
