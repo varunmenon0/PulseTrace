@@ -59,6 +59,57 @@ across regions. Zone voting also includes its existing within-zone decisions.
 A spectral peak is an unvalidated frequency candidate, not a reference heartbeat.
 No expected or usual BPM range is used to select peaks or change thresholds.
 
+### Experimental method-disagreement display policy
+
+New `webcam` and video `replay` CLI sessions default to `--agreement-policy flag`.
+Both methods still run on the same selected support. If both have accepted
+cross-region votes and they differ by **more than 5 BPM**, the primary display
+clears its BPM and shows **Uncertain · methods disagree**. A later uncertain
+window clears a preceding number immediately. Face-loss, stall, and reset
+handling retain priority over this display state.
+
+The 5 BPM value is reused from the existing method-agreement helper. It is a
+fixed engineering choice, not a validated cross-method cutoff, and is not
+adjusted to a subject's expected or usual rate. POS and green use the same RGB
+data, so agreement does not constitute an independent reference measurement.
+Their estimates are neither averaged nor substituted for one another.
+
+If only the selected method has an estimate, it can still be displayed with the
+label **Single-method estimate**; this policy does not require two-method support
+for every reading. If only the other method succeeds, it is not used as a fallback.
+`--agreement-policy off` explicitly restores the prior display behavior for comparisons.
+
+With `flag` enabled, window events have:
+
+- `bpm`, `status`, `display_bpm`, and `display_status`: the display-policy outcome;
+  conflicting candidates have a `null` BPM and `uncertain` status.
+- `raw_bpm`, `raw_status`, and `raw_unavailable_reason`: the unchanged underlying
+  selected-method result. Original supporting patches remain in `support`.
+- `quality.method_agreement`: both method votes, their difference, the fixed
+  tolerance, and the comparison status. These are diagnostics, not a probability
+  that an estimate is correct.
+
+Summaries distinguish `raw_estimated_windows`, display-eligible `estimated_windows`,
+and `uncertain_windows`. These count finalized decisions, not actual screen
+exposures; face loss or camera stalls may prevent a display-eligible value from
+being shown. Batch-parity checks compare raw estimator results and selected
+support, separately from this presentation policy.
+
+Saved-sample replay restores its archived policy. Older archives without a policy
+default to `off`, preserving their original window events. Enable the experiment
+explicitly on a saved session:
+
+```bash
+pulsetrace replay-samples outputs/webcam-test-4/samples.jsonl \
+  --agreement-policy flag --verify-batch --output outputs/webcam-test-4-agreement-flag
+```
+
+Archives created with `flag` record the tolerance and reject automatic policy
+restoration if the installed tolerance later differs. Replay metadata preserves
+both archived and current configurations. The experiment must be evaluated with
+an independently timed reference before it can be claimed to improve accuracy;
+rejection counts and reduced display availability must remain part of that evaluation.
+
 The raw mean-color measurements allow full waveforms and spectra to be recomputed
 later. Window logs contain spectral summaries rather than every PSD bin.
 The archive records the acquisition configuration, dependency versions, and

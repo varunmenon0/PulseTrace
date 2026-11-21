@@ -1,8 +1,9 @@
 """Observational agreement checks independent of fixture/reference BPM labels."""
 import math
 
+METHOD_AGREEMENT_TOLERANCE_BPM = 5.
 
-def method_agreement(green_bpm, pos_bpm, *, background_bpm=None, tolerance=5.):
+def method_agreement(green_bpm, pos_bpm, *, background_bpm=None, tolerance=METHOD_AGREEMENT_TOLERANCE_BPM):
     if not math.isfinite(tolerance) or tolerance <= 0:
         raise ValueError('tolerance must be finite and positive')
     for value in (green_bpm, pos_bpm, background_bpm):

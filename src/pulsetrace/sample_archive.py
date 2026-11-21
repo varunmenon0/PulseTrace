@@ -74,7 +74,7 @@ def provenance():
     root = Path(__file__).parent
     return dict(versions={n:importlib.metadata.version(n) for n in ('pulsetrace','numpy','scipy','opencv-contrib-python')},
         source_sha256={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in
-                       ('signal.py','regional_quality.py','streaming.py','sampling.py')})
+                       ('signal.py','regional_quality.py','streaming.py','sampling.py','agreement.py')})
 
 
 class SampleWriter:

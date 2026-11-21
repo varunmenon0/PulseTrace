@@ -13,6 +13,7 @@ import numpy as np
 from .regional_quality import build_regional_comparison
 from .regions import REGIONS
 from .sampling import samples_to_extraction
+from .agreement import method_agreement, METHOD_AGREEMENT_TOLERANCE_BPM
 
 
 @dataclass(frozen=True)
@@ -33,6 +34,18 @@ class Reading:
     def to_dict(self):
         result = asdict(self)
         result['quality'] = json.loads(result.pop('quality_json'))
+        check = result['quality'].get('method_agreement')
+        if check is not None:
+            withheld = self.status == 'estimate' and check['status'] == 'method_disagreement'
+            result['raw_bpm'] = self.bpm
+            result['raw_status'] = self.status
+            result['raw_unavailable_reason'] = self.unavailable_reason
+            result['display_status'] = 'uncertain' if withheld else self.status
+            result['display_bpm'] = None if withheld else self.bpm
+            result['status'] = result['display_status']
+            result['bpm'] = result['display_bpm']
+            if withheld:
+                result['unavailable_reason'] = 'method_disagreement'
         return {"type": "window", **result}
 
 
@@ -42,12 +55,16 @@ class PulseStream:
     lookahead_seconds = .5
     max_gap = .25
 
-    def __init__(self, *, method="pos", consensus="patch", window_policy="continuous", max_samples=10000):
+    def __init__(self, *, method="pos", consensus="patch", window_policy="continuous", max_samples=10000,
+                 agreement_policy='off'):
         if method not in ('pos', 'green') or consensus not in ('patch', 'zone') or window_policy not in ('full', 'continuous'):
             raise ValueError("Unknown stream configuration")
         if not isinstance(max_samples, int) or isinstance(max_samples, bool) or max_samples < 2:
             raise ValueError("max_samples must be an integer >=2")
+        if agreement_policy not in ('off','flag'):
+            raise ValueError('Unknown agreement policy')
         self.method, self.consensus, self.window_policy = method, consensus, window_policy
+        self.agreement_policy = agreement_policy
         self.max_samples = max_samples
         self.samples = deque()
         self.latest = None
@@ -60,6 +77,7 @@ class PulseStream:
         self.last_reset_reason = None
         self.finalized_windows = 0
         self.estimated_windows = 0
+        self.uncertain_windows = 0
         self.face_available = False
 
     def reset(self, reason="session_reset"):
@@ -112,6 +130,14 @@ class PulseStream:
                 consensus_policy=self.consensus, window_policy=self.window_policy, window_starts=[start],
                 include_diagnostics=True)
             row = report['windows'][0]
+            if self.agreement_policy == 'flag':
+                pos = row['methods']['pos']['twelve_patches']['regional_gate']['bpm_candidate']
+                green = row['methods']['green']['twelve_patches']['regional_gate']['bpm_candidate']
+                check = method_agreement(green,pos)
+                row['quality']['method_agreement'] = dict(status=check['status'], difference_bpm=check['difference_bpm'],
+                    policy='flag', tolerance_bpm=METHOD_AGREEMENT_TOLERANCE_BPM,
+                    pos_bpm=pos, green_bpm=green, selected_method=self.method,
+                    validation_status='Experimental presentation flag; agreement is not accuracy validation')
             decision = row['methods'][self.method]['twelve_patches']['regional_gate']
             bpm = decision['bpm_candidate']
             reason = None if bpm is not None else ('quality_exclusion' if sum(row['usable_regions'].values()) < 2
@@ -127,6 +153,7 @@ class PulseStream:
             readings.append(reading)
             self.finalized_windows += 1
             self.estimated_windows += bpm is not None
+            self.uncertain_windows += reading.to_dict().get('display_status') == 'uncertain'
             self.window_index += 1
         if not self.face_available:
             self.latest = None
@@ -138,6 +165,7 @@ class PulseStream:
 
     def state(self, now=None):
         """Clear stale or face-lost readings, including when capture stops delivering."""
+        row = None if self.latest is None else self.latest.to_dict()
         if self.last_time is None:
             status = 'measuring'
         elif now is not None and now-self.last_time > self.max_gap:
@@ -147,9 +175,9 @@ class PulseStream:
         elif self.latest is None:
             status = 'measuring'
         else:
-            status = self.latest.status
+            status = row.get('display_status', self.latest.status)
         return dict(status=status, bpm=self.latest.bpm if status == 'estimate' else None,
                     session=self.session, buffered_samples=len(self.samples), resets=self.resets,
                     reset_reason=self.last_reset_reason,
                     next_available_at_s=None if self.next_start is None else self.next_start+12.5,
-                    latest_window=None if self.latest is None else self.latest.to_dict())
+                    latest_window=row)

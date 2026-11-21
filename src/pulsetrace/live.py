@@ -11,6 +11,7 @@ import numpy as np
 from .sampling import FrameSampler, samples_to_extraction
 from .streaming import PulseStream
 from .sample_archive import SampleWriter, SampleReader, provenance
+from .agreement import METHOD_AGREEMENT_TOLERANCE_BPM
 
 
 @contextmanager
@@ -32,6 +33,8 @@ def configuration(engine):
                 max_gap_seconds=engine.max_gap, max_buffer_samples=engine.max_samples,
                 quality_diagnostics_version=1,
                 patch_diagnostics_version=1,
+                agreement_policy=engine.agreement_policy,
+                agreement_tolerance_bpm=METHOD_AGREEMENT_TOLERANCE_BPM,
                 threshold_status='Unvalidated engineering heuristics')
 
 
@@ -65,15 +68,17 @@ def verify_batch(groups, readings, engine):
                 raise ValueError('Streaming/batch estimates, support or intervals differ')
             checked += 1
     return dict(passed=True, compared_windows=checked, unfinalized_batch_windows=pending,
+                scope='Raw estimator decisions and selected support; presentation flags are separate',
                 note='Same tracked samples; parity is not physiological validation or a throughput benchmark')
 
 
 def replay(video, tracker, output, *, sampling='fractional', method='pos', consensus='patch',
-           window_policy='continuous', verify=False, synthetic=False):
+           window_policy='continuous', verify=False, synthetic=False, agreement_policy='off'):
     from .video import VideoReader
 
     sampler = FrameSampler(sampling=sampling)
-    engine = PulseStream(method=method, consensus=consensus, window_policy=window_policy)
+    engine = PulseStream(method=method, consensus=consensus, window_policy=window_policy,
+                         agreement_policy=agreement_policy)
     groups, readings = {}, []  # Populated only by the explicitly requested full-session audit.
     frames = 0
     last_state = None
@@ -106,7 +111,9 @@ def replay(video, tracker, output, *, sampling='fractional', method='pos', conse
         summary = dict(type='summary', mode='recorded_streaming_replay', synthetic=synthetic,
             frames=frames, timestamp_fallbacks=reader.timestamp_fallbacks, finalized_windows=engine.finalized_windows,
             saved_samples=archive.count, samples_file='samples.jsonl',
-            estimated_windows=engine.estimated_windows, resets=engine.resets, batch_parity=audit,
+            estimated_windows=engine.estimated_windows-engine.uncertain_windows,
+            raw_estimated_windows=engine.estimated_windows, uncertain_windows=engine.uncertain_windows,
+            resets=engine.resets, batch_parity=audit,
             final_state=engine.state(), processing_seconds=time.perf_counter()-started,
             incomplete_tail_policy='No EOF flush or fabricated future samples')
         emit(summary)
@@ -114,7 +121,8 @@ def replay(video, tracker, output, *, sampling='fractional', method='pos', conse
     return summary
 
 
-def replay_samples(source, output, *, method=None, consensus=None, window_policy=None, verify=False):
+def replay_samples(source, output, *, method=None, consensus=None, window_policy=None, verify=False,
+                   agreement_policy=None):
     """Reprocess archived measurements without a camera, face model, or expected BPM."""
     import hashlib
 
@@ -132,10 +140,15 @@ def replay_samples(source, output, *, method=None, consensus=None, window_policy
         if not isinstance(saved, dict) or any(saved.get(k) != expected for k,expected in (
                 ('window_seconds',12),('step_seconds',6),('lookahead_seconds',.5),('max_gap_seconds',.25))):
             raise ValueError('Archived timing configuration does not match this streaming engine')
+        if (agreement_policy is None and saved.get('agreement_policy') == 'flag'
+                and saved.get('agreement_tolerance_bpm') != METHOD_AGREEMENT_TOLERANCE_BPM):
+            raise ValueError('Archived disagreement tolerance does not match this presentation policy')
         engine = PulseStream(method=method if method is not None else saved.get('method'),
                              consensus=consensus if consensus is not None else saved.get('consensus'),
                              window_policy=window_policy if window_policy is not None else saved.get('window_policy'),
-                             max_samples=saved.get('max_buffer_samples',10000))
+                             max_samples=saved.get('max_buffer_samples',10000),
+                             agreement_policy=agreement_policy if agreement_policy is not None else
+                                 saved.get('agreement_policy','off'))
         groups, readings = {}, []
         count = 0
         session = dict(mode='sample_replay', synthetic=metadata.get('synthetic',False),
@@ -158,7 +171,9 @@ def replay_samples(source, output, *, method=None, consensus=None, window_policy
             audit = verify_batch(groups, readings, engine) if verify else None
             summary = dict(type='summary', mode='sample_replay', samples=count,
                 source_sha256=digest.hexdigest(), finalized_windows=engine.finalized_windows,
-                estimated_windows=engine.estimated_windows, resets=engine.resets, batch_parity=audit,
+                estimated_windows=engine.estimated_windows-engine.uncertain_windows,
+                raw_estimated_windows=engine.estimated_windows, uncertain_windows=engine.uncertain_windows,
+                resets=engine.resets, batch_parity=audit,
                 final_state=engine.state(), frames_saved=False)
             emit(summary)
     (output/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
@@ -191,9 +206,15 @@ def preview_frame(bgr, points, state, now):
         text(draw, 'BPM', (730, 285), 20, '#6E6E73')
     labels = dict(measuring='Gathering clean video', waiting_for_face='Position one face in view',
                   capture_stalled='Camera paused · reading cleared', estimate='Completed-window estimate',
-                  unavailable='Estimate unavailable this window')
-    text(draw, labels[state['status']], (730, 350), 16, '#6E6E73')
+                  unavailable='Estimate unavailable this window', uncertain='Uncertain · methods disagree')
     row = state['latest_window']
+    if state['status'] == 'estimate' and row is not None:
+        agreement = row.get('quality',{}).get('method_agreement')
+        if agreement is not None:
+            labels['estimate'] = 'Methods agree · completed window' if agreement['status']=='agreement' else 'Single-method estimate'
+    text(draw, labels[state['status']], (730, 350), 16, '#6E6E73')
+    if state['status'] == 'uncertain':
+        text(draw, 'Waiting for a consistent window', (730, 390), 16, '#6E6E73')
     if state['bpm'] is not None and row['analysis_start_s'] is not None:
         text(draw, f"{clock(round(row['analysis_start_s']))}–{clock(round(row['analysis_end_s']))} analyzed", (730, 390), 16, '#6E6E73')
     elif state['status'] == 'measuring' and state['next_available_at_s'] is not None:
@@ -206,12 +227,13 @@ def preview_frame(bgr, points, state, now):
 
 
 def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', consensus='patch',
-           window_policy='continuous', seconds=None, preview=True):
+           window_policy='continuous', seconds=None, preview=True, agreement_policy='flag'):
     from .capture import CameraSession
 
     if seconds is not None and (not np.isfinite(seconds) or seconds <= 0):
         raise ValueError('seconds must be positive and finite')
-    engine = PulseStream(method=method, consensus=consensus, window_policy=window_policy)
+    engine = PulseStream(method=method, consensus=consensus, window_policy=window_policy,
+                         agreement_policy=agreement_policy)
     sampler = FrameSampler(sampling=sampling)
     last_state = None
     processing = 0.
@@ -268,7 +290,9 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
                 cv2.destroyAllWindows()
         summary = dict(type='summary', mode='webcam', sampled_frames=camera.frames,
             dropped_samples=camera.dropped_samples, finalized_windows=engine.finalized_windows,
-            estimated_windows=engine.estimated_windows, resets=engine.resets, interrupted=interrupted,
+            estimated_windows=engine.estimated_windows-engine.uncertain_windows,
+            raw_estimated_windows=engine.estimated_windows, uncertain_windows=engine.uncertain_windows,
+            resets=engine.resets, interrupted=interrupted,
             final_state=engine.state(time.monotonic()-camera.started), analysis_seconds=processing,
             saved_samples=archive.count, samples_file='samples.jsonl',
             frames_saved=False)
