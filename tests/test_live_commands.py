@@ -123,7 +123,8 @@ def test_webcam_headless_runner_uses_mock_capture_without_opening_a_camera(tmp_p
     assert main(['webcam', '--model', 'fixture.task', '--no-preview', '--output', str(output)]) == 0
     report = json.loads((output/'stream-summary.json').read_text())
     assert report['estimated_windows'] == 1 and not report['frames_saved']
-    assert sorted(p.name for p in output.iterdir()) == ['stream-summary.json', 'stream.jsonl']
+    assert sorted(p.name for p in output.iterdir()) == ['samples.jsonl', 'stream-summary.json', 'stream.jsonl']
+    assert report['saved_samples'] == report['sampled_frames']
     capsys.readouterr()
 
 

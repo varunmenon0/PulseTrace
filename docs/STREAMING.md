@@ -26,9 +26,64 @@ consensus, and continuous clean-support selection. `--sampling landmarks`,
 `--method green`, `--consensus zone`, and `--window-policy full` expose existing
 comparisons. They do not tune the estimator to an expected heart rate.
 
-The command writes sampled-result events to `outputs/webcam/stream.jsonl` and
-a final `stream-summary.json`. These contain derived measurements and timing;
-they remain local and are not tracked by Git. Use `--output` to choose a folder.
+The command writes three local files under `outputs/webcam/`:
+
+- `stream.jsonl`: finalized readings, diagnostic details, and display-state events.
+- `stream-summary.json`: final session counts and latest retained reading.
+- `samples.jsonl`: timestamped RGB means, sampled areas, geometry measurements,
+  and reset markers for every sample consumed by the engine.
+
+Camera images and full facial landmark arrays are not saved. The files contain
+derived measurements, remain local, and are ignored by Git. Use `--output` to
+choose a fresh folder for each capture. Samples dropped by the camera handoff
+queue are not in the archive; their timing gaps remain observable. On stop, any
+samples still queued but not consumed by the engine are not archived.
+
+## Patch signals and replayable samples
+
+Every finalized reading includes `quality.pulse_methods.pos` and
+`quality.pulse_methods.green`. Each contains twelve per-patch descriptions plus
+the actual quality-gated consensus outcome. The displayed estimate continues to
+use only the selected method and the unchanged voting policy.
+
+Per-patch details include candidate BPM (or `null`), spectral peak, band power,
+peak concentration, filtered signal variation, sample rate, warnings, and sample
+availability. `signal_status` distinguishes flat signals, diffuse spectra,
+band-edge peaks, missing samples, analysis errors, and available candidates.
+`region_usable` and `eligible_bpm` show whether a candidate was excluded by its
+parent region's existing quality decision.
+
+The consensus description distinguishes too few valid patch candidates,
+candidates from only one region, and failure to establish a unique majority
+across regions. Zone voting also includes its existing within-zone decisions.
+A spectral peak is an unvalidated frequency candidate, not a reference heartbeat.
+No expected or usual BPM range is used to select peaks or change thresholds.
+
+The raw mean-color measurements allow full waveforms and spectra to be recomputed
+later. Window logs contain spectral summaries rather than every PSD bin.
+The archive records the acquisition configuration, dependency versions, and
+source hashes of the processing modules. Standard JSON represents missing
+numbers as `null`; explicit `Infinity` strings preserve nonfinite geometry
+values without silently changing their gate behavior on replay.
+
+Reprocess a saved session without opening the camera or loading the face model:
+
+```bash
+pulsetrace replay-samples outputs/webcam-test-4/samples.jsonl \
+  --verify-batch --output outputs/webcam-test-4-replay
+```
+
+By default, replay uses the archived method, consensus, window policy, timestamps,
+and reset boundaries. `--method green`, `--consensus zone`, and
+`--window-policy full` allow explicit comparisons on identical samples. Results
+retain rejection gaps; switching options does not imply an accuracy improvement.
+The replay records the source archive's SHA256 and both archived and current
+processing provenance. It refuses to overwrite the source session folder.
+Normal replay reads measurements incrementally; `--verify-batch` explicitly
+retains the session for the separate full-session check.
+
+Older test folders without `samples.jsonl` cannot be reconstructed from their
+summary logs. One more recording is needed to collect replayable measurements.
 
 Each finalized window now includes a `quality` object, including when its BPM
 is unavailable. The session configuration identifies this as
@@ -63,11 +118,11 @@ For another diagnostic test, preserve the first run and use a new folder:
 
 ```bash
 pulsetrace webcam --model models/face_landmarker.task --seconds 60 \
-  --output outputs/webcam-test-2
+  --output outputs/webcam-test-4
 ```
 
-Remain still with your face visible for the first 30 seconds before testing a
-brief face disappearance. Share both JSON files from the new folder. Earlier
+Remain still with your face visible for the full 60 seconds for a signal-quality
+check. The result logs and `samples.jsonl` can then be inspected locally. Earlier
 logs without `quality` cannot retroactively identify the per-region rejection
 cause; RGB samples and geometry were not saved in those files.
 

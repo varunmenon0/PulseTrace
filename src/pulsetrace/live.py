@@ -10,6 +10,7 @@ import numpy as np
 
 from .sampling import FrameSampler, samples_to_extraction
 from .streaming import PulseStream
+from .sample_archive import SampleWriter, SampleReader, provenance
 
 
 @contextmanager
@@ -30,6 +31,7 @@ def configuration(engine):
                 step_seconds=engine.step_seconds, lookahead_seconds=engine.lookahead_seconds,
                 max_gap_seconds=engine.max_gap, max_buffer_samples=engine.max_samples,
                 quality_diagnostics_version=1,
+                patch_diagnostics_version=1,
                 threshold_status='Unvalidated engineering heuristics')
 
 
@@ -76,15 +78,18 @@ def replay(video, tracker, output, *, sampling='fractional', method='pos', conse
     frames = 0
     last_state = None
     started = time.perf_counter()
-    with event_log(output, dict(mode='recorded_streaming_replay', synthetic=synthetic,
+    metadata = dict(mode='recorded_streaming_replay', synthetic=synthetic,
             sampling=sampling, audit_retains_full_session=verify, configuration=configuration(engine),
-            timing='Decoded source timestamps; unpaced replay; EOF does not finalize incomplete look-ahead')) as emit:
+            rgb_samples_saved=True, samples_file='samples.jsonl', frames_saved=False,
+            timing='Decoded source timestamps; unpaced replay; EOF does not finalize incomplete look-ahead')
+    with event_log(output, metadata) as emit, SampleWriter(Path(output)/'samples.jsonl', metadata) as archive:
         with VideoReader(video) as reader:
             for frame in reader:
                 points = tracker.detect(frame.bgr, frame.time)
                 if synthetic and hasattr(tracker, 'background_rgb'):
                     tracker.background_rgb.clear()  # Fixture diagnostics are not needed by the streaming engine.
                 sample = sampler.sample(frame.bgr, points, frame.time)
+                archive.write(sample)
                 new = engine.push(sample)
                 frames += 1
                 for reading in new:
@@ -100,11 +105,63 @@ def replay(video, tracker, output, *, sampling='fractional', method='pos', conse
         audit = verify_batch(groups, readings, engine) if verify else None
         summary = dict(type='summary', mode='recorded_streaming_replay', synthetic=synthetic,
             frames=frames, timestamp_fallbacks=reader.timestamp_fallbacks, finalized_windows=engine.finalized_windows,
+            saved_samples=archive.count, samples_file='samples.jsonl',
             estimated_windows=engine.estimated_windows, resets=engine.resets, batch_parity=audit,
             final_state=engine.state(), processing_seconds=time.perf_counter()-started,
             incomplete_tail_policy='No EOF flush or fabricated future samples')
         emit(summary)
     (Path(output)/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
+    return summary
+
+
+def replay_samples(source, output, *, method=None, consensus=None, window_policy=None, verify=False):
+    """Reprocess archived measurements without a camera, face model, or expected BPM."""
+    import hashlib
+
+    source, output = Path(source), Path(output)
+    if output.resolve() == source.parent.resolve() or source.resolve() in {
+            (output/'stream.jsonl').resolve(), (output/'stream-summary.json').resolve()}:
+        raise ValueError('Replay output would overwrite its input archive')
+    with source.open('rb') as file:
+        digest = hashlib.sha256()
+        for chunk in iter(lambda:file.read(1024*1024), b''):
+            digest.update(chunk)
+    with SampleReader(source) as archive:
+        metadata = archive.header['metadata']
+        saved = metadata.get('configuration', {})
+        if not isinstance(saved, dict) or any(saved.get(k) != expected for k,expected in (
+                ('window_seconds',12),('step_seconds',6),('lookahead_seconds',.5),('max_gap_seconds',.25))):
+            raise ValueError('Archived timing configuration does not match this streaming engine')
+        engine = PulseStream(method=method if method is not None else saved.get('method'),
+                             consensus=consensus if consensus is not None else saved.get('consensus'),
+                             window_policy=window_policy if window_policy is not None else saved.get('window_policy'),
+                             max_samples=saved.get('max_buffer_samples',10000))
+        groups, readings = {}, []
+        count = 0
+        session = dict(mode='sample_replay', synthetic=metadata.get('synthetic',False),
+                       source_sha256=digest.hexdigest(), archived_configuration=saved,
+                       configuration=configuration(engine), provenance=provenance(),
+                       archive_provenance=archive.header.get('provenance'),
+                       audit_retains_full_session=verify, frames_saved=False,
+                       timing='Original sampled timestamps; unpaced replay without camera access')
+        with event_log(output, session) as emit:
+            for sample in archive:
+                new = engine.push(sample)
+                count += 1
+                for reading in new:
+                    emit(reading.to_dict())
+                if verify:
+                    groups.setdefault(engine.session, []).append(sample)
+                    readings.extend(new)
+            if not count:
+                raise ValueError('Sample archive contains no measurements')
+            audit = verify_batch(groups, readings, engine) if verify else None
+            summary = dict(type='summary', mode='sample_replay', samples=count,
+                source_sha256=digest.hexdigest(), finalized_windows=engine.finalized_windows,
+                estimated_windows=engine.estimated_windows, resets=engine.resets, batch_parity=audit,
+                final_state=engine.state(), frames_saved=False)
+            emit(summary)
+    (output/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
     return summary
 
 
@@ -159,9 +216,11 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
     last_state = None
     processing = 0.
     interrupted = False
-    with event_log(output, dict(mode='webcam', synthetic=False, sampling=sampling,
+    metadata = dict(mode='webcam', synthetic=False, sampling=sampling,
             configuration=configuration(engine), frames_saved=False,
-            timing='Monotonic frame-read completion times; not camera exposure timestamps')) as emit:
+            rgb_samples_saved=True, samples_file='samples.jsonl',
+            timing='Monotonic frame-read completion times; not camera exposure timestamps')
+    with event_log(output, metadata) as emit, SampleWriter(Path(output)/'samples.jsonl', metadata) as archive:
         try:
             with CameraSession(tracker, sampler, device=device) as camera:
                 try:
@@ -174,6 +233,7 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
                                     raise OSError(camera.error)
                                 break
                         else:
+                            archive.write(sample)
                             began = time.perf_counter()
                             readings = engine.push(sample)
                             elapsed = time.perf_counter()-began
@@ -210,6 +270,7 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
             dropped_samples=camera.dropped_samples, finalized_windows=engine.finalized_windows,
             estimated_windows=engine.estimated_windows, resets=engine.resets, interrupted=interrupted,
             final_state=engine.state(time.monotonic()-camera.started), analysis_seconds=processing,
+            saved_samples=archive.count, samples_file='samples.jsonl',
             frames_saved=False)
         emit(summary)
     (Path(output)/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')

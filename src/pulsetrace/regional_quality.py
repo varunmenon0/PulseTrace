@@ -132,17 +132,36 @@ def build_regional_comparison(extraction, *, area_policy="strict", consensus_pol
             layouts={}
             for label,traces,zones in (("three_regions",extraction.rgb,{n:n for n in REGIONS}),
                                        ("twelve_patches",extraction.patch_rgb,PATCHES)):
-                estimates={}
+                estimates={}; patch_details={}
                 for name,rgb in traces.items():
                     samples=rgb[chosen];bpm=None
+                    detail = dict(signal_status='no_selected_support' if not len(samples) else 'missing_samples',
+                                  candidate_bpm=None, warnings=[])
                     if len(samples) and np.isfinite(samples).all() and np.all(samples>0):
-                        try:bpm=analyze(t[chosen],samples,method=method,
-                                       min_seconds=11.9 if window_policy=='full' else continuous_min_seconds,max_gap=max_gap).bpm
-                        except ValueError:pass
+                        try:
+                            result=analyze(t[chosen],samples,method=method,
+                                min_seconds=11.9 if window_policy=='full' else continuous_min_seconds,max_gap=max_gap)
+                            bpm=result.bpm
+                            if include_diagnostics and label == 'twelve_patches':
+                                from .patch_diagnostics import signal_detail
+                                detail=signal_detail(result)
+                        except ValueError as exc:
+                            detail.update(signal_status='analysis_error', warnings=[str(exc)])
                     estimates[name]=bpm
+                    if include_diagnostics and label == 'twelve_patches':
+                        detail.update(parent_region=zones[name], region_usable=usable[zones[name]],
+                                      eligible_bpm=bpm if usable[zones[name]] else None,
+                                      selected_samples=len(samples),
+                                      valid_sample_fraction=float(np.mean(np.isfinite(samples).all(axis=1) &
+                                                                         (samples>0).all(axis=1))) if len(samples) else None)
+                        patch_details[name]=detail
                 policy = consensus_policy if label == "twelve_patches" else "patch"
                 layouts[label]={"global_gate":gate_candidates(estimates,zones,{n:globally_usable for n in REGIONS},consensus_policy=policy),
                                 "regional_gate":gate_candidates(estimates,zones,usable,consensus_policy=policy)}
+                if include_diagnostics and label == 'twelve_patches':
+                    from .patch_diagnostics import consensus_detail
+                    row['quality'].setdefault('pulse_methods', {})[method] = dict(patches=patch_details,
+                        consensus=consensus_detail(layouts[label]['regional_gate'], zones, usable, policy))
             row["methods"][method]=layouts
         rows.append(row)
     report={"policy":"Experimental: region-specific area/displacement/loss; global exclusion when >=2 parent regions are displaced or unavailable",

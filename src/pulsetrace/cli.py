@@ -71,6 +71,13 @@ def main(argv=None):
         cmd.add_argument('--consensus', choices=['patch', 'zone'], default='patch')
         cmd.add_argument('--window-policy', choices=['full', 'continuous'], default='continuous')
         cmd.add_argument('--output', type=Path, default=Path('outputs')/folder)
+    saved = sub.add_parser('replay-samples', help='Reprocess saved RGB/geometry samples without a camera')
+    saved.add_argument('samples', type=Path)
+    saved.add_argument('--output', type=Path, default=Path('outputs/sample-replay'))
+    saved.add_argument('--method', choices=['pos','green'], default=None)
+    saved.add_argument('--consensus', choices=['patch','zone'], default=None)
+    saved.add_argument('--window-policy', choices=['full','continuous'], default=None)
+    saved.add_argument('--verify-batch', action='store_true')
     args = parser.parse_args(argv)
     if args.command in ("analyze", "demo") and args.track and not args.patches:
         parser.error("--track requires --patches")
@@ -83,6 +90,12 @@ def main(argv=None):
     if args.command == "analyze" and args.regional_quality and not args.patches:
         parser.error("--regional-quality requires --patches for the layout comparison")
     try:
+        if args.command == 'replay-samples':
+            from .live import replay_samples
+            summary = replay_samples(args.samples, args.output, method=args.method, consensus=args.consensus,
+                                     window_policy=args.window_policy, verify=args.verify_batch)
+            print(json.dumps(summary, indent=2))
+            return 0 if summary['estimated_windows'] else 2
         if args.command in ('replay', 'webcam'):
             from contextlib import nullcontext
             from .live import replay as run_replay, webcam as run_webcam
