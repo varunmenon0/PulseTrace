@@ -85,6 +85,37 @@ retains the session for the separate full-session check.
 Older test folders without `samples.jsonl` cannot be reconstructed from their
 summary logs. One more recording is needed to collect replayable measurements.
 
+### Audit conflicting readings without changing the estimator
+
+```bash
+python scripts/audit_stream_session.py \
+  --samples outputs/webcam-test-4/samples.jsonl \
+  --events outputs/webcam-test-4/stream.jsonl \
+  --output outputs/webcam-test-4-audit
+```
+
+This is an observational, full-session audit for a single session without resets.
+It first requires exact agreement between the original live windows and a
+camera-free replay, and checks batch parity on the same samples. The output
+contains `audit.json`, a window-summary CSV, full inspected spectra in CSV, and
+plots for up to two windows with the largest disagreement between accepted POS
+and green-channel votes. All session measurements and plots stay in ignored
+local outputs; they are not repository examples or validation results.
+
+The audit enumerates qualifying groups under the existing patch-voting rule,
+including ties and shared patches. It also reports existing parent-region and
+zone-voting outcomes on the same selected support. These are comparisons, not
+automatic replacements or selected improvements. The signal bands, filters,
+window selection, and thresholds remain unchanged.
+
+Patch-area, brightness, and parent-region position spectra are inspected as
+possible nuisance associations. A frequency shared by motion, brightness, and
+color traces does not establish its physiological or artifact origin. Curves
+are separately normalized for visual inspection and their heights cannot be
+read as measurement confidence. The audit accepts no expected BPM or usual
+range; determining which conflicting vote is correct needs an independent,
+synchronized reference.
+
 Each finalized window now includes a `quality` object, including when its BPM
 is unavailable. The session configuration identifies this as
 `quality_diagnostics_version: 1`. These observations do not change any gate,
