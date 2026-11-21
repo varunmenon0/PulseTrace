@@ -56,28 +56,50 @@ def test_replay_does_not_flush_a_window_without_future_support(tmp_path):
 
 
 def test_camera_worker_queue_is_bounded_and_releases_capture():
+    processing = threading.Event()
+    produced = threading.Event()
     class Capture:
         def __init__(self):
             self.frames = 0
             self.released = False
         def isOpened(self): return True
         def set(self, *args): return False
+        def get(self, *args): return 30.
+        def getBackendName(self): return 'fixture'
         def read(self):
             self.frames += 1
-            return (True, np.zeros((32, 32, 3), np.uint8)) if self.frames <= 8 else (False, None)
+            if self.frames == 2:
+                assert processing.wait(timeout=5)
+            if self.frames <= 8:
+                return True, np.full((32,32,3),self.frames,np.uint8)
+            produced.set()
+            return False,None
         def release(self): self.released = True
     class Tracker:
-        def detect(self, frame, time): return None
+        def detect(self, frame, time):
+            if frame[0,0,0] == 1:
+                processing.set()
+                assert produced.wait(timeout=5)
+            return None
     capture = Capture()
     ticks = iter(np.arange(20)/30)
-    with CameraSession(Tracker(), FrameSampler(sampling='landmarks'), queue_size=2,
+    with CameraSession(Tracker(), FrameSampler(sampling='landmarks'), queue_size=1,
                        capture_factory=lambda device: capture, clock=lambda: next(ticks)) as camera:
         assert camera.done.wait(timeout=5)
-        assert camera.queue.qsize() == 2
-        assert camera.dropped_samples == 6
-        assert camera.frames == 8
+        assert camera.queue.qsize() == 1
+        assert camera.dropped_samples == 1
+        assert camera.frames == 2
+        assert camera.captured_frames == 8 and camera.replaced_frames == 6
+        assert camera.queue.get_nowait().time == pytest.approx(8/30)
+        assert camera.latest_preview()[0][0,0,0] == 8
+        stats=camera.statistics()
+        assert stats['reported_camera_fps'] == 30.
+        assert stats['observed_read_fps'] == pytest.approx(30.)
+        assert stats['backend']=='fixture' and stats['latest_frame_shape']==[32,32,3]
+        assert stats['max_tracking_and_sampling_s'] >= 0
         assert 'stopped delivering' in camera.error
     assert capture.released
+    assert not camera.thread.is_alive() and not camera.capture_thread.is_alive()
     with pytest.raises(ValueError):
         CameraSession(Tracker(), FrameSampler(), queue_size=0)
 
@@ -92,6 +114,8 @@ def test_camera_open_failure_is_reported_and_capture_released():
         assert camera.done.wait(timeout=5)
         assert 'permission' in camera.error
     assert capture.released
+    assert camera.statistics()['observed_read_fps'] is None
+    assert camera.statistics()['mean_read_interval_s'] is None
 
 
 def test_webcam_headless_runner_uses_mock_capture_without_opening_a_camera(tmp_path, monkeypatch, capsys):
@@ -117,6 +141,7 @@ def test_webcam_headless_runner_uses_mock_capture_without_opening_a_camera(tmp_p
             self.error = None
         def __enter__(self): return self
         def __exit__(self, *args): pass
+        def statistics(self): return dict(backend='mock',acquired_frames=self.frames)
     monkeypatch.setattr(pulsetrace.capture, 'CameraSession', Camera)
     monkeypatch.setattr(pulsetrace.tracking, 'FaceTracker', Tracker)
     output = tmp_path/'camera'
@@ -125,6 +150,7 @@ def test_webcam_headless_runner_uses_mock_capture_without_opening_a_camera(tmp_p
     assert report['estimated_windows'] == 1 and not report['frames_saved']
     assert sorted(p.name for p in output.iterdir()) == ['samples.jsonl', 'stream-summary.json', 'stream.jsonl']
     assert report['saved_samples'] == report['sampled_frames']
+    assert report['capture_timing']['backend']=='mock'
     capsys.readouterr()
 
 

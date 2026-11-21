@@ -82,6 +82,11 @@ def event_windows(path):
     return [r for line in path.read_text().splitlines() if (r:=json.loads(line))['type']=='window']
 
 
+def canonical_windows(rows):
+    return [{k:v for k,v in r.items() if k not in ('emitted_at_s','computation_seconds','capture_timing')}
+            for r in rows]
+
+
 def plot_spectra(number, record, curves, output):
     fig,axes = plt.subplots(3,2,figsize=(13,9),sharex=True,sharey=True,constrained_layout=True)
     colors = dict(tl='#377bb5',tr='#d97732',bl='#6e9a43',br='#9767a8')
@@ -124,7 +129,7 @@ def run(source, events, output):
     replay = replay_samples(source,output/'verified-replay',verify=True)
     original=event_windows(events)
     reproduced=event_windows(output/'verified-replay/stream.jsonl')
-    comparable=[{k:v for k,v in r.items() if k not in ('emitted_at_s','computation_seconds')} for r in original]
+    comparable=canonical_windows(original)
     if comparable != reproduced:
         raise ValueError('Original live events do not match the archived-sample replay')
     with SampleReader(source) as reader:

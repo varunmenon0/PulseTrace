@@ -193,7 +193,7 @@ def preview_frame(bgr, points, state, now):
     image = Image.new('RGB', (1120, 700), '#FBFBFD')
     draw = ImageDraw.Draw(image)
     text(draw, 'PulseTrace', (40, 30), 28, bold=True)
-    text(draw, 'Camera session', (1080, 38), 16, '#6E6E73', right=True)
+    text(draw, f'Camera session · {clock(now)}', (1080, 38), 16, '#6E6E73', right=True)
     draw.line((40, 90, 1080, 90), fill='#E5E5EA')
     h, w = face.shape[:2]
     scale = min(640/w, 480/h)
@@ -241,7 +241,8 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
     metadata = dict(mode='webcam', synthetic=False, sampling=sampling,
             configuration=configuration(engine), frames_saved=False,
             rgb_samples_saved=True, samples_file='samples.jsonl',
-            timing='Monotonic frame-read completion times; not camera exposure timestamps')
+            capture_pipeline='independent_latest_frame', capture_timing_version=1,
+            timing='Independent acquisition; monotonic frame-read completion times, not camera exposure timestamps')
     with event_log(output, metadata) as emit, SampleWriter(Path(output)/'samples.jsonl', metadata) as archive:
         try:
             with CameraSession(tracker, sampler, device=device) as camera:
@@ -262,7 +263,7 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
                             processing += elapsed
                             for reading in readings:
                                 emit(dict(**reading.to_dict(), emitted_at_s=time.monotonic()-camera.started,
-                                          computation_seconds=elapsed))
+                                          computation_seconds=elapsed, capture_timing=camera.statistics()))
                         now = time.monotonic()-camera.started
                         state = engine.state(now)
                         key = (state['status'], state['session'], state['bpm'])
@@ -295,6 +296,7 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
             resets=engine.resets, interrupted=interrupted,
             final_state=engine.state(time.monotonic()-camera.started), analysis_seconds=processing,
             saved_samples=archive.count, samples_file='samples.jsonl',
+            capture_timing=camera.statistics(),
             frames_saved=False)
         emit(summary)
     (Path(output)/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')

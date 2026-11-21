@@ -277,14 +277,54 @@ by these numbers. Rejected windows remain in each denominator.
 The rolling engine retains signal/geometry samples, not video frames. Its time
 buffer includes pre-window motion context and a predecessor for area-step checks.
 The default hard limit is 10,000 samples; exceeding it resets rather than silently
-truncating the data needed by a window. The camera worker samples independently
-of window analysis and hands over at most 120 samples. Queue overflow drops the
-oldest sample, records the drop count, and preserves actual timestamps so gaps
-remain detectable. The preview retains only the latest frame.
+truncating the data needed by a window. Acquisition and tracking/sampling now run
+on separate workers, independently of window analysis. The acquisition worker
+reads continuously and hands over at most one pending frame. A newer frame
+replaces an unsampled pending frame when tracking cannot keep up. Its original
+read-completion timestamp is retained; the engine does not fabricate a nominal
+frame interval. The sampling worker hands over at most 120 sampled measurements.
+Sample-queue overflow drops the oldest sample and preserves timestamp gaps. The
+preview retains only the latest processed frame and its matching landmarks.
+
+Window events and the final summary include `capture_timing`: acquired and sampled
+frame counts, frames replaced before sampling, sample-queue drops, camera-reported
+FPS, observed read FPS, backend, latest frame shape, and mean/max queue wait,
+tracking/sampling duration, and read-to-sample delay. Replaced frames are deliberate
+skips and are distinct from losses after sampling. Missing camera metadata is
+`null`. These are observed host timings, not verified sensor exposure timestamps
+or guarantees of real-time performance. Replay excludes runtime capture telemetry
+when checking raw measurements and finalized-window identity.
+
+Earlier sessions serialized reads and sampling on one worker. The saved RGB
+archives cannot reconstruct frames that were never read or sampled, and cannot
+establish whether camera backend buffering affected exposure timing. This change
+removes the direct read/tracking coupling; hardware behavior and any accuracy
+effect still need a new acquisition and reference comparison.
 
 Camera timestamps are monotonic frame-read completion times, not verified sensor
 exposure timestamps. Camera backends may ignore the requested one-frame capture
 buffer. Drops, pauses, and queue delay must be inspected on the target machine.
+
+### Rough manual-count comparison
+
+The preview now shows elapsed session time. If no separate pulse sensor is
+available, a manual count can supply a rough interval-average comparison:
+
+```bash
+pulsetrace webcam --model models/face_landmarker.task --seconds 90 \
+  --output outputs/webcam-test-5
+```
+
+Keep your face visible and still. Using your usual manual counting technique,
+count beats from the preview's **00:10** to **01:10** and note the total. That is
+a 60-second interval, so its beat count gives a coarse average BPM. Let capture
+finish so the session and timing summary are saved. Note any missed count or
+timing uncertainty rather than treating it as an exact reference.
+
+A single manual count is not a synchronized beat-time reference and does not
+validate each overlapping analysis window. The original estimates and abstentions
+must be retained; the count must not be used to select a filter, frequency band,
+sampling policy, or a preferred estimator after inspecting this recording.
 
 ## What remains before a public live application
 

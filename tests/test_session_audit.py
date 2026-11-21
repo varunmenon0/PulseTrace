@@ -55,3 +55,11 @@ def test_spectral_observation_reports_peaks_and_keeps_constants_uninformative(au
 def test_audit_uses_separate_output_and_preserves_input_folder(audit,tmp_path):
     with pytest.raises(ValueError,match='separate output'):
         audit.run(tmp_path/'samples.jsonl',tmp_path/'stream.jsonl',tmp_path)
+
+
+def test_only_runtime_capture_metadata_is_removed_from_replay_comparison(audit):
+    row=dict(type='window',bpm=100.,status='estimate',quality={'signal':'fixture'},
+             capture_timing={'acquired_frames':30},emitted_at_s=13.,computation_seconds=.1)
+    result=audit.canonical_windows([row])
+    assert result==[dict(type='window',bpm=100.,status='estimate',quality={'signal':'fixture'})]
+    assert 'capture_timing' in row
