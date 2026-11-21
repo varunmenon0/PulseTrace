@@ -19,6 +19,7 @@ settings and results; see each protocol before comparing scores.
 ## Development and design
 
 - [Streaming prototype](STREAMING.md): branch-only replay engine and local webcam command.
+- [Extraction experiments](EXTRACTION_EXPERIMENTS.md): fixed color-projection variants, paired synthetic results, and saved-session comparisons.
 - [Diagnostics](DIAGNOSTICS.md): inspect signals, geometry, and quality decisions.
 - [Demo design](DEMO_DESIGN.md): visual research and presentation choices.
 - [Live-camera development](LIVE_CAMERA.md): accuracy, buffering, and timing requirements.

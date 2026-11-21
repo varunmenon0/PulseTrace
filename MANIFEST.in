@@ -22,5 +22,6 @@ recursive-include examples/tracking-loss *.json *.png *.svg
 recursive-include examples/real-video-recovery *.json *.png *.svg
 recursive-include examples/public-demonstration *.json
 recursive-include examples/streaming *.json
+recursive-include examples/extraction-experiments *.json
 recursive-include docs *.md
 recursive-include assets *.md *.png *.mp4

@@ -73,12 +73,19 @@ def pulse_source(rgb, fs, method="pos"):
 
 
 def analyze(time, rgb, *, method="pos", low_bpm=40.0, high_bpm=200.0,
-            min_seconds=10.0, max_gap=0.25):
+            min_seconds=10.0, max_gap=0.25, _source=None):
     grid, uniform, fs, missing, warnings = prepare_series(
         time, rgb, min_seconds=min_seconds, max_gap=max_gap)
     if not 0 < low_bpm < high_bpm < fs * 30:
         raise ValueError("Heart-rate band must be positive, ordered and below Nyquist")
-    raw = signal.detrend(pulse_source(uniform, fs, method))
+    if _source is None:
+        raw = signal.detrend(pulse_source(uniform, fs, method))
+    else:
+        # Research-only source injection shares the unchanged filtering and scoring path.
+        candidate = np.asarray(_source(uniform, fs), float)
+        if candidate.shape != (len(uniform),) or not np.isfinite(candidate).all():
+            raise ValueError('Experimental source must return a finite vector matching the time grid')
+        raw = signal.detrend(candidate)
     sos = signal.butter(4, [low_bpm / 60, high_bpm / 60], btype="bandpass", fs=fs, output="sos")
     try:
         pulse = signal.sosfiltfilt(sos, raw)
