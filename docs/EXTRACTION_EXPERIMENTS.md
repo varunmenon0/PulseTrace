@@ -106,6 +106,11 @@ that spectral concentration alone accepts periodic lighting artifacts. No
 threshold, method, or fallback was changed after seeing the results, and neither
 experimental method is promoted to live use.
 
+The follow-up [background-light reference experiment](LIGHTING_REFERENCE.md)
+tests withholding candidates that overlap an independently measured lighting
+signal, including missing and misleading references. It leaves these extraction
+methods and the live defaults unchanged.
+
 ## Reproduce
 
 From the repository root, after installing the project:
