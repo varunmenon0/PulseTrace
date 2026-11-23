@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "purpose": "Evaluate an independent background-light overlap screen; no live promotion",
+  "methods": ["green", "pos", "chrom_window", "pos_bandlimited"],
+  "seconds": 20,
+  "rates_bpm": [60, 102, 138],
+  "fps": [15, 30],
+  "base_colors": [[155, 120, 95], [85, 65, 50]],
+  "relative_pulse_colors": [[0.005, 0.013, 0.003], [0.011, 0.015, 0.007]],
+  "profiles": ["clean", "common_light", "colored_light", "two_lights"],
+  "negative_controls": ["flat", "noise_only", "common_light", "colored_light", "two_lights"],
+  "seeds": [307, 401],
+  "relative_noise_std": 0.001,
+  "common_light": {"relative_amplitude": 0.04, "frequency_hz": 0.8},
+  "colored_light": {"relative_rgb": [0.04, 0.01, 0.03], "frequency_hz": 2.3},
+  "timing": {"jitter_seconds": 0.003, "drop_every_nth_frame": 53, "drop_index_remainder": 17},
+  "reference": {"base_rgb": [110, 100, 130], "colored_relative_rgb": [0.03, 0.02, 0.05], "noise_seed_offset": 1000, "pulse_leakage_relative_rgb": [0.004, 0.012, 0.002]},
+  "reference_modes": ["shared_light", "face_only_light", "pulse_leakage", "missing"],
+  "screen": {"band_bpm": [40, 200], "overlap_half_width_hz": 0.15, "minimum_band_power_fraction": 0.35, "missing_reference": "withhold; do not invent a background signal", "channels": "All three background RGB channels independently; unchanged PulseTrace green-channel filter/PSD path for each", "action": "Withhold a candidate if any background channel has enough band power near that candidate; no frequency replacement or reference-rate input"},
+  "scoring": "Separate pulse-present accepted-set error, all-case coverage, correct readings retained/lost (within 5 BPM), wrong readings retained/removed, and no-pulse spurious-candidate counts. Break down by reference mode. Preserve all raw estimates and no-reference baselines.",
+  "selection": "Full pulse-present Cartesian grid plus controls without redundant pulse direction; every face input shared across methods and reference modes. Reference includes no physiological pulse except deliberately invalid pulse_leakage cases. Rate 138 deliberately coincides with colored light to measure rejection of real pulse.",
+  "limitations": "Research RGB-level model, not video or natural validation. Background response differs from face response. Shared illumination is an assumption; face-only interference and pulse contamination deliberately violate it. A frequency match is ambiguity, not proof of lighting; no overlap is not proof of pulse. Missing archived backgrounds cannot be reconstructed from facial measurements."
+}
