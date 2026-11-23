@@ -328,6 +328,11 @@ sampling policy, or a preferred estimator after inspecting this recording.
 
 ## What remains before a public live application
 
+Optional [background-light recording and offline audit](LIGHTING_REFERENCE.md#record-a-paired-background-with-the-webcam)
+is available with `--background-roi X Y WIDTH HEIGHT`. It records a visible fixed
+rectangle's RGB averages beside the face samples, with explicit unavailable
+states. It does not enable the experimental lighting screen in the live display.
+
 The existing offline filter is applied to completed windows. This is not a
 continuously causal pulse waveform. The existing quality rules are engineering
 heuristics and the previously reported real-video outliers remain unresolved.

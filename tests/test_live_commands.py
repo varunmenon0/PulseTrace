@@ -92,6 +92,8 @@ def test_camera_worker_queue_is_bounded_and_releases_capture():
         assert camera.captured_frames == 8 and camera.replaced_frames == 6
         assert camera.queue.get_nowait().time == pytest.approx(8/30)
         assert camera.latest_preview()[0][0,0,0] == 8
+        assert len(camera.latest_preview())==3  # Existing preview API remains compatible.
+        assert camera.latest_preview(include_background=True)[3] is None
         stats=camera.statistics()
         assert stats['reported_camera_fps'] == 30.
         assert stats['observed_read_fps'] == pytest.approx(30.)

@@ -180,13 +180,17 @@ def replay_samples(source, output, *, method=None, consensus=None, window_policy
     return summary
 
 
-def preview_frame(bgr, points, state, now):
+def preview_frame(bgr, points, state, now, background=None):
     """A simple live view; no waveform is fabricated between completed readings."""
     from PIL import Image, ImageDraw
     from .demo_layout import text, clock
     from .regions import REGIONS
 
     face = bgr.copy()
+    if background is not None:
+        left,top,right,bottom=background['bounds']
+        color=(146,117,86) if background['status']=='available' else (70,90,180)
+        cv2.rectangle(face,(left,top),(right-1,bottom-1),color,2,cv2.LINE_AA)
     if points is not None:
         for indices in REGIONS.values():
             cv2.polylines(face, [np.rint(points[list(indices)]).astype(np.int32)], True, (58, 45, 217), 1, cv2.LINE_AA)
@@ -221,20 +225,27 @@ def preview_frame(bgr, points, state, now):
         remaining = max(0, state['next_available_at_s']-now)
         text(draw, f'First window in {remaining:.1f}s', (730, 390), 16, '#6E6E73')
     text(draw, 'Keep still in steady, diffuse light', (40, 630), 17, '#6E6E73')
+    if background is not None:
+        label='Recording selected background' if background['status']=='available' else dict(
+            face_not_tracked='Background paused · face not tracked',
+            invalid_face_geometry='Background paused · face tracking unavailable',
+            face_overlaps_background='Move your face away from the background box',
+            insufficient_pixels='Background box is too small').get(background['reason'],'Background unavailable')
+        text(draw,label,(40,606),14,'#567592' if background['status']=='available' else '#B45445')
     text(draw, '12-second windows · 6-second updates', (40, 668), 14, '#6E6E73')
     text(draw, 'Press Q or Esc to stop', (1080, 668), 14, '#6E6E73', right=True)
     return cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
 
 
 def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', consensus='patch',
-           window_policy='continuous', seconds=None, preview=True, agreement_policy='flag'):
+           window_policy='continuous', seconds=None, preview=True, agreement_policy='flag', background_roi=None):
     from .capture import CameraSession
 
     if seconds is not None and (not np.isfinite(seconds) or seconds <= 0):
         raise ValueError('seconds must be positive and finite')
     engine = PulseStream(method=method, consensus=consensus, window_policy=window_policy,
                          agreement_policy=agreement_policy)
-    sampler = FrameSampler(sampling=sampling)
+    sampler = FrameSampler(sampling=sampling,background_roi=background_roi)
     last_state = None
     processing = 0.
     interrupted = False
@@ -243,6 +254,11 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
             rgb_samples_saved=True, samples_file='samples.jsonl',
             capture_pipeline='independent_latest_frame', capture_timing_version=1,
             timing='Independent acquisition; monotonic frame-read completion times, not camera exposure timestamps')
+    if sampler.background_roi is not None:
+        metadata['background_reference']=dict(roi=list(sampler.background_roi),coordinates='normalized XYWH',
+            face_exclusion='whole ROI rejected on overlap with 10%-padded landmark bounds',
+            use='recording only; no live lighting screen',skin_detection=False)
+    background_counts={}
     with event_log(output, metadata) as emit, SampleWriter(Path(output)/'samples.jsonl', metadata) as archive:
         try:
             with CameraSession(tracker, sampler, device=device) as camera:
@@ -257,6 +273,9 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
                                 break
                         else:
                             archive.write(sample)
+                            if sample.background is not None:
+                                label=sample.background['reason'] or 'available'
+                                background_counts[label]=background_counts.get(label,0)+1
                             began = time.perf_counter()
                             readings = engine.push(sample)
                             elapsed = time.perf_counter()-began
@@ -272,10 +291,10 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
                             print(json.dumps(dict(status=state['status'], bpm=state['bpm'])), flush=True)
                             last_state = key
                         if preview:
-                            frame = camera.latest_preview()
+                            frame = camera.latest_preview(include_background=True)
                             if frame is not None:
-                                bgr, points, _ = frame
-                                cv2.imshow('PulseTrace', preview_frame(bgr, points, state, now))
+                                bgr, points, _, background = frame
+                                cv2.imshow('PulseTrace', preview_frame(bgr, points, state, now,background))
                             keypress = cv2.waitKey(1) & 0xFF
                             if keypress in (27, ord('q')):
                                 break
@@ -298,6 +317,9 @@ def webcam(tracker, output, *, device=0, sampling='fractional', method='pos', co
             saved_samples=archive.count, samples_file='samples.jsonl',
             capture_timing=camera.statistics(),
             frames_saved=False)
+        if sampler.background_roi is not None:
+            summary['background_reference']=dict(roi=list(sampler.background_roi),sample_status_counts=background_counts,
+                                                  applied_to_estimates=False)
         emit(summary)
     (Path(output)/'stream-summary.json').write_text(json.dumps(summary, indent=2, allow_nan=False)+'\n')
     return summary

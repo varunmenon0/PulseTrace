@@ -65,6 +65,8 @@ def main(argv=None):
     live.add_argument('--camera', type=int, default=0)
     live.add_argument('--seconds', type=float, help='Stop after this many wall-clock seconds')
     live.add_argument('--no-preview', action='store_true', help='Console only; stop with Ctrl+C')
+    live.add_argument('--background-roi',nargs=4,type=float,metavar=('X','Y','WIDTH','HEIGHT'),
+                      help='Record an independent background rectangle (image fractions); no live screening')
     for cmd, folder in ((replay, 'replay'), (live, 'webcam')):
         cmd.add_argument('--sampling', choices=['landmarks', 'fractional'], default='fractional')
         cmd.add_argument('--method', choices=['pos', 'green'], default='pos')
@@ -83,6 +85,10 @@ def main(argv=None):
     saved.add_argument('--agreement-policy', choices=['off','flag'], default=None,
                        help='Default: restore archived policy; archives without a policy use off')
     args = parser.parse_args(argv)
+    if args.command=='webcam' and args.background_roi is not None:
+        from .background import validate_roi
+        try:validate_roi(args.background_roi)
+        except ValueError as exc:parser.error(str(exc))
     if args.command in ("analyze", "demo") and args.track and not args.patches:
         parser.error("--track requires --patches")
     if args.command in ('analyze','demo') and args.window_policy != 'full' and not args.track:
@@ -119,7 +125,7 @@ def main(argv=None):
                                          synthetic=synthetic, **options)
                 else:
                     summary = run_webcam(tracker, args.output, device=args.camera, seconds=args.seconds,
-                                         preview=not args.no_preview, **options)
+                                         preview=not args.no_preview,background_roi=args.background_roi, **options)
             print(json.dumps(summary, indent=2))
             return 0 if summary['estimated_windows'] else 2
         if args.command == "segments":

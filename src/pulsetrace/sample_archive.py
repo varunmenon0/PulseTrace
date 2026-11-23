@@ -38,6 +38,10 @@ def sample_record(sample):
         result[field] = {n:[encode_number(v) for v in values] for n,values in getattr(sample, field).items()}
     for field in ('pixels', 'patch_pixels'):
         result[field] = {n:encode_number(v) for n,v in getattr(sample, field).items()}
+    if sample.background is not None:
+        bg=sample.background
+        result['background']=dict(status=bg['status'],reason=bg['reason'],
+            rgb=[encode_number(v) for v in bg['rgb']],pixels=bg['pixels'],bounds=bg['bounds'])
     return result
 
 
@@ -67,7 +71,27 @@ def record_sample(record):
     reason = record.get('reset_reason')
     if reason is not None and not isinstance(reason, str):
         raise ValueError('Invalid archived reset reason')
-    return Sample(t, **fields, reset_reason=reason)
+    background=None
+    if 'background' in record:
+        bg=record['background']
+        if not isinstance(bg,dict) or bg.get('status') not in ('available','unavailable'):
+            raise ValueError('Invalid background status')
+        raw=bg.get('rgb');bounds=bg.get('bounds');pixels=bg.get('pixels')
+        if (not isinstance(raw,list) or len(raw)!=3 or not isinstance(bounds,list) or len(bounds)!=4 or
+            any(isinstance(v,bool) or not isinstance(v,int) or v<0 for v in bounds) or
+            bounds[2]<=bounds[0] or bounds[3]<=bounds[1] or isinstance(pixels,bool) or
+            not isinstance(pixels,int) or pixels<0):
+            raise ValueError('Invalid background measurements')
+        rgb=np.array([decode_number(v) for v in raw])
+        if bg['status']=='available':
+            if (bg.get('reason') is not None or not np.isfinite(rgb).all() or (rgb<0).any() or
+                pixels!=(bounds[2]-bounds[0])*(bounds[3]-bounds[1])):
+                raise ValueError('Invalid available background')
+        elif pixels!=0 or not np.isnan(rgb).all() or bg.get('reason') not in (
+                'face_not_tracked','invalid_face_geometry','face_overlaps_background','insufficient_pixels'):
+            raise ValueError('Invalid unavailable background')
+        background=dict(status=bg['status'],reason=bg.get('reason'),rgb=rgb,pixels=pixels,bounds=bounds)
+    return Sample(t, **fields, reset_reason=reason,background=background)
 
 
 def provenance():
@@ -75,7 +99,7 @@ def provenance():
     return dict(versions={n:importlib.metadata.version(n) for n in ('pulsetrace','numpy','scipy','opencv-contrib-python')},
         source_sha256={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in
                        ('signal.py','regional_quality.py','streaming.py','sampling.py','agreement.py',
-                        'capture.py','tracking.py')})
+                        'capture.py','tracking.py','background.py','lighting.py')})
 
 
 class SampleWriter:
@@ -83,10 +107,16 @@ class SampleWriter:
         self.path, self.metadata, self.count = Path(path), metadata, 0
 
     def __enter__(self):
+        if self.metadata.get('background_reference'):
+            from .background import validate_roi
+            config=self.metadata['background_reference']
+            if not isinstance(config,dict) or 'roi' not in config:
+                raise ValueError('Missing background ROI configuration')
+            validate_roi(config['roi'])
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.file = self.path.open('w')
         try:
-            header = dict(type='sample_session', schema_version=1, metadata=self.metadata,
+            header = dict(type='sample_session', schema_version=2 if self.metadata.get('background_reference') else 1, metadata=self.metadata,
                 provenance=provenance(), frames_saved=False,
                 values='RGB means, sampled areas and geometry only; null=NaN; Infinity strings preserve infinities',
                 scope='Samples consumed by the engine; camera queue drops are represented by timestamp gaps')
@@ -98,6 +128,8 @@ class SampleWriter:
         return self
 
     def write(self, sample):
+        if (sample.background is not None) != bool(self.metadata.get('background_reference')):
+            raise ValueError('Background measurements must match the archive configuration')
         self.file.write(json.dumps(sample_record(sample), allow_nan=False)+'\n')
         self.file.flush()
         self.count += 1
@@ -115,8 +147,16 @@ class SampleReader:
         try:
             self.header = json.loads(self.file.readline())
             if (not isinstance(self.header, dict) or self.header.get('type') != 'sample_session'
-                    or self.header.get('schema_version') != 1 or not isinstance(self.header.get('metadata'), dict)):
+                    or self.header.get('schema_version') not in (1,2) or not isinstance(self.header.get('metadata'), dict)):
                 raise ValueError('Unsupported sample archive header')
+            if (self.header['schema_version']==2) != bool(self.header['metadata'].get('background_reference')):
+                raise ValueError('Background configuration does not match archive schema')
+            if self.header['schema_version']==2:
+                from .background import validate_roi
+                config=self.header['metadata']['background_reference']
+                if not isinstance(config,dict) or 'roi' not in config:
+                    raise ValueError('Missing background ROI configuration')
+                validate_roi(config['roi'])
         except Exception:
             self.file.close()
             raise
@@ -125,7 +165,10 @@ class SampleReader:
     def __iter__(self):
         for line_number,line in enumerate(self.file, 2):
             try:
-                yield record_sample(json.loads(line))
+                record=json.loads(line)
+                if ('background' in record) != (self.header['schema_version']==2):
+                    raise ValueError('Background fields do not match archive schema')
+                yield record_sample(record)
             except (ValueError, TypeError, KeyError) as exc:
                 raise ValueError(f'Invalid sample archive at line {line_number}: {exc}') from exc
 

@@ -121,7 +121,7 @@ class CameraSession:
                 sample = self.sampler.sample(frame, points, timestamp)
                 finished = time.perf_counter()
                 with self.lock:
-                    self.preview = (frame, points, timestamp)
+                    self.preview = (frame, points, timestamp, sample.background)
                     self.frames += 1
                     wait, work, age = began-completed, finished-began, finished-completed
                     self.queue_wait_total += wait
@@ -166,9 +166,9 @@ class CameraSession:
                 mean_read_to_sample_s=mean(self.age_total,self.frames), max_read_to_sample_s=self.age_max,
                 timestamp_basis='Host monotonic read-completion times; sensor exposure timing unverified')
 
-    def latest_preview(self):
+    def latest_preview(self, *, include_background=False):
         with self.lock:
-            return self.preview
+            return self.preview if include_background or self.preview is None else self.preview[:3]
 
     def __exit__(self, *args):
         self.stop.set()

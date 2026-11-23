@@ -102,10 +102,84 @@ package versions, coverage, accepted-set errors, correct readings retained/lost,
 wrong readings retained/removed, and no-pulse candidate counts by reference mode.
 Generated outputs are not committed.
 
-Existing webcam archives contain only face RGB/geometry. An independent
-background cannot be reconstructed from them. Natural validation first needs
-paired non-skin sampling with a visible ROI and explicit missing/contaminated
-reference handling, plus synchronized pulse-reference measurements. Until then,
-this module remains an offline experimental API. See the
+Older webcam archives contain only face RGB/geometry. An independent
+background cannot be reconstructed from them. New sessions can optionally record
+the paired reference described below. The screen remains offline and is never
+applied to live decisions. Natural validation still requires synchronized
+pulse-reference measurements. See the
 [reference protocol](REFERENCE_PROTOCOL.md) and
 [extraction comparisons](EXTRACTION_EXPERIMENTS.md).
+
+## Record a paired background with the webcam
+
+Choose a plain, stationary background patch visible in the camera view, such as
+a wall. Keep faces, hands, other skin, displays, and moving objects out of it.
+The software rejects a tracked face entering the rectangle, but it does not
+classify skin or objects elsewhere and cannot verify shared illumination.
+
+From the repository root, use a new output folder:
+
+```sh
+.venv/bin/pulsetrace webcam --model models/face_landmarker.task --seconds 90 \
+  --background-roi 0.02 0.02 0.12 0.12 \
+  --output outputs/webcam-lighting-1
+```
+
+`--background-roi X Y WIDTH HEIGHT` uses image fractions. This example selects
+a small box near the upper-left corner. Check the visible box before relying on
+it. Blue means the patch is being sampled; a red box and explanatory message
+mean it is unavailable. If the box contains skin or a screen, stop with Q and
+choose another rectangle. Keep lighting steady and your face still for the first
+test. Blue indicates geometric availability, not a verified lighting reference
+or accurate heart rate.
+
+The rectangle stays fixed in image coordinates; it is not automatically moved
+or cropped to hide an overlap. Any intersection with the tracked face's
+landmark bounding rectangle, padded by 10% of its width/height on each side,
+rejects the whole background patch for that frame. Missing/invalid face tracking
+or insufficient pixels also makes the reference unavailable. The preview labels
+these conditions. It does not detect hands, a second untracked face, or arbitrary
+foreground objects. A stationary background and visual inspection remain
+necessary. Camera resolution changes preserve the normalized rectangle but
+reset the face engine as before.
+
+Face and background averages come from the same sampled frame and share its
+original read-completion timestamp. Acquisition, queues, motion exclusions,
+face sampling, and existing heart-rate decisions retain their policies. No
+frame images are saved. Optional background measurements add only RGB means,
+pixel count, rectangle bounds, status, and a reason when unavailable.
+
+The summary counts available and rejected background samples. Sessions using
+this option write archive schema 2; sessions without it retain schema 1. The
+reader accepts both. Schema 2 requires a background entry in every sample,
+including explicit missing-reference entries, and validates their shapes and
+status. Older readers that support only schema 1 cannot open schema 2; use this
+branch's tools. Omitting `--background-roi` preserves the existing recording
+behavior.
+
+## Audit a recorded session without the camera
+
+```sh
+.venv/bin/python scripts/audit_lighting_session.py \
+  outputs/webcam-lighting-1/samples.jsonl \
+  --output outputs/webcam-lighting-1-audit
+```
+
+The script first replays the saved face measurements and requires every window
+to match the original `stream.jsonl`, ignoring runtime capture timing fields.
+It stops if they differ. It then uses each window's exact selected support for
+the background screen. Any unavailable background sample on that support makes
+the reference unavailable for the whole window. It does not interpolate across
+that absence or select a more favorable interval. Existing uncertain or
+unavailable live readings stay withheld; the audit cannot resurrect them.
+
+The separate output contains `lighting-audit.json` plus a face replay. The report
+retains original displayed and raw candidates, reference status and sample
+counts, overlap observations, source/event checksums, and implementation
+provenance. Original logs stay untouched. The report scores no human pulse
+accuracy and does not change the live display. Old archives can be audited for
+face parity, but their references are explicitly unavailable.
+
+Automated tests use synthetic frames and mocked camera I/O. Actual camera
+placement, tracking, lighting, and independent-reference accuracy still require
+a new recording; no new natural-camera accuracy claim is made.
