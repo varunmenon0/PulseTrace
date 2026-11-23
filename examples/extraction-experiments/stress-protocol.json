@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "suite": "color-lighting-stress",
+  "purpose": "Challenge the fixed methods without tuning or promoting live defaults",
+  "methods": ["green", "pos", "chrom_window", "pos_bandlimited"],
+  "seconds": 20,
+  "rates_bpm": [48, 84, 126, 174],
+  "fps": [15, 30],
+  "base_colors": [[170, 130, 100], [100, 80, 60], [70, 55, 48]],
+  "relative_pulse_colors": [[0.004, 0.012, 0.002], [0.01, 0.014, 0.006], [0.012, 0.004, 0.009]],
+  "profiles": ["clean", "common_light", "colored_light", "two_lights"],
+  "negative_controls": ["flat", "noise_only", "common_light", "colored_light", "two_lights"],
+  "seeds": [103, 211],
+  "relative_noise_std": 0.001,
+  "common_light": {"relative_amplitude": 0.04, "frequency_hz": 0.9},
+  "colored_light": {"relative_rgb": [0.04, 0.01, 0.03], "frequency_hz": 2.1},
+  "timing": {"jitter_seconds": 0.003, "drop_every_nth_frame": 53, "drop_index_remainder": 17},
+  "shared_processing": "Unchanged from protocol.json and fixed extraction methods at 2140db8",
+  "scoring": "Score injected-rate error only in pulse-present cases; report all-case coverage, abstentions, accepted error and errors over 5 BPM. Score pulse-absent controls separately as spurious-candidate rates. Also compare error on the common accepted pulse-present set.",
+  "selection": "Full Cartesian grid for pulse-present cases; each negative control across every base color, frame rate and seed without a redundant pulse-direction dimension",
+  "limitations": "Arbitrary RGB stress directions are not a skin-tone or physiological population model. No video, tracking, camera auto-exposure or independent natural reference. All cases are post-initial-study challenge cases, not a new unseen clinical holdout. Methods, filters and gates stay fixed."
+}
