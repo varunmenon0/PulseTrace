@@ -212,6 +212,18 @@ def preview_frame(bgr, points, state, now, background=None):
                   capture_stalled='Camera paused · reading cleared', estimate='Completed-window estimate',
                   unavailable='Estimate unavailable this window', uncertain='Uncertain · methods disagree')
     row = state['latest_window']
+    unavailable_detail=None
+    if state['status']=='unavailable' and row is not None:
+        if row.get('unavailable_reason')=='quality_exclusion':
+            labels['unavailable']='Tracking changes interrupted this window'
+            quality=row.get('quality',{})
+            longest=quality.get('longest_clean_pair',{}).get('duration_s')
+            minimum=quality.get('minimum_continuous_seconds')
+            if quality.get('window_policy')=='continuous' and longest is not None and minimum is not None:
+                unavailable_detail=f'Clean stretch: {longest:.1f}s / {minimum:g}s needed'
+        elif row.get('unavailable_reason')=='insufficient_pulse_support':
+            labels['unavailable']='No consistent estimate this window'
+            unavailable_detail='Face-region estimates did not agree'
     if state['status'] == 'estimate' and row is not None:
         agreement = row.get('quality',{}).get('method_agreement')
         if agreement is not None:
@@ -219,6 +231,8 @@ def preview_frame(bgr, points, state, now, background=None):
     text(draw, labels[state['status']], (730, 350), 16, '#6E6E73')
     if state['status'] == 'uncertain':
         text(draw, 'Waiting for a consistent window', (730, 390), 16, '#6E6E73')
+    if unavailable_detail is not None:
+        text(draw,unavailable_detail,(730,390),16,'#6E6E73')
     if state['bpm'] is not None and row['analysis_start_s'] is not None:
         text(draw, f"{clock(round(row['analysis_start_s']))}–{clock(round(row['analysis_end_s']))} analyzed", (730, 390), 16, '#6E6E73')
     elif state['status'] == 'measuring' and state['next_available_at_s'] is not None:
