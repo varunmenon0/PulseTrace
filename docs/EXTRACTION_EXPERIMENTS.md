@@ -58,6 +58,54 @@ test new noise realizations within these conditions, not new populations or
 lighting families. Low synthetic error does **not** establish camera accuracy.
 The coefficient-only POS variant provides no convincing improvement here.
 
+## Expanded color and pulse-absent challenge
+
+The follow-up [stress protocol](../examples/extraction-experiments/stress-protocol.json)
+was committed as `d8c3fe8` before execution. The extraction methods were unchanged.
+The full grid contains 576 pulse-present cases: three base colors, three relative
+pulse color directions, four injected rates (48, 84, 126, 174 BPM), two frame
+rates, four lighting profiles, and two seeds. Every case has timing jitter and
+frame drops. Sixty separate controls have **no injected pulse**: five conditions,
+each across three base colors, two frame rates, and two seeds. These are
+post-initial-study stress cases, not a clinical holdout or a skin-tone model.
+
+| Method | Returned / 576 pulse cases | MAE of returned readings (BPM) | Errors >5 BPM | Largest error (BPM) |
+|---|---:|---:|---:|---:|
+| Green | 576 | 31.998 | 324 | 120.008 |
+| POS | 576 | 21.044 | 216 | 78.023 |
+| CHROM axes, whole window | 489 | 11.788 | 90 | 120.048 |
+| POS, band-limited coefficient | 576 | 21.069 | 216 | 78.023 |
+
+All four methods returned readings in the same 489 cases. On this common set,
+MAE was 37.684 BPM for green, 24.778 for POS, 11.788 for CHROM axes, and 24.799
+for the POS variant. This paired comparison avoids interpreting differing
+accepted sets as equivalent coverage.
+
+The CHROM-axis variant returned only **63/144 clean cases**, versus 144/144 for
+each other method. It returned all 144 two-light cases, but 90 exceeded 5 BPM
+error, with 39.672 BPM MAE. Its earlier near-zero error did not generalize to the
+expanded directions and lighting. The axes can subtract away a single pulse
+component when the projected components have the same sign; these arbitrary
+color challenges expose that limitation without establishing its prevalence
+in natural video.
+
+No-pulse controls are scored as spurious candidates, never as BPM error against
+zero. Each cell below is candidates returned / 12 controls:
+
+| Pulse-absent condition | Green | POS | CHROM axes | POS variant |
+|---|---:|---:|---:|---:|
+| Flat | 0/12 | 0/12 | 0/12 | 0/12 |
+| Noise only | 0/12 | 0/12 | 0/12 | 0/12 |
+| Common periodic light | 12/12 | 0/12 | 0/12 | 0/12 |
+| Colored periodic light | 12/12 | 12/12 | 0/12 | 12/12 |
+| Two periodic lights | 12/12 | 12/12 | 12/12 | 12/12 |
+
+These are individual RGB-trace extraction results, not an evaluation of the
+complete webcam display, region consensus, or disagreement policy. They show
+that spectral concentration alone accepts periodic lighting artifacts. No
+threshold, method, or fallback was changed after seeing the results, and neither
+experimental method is promoted to live use.
+
 ## Reproduce
 
 From the repository root, after installing the project:
@@ -69,6 +117,18 @@ python scripts/compare_extraction.py --output outputs/extraction-experiments
 `synthetic-benchmark.json` contains every case, abstention, input checksum,
 development/held-out metrics by profile, protocol checksum, source checksums,
 and package versions. Generated results remain local.
+
+Run the expanded challenge separately:
+
+```sh
+python scripts/compare_extraction.py --suite stress --output outputs/extraction-stress
+```
+
+`stress-benchmark.json` separates pulse-present errors from pulse-absent
+spurious-candidate counts, includes the common accepted set, and breaks down
+pulse cases by lighting profile and pulse color direction. The original suite
+and its results are preserved. Selecting a protocol for the wrong suite fails
+before writing results.
 
 Optionally compare an existing private sample archive without opening the camera:
 

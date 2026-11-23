@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+from itertools import product
 from pathlib import Path
 
 import numpy as np
@@ -77,6 +78,68 @@ def synthetic(protocol):
                 metrics=summary,cases=rows)
 
 
+def stress_fixture(protocol, base_index, pulse_index, bpm, fps, profile, seed):
+    """Arbitrary color directions, including controls with no pulse component."""
+    rng=np.random.default_rng(seed)
+    t=np.arange(round(protocol['seconds']*fps))/fps
+    timing=protocol['timing']
+    t[1:-1]+=timing['jitter_seconds']*np.sin(np.arange(len(t)-2))
+    base=np.array(protocol['base_colors'][base_index],float)
+    rgb=np.broadcast_to(base,(len(t),3)).copy()
+    phase=rng.uniform(0,2*np.pi)
+    if pulse_index is not None:
+        direction=np.array(protocol['relative_pulse_colors'][pulse_index])
+        rgb+=base*direction*np.sin(2*np.pi*bpm/60*t+phase)[:,None]
+    if profile in ('common_light','two_lights'):
+        light=protocol['common_light']
+        rgb*=1+light['relative_amplitude']*np.sin(2*np.pi*light['frequency_hz']*t)[:,None]
+    if profile in ('colored_light','two_lights'):
+        light=protocol['colored_light']
+        rgb+=base*np.array(light['relative_rgb'])*np.sin(2*np.pi*light['frequency_hz']*t)[:,None]
+    if profile!='flat':
+        rgb+=base*protocol['relative_noise_std']*rng.normal(size=rgb.shape)
+    keep=np.arange(len(t))%timing['drop_every_nth_frame']!=timing['drop_index_remainder']
+    return t[keep],rgb[keep]
+
+
+def stress_summary(rows, methods):
+    present=[r for r in rows if r['injected_bpm'] is not None]
+    absent=[r for r in rows if r['injected_bpm'] is None]
+    common=[r for r in present if all(r['estimates'][m]['bpm'] is not None for m in methods)]
+    controls={}
+    for profile in sorted({r['profile'] for r in absent}):
+        selected=[r for r in absent if r['profile']==profile]
+        controls[profile]={}
+        for m in methods:
+            count=sum(r['estimates'][m]['bpm'] is not None for r in selected)
+            controls[profile][m]=dict(cases=len(selected),spurious_candidates=count,
+                                    spurious_candidate_fraction=count/len(selected))
+    return dict(pulse_present={m:metrics(present,m) for m in methods},
+                common_accepted_set={m:metrics(common,m) for m in methods},
+                pulse_present_by_profile={p:{m:metrics([r for r in present if r['profile']==p],m)
+                                            for m in methods} for p in sorted({r['profile'] for r in present})},
+                pulse_present_by_color_direction={str(i):{m:metrics([r for r in present if r['pulse_color_index']==i],m)
+                                                          for m in methods} for i in sorted({r['pulse_color_index'] for r in present})},
+                pulse_absent=controls)
+
+
+def synthetic_stress(protocol):
+    rows=[]
+    conditions=list(product(range(len(protocol['base_colors'])),
+        range(len(protocol['relative_pulse_colors'])),protocol['rates_bpm'],protocol['fps'],
+        protocol['profiles'],protocol['seeds']))
+    conditions.extend((base,None,None,fps,profile,seed) for base,fps,profile,seed in
+        product(range(len(protocol['base_colors'])),protocol['fps'],protocol['negative_controls'],protocol['seeds']))
+    for base,direction,bpm,fps,profile,seed in conditions:
+        t,rgb=stress_fixture(protocol,base,direction,bpm,fps,profile,seed)
+        estimates={m:estimate(t,rgb,m) for m in protocol['methods']}
+        rows.append(dict(base_color_index=base,pulse_color_index=direction,injected_bpm=bpm,
+                         fps=fps,profile=profile,seed=seed,
+                         input_sha256=hashlib.sha256(t.tobytes()+rgb.tobytes()).hexdigest(),estimates=estimates))
+    return dict(synthetic=True,fixture_level='RGB stress signals; not skin-tone or natural-video validation',
+                metrics=stress_summary(rows,protocol['methods']),cases=rows)
+
+
 def natural(source,methods):
     with SampleReader(source) as reader:
         header=reader.header;samples=list(reader)
@@ -128,18 +191,26 @@ def experiment_provenance(data):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--suite',choices=('initial','stress'),default='initial')
     parser.add_argument('--protocol',type=Path,
-        default=Path(__file__).parents[1]/'examples/extraction-experiments/protocol.json')
+        help='Defaults to the frozen protocol for the selected suite')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--samples',type=Path,help='Optional private development session')
-    args=parser.parse_args();data=args.protocol.read_bytes();protocol=json.loads(data)
+    args=parser.parse_args()
+    if args.protocol is None:
+        args.protocol=Path(__file__).parents[1]/'examples/extraction-experiments'/(
+            'stress-protocol.json' if args.suite=='stress' else 'protocol.json')
+    data=args.protocol.read_bytes();protocol=json.loads(data)
     if tuple(protocol['methods'])!=METHODS:raise ValueError('Protocol methods do not match fixed variants')
+    if (protocol.get('suite')=='color-lighting-stress') != (args.suite=='stress'):
+        raise ValueError('Protocol does not match the selected suite')
     if args.samples and args.output.resolve()==args.samples.parent.resolve():
         raise ValueError('Preserve original recording folder; choose separate output')
     args.output.mkdir(parents=True,exist_ok=True)
-    result=synthetic(protocol)
+    result=synthetic_stress(protocol) if args.suite=='stress' else synthetic(protocol)
     result.update(protocol=protocol,**experiment_provenance(data))
-    (args.output/'synthetic-benchmark.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
+    filename='stress-benchmark.json' if args.suite=='stress' else 'synthetic-benchmark.json'
+    (args.output/filename).write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
     print(json.dumps(result['metrics'],indent=2),flush=True)
     if args.samples:
         result=natural(args.samples,protocol['methods'])
